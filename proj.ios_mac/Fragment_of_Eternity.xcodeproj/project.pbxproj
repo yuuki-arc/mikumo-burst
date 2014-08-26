@@ -56,6 +56,15 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		A518557619ACF0CB00169907 /* HomeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557219ACF0CB00169907 /* HomeScene.cpp */; };
+		A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557419ACF0CB00169907 /* TitleScene.cpp */; };
+		A518558119ACF12A00169907 /* game_maoudamashii_3_theme05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A518557A19ACF12A00169907 /* game_maoudamashii_3_theme05.mp3 */; };
+		A518558219ACF12A00169907 /* game_maoudamashii_3_theme14.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A518557B19ACF12A00169907 /* game_maoudamashii_3_theme14.mp3 */; };
+		A518558319ACF12A00169907 /* game_maoudamashii_3_theme15.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A518557C19ACF12A00169907 /* game_maoudamashii_3_theme15.mp3 */; };
+		A518558419ACF12A00169907 /* hd in Resources */ = {isa = PBXBuildFile; fileRef = A518557D19ACF12A00169907 /* hd */; };
+		A518558519ACF12A00169907 /* n11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A518557E19ACF12A00169907 /* n11.mp3 */; };
+		A518558619ACF12A00169907 /* n78.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A518557F19ACF12A00169907 /* n78.mp3 */; };
+		A518558719ACF12A00169907 /* sd in Resources */ = {isa = PBXBuildFile; fileRef = A518558019ACF12A00169907 /* sd */; };
 		A5B2714519AC6BD30028E9E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */; };
 		A5B2714719AC6BDC0028E9E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
 		A5B2714919AC6BE40028E9E0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */; };
@@ -260,6 +269,17 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		A518557219ACF0CB00169907 /* HomeScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HomeScene.cpp; sourceTree = "<group>"; };
+		A518557319ACF0CB00169907 /* HomeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScene.h; sourceTree = "<group>"; };
+		A518557419ACF0CB00169907 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
+		A518557519ACF0CB00169907 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
+		A518557A19ACF12A00169907 /* game_maoudamashii_3_theme05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_maoudamashii_3_theme05.mp3; sourceTree = "<group>"; };
+		A518557B19ACF12A00169907 /* game_maoudamashii_3_theme14.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_maoudamashii_3_theme14.mp3; sourceTree = "<group>"; };
+		A518557C19ACF12A00169907 /* game_maoudamashii_3_theme15.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_maoudamashii_3_theme15.mp3; sourceTree = "<group>"; };
+		A518557D19ACF12A00169907 /* hd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = hd; sourceTree = "<group>"; };
+		A518557E19ACF12A00169907 /* n11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = n11.mp3; sourceTree = "<group>"; };
+		A518557F19ACF12A00169907 /* n78.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = n78.mp3; sourceTree = "<group>"; };
+		A518558019ACF12A00169907 /* sd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sd; sourceTree = "<group>"; };
 		A5B2713A19AC6B6B0028E9E0 /* libbox2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbox2d iOS.a"; path = "../lib/libbox2d iOS.a"; sourceTree = "<group>"; };
 		A5B2713B19AC6B6B0028E9E0 /* libchipmunk iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchipmunk iOS.a"; path = "../lib/libchipmunk iOS.a"; sourceTree = "<group>"; };
 		A5B2713C19AC6B6B0028E9E0 /* libcocos2dx iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2dx iOS.a"; path = "../lib/libcocos2dx iOS.a"; sourceTree = "<group>"; };
@@ -346,6 +366,10 @@
 			children = (
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
+				A518557219ACF0CB00169907 /* HomeScene.cpp */,
+				A518557319ACF0CB00169907 /* HomeScene.h */,
+				A518557419ACF0CB00169907 /* TitleScene.cpp */,
+				A518557519ACF0CB00169907 /* TitleScene.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 			);
@@ -471,12 +495,27 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A518558819ACFA6400169907 /* BGM */,
+				A518557D19ACF12A00169907 /* hd */,
+				A518557E19ACF12A00169907 /* n11.mp3 */,
+				A518557F19ACF12A00169907 /* n78.mp3 */,
+				A518558019ACF12A00169907 /* sd */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		A518558819ACFA6400169907 /* BGM */ = {
+			isa = PBXGroup;
+			children = (
+				A518557A19ACF12A00169907 /* game_maoudamashii_3_theme05.mp3 */,
+				A518557B19ACF12A00169907 /* game_maoudamashii_3_theme14.mp3 */,
+				A518557C19ACF12A00169907 /* game_maoudamashii_3_theme15.mp3 */,
+			);
+			name = BGM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -644,16 +683,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				A518558119ACF12A00169907 /* game_maoudamashii_3_theme05.mp3 in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				A518558419ACF12A00169907 /* hd in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				A518558719ACF12A00169907 /* sd in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
+				A518558619ACF12A00169907 /* n78.mp3 in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				A518558319ACF12A00169907 /* game_maoudamashii_3_theme15.mp3 in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
@@ -661,7 +705,9 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				A518558519ACF12A00169907 /* n11.mp3 in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				A518558219ACF12A00169907 /* game_maoudamashii_3_theme14.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,10 +730,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				A518557619ACF0CB00169907 /* HomeScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

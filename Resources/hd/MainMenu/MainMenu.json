@@ -1,0 +1,130 @@
+{
+  "version": "1.0.0.0",
+  "designWidth": 320,
+  "designHeight": 480,
+  "dataScale": 1.0,
+  "textures": [],
+  "texturesPng": [
+    "icon-reflection-none-orange.png",
+    "icon-reflection-none-orange_push.png",
+    "l_088.png"
+  ],
+  "nodeTree": {
+    "options": {
+      "$type": "EditorCommon.JsonModel.Component.GUI.RootGUISurrogate, EditorCommon",
+      "visible": true,
+      "frameEvent": null,
+      "name": "Node",
+      "classname": "Node"
+    },
+    "children": [
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.PanelSurrogate, EditorCommon",
+          "bgColorOpacity": 0,
+          "x": 2.0,
+          "touchAble": true,
+          "visible": true,
+          "classType": "Panel",
+          "width": 320.0,
+          "height": 480.0,
+          "positionPercentX": 0.004166667,
+          "sizePercentX": 0.6666667,
+          "sizePercentY": 1.5,
+          "actionTag": 31051657,
+          "tag": 9,
+          "anchorPointX": 0.0,
+          "anchorPointY": 0.0,
+          "name": "BaseLayer",
+          "classname": "Panel"
+        },
+        "children": [
+          {
+            "options": {
+              "$type": "EditorCommon.JsonModel.Component.GUI.ButtonSurrogate, EditorCommon",
+              "normalData": {
+                "resourceType": 0,
+                "path": "icon-reflection-none-orange.png",
+                "plistFile": ""
+              },
+              "pressedData": {
+                "resourceType": 0,
+                "path": "icon-reflection-none-orange_push.png",
+                "plistFile": ""
+              },
+              "disabledData": {
+                "resourceType": 0,
+                "path": "icon-reflection-none-orange.png",
+                "plistFile": ""
+              },
+              "text": "BATTILE",
+              "fontSize": 16,
+              "textColorR": 0,
+              "textColorG": 0,
+              "textColorB": 0,
+              "capInsetsWidth": 1.0,
+              "capInsetsHeight": 1.0,
+              "scale9Width": 80.0,
+              "scale9Height": 80.0,
+              "x": 265.0,
+              "y": 55.0,
+              "touchAble": true,
+              "visible": true,
+              "ZOrder": 10,
+              "classType": "Button",
+              "width": 80.0,
+              "height": 80.0,
+              "positionPercentX": 0.828125,
+              "positionPercentY": 0.114583336,
+              "sizeType": 1,
+              "sizePercentX": 0.25,
+              "sizePercentY": 0.166666672,
+              "actionTag": 181345009,
+              "tag": 8,
+              "name": "ButtonBattle",
+              "classname": "Button"
+            },
+            "children": [],
+            "classname": "Button"
+          },
+          {
+            "options": {
+              "$type": "EditorCommon.JsonModel.Component.GUI.ImageViewSurrogate, EditorCommon",
+              "fileNameData": {
+                "resourceType": 0,
+                "path": "l_088.png",
+                "plistFile": ""
+              },
+              "scale9Width": 320.0,
+              "scale9Height": 480.0,
+              "x": 160.0,
+              "y": 240.0,
+              "visible": true,
+              "ZOrder": 1,
+              "classType": "ImageView",
+              "width": 320.0,
+              "height": 480.0,
+              "positionPercentX": 0.5,
+              "positionPercentY": 0.5,
+              "sizeType": 1,
+              "sizePercentX": 1.0,
+              "sizePercentY": 1.0,
+              "actionTag": 490138651,
+              "tag": 10,
+              "name": "Background",
+              "classname": "ImageView"
+            },
+            "children": [],
+            "classname": "ImageView"
+          }
+        ],
+        "classname": "Panel"
+      }
+    ],
+    "classname": "Node"
+  },
+  "action": {
+    "speed": 1.0,
+    "timelines": []
+  }
+}
