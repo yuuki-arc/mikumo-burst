@@ -42,3 +42,6 @@ out/
 
 #JAVA
 *.class
+
+#CocosBuilder
+cocosBuilder/Published-*
