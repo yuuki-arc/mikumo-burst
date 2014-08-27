@@ -53,6 +53,14 @@ bool Title::init()
         selected->setPosition(Point(x, y));
         return MenuItemSprite::create(normal, selected);
     };
+
+//    auto menuItem1 = LabelBMFont::create("START", "Arial_Black.fnt");
+//    menuItem1->setPosition(Point(origin.x + visibleSize.width / 2,
+//                                 origin.y + visibleSize.height / 4));
+//    auto menuItem2 = LabelBMFont::create("SETTINGS", "Arial_Black.fnt");
+//    menuItem1->setPosition(Point(origin.x + visibleSize.width / 2,
+//                                 origin.y + visibleSize.height / 4 - 50));
+//    this->addChild(label);
     
     auto menuItem1 = createMenuItem("START",
                                     origin.x + visibleSize.width / 2,
