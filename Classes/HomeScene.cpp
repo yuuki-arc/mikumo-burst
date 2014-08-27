@@ -49,9 +49,9 @@ bool Home::init()
 
 void Home::pushBack(Ref *pSender)
 {
-    Scene *pScene = Title::createScene();
-    
-    TransitionFade* transition = TransitionFade::create(0.5f, pScene);
-    Director::getInstance()->replaceScene(transition);
+//    Scene *pScene = Title::createScene();
+//    
+//    TransitionFade* transition = TransitionFade::create(0.5f, pScene);
+//    Director::getInstance()->replaceScene(transition);
 }
 

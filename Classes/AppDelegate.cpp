@@ -1,8 +1,8 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
-#include "TitleScene.h"
 #include "cocos-ext.h"
-#include "editor-support/cocosbuilder/CocosBuilder.h"
+
+#include "TitleScene.h"
+#include "TitleSceneLoader.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -17,7 +17,6 @@ AppDelegate::~AppDelegate()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-    // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
@@ -25,23 +24,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
     
-//    glview->setDesignResolutionSize(320, 480, ResolutionPolicy::SHOW_ALL);
-//    
-//    Size frameSize = glview->getFrameSize();   //画面サイズ取得
-//    std::vector<std::string> searchPath;
-//    
-//    //デバイスの縦幅が960px以上の場合は、２倍サイズ画像リソースを使用する
-//    if (frameSize.height >= 960.0f ) {
-//        searchPath.push_back("hd");
-//        director->setContentScaleFactor(2.0f);
-//    } else {
-//        searchPath.push_back("sd");
-//    }
-//    FileUtils::getInstance()->setSearchPaths(searchPath);
-
-    /* ここから追加コード */
-    
-    Size designSize = Size(320, 480); // ベースサイズ
+    Size designSize = Size(640, 960); // ベースサイズ
     Size resourceSize;
     Size screenSize = glview->getFrameSize();   //画面サイズ取得
     
@@ -50,7 +33,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     Platform platform = Application::getTargetPlatform();
     if (platform == Platform::OS_IPHONE || platform == Platform::OS_IPAD) {
-        searchPaths.push_back("Published-iOS");
+        searchPaths.push_back("Resources");
         FileUtils::getInstance()->setSearchPaths(searchPaths);
         
         if (screenSize.width > 768) {
@@ -93,26 +76,32 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
     
     director->setContentScaleFactor(resourceSize.width / designSize.width);
-    glview->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::FIXED_HEIGHT);
+    glview->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::SHOW_ALL);
     
-    /* ここまでが追加コード */
     // turn on display FPS
     director->setDisplayStats(true);
     
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
     
-//    // create a scene. it's an autorelease object
-//    auto scene = Title::createScene();
+    // CocosBuilderのファイルを読み込みゲーム画面を生成する
+    NodeLoaderLibrary* nodeLoaderLibrary = NodeLoaderLibrary::newDefaultNodeLoaderLibrary();
+    nodeLoaderLibrary->registerNodeLoader("TitleScene", TitleSceneLoader::loader());
     
-//    // run
-//    director->runWithScene(scene);
+    CCBReader* ccbReader = new CCBReader(nodeLoaderLibrary);
+    Node* node = ccbReader->readNodeGraphFromFile("TitleScene.ccbi");
     
-    NodeLoaderLibrary *lib = NodeLoaderLibrary::newDefaultNodeLoaderLibrary();
-    CCBReader *reader = new CCBReader(lib);
-    auto *scene = reader->createSceneWithNodeGraphFromFile("TitleScene.ccbi");
+    // シーンを用意し、ゲーム画面を設置する
+    Scene* scene = Scene::create();
+    if (node != NULL)
+    {
+        scene->addChild(node);
+    }
+    ccbReader->release();
+    
+    // run
     director->runWithScene(scene);
-
+    
     return true;
 }
 

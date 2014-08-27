@@ -1,26 +1,30 @@
-#ifndef __Positions__TitleScene__
-#define __Positions__TitleScene__
+//
+//  TitleScene.h
+//
+
+#ifndef __Hoge__TitleScene__
+#define __Hoge__TitleScene__
 
 #include "cocos2d.h"
+#include "cocos-ext.h"
+#include "editor-support/cocosbuilder/CocosBuilder.h"
 
-class Title : public cocos2d::Layer
+USING_NS_CC;
+USING_NS_CC_EXT;
+using namespace cocosbuilder;
+
+class TitleScene : public Layer
+, public CCBSelectorResolver /** CocosBuilderからメニューを取得するのに必要 */
 {
-protected:
-    enum Tag
-    {
-        MENU = 1,
-        START_BUTTON,
-    };
-    void itemVibration();
-    
+    virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Object* pTarget, const char* pSelectorName);
+    virtual Control::Handler onResolveCCBCCControlSelector(Object * pTarget, const char* pSelectorName);
 public:
-    static cocos2d::Scene* createScene();
+    // コンストラクタ、デストラクタ
+    TitleScene();
+    virtual ~TitleScene();
     
-    virtual bool init();
-    
-    CREATE_FUNC(Title);
-    
-    void pushStart(Ref* pSender);
+    // createメソッド
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(TitleScene, create);
 };
 
-#endif /* defined(__Positions__TitleScene__) */
+#endif /* defined(__Hoge__TitleScene__) */
