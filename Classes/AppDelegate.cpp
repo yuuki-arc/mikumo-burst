@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "cocos-ext.h"
+#include "extensions/cocos-ext.h"
 
 #include "TitleScene.h"
 #include "TitleSceneLoader.h"

@@ -6,7 +6,7 @@
 #define Hoge_TitleSceneLoader_h
 
 #include "TitleScene.h"
-#include "cocos-ext.h"
+#include "extensions/cocos-ext.h"
 
 USING_NS_CC_EXT;
 

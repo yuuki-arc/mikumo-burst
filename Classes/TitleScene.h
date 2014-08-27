@@ -6,8 +6,8 @@
 #define __Hoge__TitleScene__
 
 #include "cocos2d.h"
-#include "cocos-ext.h"
-#include "editor-support/cocosbuilder/CocosBuilder.h"
+#include "extensions/cocos-ext.h"
+#include "cocosbuilder/CocosBuilder.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
