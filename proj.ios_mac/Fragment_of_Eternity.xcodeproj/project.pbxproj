@@ -50,7 +50,7 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
-		A518557619ACF0CB00169907 /* HomeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557219ACF0CB00169907 /* HomeScene.cpp */; };
+		A518557619ACF0CB00169907 /* MenuSelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557219ACF0CB00169907 /* MenuSelectScene.cpp */; };
 		A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557419ACF0CB00169907 /* TitleScene.cpp */; };
 		A540B7AA19AE6BBB000BB222 /* fileLookup.plist in Resources */ = {isa = PBXBuildFile; fileRef = A540B7A319AE6BBB000BB222 /* fileLookup.plist */; };
 		A540B7AB19AE6BBB000BB222 /* l_095.png in Resources */ = {isa = PBXBuildFile; fileRef = A540B7A419AE6BBB000BB222 /* l_095.png */; };
@@ -269,8 +269,8 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
-		A518557219ACF0CB00169907 /* HomeScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HomeScene.cpp; sourceTree = "<group>"; };
-		A518557319ACF0CB00169907 /* HomeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScene.h; sourceTree = "<group>"; };
+		A518557219ACF0CB00169907 /* MenuSelectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuSelectScene.cpp; sourceTree = "<group>"; };
+		A518557319ACF0CB00169907 /* MenuSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSelectScene.h; sourceTree = "<group>"; };
 		A518557419ACF0CB00169907 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		A518557519ACF0CB00169907 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		A540B7A319AE6BBB000BB222 /* fileLookup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fileLookup.plist; sourceTree = "<group>"; };
@@ -376,8 +376,8 @@
 			children = (
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
-				A518557219ACF0CB00169907 /* HomeScene.cpp */,
-				A518557319ACF0CB00169907 /* HomeScene.h */,
+				A518557219ACF0CB00169907 /* MenuSelectScene.cpp */,
+				A518557319ACF0CB00169907 /* MenuSelectScene.h */,
 				A518557419ACF0CB00169907 /* TitleScene.cpp */,
 				A518557519ACF0CB00169907 /* TitleScene.h */,
 				A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */,
@@ -741,7 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
-				A518557619ACF0CB00169907 /* HomeScene.cpp in Sources */,
+				A518557619ACF0CB00169907 /* MenuSelectScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				A568C35819AF7B18000547E4 /* TitleSceneLoader.cpp in Sources */,
