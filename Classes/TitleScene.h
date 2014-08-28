@@ -18,6 +18,9 @@ class TitleScene : public Layer
 {
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Object* pTarget, const char* pSelectorName);
     virtual Control::Handler onResolveCCBCCControlSelector(Object * pTarget, const char* pSelectorName);
+
+    void tappedStartButton(Object * pTarget, Control::EventType pControlEventType);
+
 public:
     // コンストラクタ、デストラクタ
     TitleScene();
