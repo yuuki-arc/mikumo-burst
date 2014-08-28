@@ -30,7 +30,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>l_095</string>
+				<string>BG_sky_04</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -67,8 +67,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.80000001192092896</real>
+							<real>1.6000000238418579</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -89,7 +89,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>l_095.png</string>
+							<string>BG_sky_m.jpg</string>
 						</array>
 					</dict>
 					<dict>
@@ -127,9 +127,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>320</real>
-							<real>640</real>
-							<integer>0</integer>
+							<real>50</real>
+							<real>70</real>
+							<integer>4</integer>
 						</array>
 					</dict>
 					<dict>
@@ -200,7 +200,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>35</real>
+							<real>15</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -279,7 +279,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>36</real>
+							<real>64</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -301,8 +301,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>8</real>
+							<real>80</real>
+							<real>10</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -322,7 +322,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>freebu32_2.png</string>
+							<string>freebu32_4.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -345,7 +345,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>freebu32_4.png</string>
+							<string>freebu32_2.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -368,7 +368,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>freebu32_2.png</string>
+							<string>BG_sky_04.jpg</string>
 						</array>
 					</dict>
 					<dict>
@@ -384,8 +384,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

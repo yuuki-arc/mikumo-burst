@@ -63,6 +63,11 @@
 		A540B7B419AE6E86000BB222 /* Arial_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = A540B7B219AE6E86000BB222 /* Arial_Black.png */; };
 		A540B7B719AEEB05000BB222 /* freebu32_2.png in Resources */ = {isa = PBXBuildFile; fileRef = A540B7B519AEEB05000BB222 /* freebu32_2.png */; };
 		A540B7B819AEEB05000BB222 /* freebu32_4.png in Resources */ = {isa = PBXBuildFile; fileRef = A540B7B619AEEB05000BB222 /* freebu32_4.png */; };
+		A568C35819AF7B18000547E4 /* TitleSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */; };
+		A584D52019AF8F8700A270A1 /* BG_sky_04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A584D51F19AF8F8700A270A1 /* BG_sky_04.jpg */; };
+		A584D52419AF90AA00A270A1 /* BG_sky_m.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A584D52319AF90AA00A270A1 /* BG_sky_m.jpg */; };
+		A584D52719AFACC700A270A1 /* title_particle1.plist in Resources */ = {isa = PBXBuildFile; fileRef = A584D52519AFACC700A270A1 /* title_particle1.plist */; };
+		A584D52819AFACC700A270A1 /* title_particle2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A584D52619AFACC700A270A1 /* title_particle2.plist */; };
 		A5B2714519AC6BD30028E9E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */; };
 		A5B2714719AC6BDC0028E9E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
 		A5B2714919AC6BE40028E9E0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */; };
@@ -279,6 +284,11 @@
 		A540B7B219AE6E86000BB222 /* Arial_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arial_Black.png; sourceTree = "<group>"; };
 		A540B7B519AEEB05000BB222 /* freebu32_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freebu32_2.png; sourceTree = "<group>"; };
 		A540B7B619AEEB05000BB222 /* freebu32_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freebu32_4.png; sourceTree = "<group>"; };
+		A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleSceneLoader.cpp; path = ../Classes/TitleSceneLoader.cpp; sourceTree = "<group>"; };
+		A584D51F19AF8F8700A270A1 /* BG_sky_04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BG_sky_04.jpg; sourceTree = "<group>"; };
+		A584D52319AF90AA00A270A1 /* BG_sky_m.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BG_sky_m.jpg; sourceTree = "<group>"; };
+		A584D52519AFACC700A270A1 /* title_particle1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = title_particle1.plist; sourceTree = "<group>"; };
+		A584D52619AFACC700A270A1 /* title_particle2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = title_particle2.plist; sourceTree = "<group>"; };
 		A59058C619AE4DF100A26037 /* TitleSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleSceneLoader.h; path = ../Classes/TitleSceneLoader.h; sourceTree = "<group>"; };
 		A5B2713A19AC6B6B0028E9E0 /* libbox2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbox2d iOS.a"; path = "../lib/libbox2d iOS.a"; sourceTree = "<group>"; };
 		A5B2713B19AC6B6B0028E9E0 /* libchipmunk iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchipmunk iOS.a"; path = "../lib/libchipmunk iOS.a"; sourceTree = "<group>"; };
@@ -370,6 +380,7 @@
 				A518557319ACF0CB00169907 /* HomeScene.h */,
 				A518557419ACF0CB00169907 /* TitleScene.cpp */,
 				A518557519ACF0CB00169907 /* TitleScene.h */,
+				A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */,
 				A59058C619AE4DF100A26037 /* TitleSceneLoader.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
@@ -496,6 +507,10 @@
 		A59058B919AE4C2800A26037 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A584D52519AFACC700A270A1 /* title_particle1.plist */,
+				A584D52619AFACC700A270A1 /* title_particle2.plist */,
+				A584D52319AF90AA00A270A1 /* BG_sky_m.jpg */,
+				A584D51F19AF8F8700A270A1 /* BG_sky_04.jpg */,
 				A540B7B519AEEB05000BB222 /* freebu32_2.png */,
 				A540B7B619AEEB05000BB222 /* freebu32_4.png */,
 				A540B7B119AE6E86000BB222 /* Arial_Black.fnt */,
@@ -679,11 +694,15 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				A584D52719AFACC700A270A1 /* title_particle1.plist in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				A540B7B719AEEB05000BB222 /* freebu32_2.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				A584D52019AF8F8700A270A1 /* BG_sky_04.jpg in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				A584D52819AFACC700A270A1 /* title_particle2.plist in Resources */,
 				A540B7B019AE6BBB000BB222 /* TitleScene.ccbi in Resources */,
+				A584D52419AF90AA00A270A1 /* BG_sky_m.jpg in Resources */,
 				A540B7B819AEEB05000BB222 /* freebu32_4.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				A540B7AA19AE6BBB000BB222 /* fileLookup.plist in Resources */,
@@ -725,6 +744,7 @@
 				A518557619ACF0CB00169907 /* HomeScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				A568C35819AF7B18000547E4 /* TitleSceneLoader.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */,

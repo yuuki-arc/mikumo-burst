@@ -1,7 +1,3 @@
-//
-//  TitleScene.cpp
-//
-
 #include "TitleScene.h"
 
 TitleScene::TitleScene()
@@ -30,3 +26,4 @@ void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEven
 {
     CCLOG("tappedStartButton eventType = %d", pControlEventType);
 }
+

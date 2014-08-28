@@ -85,22 +85,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
     
     // CocosBuilderのファイルを読み込みゲーム画面を生成する
-    NodeLoaderLibrary* nodeLoaderLibrary = NodeLoaderLibrary::newDefaultNodeLoaderLibrary();
-    nodeLoaderLibrary->registerNodeLoader("TitleScene", TitleSceneLoader::loader());
-    
-    CCBReader* ccbReader = new CCBReader(nodeLoaderLibrary);
-    Node* node = ccbReader->readNodeGraphFromFile("TitleScene.ccbi");
-    
-    // シーンを用意し、ゲーム画面を設置する
-    Scene* scene = Scene::create();
-    if (node != NULL)
-    {
-        scene->addChild(node);
-    }
-    ccbReader->release();
+    auto *pScene = TitleSceneLoader::createScene();
     
     // run
-    director->runWithScene(scene);
+    director->runWithScene(pScene);
     
     return true;
 }
