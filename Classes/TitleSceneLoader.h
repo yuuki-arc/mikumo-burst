@@ -1,9 +1,5 @@
-//
-//  TitleSceneLoader.h
-//
-
-#ifndef Hoge_TitleSceneLoader_h
-#define Hoge_TitleSceneLoader_h
+#ifndef __TITLE_SCENE_LOADER_H__
+#define __TITLE_SCENE_LOADER_H__
 
 #include "TitleScene.h"
 #include "extensions/cocos-ext.h"

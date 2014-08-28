@@ -1,9 +1,5 @@
-//
-//  TitleScene.h
-//
-
-#ifndef __Hoge__TitleScene__
-#define __Hoge__TitleScene__
+#ifndef __TITLE_SCENE_H__
+#define __TITLE_SCENE_H__
 
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
@@ -14,20 +10,18 @@ USING_NS_CC_EXT;
 using namespace cocosbuilder;
 
 class TitleScene : public Layer
-, public CCBSelectorResolver /** CocosBuilderからメニューを取得するのに必要 */
+, public CCBSelectorResolver
 {
-    virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Object* pTarget, const char* pSelectorName);
-    virtual Control::Handler onResolveCCBCCControlSelector(Object * pTarget, const char* pSelectorName);
+    virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName);
+    virtual Control::Handler onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName);
 
-    void tappedStartButton(Object * pTarget, Control::EventType pControlEventType);
+    void tappedStartButton(Ref* pTarget, Control::EventType pControlEventType);
 
 public:
-    // コンストラクタ、デストラクタ
     TitleScene();
     virtual ~TitleScene();
     
-    // createメソッド
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(TitleScene, create);
 };
 
-#endif /* defined(__Hoge__TitleScene__) */
+#endif /* defined(__TITLE_SCENE_H__) */
