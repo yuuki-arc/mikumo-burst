@@ -13,11 +13,18 @@ Scene* TitleSceneLoader::createScene()
     {
         pScene->addChild(node);
         
+        auto director = Director::getInstance();
+        auto glview = director->getOpenGLView();
+        if(!glview) {
+            glview = GLView::create("My Game");
+            director->setOpenGLView(glview);
+        }
+        Size screenSize = glview->getFrameSize();
         ParticleSystemQuad* particle1 = ParticleSystemQuad::create("title_particle1.plist");
-        particle1->setPosition(Vec2(160, 240));
+        particle1->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
         pScene->addChild(particle1);
         ParticleSystemQuad* particle2 = ParticleSystemQuad::create("title_particle2.plist");
-        particle2->setPosition(Vec2(160, 240));
+        particle2->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
         pScene->addChild(particle2);
     }
     ccbReader->release();
