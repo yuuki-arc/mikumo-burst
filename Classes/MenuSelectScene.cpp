@@ -1,5 +1,5 @@
 #include "MenuSelectScene.h"
-#include "TitleScene.h"
+#include "TitleSceneLoader.h"
 
 MenuSelectScene::MenuSelectScene()
 {
@@ -26,4 +26,7 @@ Control::Handler MenuSelectScene::onResolveCCBCCControlSelector(Ref* pTarget, co
 void MenuSelectScene::tappedStartButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedStartButton eventType = %d", pControlEventType);
+    Scene* scene = TitleSceneLoader::createScene();
+    TransitionProgressInOut* trans = TransitionProgressInOut::create(1, scene);
+    Director::getInstance()->replaceScene(trans);
 }
