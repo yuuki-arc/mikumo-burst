@@ -19,13 +19,13 @@ SEL_MenuHandler SelectScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const 
 Control::Handler SelectScene::onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName)
 {
     CCLOG("name = %s", pSelectorName);
-    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedStartButton", SelectScene::tappedStartButton);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBattleButton", SelectScene::tappedBattleButton);
     return NULL;
 }
 
-void SelectScene::tappedStartButton(Ref* pTarget, Control::EventType pControlEventType)
+void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)
 {
-    CCLOG("tappedStartButton eventType = %d", pControlEventType);
+    CCLOG("tappedBattleButton eventType = %d", pControlEventType);
     Scene* scene = BattleSceneLoader::createScene();
     TransitionProgressInOut* trans = TransitionProgressInOut::create(1, scene);
     Director::getInstance()->replaceScene(trans);

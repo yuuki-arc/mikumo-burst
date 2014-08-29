@@ -15,7 +15,7 @@ class BattleScene : public Layer
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName);
     virtual Control::Handler onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName);
 
-    void tappedStartButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedResultButton(Ref* pTarget, Control::EventType pControlEventType);
 
 public:
     BattleScene();

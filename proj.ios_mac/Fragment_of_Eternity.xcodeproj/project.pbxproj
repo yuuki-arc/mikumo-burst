@@ -76,6 +76,8 @@
 		A59917F619B0400C00A95508 /* SelectScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A59917F519B0400C00A95508 /* SelectScene.ccbi */; };
 		A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F719B040CD00A95508 /* ResultScene.cpp */; };
 		A59917FC19B040CD00A95508 /* ResultSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */; };
+		A59917FF19B0EBA900A95508 /* BattleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A59917FD19B0EBA900A95508 /* BattleScene.ccbi */; };
+		A599180019B0EBA900A95508 /* ResultScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A59917FE19B0EBA900A95508 /* ResultScene.ccbi */; };
 		A5B2714519AC6BD30028E9E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */; };
 		A5B2714719AC6BDC0028E9E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
 		A5B2714919AC6BE40028E9E0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */; };
@@ -311,6 +313,8 @@
 		A59917F819B040CD00A95508 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = ../Classes/ResultScene.h; sourceTree = "<group>"; };
 		A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultSceneLoader.cpp; path = ../Classes/ResultSceneLoader.cpp; sourceTree = "<group>"; };
 		A59917FA19B040CD00A95508 /* ResultSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultSceneLoader.h; path = ../Classes/ResultSceneLoader.h; sourceTree = "<group>"; };
+		A59917FD19B0EBA900A95508 /* BattleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = BattleScene.ccbi; sourceTree = "<group>"; };
+		A59917FE19B0EBA900A95508 /* ResultScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = ResultScene.ccbi; sourceTree = "<group>"; };
 		A5B2713A19AC6B6B0028E9E0 /* libbox2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbox2d iOS.a"; path = "../lib/libbox2d iOS.a"; sourceTree = "<group>"; };
 		A5B2713B19AC6B6B0028E9E0 /* libchipmunk iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchipmunk iOS.a"; path = "../lib/libchipmunk iOS.a"; sourceTree = "<group>"; };
 		A5B2713C19AC6B6B0028E9E0 /* libcocos2dx iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2dx iOS.a"; path = "../lib/libcocos2dx iOS.a"; sourceTree = "<group>"; };
@@ -538,6 +542,8 @@
 		A59058B919AE4C2800A26037 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A59917FD19B0EBA900A95508 /* BattleScene.ccbi */,
+				A59917FE19B0EBA900A95508 /* ResultScene.ccbi */,
 				A59917F519B0400C00A95508 /* SelectScene.ccbi */,
 				A59917DE19B038FC00A95508 /* 04.png */,
 				A59917DF19B038FC00A95508 /* icon-reflection-none-orange.png */,
@@ -741,10 +747,12 @@
 				A540B7B819AEEB05000BB222 /* freebu32_4.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				A540B7AA19AE6BBB000BB222 /* fileLookup.plist in Resources */,
+				A599180019B0EBA900A95508 /* ResultScene.ccbi in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				A540B7B319AE6E86000BB222 /* Arial_Black.fnt in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
+				A59917FF19B0EBA900A95508 /* BattleScene.ccbi in Resources */,
 				A540B7AD19AE6BBB000BB222 /* resources-iphone in Resources */,
 				A540B7AB19AE6BBB000BB222 /* l_095.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
