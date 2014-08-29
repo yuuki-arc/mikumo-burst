@@ -1,5 +1,5 @@
 #include "TitleScene.h"
-#include "MenuSelectSceneLoader.h"
+#include "SelectSceneLoader.h"
 
 TitleScene::TitleScene()
 {
@@ -26,7 +26,7 @@ Control::Handler TitleScene::onResolveCCBCCControlSelector(Ref *pTarget, const c
 void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedStartButton eventType = %d", pControlEventType);
-    Scene* scene = MenuSelectSceneLoader::createScene();
+    Scene* scene = SelectSceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(1, scene);
     Director::getInstance()->replaceScene(trans);
 }

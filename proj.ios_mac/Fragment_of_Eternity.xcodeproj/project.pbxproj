@@ -50,7 +50,6 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
-		A518557619ACF0CB00169907 /* MenuSelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557219ACF0CB00169907 /* MenuSelectScene.cpp */; };
 		A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557419ACF0CB00169907 /* TitleScene.cpp */; };
 		A540B7AA19AE6BBB000BB222 /* fileLookup.plist in Resources */ = {isa = PBXBuildFile; fileRef = A540B7A319AE6BBB000BB222 /* fileLookup.plist */; };
 		A540B7AB19AE6BBB000BB222 /* l_095.png in Resources */ = {isa = PBXBuildFile; fileRef = A540B7A419AE6BBB000BB222 /* l_095.png */; };
@@ -68,10 +67,15 @@
 		A584D52419AF90AA00A270A1 /* BG_sky_m.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A584D52319AF90AA00A270A1 /* BG_sky_m.jpg */; };
 		A584D52719AFACC700A270A1 /* title_particle1.plist in Resources */ = {isa = PBXBuildFile; fileRef = A584D52519AFACC700A270A1 /* title_particle1.plist */; };
 		A584D52819AFACC700A270A1 /* title_particle2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A584D52619AFACC700A270A1 /* title_particle2.plist */; };
-		A584D52B19B0064000A270A1 /* MenuSelectSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A584D52A19B0064000A270A1 /* MenuSelectSceneLoader.cpp */; };
 		A59917E119B038FC00A95508 /* 04.png in Resources */ = {isa = PBXBuildFile; fileRef = A59917DE19B038FC00A95508 /* 04.png */; };
 		A59917E219B038FC00A95508 /* icon-reflection-none-orange.png in Resources */ = {isa = PBXBuildFile; fileRef = A59917DF19B038FC00A95508 /* icon-reflection-none-orange.png */; };
-		A59917E319B038FC00A95508 /* MenuSelectScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A59917E019B038FC00A95508 /* MenuSelectScene.ccbi */; };
+		A59917F119B03F5B00A95508 /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917E919B03F5B00A95508 /* BattleScene.cpp */; };
+		A59917F219B03F5B00A95508 /* BattleSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917EB19B03F5B00A95508 /* BattleSceneLoader.cpp */; };
+		A59917F319B03F5B00A95508 /* SelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917ED19B03F5B00A95508 /* SelectScene.cpp */; };
+		A59917F419B03F5B00A95508 /* SelectSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917EF19B03F5B00A95508 /* SelectSceneLoader.cpp */; };
+		A59917F619B0400C00A95508 /* SelectScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A59917F519B0400C00A95508 /* SelectScene.ccbi */; };
+		A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F719B040CD00A95508 /* ResultScene.cpp */; };
+		A59917FC19B040CD00A95508 /* ResultSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */; };
 		A5B2714519AC6BD30028E9E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */; };
 		A5B2714719AC6BDC0028E9E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
 		A5B2714919AC6BE40028E9E0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */; };
@@ -273,8 +277,6 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
-		A518557219ACF0CB00169907 /* MenuSelectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuSelectScene.cpp; sourceTree = "<group>"; };
-		A518557319ACF0CB00169907 /* MenuSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSelectScene.h; sourceTree = "<group>"; };
 		A518557419ACF0CB00169907 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		A518557519ACF0CB00169907 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		A540B7A319AE6BBB000BB222 /* fileLookup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fileLookup.plist; sourceTree = "<group>"; };
@@ -293,12 +295,22 @@
 		A584D52319AF90AA00A270A1 /* BG_sky_m.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BG_sky_m.jpg; sourceTree = "<group>"; };
 		A584D52519AFACC700A270A1 /* title_particle1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = title_particle1.plist; sourceTree = "<group>"; };
 		A584D52619AFACC700A270A1 /* title_particle2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = title_particle2.plist; sourceTree = "<group>"; };
-		A584D52919B0063200A270A1 /* MenuSelectSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSelectSceneLoader.h; path = ../Classes/MenuSelectSceneLoader.h; sourceTree = "<group>"; };
-		A584D52A19B0064000A270A1 /* MenuSelectSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuSelectSceneLoader.cpp; sourceTree = "<group>"; };
 		A59058C619AE4DF100A26037 /* TitleSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleSceneLoader.h; path = ../Classes/TitleSceneLoader.h; sourceTree = "<group>"; };
 		A59917DE19B038FC00A95508 /* 04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04.png; sourceTree = "<group>"; };
 		A59917DF19B038FC00A95508 /* icon-reflection-none-orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-reflection-none-orange.png"; sourceTree = "<group>"; };
-		A59917E019B038FC00A95508 /* MenuSelectScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = MenuSelectScene.ccbi; sourceTree = "<group>"; };
+		A59917E919B03F5B00A95508 /* BattleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BattleScene.cpp; path = ../Classes/BattleScene.cpp; sourceTree = "<group>"; };
+		A59917EA19B03F5B00A95508 /* BattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BattleScene.h; path = ../Classes/BattleScene.h; sourceTree = "<group>"; };
+		A59917EB19B03F5B00A95508 /* BattleSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BattleSceneLoader.cpp; path = ../Classes/BattleSceneLoader.cpp; sourceTree = "<group>"; };
+		A59917EC19B03F5B00A95508 /* BattleSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BattleSceneLoader.h; path = ../Classes/BattleSceneLoader.h; sourceTree = "<group>"; };
+		A59917ED19B03F5B00A95508 /* SelectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectScene.cpp; path = ../Classes/SelectScene.cpp; sourceTree = "<group>"; };
+		A59917EE19B03F5B00A95508 /* SelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectScene.h; path = ../Classes/SelectScene.h; sourceTree = "<group>"; };
+		A59917EF19B03F5B00A95508 /* SelectSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectSceneLoader.cpp; path = ../Classes/SelectSceneLoader.cpp; sourceTree = "<group>"; };
+		A59917F019B03F5B00A95508 /* SelectSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectSceneLoader.h; path = ../Classes/SelectSceneLoader.h; sourceTree = "<group>"; };
+		A59917F519B0400C00A95508 /* SelectScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelectScene.ccbi; sourceTree = "<group>"; };
+		A59917F719B040CD00A95508 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultScene.cpp; path = ../Classes/ResultScene.cpp; sourceTree = "<group>"; };
+		A59917F819B040CD00A95508 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = ../Classes/ResultScene.h; sourceTree = "<group>"; };
+		A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultSceneLoader.cpp; path = ../Classes/ResultSceneLoader.cpp; sourceTree = "<group>"; };
+		A59917FA19B040CD00A95508 /* ResultSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultSceneLoader.h; path = ../Classes/ResultSceneLoader.h; sourceTree = "<group>"; };
 		A5B2713A19AC6B6B0028E9E0 /* libbox2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbox2d iOS.a"; path = "../lib/libbox2d iOS.a"; sourceTree = "<group>"; };
 		A5B2713B19AC6B6B0028E9E0 /* libchipmunk iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchipmunk iOS.a"; path = "../lib/libchipmunk iOS.a"; sourceTree = "<group>"; };
 		A5B2713C19AC6B6B0028E9E0 /* libcocos2dx iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2dx iOS.a"; path = "../lib/libcocos2dx iOS.a"; sourceTree = "<group>"; };
@@ -383,16 +395,24 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A59917F719B040CD00A95508 /* ResultScene.cpp */,
+				A59917F819B040CD00A95508 /* ResultScene.h */,
+				A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */,
+				A59917FA19B040CD00A95508 /* ResultSceneLoader.h */,
+				A59917E919B03F5B00A95508 /* BattleScene.cpp */,
+				A59917EA19B03F5B00A95508 /* BattleScene.h */,
+				A59917EB19B03F5B00A95508 /* BattleSceneLoader.cpp */,
+				A59917EC19B03F5B00A95508 /* BattleSceneLoader.h */,
+				A59917ED19B03F5B00A95508 /* SelectScene.cpp */,
+				A59917EE19B03F5B00A95508 /* SelectScene.h */,
+				A59917EF19B03F5B00A95508 /* SelectSceneLoader.cpp */,
+				A59917F019B03F5B00A95508 /* SelectSceneLoader.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */,
 				A59058C619AE4DF100A26037 /* TitleSceneLoader.h */,
 				A518557419ACF0CB00169907 /* TitleScene.cpp */,
 				A518557519ACF0CB00169907 /* TitleScene.h */,
-				A584D52A19B0064000A270A1 /* MenuSelectSceneLoader.cpp */,
-				A584D52919B0063200A270A1 /* MenuSelectSceneLoader.h */,
-				A518557219ACF0CB00169907 /* MenuSelectScene.cpp */,
-				A518557319ACF0CB00169907 /* MenuSelectScene.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 			);
@@ -518,9 +538,9 @@
 		A59058B919AE4C2800A26037 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A59917F519B0400C00A95508 /* SelectScene.ccbi */,
 				A59917DE19B038FC00A95508 /* 04.png */,
 				A59917DF19B038FC00A95508 /* icon-reflection-none-orange.png */,
-				A59917E019B038FC00A95508 /* MenuSelectScene.ccbi */,
 				A584D52519AFACC700A270A1 /* title_particle1.plist */,
 				A584D52619AFACC700A270A1 /* title_particle2.plist */,
 				A584D52319AF90AA00A270A1 /* BG_sky_m.jpg */,
@@ -705,7 +725,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A59917E319B038FC00A95508 /* MenuSelectScene.ccbi in Resources */,
 				A59917E219B038FC00A95508 /* icon-reflection-none-orange.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
@@ -731,6 +750,7 @@
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				A540B7B419AE6E86000BB222 /* Arial_Black.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				A59917F619B0400C00A95508 /* SelectScene.ccbi in Resources */,
 				A540B7AF19AE6BBB000BB222 /* title_logo.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				A540B7AC19AE6BBB000BB222 /* resources-ipad in Resources */,
@@ -758,14 +778,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
-				A584D52B19B0064000A270A1 /* MenuSelectSceneLoader.cpp in Sources */,
-				A518557619ACF0CB00169907 /* MenuSelectScene.cpp in Sources */,
+				A59917FC19B040CD00A95508 /* ResultSceneLoader.cpp in Sources */,
+				A59917F419B03F5B00A95508 /* SelectSceneLoader.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				A59917F119B03F5B00A95508 /* BattleScene.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */,
 				A568C35819AF7B18000547E4 /* TitleSceneLoader.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */,
+				A59917F319B03F5B00A95508 /* SelectScene.cpp in Sources */,
+				A59917F219B03F5B00A95508 /* BattleSceneLoader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
