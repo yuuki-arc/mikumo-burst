@@ -51,7 +51,7 @@
 	<key>publishResolution_hd</key>
 	<true/>
 	<key>publishResolution_ipad</key>
-	<true/>
+	<false/>
 	<key>publishResolution_ipadhd</key>
 	<false/>
 	<key>publishResolution_large</key>
@@ -67,12 +67,12 @@
 	<key>publishToZipFile</key>
 	<false/>
 	<key>resourceAutoScaleFactor</key>
-	<integer>4</integer>
+	<integer>2</integer>
 	<key>resourcePaths</key>
 	<array>
 		<dict>
 			<key>path</key>
-			<string>Resources</string>
+			<string>Resource</string>
 		</dict>
 	</array>
 	<key>versionStr</key>

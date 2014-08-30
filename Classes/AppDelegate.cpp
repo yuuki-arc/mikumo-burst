@@ -24,56 +24,27 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
     
-    Size designSize = Size(640, 960); // ベースサイズ
+    Size designSize = Size(320, 480); // ベースサイズ
     Size resourceSize;
     Size screenSize = glview->getFrameSize();   //画面サイズ取得
     
     std::vector<std::string> searchPaths;
     std::vector<std::string> resDirOrders;
+
+    searchPaths.push_back("Resources");
+    FileUtils::getInstance()->setSearchPaths(searchPaths);
     
-    Platform platform = Application::getTargetPlatform();
-    if (platform == Platform::OS_IPHONE || platform == Platform::OS_IPAD) {
-        searchPaths.push_back("Resources");
-        FileUtils::getInstance()->setSearchPaths(searchPaths);
-        
-        if (screenSize.width > 768) {
-            resourceSize = Size(1536, 2048);
-            resDirOrders.push_back("resources-ipadhd");
-        } else if (screenSize.width > 640) {
-            resourceSize = Size(768, 1536);
-            resDirOrders.push_back("resources-ipad");
-        } else if (screenSize.width > 480) {
-            if (screenSize.height < 1536) {
-                // 4インチ
-                resourceSize = Size(640, 1136);
-            } else {
-                // 3.5インチ
-                resourceSize = Size(640, 960);
-            }
-            resDirOrders.push_back("resources-iphonehd");
-        } else {
-            resourceSize = Size(320, 480);
-            resDirOrders.push_back("resources-iphone");
-        }
-        
-        FileUtils::getInstance()->setSearchPaths(resDirOrders);
-    } else if (platform == Platform::OS_ANDROID) {
-        if (screenSize.width > 1200) {
-            resourceSize = Size(800, 1200);
-            resDirOrders.push_back("resources-xlarge");
-        } else if (screenSize.width > 960) {
-            resourceSize = Size(640, 960);
-            resDirOrders.push_back("resources-large");
-        } else if (screenSize.width > 480) {
-            resourceSize = Size(480, 720);
-            resDirOrders.push_back("resources-medium");
-        } else {
-            resourceSize = Size(320, 568);
-            resDirOrders.push_back("resources-small");
-        }
-        
-        FileUtils::getInstance()->setSearchPaths(resDirOrders);
+    CCLOG("height: %f, witdh: %f", screenSize.width, screenSize.height);
+
+    if (screenSize.height >= 960 || screenSize.width >= 640) {
+        resourceSize = Size(640, 960);
+        resDirOrders.push_back("resources-iphonehd");
+    } else {
+        resourceSize = Size(320, 480);
+        resDirOrders.push_back("resources-iphone");
     }
+    
+    FileUtils::getInstance()->setSearchPaths(resDirOrders);
     
     director->setContentScaleFactor(resourceSize.width / designSize.width);
     glview->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::SHOW_ALL);
