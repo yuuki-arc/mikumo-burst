@@ -51,6 +51,15 @@
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557419ACF0CB00169907 /* TitleScene.cpp */; };
+		A54AEABA19B23D6000AE6AE4 /* BattleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */; };
+		A54AEABC19B23D6000AE6AE4 /* fileLookup.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */; };
+		A54AEABD19B23D6000AE6AE4 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB319B23D6000AE6AE4 /* resources-iphone */; };
+		A54AEABE19B23D6000AE6AE4 /* resources-iphonehd in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB419B23D6000AE6AE4 /* resources-iphonehd */; };
+		A54AEABF19B23D6000AE6AE4 /* ResultScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB519B23D6000AE6AE4 /* ResultScene.ccbi */; };
+		A54AEAC019B23D6000AE6AE4 /* SelectScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB619B23D6000AE6AE4 /* SelectScene.ccbi */; };
+		A54AEAC119B23D6000AE6AE4 /* title_particle1.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB719B23D6000AE6AE4 /* title_particle1.plist */; };
+		A54AEAC219B23D6000AE6AE4 /* title_particle2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB819B23D6000AE6AE4 /* title_particle2.plist */; };
+		A54AEAC319B23D6000AE6AE4 /* TitleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB919B23D6000AE6AE4 /* TitleScene.ccbi */; };
 		A568C35819AF7B18000547E4 /* TitleSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */; };
 		A59917F119B03F5B00A95508 /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917E919B03F5B00A95508 /* BattleScene.cpp */; };
 		A59917F219B03F5B00A95508 /* BattleSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917EB19B03F5B00A95508 /* BattleSceneLoader.cpp */; };
@@ -66,14 +75,6 @@
 		A5B3493819AC79C100A12685 /* libcocos2dx iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2713C19AC6B6B0028E9E0 /* libcocos2dx iOS.a */; };
 		A5B3493919AC79C100A12685 /* libcocos2dx-extensions iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2713D19AC6B6B0028E9E0 /* libcocos2dx-extensions iOS.a */; };
 		A5B3493A19AC79C100A12685 /* libCocosDenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2713E19AC6B6B0028E9E0 /* libCocosDenshion iOS.a */; };
-		A5B4634419B1CC580041BE0C /* BattleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5B4633C19B1CC580041BE0C /* BattleScene.ccbi */; };
-		A5B4634519B1CC580041BE0C /* ccbResources in Resources */ = {isa = PBXBuildFile; fileRef = A5B4633D19B1CC580041BE0C /* ccbResources */; };
-		A5B4634619B1CC580041BE0C /* fileLookup.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5B4633E19B1CC580041BE0C /* fileLookup.plist */; };
-		A5B4634719B1CC580041BE0C /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A5B4633F19B1CC580041BE0C /* resources-iphone */; };
-		A5B4634819B1CC580041BE0C /* resources-iphonehd in Resources */ = {isa = PBXBuildFile; fileRef = A5B4634019B1CC580041BE0C /* resources-iphonehd */; };
-		A5B4634919B1CC580041BE0C /* ResultScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5B4634119B1CC580041BE0C /* ResultScene.ccbi */; };
-		A5B4634A19B1CC580041BE0C /* SelectScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5B4634219B1CC580041BE0C /* SelectScene.ccbi */; };
-		A5B4634B19B1CC580041BE0C /* TitleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5B4634319B1CC580041BE0C /* TitleScene.ccbi */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
@@ -269,6 +270,15 @@
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		A518557419ACF0CB00169907 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		A518557519ACF0CB00169907 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
+		A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = BattleScene.ccbi; sourceTree = "<group>"; };
+		A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fileLookup.plist; sourceTree = "<group>"; };
+		A54AEAB319B23D6000AE6AE4 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphone"; sourceTree = "<group>"; };
+		A54AEAB419B23D6000AE6AE4 /* resources-iphonehd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphonehd"; sourceTree = "<group>"; };
+		A54AEAB519B23D6000AE6AE4 /* ResultScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = ResultScene.ccbi; sourceTree = "<group>"; };
+		A54AEAB619B23D6000AE6AE4 /* SelectScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelectScene.ccbi; sourceTree = "<group>"; };
+		A54AEAB719B23D6000AE6AE4 /* title_particle1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = title_particle1.plist; sourceTree = "<group>"; };
+		A54AEAB819B23D6000AE6AE4 /* title_particle2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = title_particle2.plist; sourceTree = "<group>"; };
+		A54AEAB919B23D6000AE6AE4 /* TitleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = TitleScene.ccbi; sourceTree = "<group>"; };
 		A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleSceneLoader.cpp; path = ../Classes/TitleSceneLoader.cpp; sourceTree = "<group>"; };
 		A59058C619AE4DF100A26037 /* TitleSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleSceneLoader.h; path = ../Classes/TitleSceneLoader.h; sourceTree = "<group>"; };
 		A59917E919B03F5B00A95508 /* BattleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BattleScene.cpp; path = ../Classes/BattleScene.cpp; sourceTree = "<group>"; };
@@ -291,14 +301,6 @@
 		A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		A5B2714619AC6BDC0028E9E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
-		A5B4633C19B1CC580041BE0C /* BattleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = BattleScene.ccbi; sourceTree = "<group>"; };
-		A5B4633D19B1CC580041BE0C /* ccbResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ccbResources; sourceTree = "<group>"; };
-		A5B4633E19B1CC580041BE0C /* fileLookup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fileLookup.plist; sourceTree = "<group>"; };
-		A5B4633F19B1CC580041BE0C /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphone"; sourceTree = "<group>"; };
-		A5B4634019B1CC580041BE0C /* resources-iphonehd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphonehd"; sourceTree = "<group>"; };
-		A5B4634119B1CC580041BE0C /* ResultScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = ResultScene.ccbi; sourceTree = "<group>"; };
-		A5B4634219B1CC580041BE0C /* SelectScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelectScene.ccbi; sourceTree = "<group>"; };
-		A5B4634319B1CC580041BE0C /* TitleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = TitleScene.ccbi; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -518,14 +520,15 @@
 		A59058B919AE4C2800A26037 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A5B4633C19B1CC580041BE0C /* BattleScene.ccbi */,
-				A5B4633D19B1CC580041BE0C /* ccbResources */,
-				A5B4633E19B1CC580041BE0C /* fileLookup.plist */,
-				A5B4633F19B1CC580041BE0C /* resources-iphone */,
-				A5B4634019B1CC580041BE0C /* resources-iphonehd */,
-				A5B4634119B1CC580041BE0C /* ResultScene.ccbi */,
-				A5B4634219B1CC580041BE0C /* SelectScene.ccbi */,
-				A5B4634319B1CC580041BE0C /* TitleScene.ccbi */,
+				A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */,
+				A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */,
+				A54AEAB319B23D6000AE6AE4 /* resources-iphone */,
+				A54AEAB419B23D6000AE6AE4 /* resources-iphonehd */,
+				A54AEAB519B23D6000AE6AE4 /* ResultScene.ccbi */,
+				A54AEAB619B23D6000AE6AE4 /* SelectScene.ccbi */,
+				A54AEAB719B23D6000AE6AE4 /* title_particle1.plist */,
+				A54AEAB819B23D6000AE6AE4 /* title_particle2.plist */,
+				A54AEAB919B23D6000AE6AE4 /* TitleScene.ccbi */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -698,26 +701,27 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
-				A5B4634519B1CC580041BE0C /* ccbResources in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				A54AEAC319B23D6000AE6AE4 /* TitleScene.ccbi in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
-				A5B4634A19B1CC580041BE0C /* SelectScene.ccbi in Resources */,
-				A5B4634919B1CC580041BE0C /* ResultScene.ccbi in Resources */,
-				A5B4634419B1CC580041BE0C /* BattleScene.ccbi in Resources */,
+				A54AEAC019B23D6000AE6AE4 /* SelectScene.ccbi in Resources */,
+				A54AEABF19B23D6000AE6AE4 /* ResultScene.ccbi in Resources */,
+				A54AEABA19B23D6000AE6AE4 /* BattleScene.ccbi in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
-				A5B4634719B1CC580041BE0C /* resources-iphone in Resources */,
-				A5B4634B19B1CC580041BE0C /* TitleScene.ccbi in Resources */,
+				A54AEABD19B23D6000AE6AE4 /* resources-iphone in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
-				A5B4634619B1CC580041BE0C /* fileLookup.plist in Resources */,
+				A54AEABC19B23D6000AE6AE4 /* fileLookup.plist in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
-				A5B4634819B1CC580041BE0C /* resources-iphonehd in Resources */,
+				A54AEAC119B23D6000AE6AE4 /* title_particle1.plist in Resources */,
+				A54AEAC219B23D6000AE6AE4 /* title_particle2.plist in Resources */,
+				A54AEABE19B23D6000AE6AE4 /* resources-iphonehd in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

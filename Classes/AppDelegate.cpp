@@ -36,12 +36,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     CCLOG("height: %f, witdh: %f", screenSize.width, screenSize.height);
 
-    if (screenSize.height >= 960 || screenSize.width >= 640) {
-        resourceSize = Size(640, 960);
-        resDirOrders.push_back("resources-iphonehd");
-    } else {
+    if (screenSize.height < 960) {
         resourceSize = Size(320, 480);
         resDirOrders.push_back("resources-iphone");
+    } else {
+        resourceSize = Size(640, 960);
+        resDirOrders.push_back("resources-iphonehd");
     }
     
     FileUtils::getInstance()->setSearchPaths(resDirOrders);
