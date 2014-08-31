@@ -2,34 +2,35 @@
 
 using namespace cocos2d;
 
-//All static variables need to be defined in the .cpp file
-//I've added this following line to fix the problem
-GameManager* GameManager::m_mySingleton = NULL;
+GameManager* GameManager::mGameManager = NULL;
 
 GameManager::GameManager()
 {
     
 }
 
-GameManager* GameManager::sharedGameManager()
+GameManager* GameManager::getInstance()
 {
-    //If the singleton has no instance yet, create one
-    if(NULL == m_mySingleton)
+    if(mGameManager == NULL)
     {
-        //Create an instance to the singleton
-        m_mySingleton = new GameManager();
+        mGameManager = new GameManager();
+        mGameManager->initialize();
     }
     
-    //Return the singleton object
-    return m_mySingleton;
+    return mGameManager;
+}
+
+void GameManager::initialize()
+{
+    
 }
 
 bool GameManager::isScreenModeSd()
 {
-    return GameManager::sharedGameManager()->screenMode == ScreenModeSd ? true : false;
+    return GameManager::getInstance()->screenMode == ScreenModeSd ? true : false;
 }
 
 bool GameManager::isScreenModeHd()
 {
-    return GameManager::sharedGameManager()->screenMode == ScreenModeHd ? true : false;
+    return GameManager::getInstance()->screenMode == ScreenModeHd ? true : false;
 }

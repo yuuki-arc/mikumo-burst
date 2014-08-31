@@ -24,7 +24,7 @@ Scene* BattleSceneLoader::createScene()
                                       origin.y + visibleSize.height / 2));
 
         
-        if (GameManager::sharedGameManager()->isScreenModeHd())
+        if (GameManager::getInstance()->isScreenModeHd())
         {
             background->setScale(background->getScale()*1.6, background->getScale()*1.6);
         }
@@ -36,7 +36,7 @@ Scene* BattleSceneLoader::createScene()
         
         // キャラ
         CharacterCreator* creator = new CharacterCreator();
-        Sprite* character = creator->create("character/f271.png", CharacterScale::ALL);
+        Sprite* character = creator->create("character/enemy/f271.png", CharacterScale::ALL);
                 
         pScene->addChild(character, -1);
     }

@@ -23,7 +23,7 @@ Sprite* CharacterCreator::create(const std::string &filename, CharacterScale cha
                                   origin.y + visibleSize.height * 6 / 10));
     
     float scale = character->getScale() * characterScale / 100;
-    if (GameManager::sharedGameManager()->isScreenModeSd())
+    if (GameManager::getInstance()->isScreenModeSd())
     {
         scale /= 2;
     }

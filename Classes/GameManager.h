@@ -3,19 +3,21 @@
 
 #include "cocos2d.h"
 
-typedef enum{
+enum ScreenMode {
     ScreenModeSd ,
     ScreenModeHd ,
-}ScreenMode;
+};
 
 class GameManager
 {
 private:
     GameManager();
-    static GameManager* m_mySingleton;
+    static GameManager* mGameManager;
     
 public:
-    static GameManager* sharedGameManager();
+    static GameManager* getInstance();
+    
+    void initialize();
     
     ScreenMode screenMode;
     bool isScreenModeSd();

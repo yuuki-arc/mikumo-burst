@@ -40,11 +40,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if (screenSize.height >= 960) {
         resourceSize = Size(640, 960);
         resDirOrders.push_back("resources-iphonehd");
-        GameManager::sharedGameManager()->screenMode = ScreenModeHd;
+        GameManager::getInstance()->screenMode = ScreenModeHd;
     } else {
         resourceSize = Size(320, 480);
         resDirOrders.push_back("resources-iphone");
-        GameManager::sharedGameManager()->screenMode = ScreenModeSd;
+        GameManager::getInstance()->screenMode = ScreenModeSd;
     }
     
     FileUtils::getInstance()->setSearchPaths(resDirOrders);
