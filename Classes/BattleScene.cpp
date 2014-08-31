@@ -15,6 +15,10 @@ bool BattleScene::init(){
         return false;
     }
 
+    //MotionStreakを作成
+    m_pStreak = MotionStreak::create(1.0, 1.0f, 50.0f, Color3B::GREEN, "effect/pipo-btleffect063.png");
+    addChild(m_pStreak);
+ 
     //イベントリスナー作成
     auto listener = EventListenerTouchAllAtOnce::create();
     
@@ -57,6 +61,9 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
         Touch* touch = (Touch*)(*iterator);
         auto location = touch->getLocation();
         
+        Point pos = this->convertTouchToNodeSpace(touch);
+        this->m_pStreak->setPosition(pos);
+
         iterator++;
         CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
     }
@@ -68,6 +75,9 @@ void BattleScene::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, c
     while (iterator != touches.end()) {
         Touch* touch = (Touch*)(*iterator);
         auto location = touch->getLocation();
+
+        Point pos = this->convertTouchToNodeSpace(touch);
+        this->m_pStreak->setPosition(pos);
         
         iterator++;
         CCLOG("(onTouchesMoved) x:%f, y:%f", location.x, location.y);

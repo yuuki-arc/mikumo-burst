@@ -29,6 +29,10 @@ public:
     void onTouchesEnded(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
         
     void pushBack(Ref* pSender);
+
+private:
+    MotionStreak *m_pStreak;
+    Point m_pos;
 };
 
 #endif /* defined(__BATTLE_SCENE_H__) */
