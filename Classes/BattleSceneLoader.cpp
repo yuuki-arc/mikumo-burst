@@ -41,6 +41,12 @@ Scene* BattleSceneLoader::createScene()
         pScene->addChild(character, -1);
     }
     ccbReader->release();
+
+    //イベントリスナー作成
+    auto listener = EventListenerTouchOneByOne::create();
+    
+    //イベントを飲み込むかどうか
+    listener->setSwallowTouches(true);
     
     return pScene;
 }

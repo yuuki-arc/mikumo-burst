@@ -12,6 +12,7 @@ using namespace cocosbuilder;
 class BattleScene : public Layer
 , public CCBSelectorResolver
 {
+    virtual bool init();
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName);
     virtual Control::Handler onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName);
 
@@ -23,6 +24,10 @@ public:
 
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(BattleScene, create);
 
+    void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
+    void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
+    void onTouchesEnded(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
+        
     void pushBack(Ref* pSender);
 };
 
