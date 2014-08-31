@@ -24,6 +24,9 @@ public:
 
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(BattleScene, create);
 
+    void update(float frame);
+    void updateBySchedule(float frame);
+    
     void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
     void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
     void onTouchesEnded(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
