@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "extensions/cocos-ext.h"
 
+#include "GameManager.h"
 #include "TitleScene.h"
 #include "TitleSceneLoader.h"
 
@@ -39,9 +40,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if (screenSize.height >= 960) {
         resourceSize = Size(640, 960);
         resDirOrders.push_back("resources-iphonehd");
+        GameManager::sharedGameManager()->screenMode = ScreenModeHd;
     } else {
         resourceSize = Size(320, 480);
         resDirOrders.push_back("resources-iphone");
+        GameManager::sharedGameManager()->screenMode = ScreenModeSd;
     }
     
     FileUtils::getInstance()->setSearchPaths(resDirOrders);
