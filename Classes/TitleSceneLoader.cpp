@@ -22,12 +22,25 @@ Scene* TitleSceneLoader::createScene()
         Size screenSize = glview->getFrameSize();
         
         // エフェクト
-        ParticleSystemQuad* particle1 = ParticleSystemQuad::create("title_particle1.plist");
+        ParticleSystemQuad* particle1 = ParticleSystemQuad::create("particle/title_particle1.plist");
         particle1->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
         pScene->addChild(particle1);
-        ParticleSystemQuad* particle2 = ParticleSystemQuad::create("title_particle2.plist");
+        ParticleSystemQuad* particle2 = ParticleSystemQuad::create("particle/title_particle2.plist");
         particle2->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
         pScene->addChild(particle2);
+
+//        ParticleSystemQuad* particle1 = ParticleSystemQuad::create("particle/title_particle1.plist");
+//        particle1->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
+//        ParticleSystemQuad* particle2 = ParticleSystemQuad::create("particle/title_particle2.plist");
+//        particle2->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
+//
+//        ParticleBatchNode *batch = ParticleBatchNode::createWithTexture(particle1->getTexture());
+//        
+//        batch->addChild(particle1, 0);
+//        batch->addChild(particle2, 0);
+//        
+//        pScene->addChild(batch);
+        
     }
     ccbReader->release();
     
