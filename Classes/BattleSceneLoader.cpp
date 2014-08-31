@@ -1,5 +1,6 @@
-#include "GameManager.h"
 #include "BattleSceneLoader.h"
+#include "GameManager.h"
+#include "CharacterCreator.h"
 
 Scene* BattleSceneLoader::createScene()
 {
@@ -34,13 +35,9 @@ Scene* BattleSceneLoader::createScene()
         pScene->addChild(background, -1);
         
         // キャラ
-        Sprite* character = Sprite::create("character/f271.png");
-        character->setPosition(Point(origin.x + visibleSize.width / 2,
-                                      origin.y + visibleSize.height * 6 / 10));
-        if (GameManager::sharedGameManager()->isScreenModeSd())
-        {
-            character->setScale(character->getScale()/2, character->getScale()/2);
-        }
+        CharacterCreator* creator = new CharacterCreator();
+        Sprite* character = creator->create("character/f271.png", CharacterScale::ALL);
+                
         pScene->addChild(character, -1);
     }
     ccbReader->release();

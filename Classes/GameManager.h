@@ -1,12 +1,12 @@
 #ifndef __GAME_MANAGER__
 #define __GAME_MANAGER__
 
+#include "cocos2d.h"
+
 typedef enum{
     ScreenModeSd ,
     ScreenModeHd ,
 }ScreenMode;
-
-#include "cocos2d.h"
 
 class GameManager
 {

@@ -1,4 +1,5 @@
 #include "SelectSceneLoader.h"
+#include "CharacterCreator.h"
 
 Scene* SelectSceneLoader::createScene()
 {
@@ -12,6 +13,11 @@ Scene* SelectSceneLoader::createScene()
     if (node != NULL)
     {
         pScene->addChild(node);
+
+        // キャラ
+        CharacterCreator* creator = new CharacterCreator();
+        Sprite* character = creator->create("character/f333.png", CharacterScale::HARF);
+        pScene->addChild(character, 0);
     }
     ccbReader->release();
     
