@@ -51,6 +51,8 @@
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557419ACF0CB00169907 /* TitleScene.cpp */; };
+		A51CC73219B8B2EE009FFDE3 /* NativeLauncher.mm in Sources */ = {isa = PBXBuildFile; fileRef = A51CC73119B8B2EE009FFDE3 /* NativeLauncher.mm */; };
+		A51CC73619B8B2FC009FFDE3 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51CC73519B8B2FC009FFDE3 /* Twitter.framework */; };
 		A54AEABA19B23D6000AE6AE4 /* BattleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */; };
 		A54AEABC19B23D6000AE6AE4 /* fileLookup.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */; };
 		A54AEABD19B23D6000AE6AE4 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB319B23D6000AE6AE4 /* resources-iphone */; };
@@ -274,6 +276,9 @@
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		A518557419ACF0CB00169907 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		A518557519ACF0CB00169907 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
+		A51CC73019B8B2EE009FFDE3 /* NativeLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeLauncher.h; path = ../Classes/NativeLauncher.h; sourceTree = "<group>"; };
+		A51CC73119B8B2EE009FFDE3 /* NativeLauncher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NativeLauncher.mm; path = ../Classes/NativeLauncher.mm; sourceTree = "<group>"; };
+		A51CC73519B8B2FC009FFDE3 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Twitter.framework; sourceTree = DEVELOPER_DIR; };
 		A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = BattleScene.ccbi; sourceTree = "<group>"; };
 		A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fileLookup.plist; sourceTree = "<group>"; };
 		A54AEAB319B23D6000AE6AE4 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphone"; sourceTree = "<group>"; };
@@ -325,6 +330,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51CC73619B8B2FC009FFDE3 /* Twitter.framework in Frameworks */,
 				A5B3493619AC79C100A12685 /* libbox2d iOS.a in Frameworks */,
 				A5B3493719AC79C100A12685 /* libchipmunk iOS.a in Frameworks */,
 				A5B3493819AC79C100A12685 /* libcocos2dx iOS.a in Frameworks */,
@@ -387,6 +393,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A51CC73019B8B2EE009FFDE3 /* NativeLauncher.h */,
+				A51CC73119B8B2EE009FFDE3 /* NativeLauncher.mm */,
 				A59917F719B040CD00A95508 /* ResultScene.cpp */,
 				A59917F819B040CD00A95508 /* ResultScene.h */,
 				A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */,
@@ -459,6 +467,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A51CC73519B8B2FC009FFDE3 /* Twitter.framework */,
 				A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */,
 				A5B2714619AC6BDC0028E9E0 /* UIKit.framework */,
 				A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */,
@@ -761,6 +770,7 @@
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				A59917FC19B040CD00A95508 /* ResultSceneLoader.cpp in Sources */,
+				A51CC73219B8B2EE009FFDE3 /* NativeLauncher.mm in Sources */,
 				A59917F419B03F5B00A95508 /* SelectSceneLoader.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				A59917F119B03F5B00A95508 /* BattleScene.cpp in Sources */,
