@@ -36,7 +36,7 @@ Scene* BattleSceneLoader::createScene()
         
         // キャラ
         CharacterCreator* creator = new CharacterCreator();
-        Sprite* character = creator->create("character/enemy/f271.png", CharacterScale::ALL);
+        Sprite* character = creator->create("f271.png", CharacterScale::ALL);
                 
         pScene->addChild(character, -1);
     }

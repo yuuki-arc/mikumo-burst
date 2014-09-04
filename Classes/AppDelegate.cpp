@@ -58,6 +58,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
     
+    // テクスチャアトラスを読み込む
+    SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
+    frameCache->addSpriteFramesWithFile("character/enemy/enemy.plist");
+    frameCache->addSpriteFramesWithFile("character/persona/persona.plist");
+    
     // CocosBuilderのファイルを読み込みゲーム画面を生成する
     auto *pScene = TitleSceneLoader::createScene();
     
