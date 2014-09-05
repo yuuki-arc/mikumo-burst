@@ -49,8 +49,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     FileUtils::getInstance()->setSearchPaths(resDirOrders);
     
+    const float scaleW = resourceSize.width / designSize.width;
+    const float scaleH = resourceSize.height / designSize.height;
+    
+    // 縦(Portrait)の場合
+    const ResolutionPolicy policy = scaleW > scaleH ?
+        ResolutionPolicy::FIXED_HEIGHT :
+        ResolutionPolicy::FIXED_WIDTH;
+    
     director->setContentScaleFactor(resourceSize.width / designSize.width);
-    glview->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::SHOW_ALL);
+    glview->setDesignResolutionSize(designSize.width, designSize.height, policy);
     
     // turn on display FPS
     director->setDisplayStats(true);
