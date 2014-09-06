@@ -13,11 +13,6 @@ Scene* SelectSceneLoader::createScene()
     if (node != NULL)
     {
         pScene->addChild(node);
-
-        // キャラ
-        CharacterCreator* creator = new CharacterCreator();
-        Sprite* character = creator->create("f317.png", CharacterScale::HARF);
-        pScene->addChild(character, 0);
     }
     ccbReader->release();
     

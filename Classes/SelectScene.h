@@ -11,18 +11,21 @@ using namespace cocosbuilder;
 
 class SelectScene : public Layer
 , public CCBSelectorResolver
+, public NodeLoaderListener
 {
-    virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName);
-    virtual Control::Handler onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName);
-    
-    void tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType);
-    
 public:
     SelectScene();
     virtual ~SelectScene();
     
+    virtual bool init();
+    virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName);
+    virtual Control::Handler onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName);
+	virtual void onNodeLoaded(Node* pNode, NodeLoader* pNodeLoader);
+    
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(SelectScene, create);
-
+    
+    void tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType);
+    
     void pushBack(Ref* pSender);
 };
 

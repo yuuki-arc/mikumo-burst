@@ -1,5 +1,7 @@
 #include "BattleScene.h"
 #include "ResultSceneLoader.h"
+#include "CharacterCreator.h"
+#include "GameManager.h"
 
 BattleScene::BattleScene()
 {
@@ -9,7 +11,8 @@ BattleScene::~BattleScene()
 {
 }
 
-bool BattleScene::init(){
+bool BattleScene::init()
+{
     if(!CCLayer::init())
     {
         return false;
@@ -19,6 +22,7 @@ bool BattleScene::init(){
     m_pStreak = MotionStreak::create(1.0, 1.0f, 50.0f, Color3B::GREEN, "effect/pipo-btleffect063.png");
     addChild(m_pStreak);
  
+    
     //イベントリスナー作成
     auto listener = EventListenerTouchAllAtOnce::create();
     
@@ -31,6 +35,32 @@ bool BattleScene::init(){
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
     schedule(schedule_selector(BattleScene::updateBySchedule), 3.0f);
+
+    
+    // 背景
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+    
+    Sprite* background = Sprite::create("bg/001-1.png");
+    background->setPosition(Point(origin.x + visibleSize.width / 2,
+                                  origin.y + visibleSize.height / 2));
+    
+    
+    if (GameManager::getInstance()->isScreenModeHd())
+    {
+        background->setScale(background->getScale()*1.6, background->getScale()*1.6);
+    }
+    else
+    {
+        background->setScale(background->getScale()*0.8, background->getScale()*0.8);
+    }
+    this->addChild(background, -1);
+    
+    // キャラ
+    CharacterCreator* creator = new CharacterCreator();
+    Sprite* character = creator->create("f271.png", CharacterScale::ALL);
+    
+    this->addChild(character, -1);
     
     return true;
 }
@@ -59,11 +89,15 @@ Control::Handler BattleScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
     return NULL;
 }
 
+void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
+{
+}
+
 void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedResultButton eventType = %d", pControlEventType);
     Scene* scene = ResultSceneLoader::createScene();
-    TransitionProgressInOut* trans = TransitionProgressInOut::create(1, scene);
+    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }
 

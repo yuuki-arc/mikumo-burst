@@ -1,5 +1,6 @@
 #include "SelectScene.h"
 #include "BattleSceneLoader.h"
+#include "CharacterCreator.h"
 
 SelectScene::SelectScene()
 {
@@ -7,6 +8,16 @@ SelectScene::SelectScene()
 
 SelectScene::~SelectScene()
 {
+}
+
+bool SelectScene::init()
+{
+	if(!Layer::init())
+	{
+		return false;
+	}
+
+	return true;
 }
 
 SEL_MenuHandler SelectScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName)
@@ -23,10 +34,18 @@ Control::Handler SelectScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
     return NULL;
 }
 
+void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
+{
+    // キャラ
+    CharacterCreator* creator = new CharacterCreator();
+    Sprite* character = creator->create("f317.png", CharacterScale::HARF);
+    this->addChild(character, 0);
+}
+
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedBattleButton eventType = %d", pControlEventType);
     Scene* scene = BattleSceneLoader::createScene();
-    TransitionProgressInOut* trans = TransitionProgressInOut::create(1, scene);
+    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }

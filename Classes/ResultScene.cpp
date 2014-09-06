@@ -9,6 +9,16 @@ ResultScene::~ResultScene()
 {
 }
 
+bool ResultScene::init()
+{
+	if(!Layer::init())
+	{
+		return false;
+	}
+    
+    return true;
+}
+
 SEL_MenuHandler ResultScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName)
 {
     CCLOG("name = %s", pSelectorName);
@@ -23,10 +33,14 @@ Control::Handler ResultScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
     return NULL;
 }
 
+void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
+{
+}
+
 void ResultScene::tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedSelectButton eventType = %d", pControlEventType);
     Scene* scene = SelectSceneLoader::createScene();
-    TransitionProgressInOut* trans = TransitionProgressInOut::create(1, scene);
+    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }
