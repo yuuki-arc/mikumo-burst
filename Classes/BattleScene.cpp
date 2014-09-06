@@ -20,7 +20,7 @@ bool BattleScene::init()
 
     //MotionStreakを作成
     m_pStreak = MotionStreak::create(1.0, 1.0f, 50.0f, Color3B::GREEN, "effect/pipo-btleffect063.png");
-    addChild(m_pStreak);
+    addChild(m_pStreak, ZOrder::TouchEffect);
  
     
     //イベントリスナー作成
@@ -36,15 +36,21 @@ bool BattleScene::init()
     
     schedule(schedule_selector(BattleScene::updateBySchedule), 3.0f);
 
+    initBackground();
+    initEnemy();
+    initStatusLayer();
     
-    // 背景
+    return true;
+}
+
+void BattleScene::initBackground()
+{
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
     Sprite* background = Sprite::create("bg/001-1.png");
     background->setPosition(Point(origin.x + visibleSize.width / 2,
                                   origin.y + visibleSize.height / 2));
-    
     
     if (GameManager::getInstance()->isScreenModeHd())
     {
@@ -54,15 +60,19 @@ bool BattleScene::init()
     {
         background->setScale(background->getScale()*0.8, background->getScale()*0.8);
     }
-    this->addChild(background, -1);
-    
-    // キャラ
+    this->addChild(background, ZOrder::Bg);
+}
+
+void BattleScene::initEnemy()
+{
     CharacterCreator* creator = new CharacterCreator();
     Sprite* character = creator->create("f271.png", CharacterScale::ALL);
     
-    this->addChild(character, -1);
-    
-    return true;
+    this->addChild(character, ZOrder::Enemy);
+}
+
+void BattleScene::initStatusLayer()
+{
 }
 
 void BattleScene::update( float frame )

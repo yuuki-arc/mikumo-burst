@@ -39,7 +39,7 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // キャラ
     CharacterCreator* creator = new CharacterCreator();
     Sprite* character = creator->create("f317.png", CharacterScale::HARF);
-    this->addChild(character, 0);
+    this->addChild(character, ZOrder::Persona);
 }
 
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)

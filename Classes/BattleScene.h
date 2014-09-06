@@ -32,12 +32,27 @@ public:
     void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
     void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
     void onTouchesEnded(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
-        
+
     void pushBack(Ref* pSender);
 
 private:
+    enum ZOrder
+    {
+        Bg = 0,
+        Enemy,
+        BattleEffect,
+        TouchEffect,
+        EnemyHp,
+        PersonaHp,
+        Status,
+    };
+    
     MotionStreak *m_pStreak;
     Point m_pos;
+    
+    void initBackground();
+    void initEnemy();
+    void initStatusLayer();
 };
 
 #endif /* defined(__BATTLE_SCENE_H__) */

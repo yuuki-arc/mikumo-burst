@@ -27,6 +27,15 @@ public:
     void tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType);
     
     void pushBack(Ref* pSender);
+
+private:
+    enum ZOrder
+    {
+        Bg = 0,
+        Persona,
+        PersonaHp,
+        Status,
+    };
 };
 
 #endif /* defined(__SELECT_SCENE_H__) */
