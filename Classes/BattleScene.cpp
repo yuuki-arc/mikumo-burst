@@ -32,11 +32,12 @@ bool BattleScene::init()
     listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
-    schedule(schedule_selector(BattleScene::updateBySchedule), 3.0f);
-
     initBackground();
     initEnemy();
     initStatusLayer();
+    
+    gameTime = 0;
+    this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
     
     return true;
 }
@@ -80,7 +81,7 @@ void BattleScene::update( float frame )
 
 void BattleScene::updateBySchedule( float frame )
 {
-    CCLOG("一定間隔（スケジュール）で呼び出される");
+    gameTime++;
 }
 
 SEL_MenuHandler BattleScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName)

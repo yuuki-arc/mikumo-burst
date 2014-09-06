@@ -51,6 +51,7 @@ private:
     MotionStreak *m_pStreak;
     Point m_pos;
     EffectManager* effectManager;
+    int gameTime = 0;
     
     void initBackground();
     void initEnemy();

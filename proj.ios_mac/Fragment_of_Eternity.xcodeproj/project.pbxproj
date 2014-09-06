@@ -74,6 +74,8 @@
 		A59917F419B03F5B00A95508 /* SelectSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917EF19B03F5B00A95508 /* SelectSceneLoader.cpp */; };
 		A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F719B040CD00A95508 /* ResultScene.cpp */; };
 		A59917FC19B040CD00A95508 /* ResultSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */; };
+		A5A7F0E019BB32E900A5BEDD /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */; };
+		A5A7F0E219BB394700A5BEDD /* sound in Resources */ = {isa = PBXBuildFile; fileRef = A5A7F0E119BB394700A5BEDD /* sound */; };
 		A5B2714519AC6BD30028E9E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */; };
 		A5B2714719AC6BDC0028E9E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
 		A5B2714919AC6BE40028E9E0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */; };
@@ -311,6 +313,9 @@
 		A59917F819B040CD00A95508 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = ../Classes/ResultScene.h; sourceTree = "<group>"; };
 		A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultSceneLoader.cpp; path = ../Classes/ResultSceneLoader.cpp; sourceTree = "<group>"; };
 		A59917FA19B040CD00A95508 /* ResultSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultSceneLoader.h; path = ../Classes/ResultSceneLoader.h; sourceTree = "<group>"; };
+		A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/SoundManager.cpp; sourceTree = "<group>"; };
+		A5A7F0DF19BB32E900A5BEDD /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = ../Classes/SoundManager.h; sourceTree = "<group>"; };
+		A5A7F0E119BB394700A5BEDD /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		A5B2713A19AC6B6B0028E9E0 /* libbox2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbox2d iOS.a"; path = "../lib/libbox2d iOS.a"; sourceTree = "<group>"; };
 		A5B2713B19AC6B6B0028E9E0 /* libchipmunk iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchipmunk iOS.a"; path = "../lib/libchipmunk iOS.a"; sourceTree = "<group>"; };
 		A5B2713C19AC6B6B0028E9E0 /* libcocos2dx iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2dx iOS.a"; path = "../lib/libcocos2dx iOS.a"; sourceTree = "<group>"; };
@@ -424,6 +429,8 @@
 				A54AEAD619B2E25F00AE6AE4 /* CharacterCreator.h */,
 				A52B54B919BB0CA900804FEF /* EffectManager.cpp */,
 				A52B54BA19BB0CA900804FEF /* EffectManager.h */,
+				A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */,
+				A5A7F0DF19BB32E900A5BEDD /* SoundManager.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -548,6 +555,7 @@
 		A59058B919AE4C2800A26037 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5A7F0E119BB394700A5BEDD /* sound */,
 				A54AEADD19B3781100AE6AE4 /* particle */,
 				A54AEADB19B33F7600AE6AE4 /* effect */,
 				A54AEACA19B265DD00AE6AE4 /* character */,
@@ -734,6 +742,7 @@
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				A5A7F0E219BB394700A5BEDD /* sound in Resources */,
 				A54AEAC319B23D6000AE6AE4 /* TitleScene.ccbi in Resources */,
 				A54AEADC19B33F7600AE6AE4 /* effect in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
@@ -773,6 +782,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A7F0E019BB32E900A5BEDD /* SoundManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				A59917FC19B040CD00A95508 /* ResultSceneLoader.cpp in Sources */,
 				A51CC73219B8B2EE009FFDE3 /* NativeLauncher.mm in Sources */,

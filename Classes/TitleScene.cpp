@@ -1,5 +1,6 @@
 #include "TitleScene.h"
 #include "SelectSceneLoader.h"
+#include "SoundManager.h"
 
 TitleScene::TitleScene()
 {
@@ -44,6 +45,11 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
         director->setOpenGLView(glview);
     }
     Size screenSize = director->getWinSize();
+    
+    // BGM
+    SoundManager* soundManager = new SoundManager();
+    soundManager->init();
+    soundManager->playBGM("bgm_title");
     
     // エフェクト
     ParticleSystemQuad* particle1 = ParticleSystemQuad::create("particle/title_particle1.plist");
