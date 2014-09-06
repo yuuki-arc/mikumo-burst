@@ -53,6 +53,7 @@
 		A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557419ACF0CB00169907 /* TitleScene.cpp */; };
 		A51CC73219B8B2EE009FFDE3 /* NativeLauncher.mm in Sources */ = {isa = PBXBuildFile; fileRef = A51CC73119B8B2EE009FFDE3 /* NativeLauncher.mm */; };
 		A51CC73619B8B2FC009FFDE3 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51CC73519B8B2FC009FFDE3 /* Twitter.framework */; };
+		A52B54BB19BB0CA900804FEF /* EffectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A52B54B919BB0CA900804FEF /* EffectManager.cpp */; };
 		A54AEABA19B23D6000AE6AE4 /* BattleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */; };
 		A54AEABC19B23D6000AE6AE4 /* fileLookup.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */; };
 		A54AEABD19B23D6000AE6AE4 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB319B23D6000AE6AE4 /* resources-iphone */; };
@@ -279,6 +280,8 @@
 		A51CC73019B8B2EE009FFDE3 /* NativeLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NativeLauncher.h; path = ../Classes/NativeLauncher.h; sourceTree = "<group>"; };
 		A51CC73119B8B2EE009FFDE3 /* NativeLauncher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = NativeLauncher.mm; path = ../Classes/NativeLauncher.mm; sourceTree = "<group>"; };
 		A51CC73519B8B2FC009FFDE3 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Twitter.framework; sourceTree = DEVELOPER_DIR; };
+		A52B54B919BB0CA900804FEF /* EffectManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EffectManager.cpp; path = ../Classes/EffectManager.cpp; sourceTree = "<group>"; };
+		A52B54BA19BB0CA900804FEF /* EffectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectManager.h; path = ../Classes/EffectManager.h; sourceTree = "<group>"; };
 		A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = BattleScene.ccbi; sourceTree = "<group>"; };
 		A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fileLookup.plist; sourceTree = "<group>"; };
 		A54AEAB319B23D6000AE6AE4 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphone"; sourceTree = "<group>"; };
@@ -419,6 +422,8 @@
 				A54AEACD19B2722800AE6AE4 /* GameManager.h */,
 				A54AEAD519B2E25F00AE6AE4 /* CharacterCreator.cpp */,
 				A54AEAD619B2E25F00AE6AE4 /* CharacterCreator.h */,
+				A52B54B919BB0CA900804FEF /* EffectManager.cpp */,
+				A52B54BA19BB0CA900804FEF /* EffectManager.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -775,6 +780,7 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				A59917F119B03F5B00A95508 /* BattleScene.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				A52B54BB19BB0CA900804FEF /* EffectManager.cpp in Sources */,
 				A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */,
 				A54AEACE19B2722800AE6AE4 /* GameManager.cpp in Sources */,
 				A568C35819AF7B18000547E4 /* TitleSceneLoader.cpp in Sources */,

@@ -22,6 +22,9 @@ public:
     ScreenMode screenMode;
     bool isScreenModeSd();
     bool isScreenModeHd();
+    
+    int lifePoint;
+    int attackPoint;
 
 };
 

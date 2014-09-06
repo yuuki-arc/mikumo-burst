@@ -2,6 +2,7 @@
 #include "ResultSceneLoader.h"
 #include "CharacterCreator.h"
 #include "GameManager.h"
+#include "EffectManager.h"
 
 BattleScene::BattleScene()
 {
@@ -25,10 +26,7 @@ bool BattleScene::init()
     
     //イベントリスナー作成
     auto listener = EventListenerTouchAllAtOnce::create();
-    
-    //イベントを飲み込むかどうか
 //    listener->setSwallowTouches(true);
- 
     listener->onTouchesBegan = CC_CALLBACK_2(BattleScene::onTouchesBegan, this);
     listener->onTouchesMoved = CC_CALLBACK_2(BattleScene::onTouchesMoved, this);
     listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
@@ -118,7 +116,11 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
         auto location = touch->getLocation();
         
         Point pos = this->convertTouchToNodeSpace(touch);
-        this->m_pStreak->setPosition(pos);
+//        this->m_pStreak->setPosition(pos);
+        
+        this->effectManager = new EffectManager();
+        Sprite* sprite = this->effectManager->effectPurified("attackTarget", 10, location);
+        this->addChild(sprite, ZOrder::TouchEffect);
 
         iterator++;
         CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);

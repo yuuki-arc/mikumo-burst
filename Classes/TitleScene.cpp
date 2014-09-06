@@ -34,7 +34,6 @@ Control::Handler TitleScene::onResolveCCBCCControlSelector(Ref *pTarget, const c
     return NULL;
 }
 
-// ロード後
 void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
     CCLOG("TitleScene::onNodeLoaded");
