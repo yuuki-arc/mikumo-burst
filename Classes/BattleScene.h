@@ -54,6 +54,8 @@ private:
     EnemyCharacter* enemyData;
     ProgressTimer* enemyHpBar;
     
+    UserDefault* userDefault = UserDefault::getInstance();
+    
     int gameTime = 0;
     int current_rank;
     

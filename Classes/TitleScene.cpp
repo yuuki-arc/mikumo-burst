@@ -48,8 +48,10 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     
     // BGM
     SoundManager* soundManager = new SoundManager();
-    soundManager->init();
     soundManager->playBGM("bgm_title");
+    
+    // SE
+    soundManager->preloadSE("se_select");
     
     // エフェクト
     ParticleSystemQuad* particle1 = ParticleSystemQuad::create("particle/title_particle1.plist");
@@ -70,14 +72,14 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     //        batch->addChild(particle2, 0);
     //
     //        pScene->addChild(batch);
-    
-    
-	
 }
 
 void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedStartButton eventType = %d", pControlEventType);
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    
     Scene* scene = SelectSceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);

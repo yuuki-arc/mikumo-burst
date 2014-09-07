@@ -44,7 +44,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>51.619998931884766</real>
+							<real>52</real>
 							<real>50</real>
 							<integer>4</integer>
 						</array>
@@ -301,8 +301,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

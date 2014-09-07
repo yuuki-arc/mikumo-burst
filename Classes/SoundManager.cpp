@@ -15,7 +15,6 @@ SoundManager::~SoundManager()
 
 bool SoundManager::init()
 {
-    ext = ".mp3";
     //    SimpleAudioEngine::getInstance()->setEffectsVolume(0.5);
     //    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5);
     //    SimpleAudioEngine::end();
@@ -23,30 +22,29 @@ bool SoundManager::init()
     return true;
 }
 
-void SoundManager::playBGM(std::string musicName)
+void SoundManager::playBGM(const std::string musicName, bool forceStart)
 {
     auto audioEngine = SimpleAudioEngine::getInstance();
+    if (forceStart)
+    {
+        audioEngine->stopBackgroundMusic();
+    }
     if (!audioEngine->isBackgroundMusicPlaying())
     {
         std::string musicFileName = "sound/" + musicName + ".mp3";
+        audioEngine->preloadBackgroundMusic(musicFileName.c_str());
         audioEngine->playBackgroundMusic(musicFileName.c_str(), true);
     }
 }
 
-void SoundManager::preloadSE(const std::string &id)
+void SoundManager::preloadSE(const std::string seName)
 {
-    SimpleAudioEngine::getInstance()->preloadEffect(getFileName(id));
+    std::string seFileName = "sound/" + seName + ".mp3";
+    SimpleAudioEngine::getInstance()->preloadEffect(seFileName.c_str());
 }
 
-unsigned int SoundManager::playSE(const std::string &id)
+void SoundManager::playSE(const std::string seName)
 {
-    return SimpleAudioEngine::getInstance()->playEffect(getFileName(id), false, 1.0f, 0.0f, 1.0f);
-}
-
-const char* SoundManager::getFileName(const std::string &id)
-{
-    std::string tmp;
-    tmp += id;
-    tmp += ext;
-    return tmp.data();
+    std::string seFileName = "sound/" + seName + ".mp3";
+    SimpleAudioEngine::getInstance()->playEffect(seFileName.c_str(), false, 1.0f, 0.0f, 1.0f);
 }

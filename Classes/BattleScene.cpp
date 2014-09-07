@@ -5,8 +5,7 @@
 #include "CharacterCreator.h"
 #include "EnemyCharacter.h"
 #include "EffectManager.h"
-
-#define WINSIZE Director::getInstance()->getWinSize()
+#include "SoundManager.h"
 
 USING_NS_CC;
 
@@ -25,7 +24,7 @@ bool BattleScene::init()
         return false;
     }
 
-    current_rank = 1;
+    current_rank = userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 1);
 
     initBackground();
     initEnemy();
@@ -132,6 +131,16 @@ Control::Handler BattleScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
 
 void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
+    // BGM
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playBGM("bgm_battle", true);
+
+    // SE
+    soundManager->preloadSE("se_battle_blow");
+    soundManager->preloadSE("se_battle_darkness");
+    soundManager->preloadSE("se_battle_fire");
+    soundManager->preloadSE("se_battle_gun");
+    soundManager->preloadSE("se_battle_water");
 }
 
 void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEventType)
@@ -143,8 +152,15 @@ void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEv
 }
 
 void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+    SoundManager* soundManager = new SoundManager();
     std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
     while (iterator != touches.end()) {
+//        soundManager->preloadSE("se_battle_blow");
+//        soundManager->preloadSE("se_battle_darkness");
+        soundManager->playSE("se_battle_fire");
+//        soundManager->preloadSE("se_battle_gun");
+//        soundManager->preloadSE("se_battle_water");
+
         Touch* touch = (Touch*)(*iterator);
         auto location = touch->getLocation();
         

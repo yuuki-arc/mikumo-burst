@@ -9,12 +9,9 @@ public:
     SoundManager();
     virtual ~SoundManager();
     bool init();
-    void playBGM(std::string soundName);
-    void preloadSE(const std::string &id);
-    unsigned int playSE(const std::string &id);
-private:
-    std::string ext;
-    const char* getFileName(const std::string &id);
+    void playBGM(const std::string soundName, bool forceStart = false);
+    void preloadSE(const std::string seName);
+    void playSE(const std::string seName);
 };
 
 #endif /* defined(__Fragment_of_Eternity__SoundManager__) */
