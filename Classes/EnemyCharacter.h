@@ -17,6 +17,7 @@ public:
     ~EnemyCharacter();
     static EnemyCharacter* create();
     float getHpPercentage();
+    static int getDamage(int chainCount, EnemyCharacter* attacker, EnemyCharacter* defender);
 };
 
 #endif /* defined(__Fragment_of_Eternity__EnemyEnemyCharacter__) */

@@ -1,8 +1,14 @@
 #include "BattleScene.h"
 #include "ResultSceneLoader.h"
-#include "CharacterCreator.h"
+#include "Constant.h"
 #include "GameManager.h"
+#include "CharacterCreator.h"
+#include "EnemyCharacter.h"
 #include "EffectManager.h"
+
+#define WINSIZE Director::getInstance()->getWinSize()
+
+USING_NS_CC;
 
 BattleScene::BattleScene()
 {
@@ -19,22 +25,12 @@ bool BattleScene::init()
         return false;
     }
 
-    //MotionStreakを作成
-    m_pStreak = MotionStreak::create(1.0, 1.0f, 50.0f, Color3B::GREEN, "effect/pipo-btleffect063.png");
-    addChild(m_pStreak, ZOrder::TouchEffect);
- 
-    
-    //イベントリスナー作成
-    auto listener = EventListenerTouchAllAtOnce::create();
-//    listener->setSwallowTouches(true);
-    listener->onTouchesBegan = CC_CALLBACK_2(BattleScene::onTouchesBegan, this);
-    listener->onTouchesMoved = CC_CALLBACK_2(BattleScene::onTouchesMoved, this);
-    listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
-    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-    
+    current_rank = 1;
+
     initBackground();
     initEnemy();
     initStatusLayer();
+    initTouchEvent();
     
     gameTime = 0;
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
@@ -64,14 +60,50 @@ void BattleScene::initBackground()
 
 void BattleScene::initEnemy()
 {
-    CharacterCreator* creator = new CharacterCreator();
-    Sprite* character = creator->create("f271.png", CharacterScale::ALL);
+    enemyData = EnemyCharacter::create();
+    enemyData->retain();
+    enemyData->setMaxHp(Constant::DEFAULT_ENEMY_HP + current_rank * 100000);
+    enemyData->setHp(enemyData->getMaxHp());
+    CCLOG("HP: %d / %d", enemyData->getMaxHp(), enemyData->getHp());
     
-    this->addChild(character, ZOrder::Enemy);
-}
+    CharacterCreator* creator = new CharacterCreator();
+    enemyData->setImage(creator->create("f271.png", CharacterScale::ALL));
+    this->addChild(enemyData->getImage(), ZOrder::Enemy);
+    }
 
 void BattleScene::initStatusLayer()
 {
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+    
+    Sprite* hpFrame = Sprite::createWithSpriteFrameName("hp_frame.png");
+    hpFrame->setPosition(Point(origin.x + visibleSize.width / 2,
+                               origin.y + visibleSize.height * 9.5 / 10));
+    addChild(hpFrame, ZOrder::EnemyHp);
+    
+    Sprite* hp = Sprite::createWithSpriteFrameName("hp.png");
+    enemyHpBar = ProgressTimer::create(hp);
+    enemyHpBar->setPosition(Point(hpFrame->getContentSize().width / 2, hpFrame->getContentSize().height / 2));
+    enemyHpBar->setType(ProgressTimer::Type::BAR);
+    enemyHpBar->setMidpoint(Point::ZERO);
+    enemyHpBar->setBarChangeRate(Point(1, 0));
+    enemyHpBar->setPercentage(enemyData->getHpPercentage());
+    hpFrame->addChild(enemyHpBar);
+}
+
+void BattleScene::initTouchEvent()
+{
+    auto listener = EventListenerTouchAllAtOnce::create();
+    //    listener->setSwallowTouches(true);
+    listener->onTouchesBegan = CC_CALLBACK_2(BattleScene::onTouchesBegan, this);
+    listener->onTouchesMoved = CC_CALLBACK_2(BattleScene::onTouchesMoved, this);
+    listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
+    // タッチエフェクト
+//    Sprite* effect = Sprite::createWithSpriteFrameName("touchEffect.png");
+//    touchEffectMotion = MotionStreak::create(1.0, 0.5f, 40.0f, Color3B(87,174,155), effect->getTexture());
+//    addChild(touchEffectMotion, ZOrder::TouchEffect);
 }
 
 void BattleScene::update( float frame )
@@ -116,12 +148,19 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
         Touch* touch = (Touch*)(*iterator);
         auto location = touch->getLocation();
         
-        Point pos = this->convertTouchToNodeSpace(touch);
-//        this->m_pStreak->setPosition(pos);
+//        Point pos = this->convertTouchToNodeSpace(touch);
+//        this->touchEffectMotion->setPosition(pos);
         
         this->effectManager = new EffectManager();
         Sprite* sprite = this->effectManager->effectPurified("attackTarget", 10, location);
         this->addChild(sprite, ZOrder::TouchEffect);
+        
+        auto preHpPercentage = enemyData->getHpPercentage();
+        enemyData->setHp(enemyData->getHp() - 1000);
+        auto act = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
+        enemyHpBar->runAction(act);
+        CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
+
 
         iterator++;
         CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
@@ -135,8 +174,8 @@ void BattleScene::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, c
         Touch* touch = (Touch*)(*iterator);
         auto location = touch->getLocation();
 
-        Point pos = this->convertTouchToNodeSpace(touch);
-        this->m_pStreak->setPosition(pos);
+//        Point pos = this->convertTouchToNodeSpace(touch);
+//        this->touchEffectMotion->setPosition(pos);
         
         iterator++;
         CCLOG("(onTouchesMoved) x:%f, y:%f", location.x, location.y);

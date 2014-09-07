@@ -5,6 +5,7 @@
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
 #include "EffectManager.h"
+#include "EnemyCharacter.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -30,9 +31,9 @@ public:
     void update(float frame);
     void updateBySchedule(float frame);
     
-    void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
-    void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
-    void onTouchesEnded(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
+    void onTouchesBegan(const std::vector<Touch*>& touches, Event *event);
+    void onTouchesMoved(const std::vector<Touch*>& touches, Event *event);
+    void onTouchesEnded(const std::vector<Touch*>& touches, Event *event);
 
     void pushBack(Ref* pSender);
 
@@ -48,14 +49,18 @@ private:
         Status,
     };
     
-    MotionStreak *m_pStreak;
-    Point m_pos;
     EffectManager* effectManager;
+    MotionStreak *touchEffectMotion;
+    EnemyCharacter* enemyData;
+    ProgressTimer* enemyHpBar;
+    
     int gameTime = 0;
+    int current_rank;
     
     void initBackground();
     void initEnemy();
     void initStatusLayer();
+    void initTouchEvent();
 };
 
 #endif /* defined(__BATTLE_SCENE_H__) */

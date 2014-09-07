@@ -72,6 +72,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("character/enemy/enemy.plist");
     frameCache->addSpriteFramesWithFile("character/persona/persona.plist");
+    frameCache->addSpriteFramesWithFile("misc/misc.plist");
     
     // CocosBuilderのファイルを読み込みゲーム画面を生成する
     auto *pScene = TitleSceneLoader::createScene();

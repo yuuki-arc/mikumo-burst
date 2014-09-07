@@ -21,13 +21,7 @@ Sprite* CharacterCreator::create(const std::string &filename, CharacterScale cha
     Sprite* character = Sprite::createWithSpriteFrameName(filename);
     character->setPosition(Point(origin.x + visibleSize.width / 2,
                                   origin.y + visibleSize.height * 6 / 10));
-    CCLOG("origin:%f %f", origin.x, origin.y);
-    CCLOG("visible:%f %f", visibleSize.width, visibleSize.height);
     float scale = character->getScale() * characterScale / 100;
-    if (GameManager::getInstance()->isScreenModeSd())
-    {
-        scale /= 2;
-    }
     character->setScale(scale, scale);
     
     return character;

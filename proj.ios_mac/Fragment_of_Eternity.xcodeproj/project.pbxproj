@@ -62,10 +62,8 @@
 		A54AEAC019B23D6000AE6AE4 /* SelectScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB619B23D6000AE6AE4 /* SelectScene.ccbi */; };
 		A54AEAC319B23D6000AE6AE4 /* TitleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB919B23D6000AE6AE4 /* TitleScene.ccbi */; };
 		A54AEAC719B25DD400AE6AE4 /* bg in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAC619B25DD400AE6AE4 /* bg */; };
-		A54AEACB19B265DD00AE6AE4 /* character in Resources */ = {isa = PBXBuildFile; fileRef = A54AEACA19B265DD00AE6AE4 /* character */; };
 		A54AEACE19B2722800AE6AE4 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54AEACC19B2722800AE6AE4 /* GameManager.cpp */; };
 		A54AEAD719B2E25F00AE6AE4 /* CharacterCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A54AEAD519B2E25F00AE6AE4 /* CharacterCreator.cpp */; };
-		A54AEADC19B33F7600AE6AE4 /* effect in Resources */ = {isa = PBXBuildFile; fileRef = A54AEADB19B33F7600AE6AE4 /* effect */; };
 		A54AEADE19B3781100AE6AE4 /* particle in Resources */ = {isa = PBXBuildFile; fileRef = A54AEADD19B3781100AE6AE4 /* particle */; };
 		A568C35819AF7B18000547E4 /* TitleSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */; };
 		A59917F119B03F5B00A95508 /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917E919B03F5B00A95508 /* BattleScene.cpp */; };
@@ -76,6 +74,7 @@
 		A59917FC19B040CD00A95508 /* ResultSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */; };
 		A5A7F0E019BB32E900A5BEDD /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */; };
 		A5A7F0E219BB394700A5BEDD /* sound in Resources */ = {isa = PBXBuildFile; fileRef = A5A7F0E119BB394700A5BEDD /* sound */; };
+		A5A7F0E519BB5D8400A5BEDD /* EnemyCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0E319BB5D8400A5BEDD /* EnemyCharacter.cpp */; };
 		A5B2714519AC6BD30028E9E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */; };
 		A5B2714719AC6BDC0028E9E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
 		A5B2714919AC6BE40028E9E0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */; };
@@ -292,12 +291,10 @@
 		A54AEAB619B23D6000AE6AE4 /* SelectScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelectScene.ccbi; sourceTree = "<group>"; };
 		A54AEAB919B23D6000AE6AE4 /* TitleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = TitleScene.ccbi; sourceTree = "<group>"; };
 		A54AEAC619B25DD400AE6AE4 /* bg */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bg; sourceTree = "<group>"; };
-		A54AEACA19B265DD00AE6AE4 /* character */ = {isa = PBXFileReference; lastKnownFileType = folder; path = character; sourceTree = "<group>"; };
 		A54AEACC19B2722800AE6AE4 /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameManager.cpp; path = ../Classes/GameManager.cpp; sourceTree = "<group>"; };
 		A54AEACD19B2722800AE6AE4 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = ../Classes/GameManager.h; sourceTree = "<group>"; };
 		A54AEAD519B2E25F00AE6AE4 /* CharacterCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CharacterCreator.cpp; sourceTree = "<group>"; };
 		A54AEAD619B2E25F00AE6AE4 /* CharacterCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterCreator.h; sourceTree = "<group>"; };
-		A54AEADB19B33F7600AE6AE4 /* effect */ = {isa = PBXFileReference; lastKnownFileType = folder; path = effect; sourceTree = "<group>"; };
 		A54AEADD19B3781100AE6AE4 /* particle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle; sourceTree = "<group>"; };
 		A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleSceneLoader.cpp; path = ../Classes/TitleSceneLoader.cpp; sourceTree = "<group>"; };
 		A59058C619AE4DF100A26037 /* TitleSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleSceneLoader.h; path = ../Classes/TitleSceneLoader.h; sourceTree = "<group>"; };
@@ -316,6 +313,8 @@
 		A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/SoundManager.cpp; sourceTree = "<group>"; };
 		A5A7F0DF19BB32E900A5BEDD /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = ../Classes/SoundManager.h; sourceTree = "<group>"; };
 		A5A7F0E119BB394700A5BEDD /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
+		A5A7F0E319BB5D8400A5BEDD /* EnemyCharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyCharacter.cpp; sourceTree = "<group>"; };
+		A5A7F0E419BB5D8400A5BEDD /* EnemyCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyCharacter.h; sourceTree = "<group>"; };
 		A5B2713A19AC6B6B0028E9E0 /* libbox2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbox2d iOS.a"; path = "../lib/libbox2d iOS.a"; sourceTree = "<group>"; };
 		A5B2713B19AC6B6B0028E9E0 /* libchipmunk iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchipmunk iOS.a"; path = "../lib/libchipmunk iOS.a"; sourceTree = "<group>"; };
 		A5B2713C19AC6B6B0028E9E0 /* libcocos2dx iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2dx iOS.a"; path = "../lib/libcocos2dx iOS.a"; sourceTree = "<group>"; };
@@ -324,6 +323,7 @@
 		A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		A5B2714619AC6BDC0028E9E0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		A5CCD2BB19BC9DEF002ED2FC /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constant.h; path = ../Classes/Constant.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -427,10 +427,13 @@
 				A54AEACD19B2722800AE6AE4 /* GameManager.h */,
 				A54AEAD519B2E25F00AE6AE4 /* CharacterCreator.cpp */,
 				A54AEAD619B2E25F00AE6AE4 /* CharacterCreator.h */,
+				A5A7F0E319BB5D8400A5BEDD /* EnemyCharacter.cpp */,
+				A5A7F0E419BB5D8400A5BEDD /* EnemyCharacter.h */,
 				A52B54B919BB0CA900804FEF /* EffectManager.cpp */,
 				A52B54BA19BB0CA900804FEF /* EffectManager.h */,
 				A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */,
 				A5A7F0DF19BB32E900A5BEDD /* SoundManager.h */,
+				A5CCD2BB19BC9DEF002ED2FC /* Constant.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -557,8 +560,6 @@
 			children = (
 				A5A7F0E119BB394700A5BEDD /* sound */,
 				A54AEADD19B3781100AE6AE4 /* particle */,
-				A54AEADB19B33F7600AE6AE4 /* effect */,
-				A54AEACA19B265DD00AE6AE4 /* character */,
 				A54AEAC619B25DD400AE6AE4 /* bg */,
 				A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */,
 				A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */,
@@ -736,7 +737,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A54AEACB19B265DD00AE6AE4 /* character in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -744,7 +744,6 @@
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				A5A7F0E219BB394700A5BEDD /* sound in Resources */,
 				A54AEAC319B23D6000AE6AE4 /* TitleScene.ccbi in Resources */,
-				A54AEADC19B33F7600AE6AE4 /* effect in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				A54AEAC019B23D6000AE6AE4 /* SelectScene.ccbi in Resources */,
@@ -790,6 +789,7 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				A59917F119B03F5B00A95508 /* BattleScene.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				A5A7F0E519BB5D8400A5BEDD /* EnemyCharacter.cpp in Sources */,
 				A52B54BB19BB0CA900804FEF /* EffectManager.cpp in Sources */,
 				A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */,
 				A54AEACE19B2722800AE6AE4 /* GameManager.cpp in Sources */,
