@@ -58,6 +58,7 @@ private:
     
     EnemyCharacter* enemyData;
     ProgressTimer* enemyHpBar;
+    Label* gameTimeLabel;
     
     UserDefault* userDefault = UserDefault::getInstance();
     

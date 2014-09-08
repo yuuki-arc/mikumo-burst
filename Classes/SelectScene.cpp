@@ -44,8 +44,14 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // SE
     soundManager->preloadSE("se_select");
 
-    auto label = LabelBMFont::create("RESULT", "Arial_Black.fnt");
-    label->setPosition(Point(200,200));
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+    
+    auto label = Label::createWithBMFont("Arial_Black.fnt", "RESULT");
+    label->setAnchorPoint(Point(0.5, 0.5));
+    label->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
+                             origin.y + visibleSize.height * 9.5 / 10));
+    label->getTexture()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
  
     // キャラ

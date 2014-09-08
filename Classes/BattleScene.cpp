@@ -32,7 +32,7 @@ bool BattleScene::init()
     initStatusLayer();
     initTouchEvent();
     
-    gameTime = 0;
+    gameTime = Constant::GAME_TIME;
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
     
     return true;
@@ -80,6 +80,15 @@ void BattleScene::initStatusLayer()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
+    // 時間制限
+    gameTimeLabel = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(gameTime));
+    gameTimeLabel->setAnchorPoint(Point(0.5, 0.5));
+    gameTimeLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
+                                     origin.y + visibleSize.height * 9.5 / 10));
+    gameTimeLabel->getTexture()->setAliasTexParameters();
+    this->addChild(gameTimeLabel, ZOrder::Font);
+    
+    // HP
     Sprite* hpFrame = Sprite::createWithSpriteFrameName("hp_frame.png");
     hpFrame->setPosition(Point(origin.x + visibleSize.width / 2,
                                origin.y + visibleSize.height * 9.5 / 10));
@@ -113,11 +122,25 @@ void BattleScene::initTouchEvent()
 void BattleScene::update( float frame )
 {
 //    CCLOG("フレーム単位で呼び出される");
+    if (enemyData->getHp() <= 0)
+    {
+        Scene* scene = ResultSceneLoader::createScene();
+        TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
+        Director::getInstance()->replaceScene(trans);
+    }
 }
 
 void BattleScene::updateBySchedule( float frame )
 {
-    gameTime++;
+    gameTime--;
+    gameTimeLabel->setString(StringUtils::toString(gameTime));
+    
+    if (gameTime <= 0)
+    {
+        Scene* scene = ResultSceneLoader::createScene();
+        TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
+        Director::getInstance()->replaceScene(trans);
+    }
 }
 
 SEL_MenuHandler BattleScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName)
