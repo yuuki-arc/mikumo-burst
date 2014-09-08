@@ -47,6 +47,7 @@ private:
         EnemyHp,
         PersonaHp,
         Status,
+        Font,
     };
     
     EffectManager* effectManager;

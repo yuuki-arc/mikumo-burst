@@ -46,7 +46,7 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 
     auto label = LabelBMFont::create("RESULT", "Arial_Black.fnt");
     label->setPosition(Point(200,200));
-    this->addChild(label);
+    this->addChild(label, ZOrder::Font);
  
     // キャラ
     int num = CCRANDOM_0_1() * personaImageList.size();

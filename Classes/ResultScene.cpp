@@ -19,7 +19,7 @@ bool ResultScene::init()
 
     auto label = LabelBMFont::create("RESULT", "Arial_Black.fnt");
     label->setPosition(Point(200,200));
-    this->addChild(label);
+    this->addChild(label, ZOrder::Font);
     
     return true;
 }

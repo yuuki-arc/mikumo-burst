@@ -27,6 +27,14 @@ public:
     void tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType);
 
     void pushBack(Ref* pSender);
+
+private:
+    enum ZOrder
+    {
+        Bg = 0,
+        Status,
+        Font,
+    };
 };
 
 #endif /* defined(__Result_SCENE_H__) */
