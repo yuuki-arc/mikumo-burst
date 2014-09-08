@@ -16,7 +16,7 @@ Sprite* EffectManager::effectPurified(std::string effectName, int count, Point l
     auto frames = new Vector<SpriteFrame *>();
     for (int i = 0; i < count; i++)
     {
-        std::string imageFileName = effectName + "-" + std::to_string(i) + ".png";
+        std::string imageFileName = StringUtils::format("%s-%d.png", effectName.c_str() , i);
         frames->pushBack(spriteFrameCache->getSpriteFrameByName(imageFileName));
     }
     Animation *animation = Animation::createWithSpriteFrames(*frames, 0.1f);

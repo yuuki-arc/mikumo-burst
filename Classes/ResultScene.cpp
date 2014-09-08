@@ -16,6 +16,10 @@ bool ResultScene::init()
 	{
 		return false;
 	}
+
+    auto label = LabelBMFont::create("RESULT", "Arial_Black.fnt");
+    label->setPosition(Point(200,200));
+    this->addChild(label);
     
     return true;
 }

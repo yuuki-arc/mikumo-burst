@@ -43,10 +43,17 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     
     // SE
     soundManager->preloadSE("se_select");
-    
+
+    auto label = LabelBMFont::create("RESULT", "Arial_Black.fnt");
+    label->setPosition(Point(200,200));
+    this->addChild(label);
+ 
     // キャラ
+    int num = CCRANDOM_0_1() * personaImageList.size();
+    std::string personaFileName = StringUtils::format("%s.png", personaImageList.at(num).c_str());
+    
     CharacterCreator* creator = new CharacterCreator();
-    Sprite* character = creator->create("f317.png", CharacterScale::HARF);
+    Sprite* character = creator->create(personaFileName, CharacterScale::HARF);
     this->addChild(character, ZOrder::Persona);
 }
 

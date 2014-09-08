@@ -36,6 +36,9 @@ private:
         PersonaHp,
         Status,
     };
+    
+    std::vector<std::string> personaImageList = {"f072", "f264", "f287", "f299", "f313", "f317", "f349", "f353", "f368"};
+
 };
 
 #endif /* defined(__SELECT_SCENE_H__) */

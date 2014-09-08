@@ -51,6 +51,10 @@ private:
     
     EffectManager* effectManager;
     MotionStreak *touchEffectMotion;
+    std::vector<std::string> enemyImageList = {"f183", "f186", "f189", "f195", "f201", "f207", "f271", "f274", "f277"};
+    std::vector<std::string> bgImageList = {"001-1", "001-2"};
+    std::vector<std::string> effectList = {"se_battle_blow", "se_battle_darkness", "se_battle_fire", "se_battle_gun", "se_battle_water"};
+    
     EnemyCharacter* enemyData;
     ProgressTimer* enemyHpBar;
     

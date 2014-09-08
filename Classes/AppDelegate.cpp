@@ -27,6 +27,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
     
+    srand((unsigned int)time(NULL));
+    
     Size designSize = Size(320, 480); // ベースサイズ
     Size resourceSize;
     Size screenSize = glview->getFrameSize();   //画面サイズ取得
@@ -49,6 +51,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         GameManager::getInstance()->screenMode = ScreenModeSd;
     }
     
+    resDirOrders.push_back("font");
     FileUtils::getInstance()->setSearchPaths(resDirOrders);
     
     const float scaleW = resourceSize.width / designSize.width;

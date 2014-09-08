@@ -6,6 +6,7 @@
 #include "EnemyCharacter.h"
 #include "EffectManager.h"
 #include "SoundManager.h"
+#include <random>
 
 USING_NS_CC;
 
@@ -42,7 +43,8 @@ void BattleScene::initBackground()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
-    Sprite* background = Sprite::create("bg/001-1.png");
+    int num = CCRANDOM_0_1() * bgImageList.size();
+    Sprite* background = Sprite::create(StringUtils::format("bg/%s.png", bgImageList.at(num).c_str()));
     background->setPosition(Point(origin.x + visibleSize.width / 2,
                                   origin.y + visibleSize.height / 2));
     
@@ -65,8 +67,11 @@ void BattleScene::initEnemy()
     enemyData->setHp(enemyData->getMaxHp());
     CCLOG("HP: %d / %d", enemyData->getMaxHp(), enemyData->getHp());
     
+    int num = CCRANDOM_0_1() * bgImageList.size();
+    std::string enemyFileName = StringUtils::format("%s.png", enemyImageList.at(num).c_str());
+
     CharacterCreator* creator = new CharacterCreator();
-    enemyData->setImage(creator->create("f271.png", CharacterScale::ALL));
+    enemyData->setImage(creator->create(enemyFileName, CharacterScale::ALL));
     this->addChild(enemyData->getImage(), ZOrder::Enemy);
     }
 
@@ -136,11 +141,17 @@ void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     soundManager->playBGM("bgm_battle", true);
 
     // SE
-    soundManager->preloadSE("se_battle_blow");
-    soundManager->preloadSE("se_battle_darkness");
-    soundManager->preloadSE("se_battle_fire");
-    soundManager->preloadSE("se_battle_gun");
-    soundManager->preloadSE("se_battle_water");
+    std::vector<std::string>::const_iterator iterator = effectList.begin();
+    while (iterator != effectList.end()) {
+        soundManager->preloadSE(*iterator);
+        CCLOG("preloadSE:%s", (*iterator).c_str());
+        iterator++;
+    }
+//    soundManager->preloadSE("se_battle_blow");
+//    soundManager->preloadSE("se_battle_darkness");
+//    soundManager->preloadSE("se_battle_fire");
+//    soundManager->preloadSE("se_battle_gun");
+//    soundManager->preloadSE("se_battle_water");
 }
 
 void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEventType)
@@ -155,11 +166,8 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
     SoundManager* soundManager = new SoundManager();
     std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
     while (iterator != touches.end()) {
-//        soundManager->preloadSE("se_battle_blow");
-//        soundManager->preloadSE("se_battle_darkness");
-        soundManager->playSE("se_battle_fire");
-//        soundManager->preloadSE("se_battle_gun");
-//        soundManager->preloadSE("se_battle_water");
+        int num = CCRANDOM_0_1() * bgImageList.size();
+        soundManager->preloadSE(effectList.at(num));
 
         Touch* touch = (Touch*)(*iterator);
         auto location = touch->getLocation();
