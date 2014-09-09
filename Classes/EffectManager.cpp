@@ -1,18 +1,24 @@
 #include "EffectManager.h"
+#include "GameManager.h"
 #include "cocos2d.h"
 
 USING_NS_CC;
 
 bool EffectManager::init()
 {
+    SpriteFrameCache* spriteFrameCache = SpriteFrameCache::getInstance();
+    spriteFrameCache->addSpriteFramesWithFile("effect/battleEffect0.plist");
+    if (GameManager::getInstance()->isScreenModeHd())
+    {
+        spriteFrameCache->addSpriteFramesWithFile("effect/battleEffect1.plist");
+    }
+    
     return true;
 }
 
 Sprite* EffectManager::effectPurified(std::string effectName, int count, Point location)
 {
     SpriteFrameCache* spriteFrameCache = SpriteFrameCache::getInstance();
-    spriteFrameCache->addSpriteFramesWithFile("effect/" + effectName + ".plist");
-    
     auto frames = new Vector<SpriteFrame *>();
     for (int i = 0; i < count; i++)
     {

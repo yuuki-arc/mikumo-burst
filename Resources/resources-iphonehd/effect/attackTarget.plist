@@ -7,130 +7,130 @@
             <key>attackTarget-0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{244,728},{240,240}}</string>
+                <string>{{484,428},{182,176}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-21,-10}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{8,42},{182,176}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
             <key>attackTarget-1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{244,486},{240,240}}</string>
+                <string>{{244,2},{240,232}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{0,3},{240,232}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
             <key>attackTarget-2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{244,244},{240,240}}</string>
+                <string>{{244,236},{236,238}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-2,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{0,1},{236,238}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
             <key>attackTarget-3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{728,2},{240,240}}</string>
+                <string>{{2,2},{240,238}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{0,2},{240,238}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
             <key>attackTarget-4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{486,2},{240,240}}</string>
+                <string>{{486,2},{238,236}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{1,2}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{2,0},{238,236}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
             <key>attackTarget-5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{244,2},{240,240}}</string>
+                <string>{{726,2},{230,226}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{3,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{8,7},{230,226}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
             <key>attackTarget-6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,728},{240,240}}</string>
+                <string>{{2,242},{232,236}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{2,1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{6,1},{232,236}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
             <key>attackTarget-7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,486},{240,240}}</string>
+                <string>{{726,230},{220,220}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{10,10},{220,220}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
             <key>attackTarget-8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,244},{240,240}}</string>
+                <string>{{484,240},{196,186}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-2,-3}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{20,30},{196,186}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
             <key>attackTarget-9.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{240,240}}</string>
+                <string>{{240,474},{156,154}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{2,-1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{240,240}}</string>
+                <string>{{44,44},{156,154}}</string>
                 <key>sourceSize</key>
                 <string>{240,240}</string>
             </dict>
@@ -144,7 +144,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b58e081c002a18a93be6aea5e5cf3b8e:c8f9a071e470ef130234a9492946b82c:3acd6c1d2a12d593904cc7c49aa8b70e$</string>
+            <string>$TexturePacker:SmartUpdate:8df54395b60a49431068045f1cbbd315:c8f9a071e470ef130234a9492946b82c:3acd6c1d2a12d593904cc7c49aa8b70e$</string>
             <key>textureFileName</key>
             <string>attackTarget.png</string>
         </dict>

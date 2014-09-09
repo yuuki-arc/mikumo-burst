@@ -7,102 +7,102 @@
             <key>f072.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{606,806},{300,400}}</string>
+                <string>{{2,606},{288,392}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-3,-4}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,400}}</string>
+                <string>{{3,8},{288,392}}</string>
                 <key>sourceSize</key>
                 <string>{300,400}</string>
             </dict>
             <key>f264.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{304,806},{300,400}}</string>
+                <string>{{2,896},{300,390}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-5}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,400}}</string>
+                <string>{{0,10},{300,390}}</string>
                 <key>sourceSize</key>
                 <string>{300,400}</string>
             </dict>
             <key>f287.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,806},{300,400}}</string>
+                <string>{{402,598},{300,396}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-2}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,400}}</string>
+                <string>{{0,4},{300,396}}</string>
                 <key>sourceSize</key>
                 <string>{300,400}</string>
             </dict>
             <key>f299.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{606,404},{300,400}}</string>
+                <string>{{2,304},{300,398}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,400}}</string>
+                <string>{{0,2},{300,398}}</string>
                 <key>sourceSize</key>
                 <string>{300,400}</string>
             </dict>
             <key>f313.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{304,404},{300,400}}</string>
+                <string>{{404,2},{292,400}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{4,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,400}}</string>
+                <string>{{8,0},{292,400}}</string>
                 <key>sourceSize</key>
                 <string>{300,400}</string>
             </dict>
             <key>f317.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,404},{300,400}}</string>
+                <string>{{404,296},{300,398}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,400}}</string>
+                <string>{{0,2},{300,398}}</string>
                 <key>sourceSize</key>
                 <string>{300,400}</string>
             </dict>
             <key>f349.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{606,2},{300,400}}</string>
+                <string>{{2,1198},{300,386}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-7}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,400}}</string>
+                <string>{{0,14},{300,386}}</string>
                 <key>sourceSize</key>
                 <string>{300,400}</string>
             </dict>
             <key>f353.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{304,2},{300,400}}</string>
+                <string>{{2,2},{300,400}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{300,400}}</string>
                 <key>sourceSize</key>
@@ -111,13 +111,13 @@
             <key>f368.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{300,400}}</string>
+                <string>{{394,900},{300,388}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-6}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,400}}</string>
+                <string>{{0,12},{300,388}}</string>
                 <key>sourceSize</key>
                 <string>{300,400}</string>
             </dict>
@@ -131,7 +131,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f2ecdeba6ad44878ac643e956e17721d:c270364d578e46e063bb47e42acaeecf:dcd917908db3c987fc51df119b375ba6$</string>
+            <string>$TexturePacker:SmartUpdate:b23150817db095b771c906a9a264c8b6:c270364d578e46e063bb47e42acaeecf:dcd917908db3c987fc51df119b375ba6$</string>
             <key>textureFileName</key>
             <string>persona.png</string>
         </dict>

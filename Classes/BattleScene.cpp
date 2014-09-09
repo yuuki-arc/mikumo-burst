@@ -33,6 +33,8 @@ bool BattleScene::init()
     initTouchEvent();
     
     gameTime = Constant::GAME_TIME;
+    this->effectManager = new EffectManager();
+    this->effectManager->init();
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
     
     return true;
@@ -44,7 +46,7 @@ void BattleScene::initBackground()
     Point origin = Director::getInstance()->getVisibleOrigin();
     
     int num = CCRANDOM_0_1() * bgImageList.size();
-    Sprite* background = Sprite::create(StringUtils::format("bg/%s.png", bgImageList.at(num).c_str()));
+    Sprite* background = Sprite::createWithSpriteFrameName(StringUtils::format("%s.png", bgImageList.at(num).c_str()));
     background->setPosition(Point(origin.x + visibleSize.width / 2,
                                   origin.y + visibleSize.height / 2));
     
@@ -67,7 +69,7 @@ void BattleScene::initEnemy()
     enemyData->setHp(enemyData->getMaxHp());
     CCLOG("HP: %d / %d", enemyData->getMaxHp(), enemyData->getHp());
     
-    int num = CCRANDOM_0_1() * bgImageList.size();
+    int num = CCRANDOM_0_1() * enemyImageList.size();
     std::string enemyFileName = StringUtils::format("%s.png", enemyImageList.at(num).c_str());
 
     CharacterCreator* creator = new CharacterCreator();
@@ -122,7 +124,7 @@ void BattleScene::initTouchEvent()
 void BattleScene::update( float frame )
 {
 //    CCLOG("フレーム単位で呼び出される");
-    if (enemyData->getHp() <= 0)
+    if (enemyData->getHpPercentage() == 0)
     {
         Scene* scene = ResultSceneLoader::createScene();
         TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
@@ -133,6 +135,7 @@ void BattleScene::update( float frame )
 void BattleScene::updateBySchedule( float frame )
 {
     gameTime--;
+    CCLOG("gameTime:%d", gameTime);
     gameTimeLabel->setString(StringUtils::toString(gameTime));
     
     if (gameTime <= 0)
@@ -189,22 +192,24 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
     SoundManager* soundManager = new SoundManager();
     std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
     while (iterator != touches.end()) {
-        int num = CCRANDOM_0_1() * bgImageList.size();
-        soundManager->preloadSE(effectList.at(num));
+        int num = CCRANDOM_0_1() * effectList.size();
+        soundManager->playSE(effectList.at(num));
 
         Touch* touch = (Touch*)(*iterator);
         auto location = touch->getLocation();
         
 //        Point pos = this->convertTouchToNodeSpace(touch);
 //        this->touchEffectMotion->setPosition(pos);
-        
-        this->effectManager = new EffectManager();
-        Sprite* sprite = this->effectManager->effectPurified("attackTarget", 10, location);
+
+        num = CCRANDOM_0_1() * battleEffectImageList.size();
+        Sprite* sprite = this->effectManager->effectPurified(battleEffectImageList.at(num), 10, location);
         this->addChild(sprite, ZOrder::TouchEffect);
         
         auto preHpPercentage = enemyData->getHpPercentage();
-        enemyData->setHp(enemyData->getHp() - Constant::BASE_DAMAGE);
-        auto act = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
+        auto afterHpPercentage =enemyData->getHp() - Constant::BASE_DAMAGE;
+        afterHpPercentage = afterHpPercentage < 0 ? 0 : afterHpPercentage;
+        enemyData->setHp(afterHpPercentage);
+        auto act = ProgressFromTo::create(0.5, preHpPercentage, afterHpPercentage);
         enemyHpBar->runAction(act);
         CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
 

@@ -7,11 +7,11 @@
             <key>hp.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,54},{420,50}}</string>
+                <string>{{424,2},{420,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{420,50}}</string>
                 <key>sourceSize</key>
@@ -33,13 +33,13 @@
             <key>touchEffect.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,106},{192,192}}</string>
+                <string>{{2,54},{172,172}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{192,192}}</string>
+                <string>{{10,10},{172,172}}</string>
                 <key>sourceSize</key>
                 <string>{192,192}</string>
             </dict>
@@ -53,7 +53,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1cdad2a83e7b356464229a12f67d8cfb:6fdd94116e902a52d217598cdefc7f32:c0c053a3aa7d34b5b1daf0abf4de0606$</string>
+            <string>$TexturePacker:SmartUpdate:124b7b11ef6feda6c8b50053ead4ac75:6fdd94116e902a52d217598cdefc7f32:c0c053a3aa7d34b5b1daf0abf4de0606$</string>
             <key>textureFileName</key>
             <string>misc.png</string>
         </dict>

@@ -76,6 +76,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     frameCache->addSpriteFramesWithFile("character/enemy/enemy.plist");
     frameCache->addSpriteFramesWithFile("character/persona/persona.plist");
     frameCache->addSpriteFramesWithFile("misc/misc.plist");
+    frameCache->addSpriteFramesWithFile("bg/bg.plist");
     
     // CocosBuilderのファイルを読み込みゲーム画面を生成する
     auto *pScene = TitleSceneLoader::createScene();
