@@ -27,15 +27,15 @@ bool BattleScene::init()
 
     current_rank = userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 1);
 
-    initBackground();
-    initEnemy();
-    initStatusLayer();
-    initTouchEvent();
-    
     gameTime = Constant::GAME_TIME;
     this->effectManager = new EffectManager();
     this->effectManager->init();
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
+ 
+    initBackground();
+    initEnemy();
+    initStatusLayer();
+    initTouchEvent();
     
     return true;
 }
