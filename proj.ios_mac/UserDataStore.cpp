@@ -14,8 +14,22 @@ UserDataStore::~UserDataStore()
     
 }
 
-int UserDataStore::getData()
+//int UserDataStore::getData()
+//{
+//    int ret = this->userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 1);
+//    return ret;
+//}
+
+template <class Type>
+Type UserDataStore::getData(Type key)
 {
-    int ret = this->userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 1);
+    Type ret = NULL;
+    if (typeid(Type) == typeid(int))
+    {
+        ret = this->userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 1);
+    }
     return ret;
 }
+
+void sub(int a);
+void sub(char a);

@@ -173,11 +173,6 @@ void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
         CCLOG("preloadSE:%s", (*iterator).c_str());
         iterator++;
     }
-//    soundManager->preloadSE("se_battle_blow");
-//    soundManager->preloadSE("se_battle_darkness");
-//    soundManager->preloadSE("se_battle_fire");
-//    soundManager->preloadSE("se_battle_gun");
-//    soundManager->preloadSE("se_battle_water");
 }
 
 void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEventType)
@@ -202,8 +197,8 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
 //        this->touchEffectMotion->setPosition(pos);
 
         num = CCRANDOM_0_1() * battleEffectImageList.size();
-        Sprite* sprite = this->effectManager->effectPurified(battleEffectImageList.at(num), 10, location);
-        this->addChild(sprite, ZOrder::TouchEffect);
+        Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(num), 10, location);
+        this->addChild(effectSprite, ZOrder::TouchEffect);
         
         auto preHpPercentage = enemyData->getHpPercentage();
         auto afterHpPercentage =enemyData->getHp() - Constant::BASE_DAMAGE;
@@ -213,6 +208,11 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
         enemyHpBar->runAction(act);
         CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
 
+//        auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(Constant::BASE_DAMAGE));
+//        damageNumSprite->setAnchorPoint(Point(0.5, 0.5));
+//        damageNumSprite->setPosition(effectSprite->getContentSize().width, effectSprite->getContentSize().height);
+//        effectSprite->addChild(gameTimeLabel);
+        
 
         iterator++;
         CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);

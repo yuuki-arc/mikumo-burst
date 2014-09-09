@@ -13,7 +13,10 @@ public:
     virtual ~UserDataStore();
     
     UserDefault* userDefault = UserDefault::getInstance();
-    int getData();
+//    int getData();
+    
+    template <class Type>
+    Type getData(Type a);
 
 protected:
     
