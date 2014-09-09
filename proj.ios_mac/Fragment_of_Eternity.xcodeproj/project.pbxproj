@@ -84,6 +84,11 @@
 		A5B3493A19AC79C100A12685 /* libCocosDenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2713E19AC6B6B0028E9E0 /* libCocosDenshion iOS.a */; };
 		A5CCD2C119BD661C002ED2FC /* font in Resources */ = {isa = PBXBuildFile; fileRef = A5CCD2C019BD661C002ED2FC /* font */; };
 		A5CCD2CC19BDB087002ED2FC /* UserDataStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5CCD2CA19BDB087002ED2FC /* UserDataStore.cpp */; };
+		A5CCD2D319BEC71D002ED2FC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CCD2D219BEC71D002ED2FC /* XCTest.framework */; };
+		A5CCD2D419BEC71D002ED2FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		A5CCD2D519BEC71D002ED2FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
+		A5CCD2DB19BEC71D002ED2FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5CCD2D919BEC71D002ED2FC /* InfoPlist.strings */; };
+		A5CCD2DD19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5CCD2DC19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
@@ -232,6 +237,13 @@
 			remoteGlobalIDString = A07A4F9F178387730073F6A7;
 			remoteInfo = "CocosDenshion iOS";
 		};
+		A5CCD2DF19BEC71D002ED2FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
+			remoteInfo = "Fragment_of_Eternity iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -327,6 +339,12 @@
 		A5CCD2C019BD661C002ED2FC /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
 		A5CCD2CA19BDB087002ED2FC /* UserDataStore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UserDataStore.cpp; path = ../proj.ios_mac/UserDataStore.cpp; sourceTree = "<group>"; };
 		A5CCD2CB19BDB087002ED2FC /* UserDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDataStore.h; path = ../proj.ios_mac/UserDataStore.h; sourceTree = "<group>"; };
+		A5CCD2D119BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fragment_of_Eternity iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5CCD2D219BEC71D002ED2FC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A5CCD2D819BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Fragment_of_Eternity iOS Tests-Info.plist"; sourceTree = "<group>"; };
+		A5CCD2DA19BEC71D002ED2FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5CCD2DC19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Fragment_of_Eternity_iOS_Tests.mm; sourceTree = "<group>"; };
+		A5CCD2DE19BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fragment_of_Eternity iOS Tests-Prefix.pch"; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -380,6 +398,16 @@
 				5087E76917EB910900C73F5D /* OpenAL.framework in Frameworks */,
 				5087E76A17EB910900C73F5D /* AVFoundation.framework in Frameworks */,
 				5087E76B17EB910900C73F5D /* AudioToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5CCD2CE19BEC71D002ED2FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5CCD2D319BEC71D002ED2FC /* XCTest.framework in Frameworks */,
+				A5CCD2D519BEC71D002ED2FC /* UIKit.framework in Frameworks */,
+				A5CCD2D419BEC71D002ED2FC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +477,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* Fragment_of_Eternity iOS.app */,
 				5087E76F17EB910900C73F5D /* Fragment_of_Eternity Mac.app */,
+				A5CCD2D119BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -475,6 +504,7 @@
 			children = (
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				15AA9C4015B7EC450033D6C2 /* Classes */,
+				A5CCD2D619BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				080E96DDFE201D6D7F000001 /* ios */,
 				503AE10617EB990700D1A890 /* mac */,
@@ -511,6 +541,7 @@
 				BF170DB012928DE900B8313A /* OpenGLES.framework */,
 				BF1C47EA1293683800B63C5D /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				A5CCD2D219BEC71D002ED2FC /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -578,6 +609,25 @@
 			path = ../Resources;
 			sourceTree = "<group>";
 		};
+		A5CCD2D619BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A5CCD2DC19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm */,
+				A5CCD2D719BEC71D002ED2FC /* Supporting Files */,
+			);
+			path = "Fragment_of_Eternity iOS Tests";
+			sourceTree = "<group>";
+		};
+		A5CCD2D719BEC71D002ED2FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5CCD2D819BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests-Info.plist */,
+				A5CCD2D919BEC71D002ED2FC /* InfoPlist.strings */,
+				A5CCD2DE19BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -625,6 +675,24 @@
 			productReference = 5087E76F17EB910900C73F5D /* Fragment_of_Eternity Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A5CCD2D019BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5CCD2E119BEC71D002ED2FC /* Build configuration list for PBXNativeTarget "Fragment_of_Eternity iOS Tests" */;
+			buildPhases = (
+				A5CCD2CD19BEC71D002ED2FC /* Sources */,
+				A5CCD2CE19BEC71D002ED2FC /* Frameworks */,
+				A5CCD2CF19BEC71D002ED2FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5CCD2E019BEC71D002ED2FC /* PBXTargetDependency */,
+			);
+			name = "Fragment_of_Eternity iOS Tests";
+			productName = "Fragment_of_Eternity iOS Tests";
+			productReference = A5CCD2D119BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -635,6 +703,9 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 9N47MNV46M;
+					};
+					A5CCD2D019BEC71D002ED2FC = {
+						TestTargetID = 1D6058900D05DD3D006BFB54;
 					};
 				};
 			};
@@ -647,6 +718,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -660,6 +732,7 @@
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Fragment_of_Eternity iOS */,
 				5087E73D17EB910900C73F5D /* Fragment_of_Eternity Mac */,
+				A5CCD2D019BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -779,6 +852,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5CCD2CF19BEC71D002ED2FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5CCD2DB19BEC71D002ED2FC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -816,6 +897,14 @@
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5CCD2CD19BEC71D002ED2FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5CCD2DD19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,7 +961,23 @@
 			name = "CocosDenshion iOS";
 			targetProxy = 1AC6FB2C180E99E1004C840B /* PBXContainerItemProxy */;
 		};
+		A5CCD2E019BEC71D002ED2FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6058900D05DD3D006BFB54 /* Fragment_of_Eternity iOS */;
+			targetProxy = A5CCD2DF19BEC71D002ED2FC /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5CCD2D919BEC71D002ED2FC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5CCD2DA19BEC71D002ED2FC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -997,6 +1102,90 @@
 			};
 			name = Release;
 		};
+		A5CCD2E219BEC71D002ED2FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Fragment_of_Eternity iOS.app/Fragment_of_Eternity iOS";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Fragment_of_Eternity iOS Tests/Fragment_of_Eternity iOS Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Fragment_of_Eternity iOS Tests/Fragment_of_Eternity iOS Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A5CCD2E319BEC71D002ED2FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Fragment_of_Eternity iOS.app/Fragment_of_Eternity iOS";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Fragment_of_Eternity iOS Tests/Fragment_of_Eternity iOS Tests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Fragment_of_Eternity iOS Tests/Fragment_of_Eternity iOS Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1082,6 +1271,15 @@
 			buildConfigurations = (
 				5087E76D17EB910900C73F5D /* Debug */,
 				5087E76E17EB910900C73F5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A5CCD2E119BEC71D002ED2FC /* Build configuration list for PBXNativeTarget "Fragment_of_Eternity iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5CCD2E219BEC71D002ED2FC /* Debug */,
+				A5CCD2E319BEC71D002ED2FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

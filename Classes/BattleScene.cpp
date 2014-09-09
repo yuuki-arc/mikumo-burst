@@ -2,6 +2,7 @@
 #include "ResultSceneLoader.h"
 #include "Constant.h"
 #include "GameManager.h"
+#include "UserDataStore.h"
 #include "CharacterCreator.h"
 #include "EnemyCharacter.h"
 #include "EffectManager.h"
@@ -25,7 +26,7 @@ bool BattleScene::init()
         return false;
     }
 
-    current_rank = userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 1);
+    current_rank = UserDataStore::getRank();
 
     gameTime = Constant::GAME_TIME;
     this->effectManager = new EffectManager();
@@ -208,11 +209,20 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
         enemyHpBar->runAction(act);
         CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
 
-//        auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(Constant::BASE_DAMAGE));
-//        damageNumSprite->setAnchorPoint(Point(0.5, 0.5));
-//        damageNumSprite->setPosition(effectSprite->getContentSize().width, effectSprite->getContentSize().height);
-//        effectSprite->addChild(gameTimeLabel);
-        
+        auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(Constant::BASE_DAMAGE));
+        damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
+        damageNumSprite->setAlignment(TextHAlignment::CENTER);
+        damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
+        damageNumSprite->setScale(BM_FONT_SIZE64(24));
+        effectSprite->addChild(damageNumSprite);
+        CCLOG("damageNum:%f, %f", effectSprite->getContentSize().width, effectSprite->getContentSize().height);
+
+        damageNumSprite->runAction(
+            Sequence::create(Spawn::create(
+                MoveBy::create(1.5f, Vec2(0,50)),
+                FadeOut::create(1.5f), NULL),
+                CallFuncN::create([&](Node *node){node->removeFromParent();}),
+                NULL));
 
         iterator++;
         CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);

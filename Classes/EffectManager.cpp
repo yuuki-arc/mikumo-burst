@@ -32,6 +32,7 @@ Sprite* EffectManager::effectPurified(std::string effectName, int count, Point l
     delete frames;
 
     auto sprite2 = Sprite::create();
+    sprite2->setAnchorPoint(Vec2(0.5,0.5));
     sprite2->runAction(
         Sequence::create(animateAction,
             CallFunc::create([sprite2]()

@@ -7,21 +7,18 @@ USING_NS_CC;
 
 class UserDataStore
 {
+private:
+    UserDataStore();
     
 public:
-    UserDataStore();
-    virtual ~UserDataStore();
+    static int getRank(int defaultRank = NULL);
+    static void setRank(int rank);
     
-    UserDefault* userDefault = UserDefault::getInstance();
-//    int getData();
-    
-    template <class Type>
-    Type getData(Type a);
-
-protected:
+    static int getHighScore(int defaultRank = NULL);
+    static void setHighScore(int rank);
     
 private:
-
+    void initialize();
 };
 
 #endif /* defined(__Fragment_of_Eternity__UserDataStore__) */

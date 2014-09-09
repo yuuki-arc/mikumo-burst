@@ -71,6 +71,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
     
+    // 音楽設定
+    SimpleAudioEngine::getInstance()->setEffectsVolume(0.3);
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.3);
+    
     // テクスチャアトラスを読み込む
     SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("character/enemy/enemy.plist");

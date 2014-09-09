@@ -2,34 +2,20 @@
 #include "Constant.h"
 
 USING_NS_CC;
-using namespace std;
 
 UserDataStore::UserDataStore()
 {
     
 }
 
-UserDataStore::~UserDataStore()
+int UserDataStore::getRank(int defaultRank)
 {
-    
+    UserDefault* userDefault = UserDefault::getInstance();
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), defaultRank);
 }
 
-//int UserDataStore::getData()
-//{
-//    int ret = this->userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 1);
-//    return ret;
-//}
-
-template <class Type>
-Type UserDataStore::getData(Type key)
+void UserDataStore::setRank(int rank)
 {
-    Type ret = NULL;
-    if (typeid(Type) == typeid(int))
-    {
-        ret = this->userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 1);
-    }
-    return ret;
+    UserDefault* userDefault = UserDefault::getInstance();
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), rank);
 }
-
-void sub(int a);
-void sub(char a);
