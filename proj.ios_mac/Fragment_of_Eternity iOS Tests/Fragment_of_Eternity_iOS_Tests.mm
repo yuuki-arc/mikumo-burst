@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#include "UserDataStore.h"
 
 @interface Fragment_of_Eternity_iOS_Tests : XCTestCase
 
@@ -26,9 +27,16 @@
     [super tearDown];
 }
 
-- (void)testExample
+//- (void)testExample
+//{
+//    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+//}
+
+- (void)testUserDataStore_rank
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    UserDataStore::setRank(5);
+    XCTAssertEqual(UserDataStore::getRank(), 5);
 }
+
 
 @end
