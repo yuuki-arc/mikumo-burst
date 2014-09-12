@@ -19,6 +19,7 @@ public:
         static const char* RANK(){return "rank";}
         static const char* HIGH_SCORE(){return "high_score";}
         static const char* HIGH_CHAIN(){return "high_chain";}
+        static const char* RANKING(){return "ranking";}
     };
 };
 
