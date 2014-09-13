@@ -55,7 +55,7 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     
     // エフェクト
     ParticleSystemQuad* particle1 = ParticleSystemQuad::create("particle/title_particle1.plist");
-    particle1->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
+    particle1->setPosition(Vec2(screenSize.width * 14 / 40, screenSize.height * 13 / 40));
     this->addChild(particle1);
     ParticleSystemQuad* particle2 = ParticleSystemQuad::create("particle/title_particle2.plist");
     particle2->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
