@@ -202,10 +202,10 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
         this->addChild(effectSprite, ZOrder::TouchEffect);
         
         auto preHpPercentage = enemyData->getHpPercentage();
-        auto afterHpPercentage =enemyData->getHp() - Constant::BASE_DAMAGE;
-        afterHpPercentage = afterHpPercentage < 0 ? 0 : afterHpPercentage;
-        enemyData->setHp(afterHpPercentage);
-        auto act = ProgressFromTo::create(0.5, preHpPercentage, afterHpPercentage);
+        auto afterHp = enemyData->getHp() - Constant::BASE_DAMAGE;
+        afterHp = afterHp < 0 ? 0 : afterHp;
+        enemyData->setHp(afterHp);
+        auto act = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
         enemyHpBar->runAction(act);
         CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
 
