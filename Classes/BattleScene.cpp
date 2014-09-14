@@ -7,6 +7,7 @@
 #include "EnemyCharacter.h"
 #include "EffectManager.h"
 #include "SoundManager.h"
+#include "BattleActionCreator.h"
 #include <random>
 
 USING_NS_CC;
@@ -32,7 +33,7 @@ bool BattleScene::init()
     this->effectManager = new EffectManager();
     this->effectManager->init();
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
- 
+
     initBackground();
     initEnemy();
     initStatusLayer();
@@ -75,8 +76,14 @@ void BattleScene::initEnemy()
 
     CharacterCreator* creator = new CharacterCreator();
     enemyData->setImage(creator->create(enemyFileName, CharacterScale::ALL));
-    this->addChild(enemyData->getImage(), ZOrder::Enemy);
-    }
+//    this->addChild(enemyData->getImage(), ZOrder::Enemy);
+
+    nodeGrid = NodeGrid::create();
+    nodeGrid->addChild(enemyData->getImage());
+    this->addChild(nodeGrid, ZOrder::Enemy);
+
+//    this->addChild(enemyData->getImage(), ZOrder::Enemy);
+}
 
 void BattleScene::initStatusLayer()
 {
@@ -114,6 +121,8 @@ void BattleScene::initTouchEvent()
     listener->onTouchesBegan = CC_CALLBACK_2(BattleScene::onTouchesBegan, this);
     listener->onTouchesMoved = CC_CALLBACK_2(BattleScene::onTouchesMoved, this);
     listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
+//    listener->onTouchCancelled = CC_CALLBACK_2(BattleScene::onTouchCancelled, this);
+    
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
     // タッチエフェクト
@@ -215,14 +224,9 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
         damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
         damageNumSprite->setScale(BM_FONT_SIZE64(24));
         effectSprite->addChild(damageNumSprite);
-        CCLOG("damageNum:%f, %f", effectSprite->getContentSize().width, effectSprite->getContentSize().height);
 
-        damageNumSprite->runAction(
-            Sequence::create(Spawn::create(
-                MoveBy::create(1.5f, Vec2(0,50)),
-                FadeOut::create(1.5f), NULL),
-                CallFuncN::create([&](Node *node){node->removeFromParent();}),
-                NULL));
+        damageNumSprite->runAction(BattleActionCreator::attackToEnemy());
+        nodeGrid->runAction(BattleActionCreator::damageToEnemy2());
 
         iterator++;
         CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
@@ -257,3 +261,16 @@ void BattleScene::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, c
     }
     return;
 }
+
+//void BattleScene::onTouchCancelled(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+//    
+//    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
+//    while (iterator != touches.end()) {
+//        Touch* touch = (Touch*)(*iterator);
+//        auto location = touch->getLocation();
+//        
+//        iterator++;
+//        CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
+//    }
+//    return;
+//}

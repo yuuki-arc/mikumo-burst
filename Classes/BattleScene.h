@@ -34,6 +34,7 @@ public:
     void onTouchesBegan(const std::vector<Touch*>& touches, Event *event);
     void onTouchesMoved(const std::vector<Touch*>& touches, Event *event);
     void onTouchesEnded(const std::vector<Touch*>& touches, Event *event);
+//    void onTouchCancelled(const std::vector<Touch*>& touches, Event *event);
 
     void pushBack(Ref* pSender);
 
@@ -56,7 +57,8 @@ private:
     std::vector<std::string> bgImageList = {"000", "001", "002", "003", "004", "006", "007", "008", "010", "011", "012", "013"};
     std::vector<std::string> battleEffectImageList = {"battleEffect107a", "battleEffect107b", "battleEffect107c", "battleEffect107d", "battleEffect107e", "battleEffect107f", "battleEffect107g", "battleEffect107h", "battleEffect107i", "battleEffect107j"};
     std::vector<std::string> effectList = {"se_battle_blow", "se_battle_darkness", "se_battle_fire", "se_battle_gun", "se_battle_water"};
-    
+
+    NodeGrid* nodeGrid;
     EnemyCharacter* enemyData;
     ProgressTimer* enemyHpBar;
     Label* gameTimeLabel;

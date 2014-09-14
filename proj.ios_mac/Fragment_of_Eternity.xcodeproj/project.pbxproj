@@ -71,6 +71,7 @@
 		A59917F419B03F5B00A95508 /* SelectSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917EF19B03F5B00A95508 /* SelectSceneLoader.cpp */; };
 		A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F719B040CD00A95508 /* ResultScene.cpp */; };
 		A59917FC19B040CD00A95508 /* ResultSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */; };
+		A5A6ACC719C5823500800AE6 /* BattleActionCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A6ACC519C5823500800AE6 /* BattleActionCreator.cpp */; };
 		A5A7F0E019BB32E900A5BEDD /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */; };
 		A5A7F0E219BB394700A5BEDD /* sound in Resources */ = {isa = PBXBuildFile; fileRef = A5A7F0E119BB394700A5BEDD /* sound */; };
 		A5A7F0E519BB5D8400A5BEDD /* EnemyCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0E319BB5D8400A5BEDD /* EnemyCharacter.cpp */; };
@@ -323,6 +324,8 @@
 		A59917F819B040CD00A95508 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = ../Classes/ResultScene.h; sourceTree = "<group>"; };
 		A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultSceneLoader.cpp; path = ../Classes/ResultSceneLoader.cpp; sourceTree = "<group>"; };
 		A59917FA19B040CD00A95508 /* ResultSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultSceneLoader.h; path = ../Classes/ResultSceneLoader.h; sourceTree = "<group>"; };
+		A5A6ACC519C5823500800AE6 /* BattleActionCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BattleActionCreator.cpp; path = ../Classes/BattleActionCreator.cpp; sourceTree = "<group>"; };
+		A5A6ACC619C5823500800AE6 /* BattleActionCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BattleActionCreator.h; path = ../Classes/BattleActionCreator.h; sourceTree = "<group>"; };
 		A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/SoundManager.cpp; sourceTree = "<group>"; };
 		A5A7F0DF19BB32E900A5BEDD /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = ../Classes/SoundManager.h; sourceTree = "<group>"; };
 		A5A7F0E119BB394700A5BEDD /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
@@ -433,6 +436,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A5A6ACC519C5823500800AE6 /* BattleActionCreator.cpp */,
+				A5A6ACC619C5823500800AE6 /* BattleActionCreator.h */,
 				A51A5A8019C14A66000D589F /* picojson.h */,
 				A5CCD2CA19BDB087002ED2FC /* UserDataStore.cpp */,
 				A5CCD2CB19BDB087002ED2FC /* UserDataStore.h */,
@@ -879,6 +884,7 @@
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				A5A7F0E519BB5D8400A5BEDD /* EnemyCharacter.cpp in Sources */,
 				A52B54BB19BB0CA900804FEF /* EffectManager.cpp in Sources */,
+				A5A6ACC719C5823500800AE6 /* BattleActionCreator.cpp in Sources */,
 				A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */,
 				A54AEACE19B2722800AE6AE4 /* GameManager.cpp in Sources */,
 				A568C35819AF7B18000547E4 /* TitleSceneLoader.cpp in Sources */,

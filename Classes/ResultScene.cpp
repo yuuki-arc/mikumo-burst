@@ -1,6 +1,7 @@
 #include "ResultScene.h"
 #include "SelectSceneLoader.h"
 #include "SoundManager.h"
+#include "UserDataStore.h"
 
 ResultScene::ResultScene()
 {
@@ -36,6 +37,9 @@ Control::Handler ResultScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
 
 void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+
     // BGM
     SoundManager* soundManager = new SoundManager();
     soundManager->playBGM("bgm_result", true);
@@ -43,16 +47,22 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // SE
     soundManager->preloadSE("se_select");
 
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
-    
+    // 結果
     auto label = Label::createWithBMFont("Arial_Black.fnt", "RESULT");
     label->setAnchorPoint(Point(0.5, 0.5));
     label->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
                              origin.y + visibleSize.height * 9.5 / 10));
     label->getTexture()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
-    }
+
+    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getHighScore());
+    reultLabel->setAnchorPoint(Point(0.5, 0.5));
+    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
+                                  origin.y + visibleSize.height * 9.5 / 10));
+    reultLabel->getTexture()->setAliasTexParameters();
+    this->addChild(reultLabel, ZOrder::Font);
+    
+}
 
 void ResultScene::tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType)
 {

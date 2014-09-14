@@ -14,8 +14,8 @@ public:
     static int getRank(int defaultRank = NULL);
     static void setRank(int rank);
     
-    static int getHighScore(int defaultRank = NULL);
-    static void setHighScore(int rank);
+    static std::string getHighScore();
+    static void setHighScore(std::vector<std::string> scoreList);
     
 private:
     void initialize();

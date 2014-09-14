@@ -1,19 +1,24 @@
-#ifndef __Fragment_of_Eternity__BattleAnimationCreator__
-#define __Fragment_of_Eternity__BattleAnimationCreator__
+#ifndef __Fragment_of_Eternity__BattleActionCreator__
+#define __Fragment_of_Eternity__BattleActionCreator__
 
 #include "cocos2d.h"
 
 USING_NS_CC;
 
-class BattleAnimationCreator
+class BattleActionCreator
 {
     
 public:
-    BattleAnimationCreator();
-    virtual ~BattleAnimationCreator();
+    BattleActionCreator();
+    virtual ~BattleActionCreator();
 
-    ActionInterval* attackEnemy();
+    static ActionInterval* appearEnemy();
+    static ActionInterval* attackToEnemy();
+    static ActionInterval* damageToEnemy();
+    static ActionInterval* damageToEnemy2();
+    static ActionInterval* damageToEnemy3();
+    static ActionInterval* defeatEnemy();
     
 };
 
-#endif /* defined(__Fragment_of_Eternity__BattleAnimationCreator__) */
+#endif /* defined(__Fragment_of_Eternity__BattleActionCreator__) */
