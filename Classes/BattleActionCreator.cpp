@@ -79,12 +79,9 @@ ActionInterval* BattleActionCreator::damageToEnemy3()
 
 ActionInterval* BattleActionCreator::defeatEnemy()
 {
-    PointArray* points = PointArray::create(3);
-    points->addControlPoint(Size(0,0));
-    points->addControlPoint(Size(0,10));
-    points->addControlPoint(Size(0,0));
+    ActionInterval* actionOne = FadeOutUpTiles::create(2.0f, Size(100,100));
     ActionInterval* action =
-    Sequence::create(CardinalSplineBy::create(0.2f, points, 5.0f),
+    Sequence::create(actionOne,
                      NULL);
     return action;
 }

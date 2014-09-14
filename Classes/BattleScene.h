@@ -30,11 +30,15 @@ public:
 
     void update(float frame);
     void updateBySchedule(float frame);
+    void updateByDefeatEnemy(float frame);
+
+    virtual void touchOn();
+    virtual void touchOff();
     
-    void onTouchesBegan(const std::vector<Touch*>& touches, Event *event);
-    void onTouchesMoved(const std::vector<Touch*>& touches, Event *event);
-    void onTouchesEnded(const std::vector<Touch*>& touches, Event *event);
-//    void onTouchCancelled(const std::vector<Touch*>& touches, Event *event);
+    virtual void onTouchesBegan(const std::vector<Touch*>& touches, Event *event);
+    virtual void onTouchesMoved(const std::vector<Touch*>& touches, Event *event);
+    virtual void onTouchesEnded(const std::vector<Touch*>& touches, Event *event);
+//    virtual void onTouchCancelled(const std::vector<Touch*>& touches, Event *event);
 
     void pushBack(Ref* pSender);
 
@@ -66,8 +70,10 @@ private:
     UserDefault* userDefault = UserDefault::getInstance();
     
     int gameTime = 0;
+    bool gameEndFlg = false;
     int current_rank;
     
+    void replaceScene();
     void initBackground();
     void initEnemy();
     void initStatusLayer();

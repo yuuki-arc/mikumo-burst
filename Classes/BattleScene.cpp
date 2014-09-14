@@ -33,6 +33,7 @@ bool BattleScene::init()
     this->effectManager = new EffectManager();
     this->effectManager->init();
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
+    this->scheduleUpdate();
 
     initBackground();
     initEnemy();
@@ -116,33 +117,15 @@ void BattleScene::initStatusLayer()
 
 void BattleScene::initTouchEvent()
 {
-    auto listener = EventListenerTouchAllAtOnce::create();
-    //    listener->setSwallowTouches(true);
-    listener->onTouchesBegan = CC_CALLBACK_2(BattleScene::onTouchesBegan, this);
-    listener->onTouchesMoved = CC_CALLBACK_2(BattleScene::onTouchesMoved, this);
-    listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
-//    listener->onTouchCancelled = CC_CALLBACK_2(BattleScene::onTouchCancelled, this);
+    touchOn();
     
-    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-
     // タッチエフェクト
 //    Sprite* effect = Sprite::createWithSpriteFrameName("touchEffect.png");
 //    touchEffectMotion = MotionStreak::create(1.0, 0.5f, 40.0f, Color3B(87,174,155), effect->getTexture());
 //    addChild(touchEffectMotion, ZOrder::TouchEffect);
 }
 
-void BattleScene::update( float frame )
-{
-//    CCLOG("フレーム単位で呼び出される");
-    if (enemyData->getHpPercentage() == 0)
-    {
-        Scene* scene = ResultSceneLoader::createScene();
-        TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
-        Director::getInstance()->replaceScene(trans);
-    }
-}
-
-void BattleScene::updateBySchedule( float frame )
+void BattleScene::updateBySchedule(float frame)
 {
     gameTime--;
     CCLOG("gameTime:%d", gameTime);
@@ -150,10 +133,24 @@ void BattleScene::updateBySchedule( float frame )
     
     if (gameTime <= 0)
     {
-        Scene* scene = ResultSceneLoader::createScene();
-        TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
-        Director::getInstance()->replaceScene(trans);
+        replaceScene();
     }
+}
+
+void BattleScene::update(float frame)
+{
+    if (!gameEndFlg && enemyData->getHp() == 0)
+    {
+        gameEndFlg = true;
+        touchOff();
+        nodeGrid->runAction(BattleActionCreator::defeatEnemy());
+        this->schedule(schedule_selector(BattleScene::updateByDefeatEnemy), 5.0f);
+    }
+}
+
+void BattleScene::updateByDefeatEnemy(float frame)
+{
+    replaceScene();
 }
 
 SEL_MenuHandler BattleScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName)
@@ -188,37 +185,66 @@ void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedResultButton eventType = %d", pControlEventType);
+    replaceScene();
+}
+
+void BattleScene::replaceScene()
+{
     Scene* scene = ResultSceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
+}
+
+void BattleScene::touchOn()
+{
+    auto listener = EventListenerTouchAllAtOnce::create();
+    //    listener->setSwallowTouches(true);
+    listener->onTouchesBegan = CC_CALLBACK_2(BattleScene::onTouchesBegan, this);
+    listener->onTouchesMoved = CC_CALLBACK_2(BattleScene::onTouchesMoved, this);
+    listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
+    //    listener->onTouchCancelled = CC_CALLBACK_2(BattleScene::onTouchCancelled, this);
+    
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void BattleScene::touchOff()
+{
+    auto listener = EventListenerTouchAllAtOnce::create();
+	this->getEventDispatcher()->removeEventListener(listener);
 }
 
 void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
     SoundManager* soundManager = new SoundManager();
     std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
     while (iterator != touches.end()) {
-        int num = CCRANDOM_0_1() * effectList.size();
-        soundManager->playSE(effectList.at(num));
 
+        // タッチ位置
         Touch* touch = (Touch*)(*iterator);
         auto location = touch->getLocation();
         
-//        Point pos = this->convertTouchToNodeSpace(touch);
-//        this->touchEffectMotion->setPosition(pos);
+        // 与えたダメージ
+        int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * 1000;
 
+        // 効果音
+        int num = CCRANDOM_0_1() * effectList.size();
+        soundManager->playSE(effectList.at(num));
+
+        // ヒットエフェクト生成
         num = CCRANDOM_0_1() * battleEffectImageList.size();
         Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(num), 10, location);
         this->addChild(effectSprite, ZOrder::TouchEffect);
         
+        // 敵のHPゲージ
         auto preHpPercentage = enemyData->getHpPercentage();
-        auto afterHp = enemyData->getHp() - Constant::BASE_DAMAGE;
+        auto afterHp = enemyData->getHp() - damage;
         afterHp = afterHp < 0 ? 0 : afterHp;
         enemyData->setHp(afterHp);
         auto act = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
         enemyHpBar->runAction(act);
         CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
 
-        auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(Constant::BASE_DAMAGE));
+        // ダメージエフェクト生成
+        auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(damage));
         damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
         damageNumSprite->setAlignment(TextHAlignment::CENTER);
         damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
