@@ -21,6 +21,11 @@ public:
         static const char* HIGH_CHAIN(){return "high_chain";}
         static const char* RANKING(){return "ranking";}
     };
+    
+    static const std::vector<std::string> ENEMY_IMAGE_LIST(){return {"f183", "f186", "f189", "f195", "f201", "f207", "f271", "f274", "f277"};};
+    static const std::vector<std::string> BG_IMAGE_LIST(){return {"000", "001", "002", "003", "004", "006", "007", "008", "010", "011", "012", "013"};};
+    static const std::vector<std::string> BATTLE_EFFECT_IMAGE_LIST(){return {"battleEffect107a", "battleEffect107b", "battleEffect107c", "battleEffect107d", "battleEffect107e", "battleEffect107f", "battleEffect107g", "battleEffect107h", "battleEffect107i", "battleEffect107j"};};
+    static const std::vector<std::string> EFFECT_LIST(){return {"se_battle_blow", "se_battle_darkness", "se_battle_fire", "se_battle_gun", "se_battle_water"};};
 };
 
 #endif /* defined(__Fragment_of_Eternity__Constant__) */

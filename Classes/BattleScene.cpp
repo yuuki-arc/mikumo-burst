@@ -13,6 +13,12 @@
 USING_NS_CC;
 
 BattleScene::BattleScene()
+: enemyImageList(Constant::ENEMY_IMAGE_LIST())
+, bgImageList(Constant::BG_IMAGE_LIST())
+, battleEffectImageList(Constant::BATTLE_EFFECT_IMAGE_LIST())
+, effectList(Constant::EFFECT_LIST())
+, gameTime(0)
+, gameEndFlg(false)
 {
 }
 
@@ -197,7 +203,7 @@ void BattleScene::replaceScene()
 
 void BattleScene::touchOn()
 {
-    auto listener = EventListenerTouchAllAtOnce::create();
+    listener = EventListenerTouchAllAtOnce::create();
     //    listener->setSwallowTouches(true);
     listener->onTouchesBegan = CC_CALLBACK_2(BattleScene::onTouchesBegan, this);
     listener->onTouchesMoved = CC_CALLBACK_2(BattleScene::onTouchesMoved, this);
@@ -209,7 +215,6 @@ void BattleScene::touchOn()
 
 void BattleScene::touchOff()
 {
-    auto listener = EventListenerTouchAllAtOnce::create();
 	this->getEventDispatcher()->removeEventListener(listener);
 }
 
