@@ -17,7 +17,7 @@ BattleScene::BattleScene()
 , bgImageList(Constant::BG_IMAGE_LIST())
 , battleEffectImageList(Constant::BATTLE_EFFECT_IMAGE_LIST())
 , effectList(Constant::EFFECT_LIST())
-, gameTime(0)
+, gameTime(Constant::GAME_TIME)
 , gameEndFlg(false)
 {
 }
@@ -26,6 +26,9 @@ BattleScene::~BattleScene()
 {
 }
 
+/**
+ 初期化
+ */
 bool BattleScene::init()
 {
     if(!CCLayer::init())
@@ -35,7 +38,6 @@ bool BattleScene::init()
 
     current_rank = UserDataStore::getRank();
 
-    gameTime = Constant::GAME_TIME;
     this->effectManager = new EffectManager();
     this->effectManager->init();
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
@@ -49,6 +51,9 @@ bool BattleScene::init()
     return true;
 }
 
+/**
+ 背景を初期化
+ */
 void BattleScene::initBackground()
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -70,6 +75,9 @@ void BattleScene::initBackground()
     this->addChild(background, ZOrder::Bg);
 }
 
+/**
+ 敵キャラクターを初期化
+ */
 void BattleScene::initEnemy()
 {
     enemyData = EnemyCharacter::create();
@@ -83,15 +91,15 @@ void BattleScene::initEnemy()
 
     CharacterCreator* creator = new CharacterCreator();
     enemyData->setImage(creator->create(enemyFileName, CharacterScale::ALL));
-//    this->addChild(enemyData->getImage(), ZOrder::Enemy);
 
     nodeGrid = NodeGrid::create();
     nodeGrid->addChild(enemyData->getImage());
     this->addChild(nodeGrid, ZOrder::Enemy);
-
-//    this->addChild(enemyData->getImage(), ZOrder::Enemy);
 }
 
+/**
+ ステータスレイヤーを初期化
+ */
 void BattleScene::initStatusLayer()
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -121,6 +129,9 @@ void BattleScene::initStatusLayer()
     hpFrame->addChild(enemyHpBar);
 }
 
+/**
+ タッチイベントを初期化
+ */
 void BattleScene::initTouchEvent()
 {
     touchOn();
@@ -131,6 +142,11 @@ void BattleScene::initTouchEvent()
 //    addChild(touchEffectMotion, ZOrder::TouchEffect);
 }
 
+/**
+ *  定期更新（1秒毎）
+ *
+ *  @param frame フレーム
+ */
 void BattleScene::updateBySchedule(float frame)
 {
     gameTime--;
@@ -143,6 +159,11 @@ void BattleScene::updateBySchedule(float frame)
     }
 }
 
+/**
+ *  定期更新（フレーム毎）
+ *
+ *  @param frame フレーム
+ */
 void BattleScene::update(float frame)
 {
     if (!gameEndFlg && enemyData->getHp() == 0)
@@ -150,15 +171,28 @@ void BattleScene::update(float frame)
         gameEndFlg = true;
         touchOff();
         nodeGrid->runAction(BattleActionCreator::defeatEnemy());
-        this->schedule(schedule_selector(BattleScene::updateByDefeatEnemy), 5.0f);
+        this->scheduleOnce(schedule_selector(BattleScene::updateByDefeatEnemy), 5.0f);
     }
 }
 
+/**
+ *  敵撃破時に行う処理
+ *
+ *  @param frame フレーム
+ */
 void BattleScene::updateByDefeatEnemy(float frame)
 {
     replaceScene();
 }
 
+/**
+ *  CocosBuilderで作成したメニューアイテム選択時処理
+ *
+ *  @param pTarget       pTarget
+ *  @param pSelectorName pSelectorName
+ *
+ *  @return NULL
+ */
 SEL_MenuHandler BattleScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName)
 {
     CCLOG("name = %s", pSelectorName);
@@ -166,6 +200,14 @@ SEL_MenuHandler BattleScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const 
     return NULL;
 }
 
+/**
+ *  CocosBuilderで作成したコントロール選択時処理
+ *
+ *  @param pTarget       pTarget
+ *  @param pSelectorName pSelectorName
+ *
+ *  @return NULL
+ */
 Control::Handler BattleScene::onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName)
 {
     CCLOG("name = %s", pSelectorName);
@@ -173,6 +215,12 @@ Control::Handler BattleScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
     return NULL;
 }
 
+/**
+ *  Nodeロード時処理
+ *
+ *  @param pNode       pNode
+ *  @param pNodeLoader pNodeLoader
+ */
 void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
     // BGM
@@ -188,12 +236,21 @@ void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     }
 }
 
+/**
+ *  Resultボタンタップ時処理
+ *
+ *  @param pTarget           pTarget
+ *  @param pControlEventType pControlEventType
+ */
 void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedResultButton eventType = %d", pControlEventType);
     replaceScene();
 }
 
+/**
+ *  画面遷移処理
+ */
 void BattleScene::replaceScene()
 {
     Scene* scene = ResultSceneLoader::createScene();
@@ -201,6 +258,9 @@ void BattleScene::replaceScene()
     Director::getInstance()->replaceScene(trans);
 }
 
+/**
+ *  マルチタッチイベント有効化
+ */
 void BattleScene::touchOn()
 {
     listener = EventListenerTouchAllAtOnce::create();
@@ -213,11 +273,20 @@ void BattleScene::touchOn()
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
+/**
+ *  タッチイベント無効化
+ */
 void BattleScene::touchOff()
 {
 	this->getEventDispatcher()->removeEventListener(listener);
 }
 
+/**
+ *  タッチ開始処理
+ *
+ *  @param touches touches
+ *  @param event   event
+ */
 void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
     SoundManager* soundManager = new SoundManager();
     std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
@@ -264,6 +333,13 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
     }
     return;
 }
+
+/**
+ *  タッチ移動時処理
+ *
+ *  @param touches touches
+ *  @param event   event
+ */
 void BattleScene::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
     
     std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
@@ -280,6 +356,13 @@ void BattleScene::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, c
     
     return;
 }
+
+/**
+ *  タッチ終了時処理
+ *
+ *  @param touches touches
+ *  @param event   event
+ */
 void BattleScene::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
     
     std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
@@ -293,6 +376,12 @@ void BattleScene::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, c
     return;
 }
 
+/**
+ *  タッチキャンセル時処理
+ *
+ *  @param touches touches
+ *  @param event   event
+ */
 //void BattleScene::onTouchCancelled(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
 //    
 //    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
