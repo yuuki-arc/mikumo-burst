@@ -8,7 +8,7 @@ class Constant
 {
 public:
     static const int GAME_TIME = 60;
-    static const int DEFAULT_ENEMY_HP = 100000;
+    static const int DEFAULT_ENEMY_HP = 1000000;
     static const int BASE_DAMAGE = 10000;
     static const int LIMIT_RANK = 99;
     static const int LIMIT_DAMAGE = 999999;

@@ -79,7 +79,7 @@ ActionInterval* BattleActionCreator::damageToEnemy3()
 
 ActionInterval* BattleActionCreator::defeatEnemy()
 {
-    ActionInterval* actionOne = FadeOutUpTiles::create(2.0f, Size(100,100));
+    ActionInterval* actionOne = FadeOutUpTiles::create(4.0f, Size(100,200));
     ActionInterval* action =
     Sequence::create(actionOne,
                      NULL);
