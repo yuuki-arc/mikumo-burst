@@ -82,7 +82,7 @@ void BattleScene::initEnemy()
 {
     enemyData = EnemyCharacter::create();
     enemyData->retain();
-    enemyData->setMaxHp(Constant::DEFAULT_ENEMY_HP + current_rank * 100000);
+    enemyData->setMaxHp(Constant::DEFAULT_ENEMY_HP + current_rank * Constant::HP_RANK_UP_INCREMENT);
     enemyData->setHp(enemyData->getMaxHp());
     CCLOG("HP: %d / %d", enemyData->getMaxHp(), enemyData->getHp());
     
@@ -297,7 +297,7 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
         auto location = touch->getLocation();
         
         // 与えたダメージ
-        int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP;
+        int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
 
         // 効果音
         int num = CCRANDOM_0_1() * effectList.size();
