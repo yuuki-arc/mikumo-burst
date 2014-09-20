@@ -297,7 +297,7 @@ void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, c
         auto location = touch->getLocation();
         
         // 与えたダメージ
-        int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * 1000;
+        int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP;
 
         // 効果音
         int num = CCRANDOM_0_1() * effectList.size();
