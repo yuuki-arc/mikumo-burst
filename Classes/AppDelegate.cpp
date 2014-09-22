@@ -39,7 +39,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     searchPaths.push_back("Resources");
     FileUtils::getInstance()->setSearchPaths(searchPaths);
     
-    CCLOG("height: %f, witdh: %f", screenSize.width, screenSize.height);
+    CCLOG("height: %f, width: %f", screenSize.width, screenSize.height);
 
     if (screenSize.height >= 960) {
         resourceSize = Size(640, 960);
