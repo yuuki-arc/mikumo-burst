@@ -37,6 +37,20 @@ bool BattleScene::init()
     }
 
     current_rank = UserDataStore::getRank();
+    
+    std::vector<std::map<std::string, std::string>> list = {};
+    
+    std::map<std::string, std::string> map;
+    map["chain"] = "200";
+    map["score"] = "12300";
+    list.push_back(map);
+    map.clear();
+    map["chain"] = "400";
+    map["score"] = "25000";
+    list.push_back(map);
+    
+    UserDataStore::setHighScore(list);
+    list = UserDataStore::getHighScore();
 
     this->effectManager = new EffectManager();
     this->effectManager->init();

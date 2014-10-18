@@ -55,12 +55,12 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     label->getTexture()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
 
-    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getHighScore());
-    reultLabel->setAnchorPoint(Point(0.5, 0.5));
-    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-                                  origin.y + visibleSize.height * 9.5 / 10));
-    reultLabel->getTexture()->setAliasTexParameters();
-    this->addChild(reultLabel, ZOrder::Font);
+//    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getHighScore());
+//    reultLabel->setAnchorPoint(Point(0.5, 0.5));
+//    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
+//                                  origin.y + visibleSize.height * 9.5 / 10));
+//    reultLabel->getTexture()->setAliasTexParameters();
+//    this->addChild(reultLabel, ZOrder::Font);
     
 }
 

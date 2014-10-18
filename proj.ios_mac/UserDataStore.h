@@ -11,11 +11,11 @@ private:
     UserDataStore();
     
 public:
-    static int getRank(int defaultRank = NULL);
     static void setRank(int rank);
+    static int getRank(int defaultRank = NULL);
     
-    static std::string getHighScore();
-    static void setHighScore(std::vector<std::string> scoreList);
+    static void setHighScore(std::vector<std::map<std::string, std::string>> scoreList);
+    static std::vector<std::map<std::string, std::string>> getHighScore();
     
 private:
     void initialize();

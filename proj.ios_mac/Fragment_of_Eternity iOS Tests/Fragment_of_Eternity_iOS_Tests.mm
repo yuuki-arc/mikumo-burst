@@ -27,24 +27,4 @@
     [super tearDown];
 }
 
-//- (void)testExample
-//{
-//    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-//}
-
-- (void)testUserDataStore_rank
-{
-    UserDataStore::setRank(5);
-    XCTAssertEqual(UserDataStore::getRank(), 5);
-}
-
-- (void)testUserDataStore_setHighScore
-{
-    std::vector<std::string> vector = {};
-    UserDataStore::setHighScore(vector);
-    UserDataStore::getHighScore();
-    XCTAssertEqual(UserDataStore::getRank(), 5);
-}
-
-
 @end

@@ -71,6 +71,7 @@
 		A59917F419B03F5B00A95508 /* SelectSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917EF19B03F5B00A95508 /* SelectSceneLoader.cpp */; };
 		A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F719B040CD00A95508 /* ResultScene.cpp */; };
 		A59917FC19B040CD00A95508 /* ResultSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */; };
+		A59AB12719F2675300BDE07D /* UserDataStoreTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = A59AB12619F2675300BDE07D /* UserDataStoreTests.mm */; };
 		A5A6ACC719C5823500800AE6 /* BattleActionCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A6ACC519C5823500800AE6 /* BattleActionCreator.cpp */; };
 		A5A7F0E019BB32E900A5BEDD /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */; };
 		A5A7F0E219BB394700A5BEDD /* sound in Resources */ = {isa = PBXBuildFile; fileRef = A5A7F0E119BB394700A5BEDD /* sound */; };
@@ -324,6 +325,7 @@
 		A59917F819B040CD00A95508 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = ../Classes/ResultScene.h; sourceTree = "<group>"; };
 		A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultSceneLoader.cpp; path = ../Classes/ResultSceneLoader.cpp; sourceTree = "<group>"; };
 		A59917FA19B040CD00A95508 /* ResultSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultSceneLoader.h; path = ../Classes/ResultSceneLoader.h; sourceTree = "<group>"; };
+		A59AB12619F2675300BDE07D /* UserDataStoreTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UserDataStoreTests.mm; sourceTree = "<group>"; };
 		A5A6ACC519C5823500800AE6 /* BattleActionCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BattleActionCreator.cpp; path = ../Classes/BattleActionCreator.cpp; sourceTree = "<group>"; };
 		A5A6ACC619C5823500800AE6 /* BattleActionCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BattleActionCreator.h; path = ../Classes/BattleActionCreator.h; sourceTree = "<group>"; };
 		A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/SoundManager.cpp; sourceTree = "<group>"; };
@@ -619,8 +621,9 @@
 		A5CCD2D619BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A5CCD2DC19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm */,
 				A5CCD2D719BEC71D002ED2FC /* Supporting Files */,
+				A5CCD2DC19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm */,
+				A59AB12619F2675300BDE07D /* UserDataStoreTests.mm */,
 			);
 			path = "Fragment_of_Eternity iOS Tests";
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59AB12719F2675300BDE07D /* UserDataStoreTests.mm in Sources */,
 				A5CCD2DD19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

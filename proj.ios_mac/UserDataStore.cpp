@@ -9,19 +9,19 @@ UserDataStore::UserDataStore()
     
 }
 
-int UserDataStore::getRank(int defaultRank)
-{
-    UserDefault* userDefault = UserDefault::getInstance();
-    return userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), defaultRank);
-}
-
 void UserDataStore::setRank(int rank)
 {
     UserDefault* userDefault = UserDefault::getInstance();
     userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), rank);
 }
 
-void UserDataStore::setHighScore(std::vector<std::string> scoreList)
+int UserDataStore::getRank(int defaultRank)
+{
+    UserDefault* userDefault = UserDefault::getInstance();
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), defaultRank);
+}
+
+void UserDataStore::setHighScore(std::vector<std::map<std::string, std::string>> scoreList)
 {
     UserDefault* userDefault = UserDefault::getInstance();
 
@@ -33,22 +33,34 @@ void UserDataStore::setHighScore(std::vector<std::string> scoreList)
     //   5: {"chain":200, "score":12300},
     // }
     //
+    //    picojson::object detail;
+    //    detail.insert(std::make_pair("chain", picojson::value(std::string("200"))));
+    //    detail.insert(std::make_pair("score", picojson::value(std::string("12300"))));
+    //    detail_list.push_back(picojson::value(detail));
+    //    
+    //    picojson::object detail2;
+    //    detail2.insert(std::make_pair("chain", picojson::value(std::string("400"))));
+    //    detail2.insert(std::make_pair("score", picojson::value(std::string("25000"))));
+    //    detail_list.push_back(picojson::value(detail2));
+    //    value = picojson::value(detail_list);
+    //    CCLOG("%s", value.serialize().c_str());
+    //    userDefault->setStringForKey("ranking", value.serialize());
+
     picojson::value value;
     picojson::array detail_list;
     
-    picojson::object detail;
-    detail.insert(std::make_pair("chain", picojson::value(std::string("200"))));
-    detail.insert(std::make_pair("score", picojson::value(std::string("12300"))));
-    detail_list.push_back(picojson::value(detail));
-
-    picojson::object detail2;
-    detail2.insert(std::make_pair("chain", picojson::value(std::string("400"))));
-    detail2.insert(std::make_pair("score", picojson::value(std::string("25000"))));
-    detail_list.push_back(picojson::value(detail2));
+    for (std::vector<std::map<std::string, std::string>>::iterator it =
+         scoreList.begin(); it != scoreList.end(); it++)
+    {
+        picojson::object detail;
+        std::map<std::string, std::string> map = (*it);
+        detail.insert(std::make_pair("chain", picojson::value(map["chain"])));
+        detail.insert(std::make_pair("score", picojson::value(map["score"])));
+        detail_list.push_back(picojson::value(detail));
+    }
     value = picojson::value(detail_list);
-    CCLOG("%s", value.serialize().c_str());
     userDefault->setStringForKey("ranking", value.serialize());
-
+    
 //    picojson::array& array = value["1"].get<picojson::array>();
 //    for (picojson::array::iterator it = array.begin(); it != array.end(); it++)
 //    {
@@ -74,24 +86,27 @@ void UserDataStore::setHighScore(std::vector<std::string> scoreList)
 //    }
 }
 
-std::string UserDataStore::getHighScore()
+std::vector<std::map<std::string, std::string>> UserDataStore::getHighScore()
 {
+    std::vector<std::map<std::string, std::string>> result = {};
+    
     UserDefault* userDefault = UserDefault::getInstance();
 
-//    picojson::array list;
-//    
-//    picojson::object detail;
-//    detail.insert(std::make_pair("chain", picojson::value(std::string("200"))));
-//    detail.insert(std::make_pair("score", picojson::value(std::string("12300"))));
-//    list.push_back(picojson::value(detail));
-//    
-//    picojson::object detail2;
-//    detail2.insert(std::make_pair("chain", picojson::value(std::string("400"))));
-//    detail2.insert(std::make_pair("score", picojson::value(std::string("25000"))));
-//    list.push_back(picojson::value(detail2));
-    std::string value = "";
-    value = userDefault->getStringForKey("ranking", "");
-    CCLOG("get: %s", value.c_str());
-
-    return value;
+    std::string list = "";
+    list = userDefault->getStringForKey("ranking", "");
+    
+    picojson::value v;
+    std::string err;
+    picojson::parse(v, list.begin(), list.end(), &err);
+    picojson::array& array = v.get<picojson::array>();
+    for (picojson::array::iterator it = array.begin(); it != array.end(); it++)
+    {
+        std::map<std::string, std::string> map;
+        picojson::object& jsonMap = it->get<picojson::object>();
+        map["chain"] = (std::string)jsonMap["chain"].get<std::string>();
+        map["score"] = (std::string)jsonMap["score"].get<std::string>();
+        result.push_back(map);
+    }
+    
+    return result;
 }
