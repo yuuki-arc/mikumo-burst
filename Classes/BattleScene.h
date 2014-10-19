@@ -82,16 +82,20 @@ private:
     
     UserDefault* userDefault = UserDefault::getInstance();
     
+    int current_rank;
     int gameTime;
     bool gameEndFlg;
-    int current_rank;
+    int eternityBreakTime;
     
-    void replaceScene();
+    void initBattleResult();
     void initBackground();
     void initPlayerInfo();
     void initEnemy();
     void initStatusLayer();
     void initTouchEvent();
+    
+    void endBattle();
+    void replaceScene();
 };
 
 #endif /* defined(__BATTLE_SCENE_H__) */

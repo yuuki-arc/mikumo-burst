@@ -24,3 +24,8 @@ float PlayerBattleInfo::getEpPercentage()
 {
     return ep * 100.f / Constant::MAX_PLAYER_EP;
 }
+
+void PlayerBattleInfo::incrementBattleEpCount()
+{
+    battleEpCount++;
+}

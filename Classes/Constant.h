@@ -8,6 +8,7 @@ class Constant
 {
 public:
     static const int GAME_TIME = 60;
+    static const int ETERNITY_BREAK_TIME = 5;
     static const int DEFAULT_ENEMY_HP = 1000000;
     static const int BASE_DAMAGE = 10000;
     static const int DAMAGE_RANK_UP_INCREMENT = 1000;
@@ -16,7 +17,6 @@ public:
     static const int LIMIT_DAMAGE = 999999;
     static const int MAX_PLAYER_EP = 100;
     static const int EP_INCREMENT = 2;
-    static const int OVER_LIMIT_TIME_INCREMENT = 10;
     
     static const std::vector<std::string> ENEMY_IMAGE_LIST(){
         return {

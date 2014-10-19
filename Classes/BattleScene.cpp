@@ -36,6 +36,29 @@ bool BattleScene::init()
         return false;
     }
 
+    this->effectManager = new EffectManager();
+    this->effectManager->init();
+    this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
+    this->scheduleUpdate();
+
+    initBattleResult();
+    initBackground();
+    initPlayerInfo();
+    initEnemy();
+    initStatusLayer();
+    initTouchEvent();
+    
+    return true;
+}
+
+/**
+ バトルリザルト数値を初期化
+ */
+void BattleScene::initBattleResult()
+{
+    GameManager::getInstance()->battleDamagePoint = 0;
+    GameManager::getInstance()->battleEternityPoint = 0;
+    
     current_rank = UserDataStore::getRank();
     
     std::vector<std::map<std::string, std::string>> list = {};
@@ -51,19 +74,6 @@ bool BattleScene::init()
     
     UserDataStore::setHighScore(list);
     list = UserDataStore::getHighScore();
-
-    this->effectManager = new EffectManager();
-    this->effectManager->init();
-    this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
-    this->scheduleUpdate();
-
-    initBackground();
-    initPlayerInfo();
-    initEnemy();
-    initStatusLayer();
-    initTouchEvent();
-    
-    return true;
 }
 
 /**
@@ -191,11 +201,16 @@ void BattleScene::updateBySchedule(float frame)
 {
     gameTime--;
     CCLOG("gameTime:%d", gameTime);
+    if (eternityBreakTime > 0)
+    {
+        eternityBreakTime--;
+    }
+    
     gameTimeLabel->setString(StringUtils::toString(gameTime));
     
     if (gameTime <= 0)
     {
-        replaceScene();
+        endBattle();
     }
 }
 
@@ -206,6 +221,16 @@ void BattleScene::updateBySchedule(float frame)
  */
 void BattleScene::update(float frame)
 {
+    // EPブレイク
+    if (playerInfo->getEp() == Constant::MAX_PLAYER_EP)
+    {
+        playerInfo->incrementBattleEpCount();
+        playerInfo->setEp(0);
+        eternityBreakTime = Constant::ETERNITY_BREAK_TIME;
+    }
+    
+    
+    // 敵撃破
     if (!gameEndFlg && enemyData->getHp() == 0)
     {
         gameEndFlg = true;
@@ -222,7 +247,7 @@ void BattleScene::update(float frame)
  */
 void BattleScene::updateByDefeatEnemy(float frame)
 {
-    replaceScene();
+    endBattle();
 }
 
 /**
@@ -285,6 +310,17 @@ void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedResultButton eventType = %d", pControlEventType);
+    endBattle();
+}
+
+/**
+ *  バトル終了処理
+ */
+void BattleScene::endBattle()
+{
+    GameManager::getInstance()->battleDamagePoint = enemyData->getMaxHp() - enemyData->getHp();
+    GameManager::getInstance()->battleEternityPoint = playerInfo->getEp();
+
     replaceScene();
 }
 
