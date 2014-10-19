@@ -58,6 +58,7 @@ bool BattleScene::init()
     this->scheduleUpdate();
 
     initBackground();
+    initPlayerInfo();
     initEnemy();
     initStatusLayer();
     initTouchEvent();
@@ -87,6 +88,16 @@ void BattleScene::initBackground()
         background->setScale(background->getScale()*0.8, background->getScale()*0.8);
     }
     this->addChild(background, ZOrder::Bg);
+}
+
+/**
+ プレイヤー情報を初期化
+ */
+void BattleScene::initPlayerInfo()
+{
+    playerInfo = PlayerBattleInfo::create();
+    playerInfo->retain();
+    playerInfo->setEp(0);
 }
 
 /**
@@ -141,6 +152,21 @@ void BattleScene::initStatusLayer()
     enemyHpBar->setBarChangeRate(Point(1, 0));
     enemyHpBar->setPercentage(enemyData->getHpPercentage());
     hpFrame->addChild(enemyHpBar);
+
+    // EP
+    Sprite* epFrame = Sprite::createWithSpriteFrameName("ep_frame.png");
+    epFrame->setPosition(Point(origin.x + visibleSize.width / 2,
+                               origin.y + visibleSize.height * 0.5 / 10));
+    addChild(epFrame, ZOrder::PlayerEp);
+    
+    Sprite* ep = Sprite::createWithSpriteFrameName("ep.png");
+    playerEpBar = ProgressTimer::create(ep);
+    playerEpBar->setPosition(Point(epFrame->getContentSize().width / 2, epFrame->getContentSize().height / 2));
+    playerEpBar->setType(ProgressTimer::Type::BAR);
+    playerEpBar->setMidpoint(Point::ZERO);
+    playerEpBar->setBarChangeRate(Point(1, 0));
+    playerEpBar->setPercentage(playerInfo->getEpPercentage());
+    epFrame->addChild(playerEpBar);
 }
 
 /**
@@ -330,9 +356,18 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     auto afterHp = enemyData->getHp() - damage;
     afterHp = afterHp < 0 ? 0 : afterHp;
     enemyData->setHp(afterHp);
-    auto act = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
-    enemyHpBar->runAction(act);
-    CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
+    auto enemyAct = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
+    enemyHpBar->runAction(enemyAct);
+    CCLOG("enemyAct:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
+    
+    // プレイヤーEPゲージ
+    auto preEpPercentage = playerInfo->getEpPercentage();
+    auto afterEp = playerInfo->getEp() + Constant::EP_INCREMENT;
+    afterEp = afterEp > Constant::MAX_PLAYER_EP ? Constant::MAX_PLAYER_EP : afterEp;
+    playerInfo->setEp(afterEp);
+    auto playerAct = ProgressFromTo::create(0.5, preEpPercentage, playerInfo->getEpPercentage());
+    playerEpBar->runAction(playerAct);
+    CCLOG("playerAct:%d / %f%%",playerInfo->getEp(), playerInfo->getEpPercentage());
     
     // ダメージエフェクト生成
     auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(damage));
@@ -344,7 +379,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     
     damageNumSprite->runAction(BattleActionCreator::attackToEnemy());
     nodeGrid->runAction(BattleActionCreator::damageToEnemy2());
-        
+    
     CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
     return true;
 }

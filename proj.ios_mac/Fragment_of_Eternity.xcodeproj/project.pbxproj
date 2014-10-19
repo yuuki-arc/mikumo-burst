@@ -91,6 +91,7 @@
 		A5CCD2D519BEC71D002ED2FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
 		A5CCD2DB19BEC71D002ED2FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5CCD2D919BEC71D002ED2FC /* InfoPlist.strings */; };
 		A5CCD2DD19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5CCD2DC19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm */; };
+		A5ED392F19F3BC360086C17B /* PlayerBattleInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5ED392D19F3BC360086C17B /* PlayerBattleInfo.cpp */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
@@ -351,6 +352,8 @@
 		A5CCD2DA19BEC71D002ED2FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5CCD2DC19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Fragment_of_Eternity_iOS_Tests.mm; sourceTree = "<group>"; };
 		A5CCD2DE19BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fragment_of_Eternity iOS Tests-Prefix.pch"; sourceTree = "<group>"; };
+		A5ED392D19F3BC360086C17B /* PlayerBattleInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerBattleInfo.cpp; sourceTree = "<group>"; };
+		A5ED392E19F3BC360086C17B /* PlayerBattleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBattleInfo.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -476,6 +479,8 @@
 				A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */,
 				A5A7F0DF19BB32E900A5BEDD /* SoundManager.h */,
 				A5CCD2BB19BC9DEF002ED2FC /* Constant.h */,
+				A5ED392D19F3BC360086C17B /* PlayerBattleInfo.cpp */,
+				A5ED392E19F3BC360086C17B /* PlayerBattleInfo.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -885,6 +890,7 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				A59917F119B03F5B00A95508 /* BattleScene.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				A5ED392F19F3BC360086C17B /* PlayerBattleInfo.cpp in Sources */,
 				A5A7F0E519BB5D8400A5BEDD /* EnemyCharacter.cpp in Sources */,
 				A52B54BB19BB0CA900804FEF /* EffectManager.cpp in Sources */,
 				A5A6ACC719C5823500800AE6 /* BattleActionCreator.cpp in Sources */,

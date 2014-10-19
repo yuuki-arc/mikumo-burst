@@ -14,6 +14,9 @@ public:
     static const int HP_RANK_UP_INCREMENT = 100000;
     static const int LIMIT_RANK = 99;
     static const int LIMIT_DAMAGE = 999999;
+    static const int MAX_PLAYER_EP = 100;
+    static const int EP_INCREMENT = 2;
+    static const int OVER_LIMIT_TIME_INCREMENT = 10;
     
     static const std::vector<std::string> ENEMY_IMAGE_LIST(){
         return {

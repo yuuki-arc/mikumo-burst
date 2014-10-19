@@ -5,6 +5,7 @@
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
 #include "EffectManager.h"
+#include "PlayerBattleInfo.h"
 #include "EnemyCharacter.h"
 
 USING_NS_CC;
@@ -57,6 +58,7 @@ private:
         BattleEffect,
         TouchEffect,
         EnemyHp,
+        PlayerEp,
         PersonaHp,
         Status,
         Font,
@@ -72,6 +74,8 @@ private:
 //    EventListenerTouchAllAtOnce* listener;
     EventListenerTouchOneByOne* listener;
     NodeGrid* nodeGrid;
+    PlayerBattleInfo* playerInfo;
+    ProgressTimer* playerEpBar;
     EnemyCharacter* enemyData;
     ProgressTimer* enemyHpBar;
     Label* gameTimeLabel;
@@ -84,6 +88,7 @@ private:
     
     void replaceScene();
     void initBackground();
+    void initPlayerInfo();
     void initEnemy();
     void initStatusLayer();
     void initTouchEvent();

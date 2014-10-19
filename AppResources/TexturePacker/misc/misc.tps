@@ -190,6 +190,8 @@
             <filename>hp_frame.png</filename>
             <filename>hp.png</filename>
             <filename>touchEffect.png</filename>
+            <filename>ep_frame.png</filename>
+            <filename>ep.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
