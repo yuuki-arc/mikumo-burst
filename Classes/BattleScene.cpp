@@ -41,12 +41,12 @@ bool BattleScene::init()
     std::vector<std::map<std::string, std::string>> list = {};
     
     std::map<std::string, std::string> map;
-    map["chain"] = "200";
-    map["score"] = "12300";
+    map.insert(std::make_pair("chain", "200"));
+    map.insert(std::make_pair("score", "12300"));
     list.push_back(map);
     map.clear();
-    map["chain"] = "400";
-    map["score"] = "25000";
+    map.insert(std::make_pair("chain", "400"));
+    map.insert(std::make_pair("score", "25000"));
     list.push_back(map);
     
     UserDataStore::setHighScore(list);
@@ -273,17 +273,23 @@ void BattleScene::replaceScene()
 }
 
 /**
- *  マルチタッチイベント有効化
+ *  タッチイベント有効化
  */
 void BattleScene::touchOn()
 {
-    listener = EventListenerTouchAllAtOnce::create();
-    //    listener->setSwallowTouches(true);
-    listener->onTouchesBegan = CC_CALLBACK_2(BattleScene::onTouchesBegan, this);
-    listener->onTouchesMoved = CC_CALLBACK_2(BattleScene::onTouchesMoved, this);
-    listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
-    //    listener->onTouchCancelled = CC_CALLBACK_2(BattleScene::onTouchCancelled, this);
-    
+//    listener = EventListenerTouchAllAtOnce::create();
+//    listener->onTouchesBegan = CC_CALLBACK_2(BattleScene::onTouchesBegan, this);
+//    listener->onTouchesMoved = CC_CALLBACK_2(BattleScene::onTouchesMoved, this);
+//    listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
+//    listener->onTouchesCancelled = CC_CALLBACK_2(BattleScene::onTouchesCancelled, this);
+
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+    listener->onTouchBegan = CC_CALLBACK_2(BattleScene::onTouchBegan, this);
+    listener->onTouchMoved = CC_CALLBACK_2(BattleScene::onTouchMoved, this);
+    listener->onTouchEnded = CC_CALLBACK_2(BattleScene::onTouchEnded, this);
+    listener->onTouchCancelled = CC_CALLBACK_2(BattleScene::onTouchCancelled, this);
+
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
@@ -298,75 +304,65 @@ void BattleScene::touchOff()
 /**
  *  タッチ開始処理
  *
- *  @param touches touches
+ *  @param touch   touch
  *  @param event   event
  */
-void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     SoundManager* soundManager = new SoundManager();
-    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
-    while (iterator != touches.end()) {
-
-        // タッチ位置
-        Touch* touch = (Touch*)(*iterator);
-        auto location = touch->getLocation();
+    
+    // タッチ位置
+    auto location = touch->getLocation();
+    
+    // 与えたダメージ
+    int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
+    
+    // 効果音
+    int num = CCRANDOM_0_1() * effectList.size();
+    soundManager->playSE(effectList.at(num));
+    
+    // ヒットエフェクト生成
+    num = CCRANDOM_0_1() * battleEffectImageList.size();
+    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(num), 10, location);
+    this->addChild(effectSprite, ZOrder::TouchEffect);
+    
+    // 敵のHPゲージ
+    auto preHpPercentage = enemyData->getHpPercentage();
+    auto afterHp = enemyData->getHp() - damage;
+    afterHp = afterHp < 0 ? 0 : afterHp;
+    enemyData->setHp(afterHp);
+    auto act = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
+    enemyHpBar->runAction(act);
+    CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
+    
+    // ダメージエフェクト生成
+    auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(damage));
+    damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
+    damageNumSprite->setAlignment(TextHAlignment::CENTER);
+    damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
+    damageNumSprite->setScale(BM_FONT_SIZE64(24));
+    effectSprite->addChild(damageNumSprite);
+    
+    damageNumSprite->runAction(BattleActionCreator::attackToEnemy());
+    nodeGrid->runAction(BattleActionCreator::damageToEnemy2());
         
-        // 与えたダメージ
-        int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
-
-        // 効果音
-        int num = CCRANDOM_0_1() * effectList.size();
-        soundManager->playSE(effectList.at(num));
-
-        // ヒットエフェクト生成
-        num = CCRANDOM_0_1() * battleEffectImageList.size();
-        Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(num), 10, location);
-        this->addChild(effectSprite, ZOrder::TouchEffect);
-        
-        // 敵のHPゲージ
-        auto preHpPercentage = enemyData->getHpPercentage();
-        auto afterHp = enemyData->getHp() - damage;
-        afterHp = afterHp < 0 ? 0 : afterHp;
-        enemyData->setHp(afterHp);
-        auto act = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
-        enemyHpBar->runAction(act);
-        CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
-
-        // ダメージエフェクト生成
-        auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(damage));
-        damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
-        damageNumSprite->setAlignment(TextHAlignment::CENTER);
-        damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
-        damageNumSprite->setScale(BM_FONT_SIZE64(24));
-        effectSprite->addChild(damageNumSprite);
-
-        damageNumSprite->runAction(BattleActionCreator::attackToEnemy());
-        nodeGrid->runAction(BattleActionCreator::damageToEnemy2());
-
-        iterator++;
-        CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
-    }
-    return;
+    CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
+    return true;
 }
 
 /**
  *  タッチ移動時処理
  *
- *  @param touches touches
+ *  @param touch   touch
  *  @param event   event
  */
-void BattleScene::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+void BattleScene::onTouchMoved(Touch* touch, Event *event){
     
-    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
-    while (iterator != touches.end()) {
-        Touch* touch = (Touch*)(*iterator);
-        auto location = touch->getLocation();
-
-//        Point pos = this->convertTouchToNodeSpace(touch);
-//        this->touchEffectMotion->setPosition(pos);
-        
-        iterator++;
-        CCLOG("(onTouchesMoved) x:%f, y:%f", location.x, location.y);
-    }
+    auto location = touch->getLocation();
+    
+    //        Point pos = this->convertTouchToNodeSpace(touch);
+    //        this->touchEffectMotion->setPosition(pos);
+    
+    CCLOG("(onTouchesMoved) x:%f, y:%f", location.x, location.y);
     
     return;
 }
@@ -374,29 +370,117 @@ void BattleScene::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, c
 /**
  *  タッチ終了時処理
  *
- *  @param touches touches
+ *  @param touch   touch
  *  @param event   event
  */
-void BattleScene::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+void BattleScene::onTouchEnded(Touch* touch, Event *event){
     
-    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
-    while (iterator != touches.end()) {
-        Touch* touch = (Touch*)(*iterator);
-        auto location = touch->getLocation();
-        
-        iterator++;
-        CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
-    }
+    auto location = touch->getLocation();
+    
+    CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
+
     return;
 }
 
 /**
  *  タッチキャンセル時処理
  *
- *  @param touches touches
+ *  @param touch   touch
  *  @param event   event
  */
-//void BattleScene::onTouchCancelled(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+void BattleScene::onTouchCancelled(Touch* touch, Event *event){
+
+    auto location = touch->getLocation();
+
+    CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
+
+    return;
+}
+
+// ↓マルチタッチ用
+///**
+// *  タッチ開始処理
+// *
+// *  @param touches touches
+// *  @param event   event
+// */
+//void BattleScene::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+//    SoundManager* soundManager = new SoundManager();
+//    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
+//    while (iterator != touches.end()) {
+//
+//        // タッチ位置
+//        Touch* touch = (Touch*)(*iterator);
+//        auto location = touch->getLocation();
+//        
+//        // 与えたダメージ
+//        int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
+//
+//        // 効果音
+//        int num = CCRANDOM_0_1() * effectList.size();
+//        soundManager->playSE(effectList.at(num));
+//
+//        // ヒットエフェクト生成
+//        num = CCRANDOM_0_1() * battleEffectImageList.size();
+//        Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(num), 10, location);
+//        this->addChild(effectSprite, ZOrder::TouchEffect);
+//        
+//        // 敵のHPゲージ
+//        auto preHpPercentage = enemyData->getHpPercentage();
+//        auto afterHp = enemyData->getHp() - damage;
+//        afterHp = afterHp < 0 ? 0 : afterHp;
+//        enemyData->setHp(afterHp);
+//        auto act = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
+//        enemyHpBar->runAction(act);
+//        CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
+//
+//        // ダメージエフェクト生成
+//        auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(damage));
+//        damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
+//        damageNumSprite->setAlignment(TextHAlignment::CENTER);
+//        damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
+//        damageNumSprite->setScale(BM_FONT_SIZE64(24));
+//        effectSprite->addChild(damageNumSprite);
+//
+//        damageNumSprite->runAction(BattleActionCreator::attackToEnemy());
+//        nodeGrid->runAction(BattleActionCreator::damageToEnemy2());
+//
+//        iterator++;
+//        CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
+//    }
+//    return;
+//}
+//
+///**
+// *  タッチ移動時処理
+// *
+// *  @param touches touches
+// *  @param event   event
+// */
+//void BattleScene::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+//    
+//    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
+//    while (iterator != touches.end()) {
+//        Touch* touch = (Touch*)(*iterator);
+//        auto location = touch->getLocation();
+//
+////        Point pos = this->convertTouchToNodeSpace(touch);
+////        this->touchEffectMotion->setPosition(pos);
+//        
+//        iterator++;
+//        CCLOG("(onTouchesMoved) x:%f, y:%f", location.x, location.y);
+//    }
+//    
+//    return;
+//}
+//
+///**
+// *  タッチ終了時処理
+// *
+// *  @param touches touches
+// *  @param event   event
+// */
+//void BattleScene::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
 //    
 //    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
 //    while (iterator != touches.end()) {
@@ -408,3 +492,22 @@ void BattleScene::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, c
 //    }
 //    return;
 //}
+//
+///**
+// *  タッチキャンセル時処理
+// *
+// *  @param touches touches
+// *  @param event   event
+// */
+////void BattleScene::onTouchesCancelled(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+////    
+////    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
+////    while (iterator != touches.end()) {
+////        Touch* touch = (Touch*)(*iterator);
+////        auto location = touch->getLocation();
+////        
+////        iterator++;
+////        CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
+////    }
+////    return;
+////}

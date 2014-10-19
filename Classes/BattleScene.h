@@ -34,11 +34,18 @@ public:
 
     virtual void touchOn();
     virtual void touchOff();
-    
-    virtual void onTouchesBegan(const std::vector<Touch*>& touches, Event *event);
-    virtual void onTouchesMoved(const std::vector<Touch*>& touches, Event *event);
-    virtual void onTouchesEnded(const std::vector<Touch*>& touches, Event *event);
-//    virtual void onTouchCancelled(const std::vector<Touch*>& touches, Event *event);
+
+    // シングルタッチイベント
+    bool onTouchBegan(Touch* touch, Event *event);
+    void onTouchMoved(Touch* touch, Event *event);
+    void onTouchEnded(Touch* touch, Event *event);
+    void onTouchCancelled(Touch* touch, Event *event);
+
+//    // マルチタッチイベント
+//    virtual void onTouchesBegan(const std::vector<Touch*>& touches, Event *event);
+//    virtual void onTouchesMoved(const std::vector<Touch*>& touches, Event *event);
+//    virtual void onTouchesEnded(const std::vector<Touch*>& touches, Event *event);
+//    virtual void onTouchesCancelled(const std::vector<Touch*>& touches, Event *event);
 
     void pushBack(Ref* pSender);
 
@@ -62,7 +69,8 @@ private:
     std::vector<std::string> battleEffectImageList;
     std::vector<std::string> effectList;
 
-    EventListenerTouchAllAtOnce* listener;
+//    EventListenerTouchAllAtOnce* listener;
+    EventListenerTouchOneByOne* listener;
     NodeGrid* nodeGrid;
     EnemyCharacter* enemyData;
     ProgressTimer* enemyHpBar;
