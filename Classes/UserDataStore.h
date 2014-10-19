@@ -5,6 +5,9 @@
 
 USING_NS_CC;
 
+typedef std::map<std::string, std::string> StringMap;
+typedef std::vector<StringMap> StringMapVector;
+
 class UserDataStore
 {
 private:
@@ -14,8 +17,8 @@ public:
     static void setRank(int rank);
     static int getRank(int defaultRank = NULL);
     
-    static void setHighScore(std::vector<std::map<std::string, std::string>> scoreList);
-    static std::vector<std::map<std::string, std::string>> getHighScore();
+    static void setHighScore(StringMapVector scoreList);
+    static StringMapVector getHighScore();
     
 private:
     void initialize();
