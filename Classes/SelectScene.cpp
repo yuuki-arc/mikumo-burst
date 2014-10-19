@@ -1,4 +1,5 @@
 #include "SelectScene.h"
+#include "ScoreSceneLoader.h"
 #include "BattleSceneLoader.h"
 #include "CharacterCreator.h"
 #include "SoundManager.h"
@@ -31,6 +32,7 @@ SEL_MenuHandler SelectScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const 
 Control::Handler SelectScene::onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName)
 {
     CCLOG("name = %s", pSelectorName);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedScoreButton", SelectScene::tappedScoreButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBattleButton", SelectScene::tappedBattleButton);
     return NULL;
 }
@@ -61,6 +63,17 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     CharacterCreator* creator = new CharacterCreator();
     Sprite* character = creator->create(personaFileName, CharacterScale::HARF);
     this->addChild(character, ZOrder::Persona);
+}
+
+void SelectScene::tappedScoreButton(Ref* pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedScoreButton eventType = %d", pControlEventType);
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    
+    Scene* scene = ScoreSceneLoader::createScene();
+    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
+    Director::getInstance()->replaceScene(trans);
 }
 
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)

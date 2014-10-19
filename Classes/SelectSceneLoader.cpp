@@ -1,5 +1,4 @@
 #include "SelectSceneLoader.h"
-#include "CharacterCreator.h"
 
 Scene* SelectSceneLoader::createScene()
 {
