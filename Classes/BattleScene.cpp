@@ -369,7 +369,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     playerEpBar->runAction(playerAct);
     CCLOG("playerAct:%d / %f%%",playerInfo->getEp(), playerInfo->getEpPercentage());
     
-    // ダメージエフェクト生成
+    // ダメージ値生成
     auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(damage));
     damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
     damageNumSprite->setAlignment(TextHAlignment::CENTER);
@@ -377,8 +377,10 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     damageNumSprite->setScale(BM_FONT_SIZE64(24));
     effectSprite->addChild(damageNumSprite);
     
+    // 敵のダメージエフェクト生成
     damageNumSprite->runAction(BattleActionCreator::attackToEnemy());
-    nodeGrid->runAction(BattleActionCreator::damageToEnemy2());
+    nodeGrid->runAction(BattleActionCreator::damageToEnemy3());
+    nodeGrid->setGrid(NULL);
     
     CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
     return true;

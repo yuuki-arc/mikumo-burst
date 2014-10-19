@@ -20,7 +20,7 @@ Sprite* CharacterCreator::create(const std::string &filename, CharacterScale cha
 
     Sprite* character = Sprite::createWithSpriteFrameName(filename);
     character->setPosition(Point(origin.x + visibleSize.width / 2,
-                                  origin.y + visibleSize.height * 6 / 10));
+                                  origin.y + visibleSize.height * 5 / 10));
     float scale = character->getScale() * characterScale / 100;
     character->setScale(scale, scale);
     

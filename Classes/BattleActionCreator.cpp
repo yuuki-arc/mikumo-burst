@@ -66,9 +66,9 @@ ActionInterval* BattleActionCreator::damageToEnemy2()
 ActionInterval* BattleActionCreator::damageToEnemy3()
 {
     PointArray* points = PointArray::create(3);
-    points->addControlPoint(Size(0,0));
-    points->addControlPoint(Size(0,10));
-    points->addControlPoint(Size(0,0));
+    points->addControlPoint(Size(0, 0));
+    points->addControlPoint(Size(arc4random()%20 - 10.0f, arc4random()%20 - 10.0f));
+    points->addControlPoint(Size(0, 0));
     ActionInterval* actionOne = CardinalSplineBy::create(0.2f, points, 5.0f);
     ActionInterval* action =
         Sequence::create(actionOne,
