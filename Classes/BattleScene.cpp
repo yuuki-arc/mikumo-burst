@@ -335,7 +335,10 @@ void BattleScene::touchOff()
  */
 bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     SoundManager* soundManager = new SoundManager();
-    
+
+    // ゲームエンドの場合は処理しない
+    if (gameEndFlg) return true;
+
     // タッチ位置
     auto location = touch->getLocation();
     
@@ -394,6 +397,9 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
  */
 void BattleScene::onTouchMoved(Touch* touch, Event *event){
     
+    // ゲームエンドの場合は処理しない
+    if (gameEndFlg) return;
+    
     auto location = touch->getLocation();
     
     //        Point pos = this->convertTouchToNodeSpace(touch);
@@ -412,6 +418,9 @@ void BattleScene::onTouchMoved(Touch* touch, Event *event){
  */
 void BattleScene::onTouchEnded(Touch* touch, Event *event){
     
+    // ゲームエンドの場合は処理しない
+    if (gameEndFlg) return;
+    
     auto location = touch->getLocation();
     
     CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
@@ -427,6 +436,9 @@ void BattleScene::onTouchEnded(Touch* touch, Event *event){
  */
 void BattleScene::onTouchCancelled(Touch* touch, Event *event){
 
+    // ゲームエンドの場合は処理しない
+    if (gameEndFlg) return;
+    
     auto location = touch->getLocation();
 
     CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);

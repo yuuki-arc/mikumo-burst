@@ -55,11 +55,11 @@ ActionInterval* BattleActionCreator::damageToEnemy2()
 {
     ActionInterval* actionShaky = ShakyTiles3D::create(0.1f, Size(100,100), 10, true);
     ActionInterval* action =
-    Sequence::create(DelayTime::create(0.2f),
-                     actionShaky,
-                     actionShaky->reverse(),
-                     StopGrid::create(),
-                     NULL);
+        Sequence::create(DelayTime::create(0.2f),
+                         actionShaky,
+                         actionShaky->reverse(),
+                         StopGrid::create(),
+                         NULL);
     return action;
 }
 
@@ -79,9 +79,11 @@ ActionInterval* BattleActionCreator::damageToEnemy3()
 
 ActionInterval* BattleActionCreator::defeatEnemy()
 {
-    ActionInterval* actionOne = FadeOutUpTiles::create(4.0f, Size(100,200));
+    ActionInterval* actionTintTo = TintTo::create(0.2f, 255, 255, 255);
+    ActionInterval* actionFadeOut = FadeOutUpTiles::create(4.0f, Size(100,200));
     ActionInterval* action =
-    Sequence::create(actionOne,
-                     NULL);
+        Sequence::create(actionTintTo,
+                         actionFadeOut,
+                             NULL);
     return action;
 }
