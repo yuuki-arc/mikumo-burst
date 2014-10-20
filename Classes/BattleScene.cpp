@@ -19,6 +19,7 @@ BattleScene::BattleScene()
 , effectList(Constant::EFFECT_LIST())
 , gameTime(Constant::GAME_TIME)
 , gameEndFlg(false)
+, eternityBreakTime(0)
 {
 }
 
@@ -377,17 +378,31 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
 
     // タッチ位置
     auto location = touch->getLocation();
-    
-    // 与えたダメージ
-    int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
+
+    int damage;             // 与えたダメージ
+    int soundEffectNum;     // 効果音
+    int hitSpriteNum;       // ヒットエフェクト
+    if (eternityBreakTime == 0)
+    {
+        // 通常時
+        damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
+        soundEffectNum = 1;
+        hitSpriteNum = 1;
+    }
+    else
+    {
+        // Eブレイク時
+        damage = Constant::BASE_DAMAGE_BREAK + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
+        soundEffectNum = CCRANDOM_0_1() * effectList.size();
+        hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
+    }
+
     
     // 効果音
-    int num = CCRANDOM_0_1() * effectList.size();
-    soundManager->playSE(effectList.at(num));
+    soundManager->playSE(effectList.at(soundEffectNum));
     
     // ヒットエフェクト生成
-    num = CCRANDOM_0_1() * battleEffectImageList.size();
-    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(num), 10, location);
+    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(hitSpriteNum), 10, location);
     this->addChild(effectSprite, ZOrder::TouchEffect);
     
     // 敵のHPゲージ
@@ -414,6 +429,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     damageNumSprite->setAlignment(TextHAlignment::CENTER);
     damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
     damageNumSprite->setScale(BM_FONT_SIZE64(24));
+    if (eternityBreakTime > 0) damageNumSprite->setColor(Color3B::MAGENTA);
     effectSprite->addChild(damageNumSprite);
     
     // 敵のダメージエフェクト生成
