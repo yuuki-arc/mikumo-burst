@@ -37,17 +37,20 @@ bool BattleScene::init()
         return false;
     }
 
-    this->effectManager = new EffectManager();
-    this->effectManager->init();
-    this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
-    this->scheduleUpdate();
-
+    CCLOG("init: %d", eternityBreakTime);
     initBattleResult();
     initBackground();
     initPlayerInfo();
     initEnemy();
     initStatusLayer();
     initTouchEvent();
+    
+    CCLOG("init-end: %d", eternityBreakTime);
+    this->effectManager = new EffectManager();
+    this->effectManager->init();
+    this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
+    this->scheduleUpdate();
+    CCLOG("init-end2: %d", eternityBreakTime);
     
     return true;
 }
@@ -62,9 +65,9 @@ void BattleScene::initBattleResult()
     
     current_rank = UserDataStore::getRank();
     
-    std::vector<std::map<std::string, std::string>> list = {};
+    StringMapVector list = {};
     
-    std::map<std::string, std::string> map;
+    StringMap map;
     map.insert(std::make_pair("chain", "200"));
     map.insert(std::make_pair("score", "12300"));
     list.push_back(map);
@@ -141,6 +144,11 @@ void BattleScene::initStatusLayer()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
+    // 数値を初期化
+    gameTime = Constant::GAME_TIME;
+    gameEndFlg = false;
+    eternityBreakTime = 0;
+
     // 時間制限
     gameTimeLabel = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(gameTime));
     gameTimeLabel->setAnchorPoint(Point(0.5, 0.5));
@@ -202,12 +210,22 @@ void BattleScene::updateBySchedule(float frame)
 {
     gameTime--;
     CCLOG("gameTime:%d", gameTime);
+    CCLOG("updateBySchedule: %d", eternityBreakTime);
     if (eternityBreakTime > 0)
     {
         eternityBreakTime--;
+        CCLOG("eternityBreakTime:%d", eternityBreakTime);
     }
     
     gameTimeLabel->setString(StringUtils::toString(gameTime));
+    if (eternityBreakTime > 0)
+    {
+        gameTimeLabel->setColor(Color3B::MAGENTA);
+    }
+    else
+    {
+        gameTimeLabel->setColor(Color3B(255,255,255));
+    }
     
     if (gameTime <= 0)
     {
@@ -234,8 +252,8 @@ void BattleScene::update(float frame)
     // 敵撃破
     if (!gameEndFlg && enemyData->getHp() == 0)
     {
-        gameEndFlg = true;
         touchOff();
+        gameEndFlg = true;
         nodeGrid->runAction(BattleActionCreator::defeatEnemy());
         this->scheduleOnce(schedule_selector(BattleScene::updateByDefeatEnemy), 5.0f);
     }
@@ -320,7 +338,7 @@ void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEv
 void BattleScene::endBattle()
 {
     GameManager::getInstance()->battleDamagePoint = enemyData->getMaxHp() - enemyData->getHp();
-    GameManager::getInstance()->battleEternityPoint = playerInfo->getEp();
+    GameManager::getInstance()->battleEternityPoint = playerInfo->getbattleEpCount();
 
     replaceScene();
 }
@@ -382,6 +400,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     int damage;             // 与えたダメージ
     int soundEffectNum;     // 効果音
     int hitSpriteNum;       // ヒットエフェクト
+    CCLOG("onTouchBegan: %d", eternityBreakTime);
     if (eternityBreakTime == 0)
     {
         // 通常時
@@ -430,6 +449,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
     damageNumSprite->setScale(BM_FONT_SIZE64(24));
     if (eternityBreakTime > 0) damageNumSprite->setColor(Color3B::MAGENTA);
+//    damageNumSprite->updateDisplayedColor(Color3B(100,200,255));
     effectSprite->addChild(damageNumSprite);
     
     // 敵のダメージエフェクト生成

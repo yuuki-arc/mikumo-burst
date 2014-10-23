@@ -5,6 +5,7 @@ USING_NS_CC;
 
 PlayerBattleInfo::PlayerBattleInfo()
 : ep(0)
+, battleEpCount(0)
 {
 }
 

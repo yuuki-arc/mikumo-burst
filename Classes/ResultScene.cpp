@@ -1,6 +1,7 @@
 #include "ResultScene.h"
 #include "SelectSceneLoader.h"
 #include "Constant.h"
+#include "GameManager.h"
 #include "SoundManager.h"
 #include "UserDataStore.h"
 
@@ -48,6 +49,10 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // SE
     soundManager->preloadSE("se_select");
 
+    // スコア計算
+    int score = GameManager::getInstance()->battleDamagePoint;
+    int ebCount = GameManager::getInstance()->battleEternityPoint;
+    
     // 結果
     auto label = Label::createWithBMFont("Arial_Black.fnt", "RESULT");
     label->setAnchorPoint(Point(0, 0.5));
@@ -57,30 +62,31 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     label->getTexture()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
 
-    StringMapVector scoreList = UserDataStore::getHighScore();
-    int count = 0;
-    for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)
-    {
-        StringMap map = (*it);
-        Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", "CHAIN: " + map["chain"]);
-        reultLabel->setAnchorPoint(Point(0, 0.5));
-        reultLabel->setScale(BM_FONT_SIZE64(16));
-        reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-                                      origin.y + visibleSize.height * (8.5 - count) / 10));
-        reultLabel->getTexture()->setAliasTexParameters();
-        this->addChild(reultLabel, ZOrder::Font);
-
-        reultLabel = Label::createWithBMFont("Arial_Black.fnt", "SCORE: " + map["score"]);
-        reultLabel->setAnchorPoint(Point(0, 0.5));
-        reultLabel->setScale(BM_FONT_SIZE64(16));
-        reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-                                      origin.y + visibleSize.height * (8.0 - count) / 10));
-        reultLabel->getTexture()->setAliasTexParameters();
-        this->addChild(reultLabel, ZOrder::Font);
-        
-        count++;
-    }
+    // スコア表示
+    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", "SCORE: " + std::to_string(score));
+    reultLabel->setAnchorPoint(Point(0, 0.5));
+    reultLabel->setScale(BM_FONT_SIZE64(16));
+    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
+                                  origin.y + visibleSize.height * 8.5 / 10));
+    reultLabel->getTexture()->setAliasTexParameters();
+    this->addChild(reultLabel, ZOrder::Font);
     
+    reultLabel = Label::createWithBMFont("Arial_Black.fnt", "BREAK: " + std::to_string(ebCount));
+    reultLabel->setAnchorPoint(Point(0, 0.5));
+    reultLabel->setScale(BM_FONT_SIZE64(16));
+    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
+                                  origin.y + visibleSize.height * 8.0 / 10));
+    reultLabel->getTexture()->setAliasTexParameters();
+    this->addChild(reultLabel, ZOrder::Font);
+
+    // スコア保存
+    StringMapVector scoreList = UserDataStore::getHighScore();
+    StringMap scoreMap;
+    scoreMap.insert(std::make_pair("score", std::to_string(score)));
+    scoreMap.insert(std::make_pair("break", std::to_string(ebCount)));
+    scoreList.push_back(scoreMap);
+    UserDataStore::setHighScore(scoreList);
+
 //    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getHighScore());
 //    reultLabel->setAnchorPoint(Point(0.5, 0.5));
 //    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
