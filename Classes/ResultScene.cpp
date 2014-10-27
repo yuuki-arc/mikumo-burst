@@ -3,6 +3,7 @@
 #include "Constant.h"
 #include "GameManager.h"
 #include "SoundManager.h"
+#include "TextCreator.h"
 #include "UserDataStore.h"
 
 ResultScene::ResultScene()
@@ -50,35 +51,43 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     soundManager->preloadSE("se_select");
 
     // スコア計算
+    int currentRank = GameManager::getInstance()->currentRank;
     int score = GameManager::getInstance()->battleDamagePoint;
     int ebCount = GameManager::getInstance()->battleEternityPoint;
     
-    // 結果
-    auto label = Label::createWithBMFont("Arial_Black.fnt", "RESULT");
-    label->setAnchorPoint(Point(0, 0.5));
-    label->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-                             origin.y + visibleSize.height * 9.5 / 10));
-    label->setColor(Color3B(113, 212, 255));
-    label->getTexture()->setAliasTexParameters();
-    this->addChild(label, ZOrder::Font);
-
     // スコア表示
-    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", "SCORE: " + std::to_string(score));
-    reultLabel->setAnchorPoint(Point(0, 0.5));
-    reultLabel->setScale(BM_FONT_SIZE64(16));
-    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-                                  origin.y + visibleSize.height * 8.5 / 10));
-    reultLabel->getTexture()->setAliasTexParameters();
-    this->addChild(reultLabel, ZOrder::Font);
+    float labelWidth = origin.x + visibleSize.width * 1/ 10;
+    float relativeLabelHeight = 9.5f;
+    Label* resultLabel;
+    Point point;
     
-    reultLabel = Label::createWithBMFont("Arial_Black.fnt", "BREAK: " + std::to_string(ebCount));
-    reultLabel->setAnchorPoint(Point(0, 0.5));
-    reultLabel->setScale(BM_FONT_SIZE64(16));
-    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-                                  origin.y + visibleSize.height * 8.0 / 10));
-    reultLabel->getTexture()->setAliasTexParameters();
-    this->addChild(reultLabel, ZOrder::Font);
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("RESULT", point, Color3B(113, 212, 255));
+    this->addChild(resultLabel, ZOrder::Font);
 
+    relativeLabelHeight -= 1.0f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("RANK: " + std::to_string(currentRank), point);
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    relativeLabelHeight -= 1.0f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("SCORE: " + std::to_string(score), point);
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    relativeLabelHeight -= 1.0f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("BREAK: " + std::to_string(ebCount), point);
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    // 次ランクへ
+    if (currentRank < Constant::LIMIT_RANK)
+    {
+        currentRank++;
+        UserDataStore::setRank(currentRank);
+    }
+    
+    
     // スコア保存
     StringMapVector scoreList = UserDataStore::getHighScore();
     StringMap scoreMap;
@@ -87,12 +96,12 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     scoreList.push_back(scoreMap);
     UserDataStore::setHighScore(scoreList);
 
-//    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getHighScore());
-//    reultLabel->setAnchorPoint(Point(0.5, 0.5));
-//    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
+//    Label* resultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getHighScore());
+//    resultLabel->setAnchorPoint(Point(0.5, 0.5));
+//    resultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
 //                                  origin.y + visibleSize.height * 9.5 / 10));
-//    reultLabel->getTexture()->setAliasTexParameters();
-//    this->addChild(reultLabel, ZOrder::Font);
+//    resultLabel->getTexture()->setAliasTexParameters();
+//    this->addChild(resultLabel, ZOrder::Font);
     
 }
 

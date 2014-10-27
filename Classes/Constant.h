@@ -7,16 +7,16 @@
 class Constant
 {
 public:
-    static const int GAME_TIME = 60;
-    static const int ETERNITY_BREAK_TIME = 5;
+    static const int GAME_TIME = 10;
+    static const int ETERNITY_BREAK_TIME = 2;
     static const int DEFAULT_ENEMY_HP = 1000000;
-    static const int BASE_DAMAGE = 10000;
-    static const int BASE_DAMAGE_BREAK = 40000;
+    static const int BASE_DAMAGE = 1000;
+    static const int BASE_DAMAGE_BREAK = 4000;
     static const int DAMAGE_RANK_UP_INCREMENT = 1000;
     static const int HP_RANK_UP_INCREMENT = 100000;
-    static const int LIMIT_RANK = 99;
+    static const int LIMIT_RANK = 999;
     static const int LIMIT_DAMAGE = 999999;
-    static const int MAX_PLAYER_EP = 20;
+    static const int MAX_PLAYER_EP = 100;
     static const int EP_INCREMENT = 1;
     
     static const std::vector<std::string> ENEMY_IMAGE_LIST(){

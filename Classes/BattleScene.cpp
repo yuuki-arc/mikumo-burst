@@ -5,6 +5,7 @@
 #include "UserDataStore.h"
 #include "CharacterCreator.h"
 #include "EnemyCharacter.h"
+//#include "EnemyTargetter.h"
 #include "EffectManager.h"
 #include "SoundManager.h"
 #include "BattleActionCreator.h"
@@ -43,7 +44,11 @@ bool BattleScene::init()
     initPlayerInfo();
     initEnemy();
     initStatusLayer();
-    initTouchEvent();
+    
+    // 数値を初期化
+    gameTime = Constant::GAME_TIME;
+    gameEndFlg = false;
+    eternityBreakTime = 0;
     
     CCLOG("init-end: %d", eternityBreakTime);
     this->effectManager = new EffectManager();
@@ -51,6 +56,8 @@ bool BattleScene::init()
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
     this->scheduleUpdate();
     CCLOG("init-end2: %d", eternityBreakTime);
+
+    initTouchEvent();
     
     return true;
 }
@@ -63,7 +70,7 @@ void BattleScene::initBattleResult()
     GameManager::getInstance()->battleDamagePoint = 0;
     GameManager::getInstance()->battleEternityPoint = 0;
     
-    current_rank = UserDataStore::getRank();
+    currentRank = UserDataStore::getRank(1);
     
     StringMapVector list = {};
     
@@ -121,7 +128,7 @@ void BattleScene::initEnemy()
 {
     enemyData = EnemyCharacter::create();
     enemyData->retain();
-    enemyData->setMaxHp(Constant::DEFAULT_ENEMY_HP + current_rank * Constant::HP_RANK_UP_INCREMENT);
+    enemyData->setMaxHp(Constant::DEFAULT_ENEMY_HP + currentRank * Constant::HP_RANK_UP_INCREMENT);
     enemyData->setHp(enemyData->getMaxHp());
     CCLOG("HP: %d / %d", enemyData->getMaxHp(), enemyData->getHp());
     
@@ -144,11 +151,14 @@ void BattleScene::initStatusLayer()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
-    // 数値を初期化
-    gameTime = Constant::GAME_TIME;
-    gameEndFlg = false;
-    eternityBreakTime = 0;
-
+    // ランク
+    Label* rankLabel = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(currentRank));
+    rankLabel->setAnchorPoint(Point(0.5, 0.5));
+    rankLabel->setPosition(Point(origin.x + visibleSize.width * 0.1/ 10,
+                                 origin.y + visibleSize.height * 9.5 / 10));
+    rankLabel->getTexture()->setAliasTexParameters();
+    this->addChild(rankLabel, ZOrder::Font);
+    
     // 時間制限
     gameTimeLabel = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(gameTime));
     gameTimeLabel->setAnchorPoint(Point(0.5, 0.5));
@@ -208,6 +218,12 @@ void BattleScene::initTouchEvent()
  */
 void BattleScene::updateBySchedule(float frame)
 {
+    if (gameTime <= 0)
+    {
+        endBattle();
+        return;
+    }
+    
     gameTime--;
     CCLOG("gameTime:%d", gameTime);
     CCLOG("updateBySchedule: %d", eternityBreakTime);
@@ -227,10 +243,23 @@ void BattleScene::updateBySchedule(float frame)
         gameTimeLabel->setColor(Color3B(255,255,255));
     }
     
-    if (gameTime <= 0)
-    {
-        endBattle();
-    }
+//    if (gameTime == 10)
+//    {
+//        Size visibleSize = Director::getInstance()->getVisibleSize();
+//        Point origin = Director::getInstance()->getVisibleOrigin();
+//        
+//        EnemyTargetter* enemyTargetter = EnemyTargetter::create();
+//        targetter->retain();
+//        std::string fileName = "touchEffect.png";
+//        CharacterCreator* creator = new CharacterCreator();
+//        targetter->setImage(creator->create(fileName, CharacterScale::ALL));
+//        
+//        Point point = Point(origin.x + visibleSize.width * 1/ 10,
+//                            origin.y + visibleSize.height * 9.5 / 10);
+//        targetter->setPosition(point);
+//        Node* targetGrid = NodeGrid::create();
+//        targetGrid->addChild(enemyData->getImage(), ZOrder::EnemyTargetter);
+//    }
 }
 
 /**
@@ -337,6 +366,7 @@ void BattleScene::tappedResultButton(Ref* pTarget, Control::EventType pControlEv
  */
 void BattleScene::endBattle()
 {
+    this->unschedule(schedule_selector(BattleScene::updateBySchedule));
     GameManager::getInstance()->battleDamagePoint = enemyData->getMaxHp() - enemyData->getHp();
     GameManager::getInstance()->battleEternityPoint = playerInfo->getbattleEpCount();
 

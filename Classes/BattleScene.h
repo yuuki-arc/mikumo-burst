@@ -7,6 +7,7 @@
 #include "EffectManager.h"
 #include "PlayerBattleInfo.h"
 #include "EnemyCharacter.h"
+//#include "EnemyTargetter.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -55,6 +56,7 @@ private:
     {
         Bg = 0,
         Enemy,
+//        EnemyTargetter,
         BattleEffect,
         TouchEffect,
         EnemyHp,
@@ -74,15 +76,17 @@ private:
 //    EventListenerTouchAllAtOnce* listener;
     EventListenerTouchOneByOne* listener;
     NodeGrid* nodeGrid;
+//    NodeGrid* targetGrid;
     PlayerBattleInfo* playerInfo;
     ProgressTimer* playerEpBar;
     EnemyCharacter* enemyData;
+//    EnemyTargetter* enemyTargetter;
     ProgressTimer* enemyHpBar;
     Label* gameTimeLabel;
     
     UserDefault* userDefault = UserDefault::getInstance();
     
-    int current_rank;
+    int currentRank;
     int gameTime;
     bool gameEndFlg;
     int eternityBreakTime;
