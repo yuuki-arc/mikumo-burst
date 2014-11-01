@@ -6,10 +6,14 @@ USING_NS_CC;
 
 bool EffectManager::init()
 {
-    SpriteFrameCache* spriteFrameCache = SpriteFrameCache::getInstance();
+    CCLOG("EffectManager1");
+    auto spriteFrameCache = SpriteFrameCache::getInstance();
+    CCLOG("EffectManager2");
     spriteFrameCache->addSpriteFramesWithFile("effect/battleEffect0.plist");
+    CCLOG("EffectManager3");
     if (GameManager::getInstance()->isScreenModeHd())
     {
+        CCLOG("EffectManager3-ScreenModeHd");
         spriteFrameCache->addSpriteFramesWithFile("effect/battleEffect1.plist");
     }
     
@@ -18,7 +22,7 @@ bool EffectManager::init()
 
 Sprite* EffectManager::effectPurified(std::string effectName, int count, Point location)
 {
-    SpriteFrameCache* spriteFrameCache = SpriteFrameCache::getInstance();
+    auto spriteFrameCache = SpriteFrameCache::getInstance();
     auto frames = new Vector<SpriteFrame *>();
     for (int i = 0; i < count; i++)
     {

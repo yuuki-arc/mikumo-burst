@@ -57,12 +57,12 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     this->addChild(label, ZOrder::Font);
  
     // キャラ
-    int num = CCRANDOM_0_1() * personaImageList.size();
-    std::string personaFileName = StringUtils::format("%s.png", personaImageList.at(num).c_str());
-    
-    CharacterCreator* creator = new CharacterCreator();
-    Sprite* character = creator->create(personaFileName, CharacterScale::HARF);
-    this->addChild(character, ZOrder::Persona);
+//    int num = CCRANDOM_0_1() * personaImageList.size();
+//    std::string personaFileName = StringUtils::format("%s.png", personaImageList.at(num).c_str());
+//    
+//    CharacterCreator* creator = new CharacterCreator();
+//    Sprite* character = creator->create(personaFileName, CharacterScale::HARF);
+//    this->addChild(character, ZOrder::Persona);
 }
 
 void SelectScene::tappedScoreButton(Ref* pTarget, Control::EventType pControlEventType)

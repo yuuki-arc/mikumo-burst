@@ -26,6 +26,16 @@ BattleScene::BattleScene()
 
 BattleScene::~BattleScene()
 {
+//    CC_SAFE_RELEASE(_topLeft);
+//    CC_SAFE_RELEASE(_top);
+//    CC_SAFE_RELEASE(_topRight);
+//    CC_SAFE_RELEASE(_left);
+//    CC_SAFE_RELEASE(_centre);
+//    CC_SAFE_RELEASE(_right);
+//    CC_SAFE_RELEASE(_bottomLeft);
+//    CC_SAFE_RELEASE(_bottom);
+//    CC_SAFE_RELEASE(_bottomRight);
+//    CC_SAFE_RELEASE(_scale9Image);
 }
 
 /**
@@ -33,12 +43,13 @@ BattleScene::~BattleScene()
  */
 bool BattleScene::init()
 {
+    CCLOG("init-start");
     if(!CCLayer::init())
     {
         return false;
     }
 
-    CCLOG("init: %d", eternityBreakTime);
+    CCLOG("init-eternityBreakTime0: %d", eternityBreakTime);
     initBattleResult();
     initBackground();
     initPlayerInfo();
@@ -50,15 +61,19 @@ bool BattleScene::init()
     gameEndFlg = false;
     eternityBreakTime = 0;
     
-    CCLOG("init-end: %d", eternityBreakTime);
+    CCLOG("init-eternityBreakTime1: %d", eternityBreakTime);
     this->effectManager = new EffectManager();
+    CCLOG("init-eternityBreakTime2: %d", eternityBreakTime);
     this->effectManager->init();
+    CCLOG("init-eternityBreakTime3: %d", eternityBreakTime);
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
+    CCLOG("init-eternityBreakTime4: %d", eternityBreakTime);
     this->scheduleUpdate();
-    CCLOG("init-end2: %d", eternityBreakTime);
+    CCLOG("init-eternityBreakTime5: %d", eternityBreakTime);
 
     initTouchEvent();
     
+    CCLOG("init-end");
     return true;
 }
 
@@ -218,6 +233,7 @@ void BattleScene::initTouchEvent()
  */
 void BattleScene::updateBySchedule(float frame)
 {
+    CCLOG("updateBySchedule-start");
     if (gameTime <= 0)
     {
         endBattle();
@@ -225,12 +241,11 @@ void BattleScene::updateBySchedule(float frame)
     }
     
     gameTime--;
-    CCLOG("gameTime:%d", gameTime);
-    CCLOG("updateBySchedule: %d", eternityBreakTime);
+    CCLOG("updateBySchedule-gameTime:%d", gameTime);
+    CCLOG("updateBySchedule-eternityBreakTime: %d", eternityBreakTime);
     if (eternityBreakTime > 0)
     {
         eternityBreakTime--;
-        CCLOG("eternityBreakTime:%d", eternityBreakTime);
     }
     
     gameTimeLabel->setString(StringUtils::toString(gameTime));
@@ -260,6 +275,7 @@ void BattleScene::updateBySchedule(float frame)
 //        Node* targetGrid = NodeGrid::create();
 //        targetGrid->addChild(enemyData->getImage(), ZOrder::EnemyTargetter);
 //    }
+    CCLOG("updateBySchedule-end");
 }
 
 /**
@@ -269,12 +285,18 @@ void BattleScene::updateBySchedule(float frame)
  */
 void BattleScene::update(float frame)
 {
+//    CCLOG("update-start");
+    
     // EPブレイク
     if (playerInfo->getEp() == Constant::MAX_PLAYER_EP)
     {
+        CCLOG("update-ep-break EP: %d", playerInfo->getEp());
+        CCLOG("update-ep-break eternityBreakTime: %d", eternityBreakTime);
         playerInfo->incrementBattleEpCount();
         playerInfo->setEp(0);
         eternityBreakTime = Constant::ETERNITY_BREAK_TIME;
+        CCLOG("update-ep-break EP: %d", playerInfo->getEp());
+        CCLOG("update-ep-break eternityBreakTime: %d", eternityBreakTime);
     }
     
     
@@ -286,6 +308,7 @@ void BattleScene::update(float frame)
         nodeGrid->runAction(BattleActionCreator::defeatEnemy());
         this->scheduleOnce(schedule_selector(BattleScene::updateByDefeatEnemy), 5.0f);
     }
+//    CCLOG("update-end");
 }
 
 /**
@@ -336,17 +359,22 @@ Control::Handler BattleScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
  */
 void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
+    CCLOG("onNodeLoaded-start");
     // BGM
     SoundManager* soundManager = new SoundManager();
+    CCLOG("onNodeLoaded-new SoundManager");
     soundManager->playBGM("bgm_battle", true);
+    CCLOG("onNodeLoaded-playBGM");
 
     // SE
     std::vector<std::string>::const_iterator iterator = effectList.begin();
+    CCLOG("onNodeLoaded-iterator");
     while (iterator != effectList.end()) {
         soundManager->preloadSE(*iterator);
         CCLOG("preloadSE:%s", (*iterator).c_str());
         iterator++;
     }
+    CCLOG("onNodeLoaded-end");
 }
 
 /**
@@ -394,6 +422,7 @@ void BattleScene::touchOn()
 //    listener->onTouchesEnded = CC_CALLBACK_2(BattleScene::onTouchesEnded, this);
 //    listener->onTouchesCancelled = CC_CALLBACK_2(BattleScene::onTouchesCancelled, this);
 
+    CCLOG("touchOn-start");
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
     listener->onTouchBegan = CC_CALLBACK_2(BattleScene::onTouchBegan, this);
@@ -402,6 +431,7 @@ void BattleScene::touchOn()
     listener->onTouchCancelled = CC_CALLBACK_2(BattleScene::onTouchCancelled, this);
 
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    CCLOG("touchOn-end");
 }
 
 /**
@@ -430,7 +460,8 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     int damage;             // 与えたダメージ
     int soundEffectNum;     // 効果音
     int hitSpriteNum;       // ヒットエフェクト
-    CCLOG("onTouchBegan: %d", eternityBreakTime);
+    CCLOG("onTouchBegan-eternityBreakTime: %d", eternityBreakTime);
+    CCLOG("onTouchBegan-gameEndFlg: %d", gameEndFlg);
     if (eternityBreakTime == 0)
     {
         // 通常時
@@ -461,7 +492,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     enemyData->setHp(afterHp);
     auto enemyAct = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
     enemyHpBar->runAction(enemyAct);
-    CCLOG("enemyAct:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
+    CCLOG("onTouchBegan-enemyHp:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
     
     // プレイヤーEPゲージ
     auto preEpPercentage = playerInfo->getEpPercentage();
@@ -470,7 +501,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     playerInfo->setEp(afterEp);
     auto playerAct = ProgressFromTo::create(0.5, preEpPercentage, playerInfo->getEpPercentage());
     playerEpBar->runAction(playerAct);
-    CCLOG("playerAct:%d / %f%%",playerInfo->getEp(), playerInfo->getEpPercentage());
+    CCLOG("onTouchBegan-playerEp:%d / %f%%",playerInfo->getEp(), playerInfo->getEpPercentage());
     
     // ダメージ値生成
     auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(damage));
@@ -487,7 +518,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     nodeGrid->runAction(BattleActionCreator::damageToEnemy3());
     nodeGrid->setGrid(NULL);
     
-    CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
+//    CCLOG("(onTouchesBegan) x:%f, y:%f", location.x, location.y);
     return true;
 }
 
@@ -507,7 +538,7 @@ void BattleScene::onTouchMoved(Touch* touch, Event *event){
     //        Point pos = this->convertTouchToNodeSpace(touch);
     //        this->touchEffectMotion->setPosition(pos);
     
-    CCLOG("(onTouchesMoved) x:%f, y:%f", location.x, location.y);
+//    CCLOG("(onTouchesMoved) x:%f, y:%f", location.x, location.y);
     
     return;
 }
@@ -525,7 +556,7 @@ void BattleScene::onTouchEnded(Touch* touch, Event *event){
     
     auto location = touch->getLocation();
     
-    CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
+//    CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
 
     return;
 }
@@ -543,7 +574,7 @@ void BattleScene::onTouchCancelled(Touch* touch, Event *event){
     
     auto location = touch->getLocation();
 
-    CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
+//    CCLOG("(onTouchesEnded) x:%f, y:%f", location.x, location.y);
 
     return;
 }
