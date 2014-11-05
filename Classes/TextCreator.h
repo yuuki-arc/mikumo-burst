@@ -5,11 +5,6 @@
 
 USING_NS_CC;
 
-enum CharacterScale {
-    ALL  = 100,
-    HARF = 75,
-};
-
 class TextCreator
 {
     
