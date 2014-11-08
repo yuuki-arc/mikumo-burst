@@ -63,8 +63,6 @@ bool BattleScene::init()
     
     CCLOG("init-eternityBreakTime1: %d", eternityBreakTime);
     this->effectManager = new EffectManager();
-    CCLOG("init-eternityBreakTime2: %d", eternityBreakTime);
-    this->effectManager->init();
     CCLOG("init-eternityBreakTime3: %d", eternityBreakTime);
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
     CCLOG("init-eternityBreakTime4: %d", eternityBreakTime);

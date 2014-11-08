@@ -8,8 +8,6 @@ USING_NS_CC;
 class EffectManager
 {
 public:
-    virtual bool init();
-    
     Sprite* effectPurified(std::string effectName, int count, Point location);
     
 };
