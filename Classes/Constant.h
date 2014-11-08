@@ -8,7 +8,7 @@ class Constant
 {
 public:
     static const int GAME_TIME = 10;
-    static const int ETERNITY_BREAK_TIME = 2;
+    static const int ETERNITY_BREAK_TIME = 3;
     static const int DEFAULT_ENEMY_HP = 1000000;
     static const int BASE_DAMAGE = 1000;
     static const int BASE_DAMAGE_BREAK = 4000;
@@ -41,8 +41,8 @@ public:
     };
     static const std::vector<std::string> EFFECT_LIST(){
         return {
-            "se_battle_blow", "se_battle_darkness", "se_battle_fire",
-            "se_battle_gun", "se_battle_water"
+            "se_battle_blow", "se_battle_gun",
+            "se_battle_darkness", "se_battle_fire", "se_battle_water"
         };
     };
 

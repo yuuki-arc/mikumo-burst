@@ -464,15 +464,15 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     {
         // 通常時
         damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
-        soundEffectNum = 1;
-        hitSpriteNum = 1;
+        soundEffectNum = CCRANDOM_0_1() * 2;
+        hitSpriteNum = CCRANDOM_0_1() * 2;
     }
     else
     {
         // Eブレイク時
         damage = Constant::BASE_DAMAGE_BREAK + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
-        soundEffectNum = CCRANDOM_0_1() * effectList.size();
-        hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
+        soundEffectNum = CCRANDOM_0_1() * (effectList.size() - 2) + 2;
+        hitSpriteNum = CCRANDOM_0_1() * (battleEffectImageList.size() - 2) + 2;
     }
 
     
