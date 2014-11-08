@@ -81,7 +81,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     frameCache->addSpriteFramesWithFile("character/persona/persona.plist");
     frameCache->addSpriteFramesWithFile("misc/misc.plist");
     frameCache->addSpriteFramesWithFile("bg/bg.plist");
-    
+
+//    frameCache->addSpriteFramesWithFile("effect/battleEffect0.plist");
+//    if (GameManager::getInstance()->isScreenModeHd())
+//    {
+//        frameCache->addSpriteFramesWithFile("effect/battleEffect1.plist");
+//    }
+
     // CocosBuilderのファイルを読み込みゲーム画面を生成する
     auto *pScene = TitleSceneLoader::createScene();
     

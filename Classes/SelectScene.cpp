@@ -84,7 +84,7 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 
     
     // キャラ
-//    int num = CCRANDOM_0_1() * personaImageList.size();
+//    int num = 5; //CCRANDOM_0_1() * personaImageList.size();
 //    std::string personaFileName = StringUtils::format("%s.png", personaImageList.at(num).c_str());
 //    
 //    CharacterCreator* creator = new CharacterCreator();
