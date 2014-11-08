@@ -4,26 +4,21 @@
 
 USING_NS_CC;
 
-UserDataStore::UserDataStore()
-{
-    
-}
-
 void UserDataStore::setRank(int rank)
 {
-    UserDefault* userDefault = UserDefault::getInstance();
+    UserDefault* userDefault = UserDataStore::getInstance();
     userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), rank);
 }
 
 int UserDataStore::getRank(int defaultRank)
 {
-    UserDefault* userDefault = UserDefault::getInstance();
+    UserDefault* userDefault = UserDataStore::getInstance();
     return userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), defaultRank);
 }
 
 void UserDataStore::setHighScore(StringMapVector scoreList)
 {
-    UserDefault* userDefault = UserDefault::getInstance();
+    UserDefault* userDefault = UserDataStore::getInstance();
 
     // {
     //   1: {"chain":200, "score":12300},
@@ -89,7 +84,7 @@ StringMapVector UserDataStore::getHighScore()
 {
     StringMapVector result = {};
     
-    UserDefault* userDefault = UserDefault::getInstance();
+    UserDefault* userDefault = UserDataStore::getInstance();
 
     std::string list = "";
     list = userDefault->getStringForKey("ranking", "");

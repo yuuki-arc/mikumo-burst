@@ -8,10 +8,11 @@ USING_NS_CC;
 typedef std::map<std::string, std::string> StringMap;
 typedef std::vector<StringMap> StringMapVector;
 
-class UserDataStore
+class UserDataStore : public UserDefault
 {
 private:
     UserDataStore();
+    virtual ~UserDataStore();
     
 public:
     static void setRank(int rank);
@@ -20,8 +21,6 @@ public:
     static void setHighScore(StringMapVector scoreList);
     static StringMapVector getHighScore();
     
-private:
-    void initialize();
 };
 
 #endif /* defined(__Fragment_of_Eternity__UserDataStore__) */
