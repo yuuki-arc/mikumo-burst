@@ -2,7 +2,7 @@
 
 USING_NS_CC;
 
-GameManager* GameManager::mGameManager = NULL;
+GameManager* GameManager::instance = NULL;
 
 GameManager::GameManager()
 {
@@ -11,13 +11,13 @@ GameManager::GameManager()
 
 GameManager* GameManager::getInstance()
 {
-    if(mGameManager == NULL)
+    if(instance == NULL)
     {
-        mGameManager = new GameManager();
-        mGameManager->initialize();
+        instance = new GameManager();
+        instance->initialize();
     }
     
-    return mGameManager;
+    return instance;
 }
 
 void GameManager::initialize()
