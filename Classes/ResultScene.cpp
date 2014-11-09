@@ -85,6 +85,7 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     {
         currentRank++;
         UserDataStore::setRank(currentRank);
+        CCLOG("Result - rank:%d", UserDataStore::getRank());
     }
     
     

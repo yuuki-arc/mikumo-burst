@@ -5,6 +5,7 @@
 #include "TitleScene.h"
 #include "TitleSceneLoader.h"
 #include "SimpleAudioEngine.h"
+#include "UserDataStore.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -88,6 +89,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
         frameCache->addSpriteFramesWithFile("effect/battleEffect1.plist");
     }
 
+    // ゲームデータが存在するか判定し、存在しない場合は初期セットアップを行う
+    if (!UserDataStore::isDataStored())
+    {
+        UserDataStore::setupData();
+    }
+    GameManager::getInstance()->currentRank = UserDataStore::getRank();
+    
     // CocosBuilderのファイルを読み込みゲーム画面を生成する
     auto *pScene = TitleSceneLoader::createScene();
     

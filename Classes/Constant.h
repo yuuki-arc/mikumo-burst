@@ -52,6 +52,7 @@ public:
     class UserDefaultKey
     {
     public:
+        static const char* DATA_STORED(){return "data_stored";}
         static const char* RANK(){return "rank";}
         static const char* HIGH_SCORE(){return "high_score";}
         static const char* HIGH_CHAIN(){return "high_chain";}

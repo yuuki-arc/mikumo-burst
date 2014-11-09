@@ -167,7 +167,7 @@ void BattleScene::initStatusLayer()
     // ランク
     Label* rankLabel = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(currentRank));
     rankLabel->setAnchorPoint(Point(0.5, 0.5));
-    rankLabel->setPosition(Point(origin.x + visibleSize.width * 0.1/ 10,
+    rankLabel->setPosition(Point(origin.x + visibleSize.width * 1 / 10,
                                  origin.y + visibleSize.height * 9.5 / 10));
     rankLabel->getTexture()->setAliasTexParameters();
     this->addChild(rankLabel, ZOrder::Font);
@@ -175,7 +175,7 @@ void BattleScene::initStatusLayer()
     // 時間制限
     gameTimeLabel = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(gameTime));
     gameTimeLabel->setAnchorPoint(Point(0.5, 0.5));
-    gameTimeLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
+    gameTimeLabel->setPosition(Point(origin.x + visibleSize.width * 9 / 10,
                                      origin.y + visibleSize.height * 9.5 / 10));
     gameTimeLabel->getTexture()->setAliasTexParameters();
     this->addChild(gameTimeLabel, ZOrder::Font);

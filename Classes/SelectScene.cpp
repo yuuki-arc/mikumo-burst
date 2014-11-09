@@ -52,6 +52,7 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 
     // データを取得
     int currentRank = UserDataStore::getRank(1);
+    CCLOG("Select - rank:%d", currentRank);
     StringMapVector scoreList = UserDataStore::getHighScore();
     
     // スコア表示

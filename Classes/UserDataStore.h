@@ -15,6 +15,11 @@ private:
     virtual ~UserDataStore();
     
 public:
+    static void setupData();
+    
+    static void setDataStoredOn();
+    static bool isDataStored();
+    
     static void setRank(int rank);
     static int getRank(int defaultRank = NULL);
     
