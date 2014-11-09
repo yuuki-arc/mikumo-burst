@@ -31,20 +31,32 @@ void SoundManager::playBGM(const std::string musicName, bool forceStart)
     }
     if (!audioEngine->isBackgroundMusicPlaying())
     {
-        std::string musicFileName = "sound/" + musicName + ".mp3";
-        audioEngine->preloadBackgroundMusic(musicFileName.c_str());
-        audioEngine->playBackgroundMusic(musicFileName.c_str(), true);
+        std::string fileName = "sound/" + musicName + ".mp3";
+        audioEngine->preloadBackgroundMusic(fileName.c_str());
+        audioEngine->playBackgroundMusic(fileName.c_str(), true);
     }
 }
 
 void SoundManager::preloadSE(const std::string seName)
 {
-    std::string seFileName = "sound/" + seName + ".mp3";
-    SimpleAudioEngine::getInstance()->preloadEffect(seFileName.c_str());
+    std::string fileName = "sound/" + seName + ".mp3";
+    SimpleAudioEngine::getInstance()->preloadEffect(fileName.c_str());
 }
 
 void SoundManager::playSE(const std::string seName)
 {
-    std::string seFileName = "sound/" + seName + ".mp3";
-    SimpleAudioEngine::getInstance()->playEffect(seFileName.c_str(), false, 1.0f, 0.0f, 1.0f);
+    std::string fileName = "sound/" + seName + ".mp3";
+    SimpleAudioEngine::getInstance()->playEffect(fileName.c_str(), false, 1.0f, 0.0f, 1.0f);
+}
+
+void SoundManager::preloadVoice(const std::string voiceName)
+{
+    std::string fileName = "voice/" + voiceName + ".wav";
+    SimpleAudioEngine::getInstance()->preloadEffect(fileName.c_str());
+}
+
+void SoundManager::playVoice(const std::string voiceName)
+{
+    std::string fileName = "voice/" + voiceName + ".wav";
+    SimpleAudioEngine::getInstance()->playEffect(fileName.c_str(), false, 1.0f, 0.0f, 1.0f);
 }

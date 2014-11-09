@@ -22,6 +22,7 @@ public:
     ScreenMode screenMode;
     bool isScreenModeSd();
     bool isScreenModeHd();
+    int getBattleRank();
     
     int battleDamagePoint;
     int battleEternityPoint;

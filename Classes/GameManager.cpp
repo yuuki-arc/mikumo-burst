@@ -1,4 +1,6 @@
 #include "GameManager.h"
+#include "Constant.h"
+#include "UserDataStore.h"
 
 USING_NS_CC;
 
@@ -33,4 +35,14 @@ bool GameManager::isScreenModeSd()
 bool GameManager::isScreenModeHd()
 {
     return GameManager::getInstance()->screenMode == ScreenModeHd ? true : false;
+}
+
+int GameManager::getBattleRank()
+{
+    int battleRank = UserDataStore::getInstance()->getRank() + 1;
+    if (battleRank > Constant::LIMIT_RANK)
+    {
+        battleRank = Constant::LIMIT_RANK;
+    }
+    return battleRank;
 }

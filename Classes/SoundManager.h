@@ -12,6 +12,8 @@ public:
     void playBGM(const std::string soundName, bool forceStart = false);
     void preloadSE(const std::string seName);
     void playSE(const std::string seName);
+    void preloadVoice(const std::string voiceName);
+    void playVoice(const std::string voiceName);
 };
 
 #endif /* defined(__Fragment_of_Eternity__SoundManager__) */

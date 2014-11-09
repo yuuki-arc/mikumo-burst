@@ -2,6 +2,7 @@
 #include "SelectSceneLoader.h"
 #include "Constant.h"
 #include "SoundManager.h"
+#include "TextCreator.h"
 #include "UserDataStore.h"
 
 ScoreScene::ScoreScene()
@@ -48,46 +49,38 @@ void ScoreScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // SE
     soundManager->preloadSE("se_select");
     
-    // 結果
-    auto label = Label::createWithBMFont(Constant::NORMAL_FONT(), "SCORE");
-    label->setAnchorPoint(Point(0, 0.5));
-    label->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-                             origin.y + visibleSize.height * 9.5 / 10));
-    label->setColor(Color3B(113, 212, 255));
-    label->getTexture()->setAliasTexParameters();
-    this->addChild(label, ZOrder::Font);
+    // スコア表示
+    float labelWidth = origin.x + visibleSize.width * 1 / 10;
+    float relativeLabelHeight;
+    Label* resultLabel;
+    Point point;
+    
+    const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
+    const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
+    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
     
     StringMapVector scoreList = UserDataStore::getInstance()->getScoreTable();
-    int count = 0;
     for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)
     {
         StringMap map = (*it);
-        Label* reultLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), "CHAIN: " + map["chain"]);
-        reultLabel->setAnchorPoint(Point(0, 0.5));
-        reultLabel->setScale(BM_FONT_SIZE64(16));
-        reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-                                      origin.y + visibleSize.height * (8.5 - count) / 10));
-        reultLabel->getTexture()->setAliasTexParameters();
-        this->addChild(reultLabel, ZOrder::Font);
         
-        reultLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), "SCORE: " + map["score"]);
-        reultLabel->setAnchorPoint(Point(0, 0.5));
-        reultLabel->setScale(BM_FONT_SIZE64(16));
-        reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-                                      origin.y + visibleSize.height * (8.0 - count) / 10));
-        reultLabel->getTexture()->setAliasTexParameters();
-        this->addChild(reultLabel, ZOrder::Font);
+        labelWidth = origin.x + visibleSize.width * 2 / 10;
         
-        count++;
+        relativeLabelHeight -= .6f;
+        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+        resultLabel = TextCreator::create("HIGH RANK: " + map[KEY_RANK], point);
+        this->addChild(resultLabel, ZOrder::Font);
+        
+        relativeLabelHeight -= .4f;
+        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+        resultLabel = TextCreator::create("TOTAL SCORE: " + map[KEY_SCORE], point);
+        this->addChild(resultLabel, ZOrder::Font);
+        
+        relativeLabelHeight -= .4f;
+        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+        resultLabel = TextCreator::create("TOTAL BREAK: " + map[KEY_BREAK], point);
+        this->addChild(resultLabel, ZOrder::Font);
     }
-    
-    //    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getInstance()->getScoreTable());
-    //    reultLabel->setAnchorPoint(Point(0.5, 0.5));
-    //    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
-    //                                  origin.y + visibleSize.height * 9.5 / 10));
-    //    reultLabel->getTexture()->setAliasTexParameters();
-    //    this->addChild(reultLabel, ZOrder::Font);
-    
 }
 
 void ScoreScene::tappedBackButton(Ref* pTarget, Control::EventType pControlEventType)

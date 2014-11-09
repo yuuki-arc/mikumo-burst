@@ -2,6 +2,7 @@
 #include "ScoreSceneLoader.h"
 #include "BattleSceneLoader.h"
 #include "Constant.h"
+#include "GameManager.h"
 #include "CharacterCreator.h"
 #include "SoundManager.h"
 #include "TextCreator.h"
@@ -77,28 +78,23 @@ void SelectScene::displayInfo()
     addChild(windowSprite, ZOrder::Menu);
     
     // データを取得
-    int currentRank = UserDataStore::getInstance()->getRank();
-    CCLOG("Select - rank:%d", currentRank);
-    StringMapVector scoreList = UserDataStore::getInstance()->getScoreTable();
+    int battleRank = GameManager::getInstance()->getBattleRank();
+    auto store = UserDataStore::getInstance();
     
-    // スコア表示
+    // 次回バトルランク表示
     float labelWidth = origin.x + visibleSize.width * 1 / 10;
     float relativeLabelHeight;
     Label* resultLabel;
     Point point;
     
-    const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
-    const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
-    
     relativeLabelHeight = 8.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("次のランク: ", point);
+    resultLabel = TextCreator::create("次のバトルランク: ", point);
     this->addChild(resultLabel, ZOrder::Font);
     
     relativeLabelHeight -= 1.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create(std::to_string(currentRank), point, Constant::LARGE_FONT());
+    resultLabel = TextCreator::create(std::to_string(battleRank), point, Constant::LARGE_FONT());
     resultLabel->setScale(BM_FONT_SIZE64(32));
     this->addChild(resultLabel, ZOrder::Font);
     
@@ -108,30 +104,23 @@ void SelectScene::displayInfo()
     resultLabel->setColor(Color3B(113, 212, 255));
     this->addChild(resultLabel, ZOrder::Font);
     
-    for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)
-    {
-        StringMap map = (*it);
-        
-        labelWidth = origin.x + visibleSize.width * 2 / 10;
-        
-        relativeLabelHeight -= .6f;
-        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create("HIGH RANK: " + map[KEY_RANK], point);
-        this->addChild(resultLabel, ZOrder::Font);
-        
-        relativeLabelHeight -= .4f;
-        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create("TOTAL SCORE: " + map[KEY_SCORE], point);
-        this->addChild(resultLabel, ZOrder::Font);
-        
-        relativeLabelHeight -= .4f;
-        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create("TOTAL BREAK: " + map[KEY_BREAK], point);
-        this->addChild(resultLabel, ZOrder::Font);
-        
-        break;
-    }
+    // スコア表示
+    labelWidth = origin.x + visibleSize.width * 2 / 10;
     
+    relativeLabelHeight -= .6f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("最高バトルランク: " + std::to_string(store->getHighRank()), point);
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    relativeLabelHeight -= .4f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("トータルスコア: " + std::to_string(store->getTotalScore()) + " pt", point);
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    relativeLabelHeight -= .4f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("トータルブレイク: " + std::to_string(store->getTotalBreak()) + " 回", point);
+    this->addChild(resultLabel, ZOrder::Font);
 }
 
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)

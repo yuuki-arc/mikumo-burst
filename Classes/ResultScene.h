@@ -32,12 +32,12 @@ private:
     enum ZOrder
     {
         Bg = 0,
-        Status,
+        Menu,
         Font,
     };
     
-    void displayInfo();
-    void saveData();
+    void saveData(int rank, int score, int breakCount);
+    void displayInfo(int rank, int score, int breakCount);
 };
 
 #endif /* defined(__Result_SCENE_H__) */
