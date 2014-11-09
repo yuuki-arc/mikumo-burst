@@ -9,6 +9,7 @@
 #include "UserDataStore.h"
 
 SelectScene::SelectScene()
+: personaImageList(Constant::PERSONA_IMAGE_LIST())
 {
 }
 

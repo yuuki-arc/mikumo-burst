@@ -18,7 +18,13 @@ public:
     static const int LIMIT_DAMAGE = 999999;
     static const int MAX_PLAYER_EP = 100;
     static const int EP_INCREMENT = 1;
-    
+
+    static const std::vector<std::string> PERSONA_IMAGE_LIST(){
+        return {
+            "f072", "f264", "f287", "f299", "f313", "f317", "f349", "f353", "f368",
+        };
+    };
+
     static const std::vector<std::string> ENEMY_IMAGE_LIST(){
         return {
             "f183", "f186", "f189", "f195", "f201", "f207", "f271", "f274",

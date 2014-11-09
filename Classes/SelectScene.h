@@ -38,7 +38,7 @@ private:
         Font,
     };
     
-    std::vector<std::string> personaImageList = {"f072", "f264", "f287", "f299", "f313", "f317", "f349", "f353", "f368"};
+    std::vector<std::string> personaImageList;
     
     void displayInfo();
 
