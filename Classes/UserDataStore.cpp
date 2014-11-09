@@ -4,12 +4,35 @@
 
 USING_NS_CC;
 
+UserDataStore* UserDataStore::instance = NULL;
+
+UserDataStore::UserDataStore()
+{
+    
+}
+
+UserDataStore* UserDataStore::getInstance()
+{
+    if(instance == NULL)
+    {
+        instance = new UserDataStore();
+        instance->initialize();
+    }
+    
+    return instance;
+}
+
+void UserDataStore::initialize()
+{
+}
+
+
 void UserDataStore::setupData()
 {
     setDataStoredOn();
     setRank(10);
 
-    StringMapVector scoreList = UserDataStore::getHighScore();
+    StringMapVector scoreList;
     StringMap scoreMap;
     scoreMap.insert(std::make_pair("score", std::to_string(20)));
     scoreMap.insert(std::make_pair("break", std::to_string(30)));
@@ -20,27 +43,29 @@ void UserDataStore::setupData()
 
 void UserDataStore::setDataStoredOn()
 {
-    UserDefault* userDefault = UserDataStore::getInstance();
+    UserDefault* userDefault = UserDefault::getInstance();
     userDefault->setBoolForKey(Constant::UserDefaultKey::DATA_STORED(), true);
+    userDefault->flush();
 }
 
 bool UserDataStore::isDataStored()
 {
-    UserDefault* userDefault = UserDataStore::getInstance();
+    UserDefault* userDefault = UserDefault::getInstance();
     return userDefault->getBoolForKey(Constant::UserDefaultKey::DATA_STORED(), false);
 }
 
 void UserDataStore::setRank(int rank)
 {
-    UserDefault* userDefault = UserDataStore::getInstance();
+    UserDefault* userDefault = UserDefault::getInstance();
     CCLOG("DataStore-before:%d", rank);
     userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), rank);
     CCLOG("DataStore-after:%d", getRank());
+    userDefault->flush();
 }
 
 int UserDataStore::getRank(int defaultRank)
 {
-    UserDefault* userDefault = UserDataStore::getInstance();
+    UserDefault* userDefault = UserDefault::getInstance();
     CCLOG("DataStore-getRank:%d", userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK()));
     CCLOG("DataStore-getRank:%d", userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), defaultRank));
     return userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), defaultRank);
@@ -48,8 +73,7 @@ int UserDataStore::getRank(int defaultRank)
 
 void UserDataStore::setHighScore(StringMapVector scoreList)
 {
-    UserDefault* userDefault = UserDataStore::getInstance();
-
+    UserDefault* userDefault = UserDefault::getInstance();
     // {
     //   1: {"chain":200, "score":12300},
     //   2: {"chain":200, "score":12300},
@@ -108,14 +132,14 @@ void UserDataStore::setHighScore(StringMapVector scoreList)
 //        int z = (int)tmpObject["z"].get<double>();
 //        CCLOG("x:%d, y:%d, z:%d", x, y, z);
 //    }
+    userDefault->flush();
 }
 
 StringMapVector UserDataStore::getHighScore()
 {
     StringMapVector result = {};
     
-    UserDefault* userDefault = UserDataStore::getInstance();
-
+    UserDefault* userDefault = UserDefault::getInstance();
     std::string list = "";
     list = userDefault->getStringForKey("ranking", "");
     

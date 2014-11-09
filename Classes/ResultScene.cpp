@@ -51,7 +51,7 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     soundManager->preloadSE("se_select");
 
     // スコア計算
-    int currentRank = GameManager::getInstance()->currentRank;
+    int currentRank = UserDataStore::getInstance()->getRank();
     int score = GameManager::getInstance()->battleDamagePoint;
     int ebCount = GameManager::getInstance()->battleEternityPoint;
     
@@ -84,20 +84,20 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     if (currentRank < Constant::LIMIT_RANK)
     {
         currentRank++;
-        UserDataStore::setRank(currentRank);
-        CCLOG("Result - rank:%d", UserDataStore::getRank());
+        UserDataStore::getInstance()->setRank(currentRank);
+        CCLOG("Result - rank:%d", UserDataStore::getInstance()->getRank());
     }
     
     
     // スコア保存
-    StringMapVector scoreList = UserDataStore::getHighScore();
+    StringMapVector scoreList = UserDataStore::getInstance()->getHighScore();
     StringMap scoreMap;
     scoreMap.insert(std::make_pair("score", std::to_string(score)));
     scoreMap.insert(std::make_pair("break", std::to_string(ebCount)));
     scoreList.push_back(scoreMap);
-    UserDataStore::setHighScore(scoreList);
+    UserDataStore::getInstance()->setHighScore(scoreList);
 
-//    Label* resultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getHighScore());
+//    Label* resultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getInstance()->getHighScore());
 //    resultLabel->setAnchorPoint(Point(0.5, 0.5));
 //    resultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
 //                                  origin.y + visibleSize.height * 9.5 / 10));

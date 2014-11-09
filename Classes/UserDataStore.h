@@ -8,23 +8,26 @@ USING_NS_CC;
 typedef std::map<std::string, std::string> StringMap;
 typedef std::vector<StringMap> StringMapVector;
 
-class UserDataStore : public UserDefault
+class UserDataStore
 {
 private:
     UserDataStore();
-    virtual ~UserDataStore();
+    static UserDataStore* instance;
+    void initialize();
     
 public:
-    static void setupData();
+    static UserDataStore* getInstance();
+
+    void setupData();
     
-    static void setDataStoredOn();
-    static bool isDataStored();
+    void setDataStoredOn();
+    bool isDataStored();
     
-    static void setRank(int rank);
-    static int getRank(int defaultRank = NULL);
+    void setRank(int rank);
+    int getRank(int defaultRank = NULL);
     
-    static void setHighScore(StringMapVector scoreList);
-    static StringMapVector getHighScore();
+    void setHighScore(StringMapVector scoreList);
+    StringMapVector getHighScore();
     
 };
 

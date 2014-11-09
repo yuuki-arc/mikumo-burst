@@ -42,7 +42,7 @@ USING_NS_CC;
 
 - (void)testSetRank
 {
-    UserDataStore::setRank(20);
+    UserDataStore::getInstance()->setRank(20);
     UserDefault* userDefault = UserDefault::getInstance();
     int rank = userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 0);
     XCTAssertEqual(rank, 20);
@@ -52,7 +52,7 @@ USING_NS_CC;
 {
     UserDefault* userDefault = UserDefault::getInstance();
     userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), 10);
-    XCTAssertEqual(UserDataStore::getRank(), 10);
+    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 10);
 }
 
 - (void)testSetHighScore
@@ -61,22 +61,22 @@ USING_NS_CC;
 
     std::vector<std::map<std::string, std::string>> list = [self getHighScoreList];
     
-    UserDataStore::setHighScore(list);
+    UserDataStore::getInstance()->setHighScore(list);
     std::string rank = userDefault->getStringForKey("ranking", "");
     CCLOG(rank);
-    XCTAssertEqual(UserDataStore::getRank(), 5);
+    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
     
-//    CCLOG(UserDataStore::getHighScore());
-//    XCTAssertEqual(UserDataStore::getRank(), 5);
+//    CCLOG(UserDataStore::getInstance()->getHighScore());
+//    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
 }
 
 - (void)testGetHighScore
 {
 //    std::vector<std::string> vector = {};
-//    UserDataStore::setHighScore(vector);
-//    UserDataStore::getHighScore();
-//    XCTAssertEqual(UserDataStore::getRank(), 5);
-    XCTAssertEqual(UserDataStore::getRank(), 5);
+//    UserDataStore::getInstance()->setHighScore(vector);
+//    UserDataStore::getInstance()->getHighScore();
+//    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
+    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
 }
 
 @end

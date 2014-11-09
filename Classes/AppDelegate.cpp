@@ -90,11 +90,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     // ゲームデータが存在するか判定し、存在しない場合は初期セットアップを行う
-    if (!UserDataStore::isDataStored())
+    if (!UserDataStore::getInstance()->isDataStored())
     {
-        UserDataStore::setupData();
+        CCLOG("appdelegate: datastore-NG");
+        UserDataStore::getInstance()->setupData();
     }
-    GameManager::getInstance()->currentRank = UserDataStore::getRank();
     
     // CocosBuilderのファイルを読み込みゲーム画面を生成する
     auto *pScene = TitleSceneLoader::createScene();

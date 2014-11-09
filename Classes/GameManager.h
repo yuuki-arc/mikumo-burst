@@ -23,7 +23,6 @@ public:
     bool isScreenModeSd();
     bool isScreenModeHd();
     
-    int currentRank;
     int battleDamagePoint;
     int battleEternityPoint;
 

@@ -51,9 +51,9 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     Point origin = Director::getInstance()->getVisibleOrigin();
 
     // データを取得
-    int currentRank = UserDataStore::getRank(1);
+    int currentRank = UserDataStore::getInstance()->getRank();
     CCLOG("Select - rank:%d", currentRank);
-    StringMapVector scoreList = UserDataStore::getHighScore();
+    StringMapVector scoreList = UserDataStore::getInstance()->getHighScore();
     
     // スコア表示
     float labelWidth = origin.x + visibleSize.width * 1/ 10;
