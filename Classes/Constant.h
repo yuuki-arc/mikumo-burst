@@ -51,6 +51,15 @@ public:
             "se_battle_darkness", "se_battle_fire", "se_battle_water"
         };
     };
+    static const std::vector<std::string> VOICE_LIST(){
+        return {
+            "i01", "i33", "i34", // 準備完了(0〜2)
+            "i02", "i03", "i04","i05", // 通常攻撃(3〜6)
+            "i06", "i14", "i27", "i30", // 限界突破(7〜10)
+            "i10", "i11", "i12",  // バトル終了(11〜13)
+            "i24", "i25",  // 敵撃破(14〜15)
+        };
+    };
 
     static const char* NORMAL_FONT(){return "normal.fnt";}
     static const char* LARGE_FONT(){return "large.fnt";}

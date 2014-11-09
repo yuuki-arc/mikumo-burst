@@ -49,6 +49,11 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     
     // SE
     soundManager->preloadSE("se_select");
+    
+    // Voice
+    soundManager->preloadVoice("i01");
+    soundManager->preloadVoice("i33");
+    soundManager->preloadVoice("i34");
 
     // 情報表示
     displayInfo();
@@ -134,6 +139,7 @@ void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEv
     CCLOG("tappedBattleButton eventType = %d", pControlEventType);
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
+    soundManager->playVoice("i01");
     
     Scene* scene = BattleSceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);

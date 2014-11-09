@@ -94,6 +94,7 @@
 		A5CCD2D519BEC71D002ED2FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
 		A5CCD2DB19BEC71D002ED2FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5CCD2D919BEC71D002ED2FC /* InfoPlist.strings */; };
 		A5CCD2DD19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5CCD2DC19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm */; };
+		A5E7A4281A0FF2CA00408FC0 /* voice in Resources */ = {isa = PBXBuildFile; fileRef = A5E7A4271A0FF2CA00408FC0 /* voice */; };
 		A5ED392F19F3BC360086C17B /* PlayerBattleInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5ED392D19F3BC360086C17B /* PlayerBattleInfo.cpp */; };
 		A5F6046719F43C0100133718 /* SelectSubScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5F6046619F43C0100133718 /* SelectSubScene.ccbi */; };
 		A5F6046C19F43E2900133718 /* UserDataStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5F6046A19F43E2900133718 /* UserDataStore.cpp */; };
@@ -363,6 +364,7 @@
 		A5CCD2DA19BEC71D002ED2FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5CCD2DC19BEC71D002ED2FC /* Fragment_of_Eternity_iOS_Tests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Fragment_of_Eternity_iOS_Tests.mm; sourceTree = "<group>"; };
 		A5CCD2DE19BEC71D002ED2FC /* Fragment_of_Eternity iOS Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fragment_of_Eternity iOS Tests-Prefix.pch"; sourceTree = "<group>"; };
+		A5E7A4271A0FF2CA00408FC0 /* voice */ = {isa = PBXFileReference; lastKnownFileType = folder; path = voice; sourceTree = "<group>"; };
 		A5ED392D19F3BC360086C17B /* PlayerBattleInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerBattleInfo.cpp; sourceTree = "<group>"; };
 		A5ED392E19F3BC360086C17B /* PlayerBattleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBattleInfo.h; sourceTree = "<group>"; };
 		A5F6046619F43C0100133718 /* SelectSubScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelectSubScene.ccbi; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 			isa = PBXGroup;
 			children = (
 				A5F6046619F43C0100133718 /* SelectSubScene.ccbi */,
+				A5E7A4271A0FF2CA00408FC0 /* voice */,
 				A5CCD2C019BD661C002ED2FC /* font */,
 				A5A7F0E119BB394700A5BEDD /* sound */,
 				A54AEADD19B3781100AE6AE4 /* particle */,
@@ -876,6 +879,7 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				A5F6046719F43C0100133718 /* SelectSubScene.ccbi in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				A5E7A4281A0FF2CA00408FC0 /* voice in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				A54AEABE19B23D6000AE6AE4 /* resources-iphonehd in Resources */,
 				A54AEADE19B3781100AE6AE4 /* particle in Resources */,
