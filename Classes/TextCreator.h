@@ -13,7 +13,7 @@ public:
     virtual ~TextCreator();
     
     static Label* create(const std::string text, Point point);
-    static Label* create(const std::string text, Point point, Color3B color);
+    static Label* create(const std::string text, Point point, const std::string fontName);
 };
 
 #endif /* defined(__Fragment_of_Eternity__TextCreator__) */

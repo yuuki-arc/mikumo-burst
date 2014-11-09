@@ -49,7 +49,7 @@ void ScoreScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     soundManager->preloadSE("se_select");
     
     // 結果
-    auto label = Label::createWithBMFont("Arial_Black.fnt", "SCORE");
+    auto label = Label::createWithBMFont(Constant::NORMAL_FONT(), "SCORE");
     label->setAnchorPoint(Point(0, 0.5));
     label->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
                              origin.y + visibleSize.height * 9.5 / 10));
@@ -62,7 +62,7 @@ void ScoreScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)
     {
         StringMap map = (*it);
-        Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", "CHAIN: " + map["chain"]);
+        Label* reultLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), "CHAIN: " + map["chain"]);
         reultLabel->setAnchorPoint(Point(0, 0.5));
         reultLabel->setScale(BM_FONT_SIZE64(16));
         reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
@@ -70,7 +70,7 @@ void ScoreScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
         reultLabel->getTexture()->setAliasTexParameters();
         this->addChild(reultLabel, ZOrder::Font);
         
-        reultLabel = Label::createWithBMFont("Arial_Black.fnt", "SCORE: " + map["score"]);
+        reultLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), "SCORE: " + map["score"]);
         reultLabel->setAnchorPoint(Point(0, 0.5));
         reultLabel->setScale(BM_FONT_SIZE64(16));
         reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,

@@ -23,9 +23,18 @@ public:
     
     void setDataStoredOn();
     bool isDataStored();
-    
-    void setRank(int rank);
-    int getRank(int defaultRank = NULL);
+
+    void setRank(int value);
+    int getRank();
+
+    void setHighRank(int value);
+    int getHighRank();
+
+    void setTotalScore(int value);
+    int getTotalScore();
+
+    void setTotalBreak(int value);
+    int getTotalBreak();
     
     void setScoreTable(StringMapVector scoreList);
     StringMapVector getScoreTable();

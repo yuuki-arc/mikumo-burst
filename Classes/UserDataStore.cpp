@@ -54,15 +54,48 @@ bool UserDataStore::isDataStored()
     return userDefault->getBoolForKey(Constant::UserDefaultKey::DATA_STORED(), false);
 }
 
-void UserDataStore::setRank(int rank)
+void UserDataStore::setRank(int value)
 {
-    userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), rank);
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), value);
     userDefault->flush();
 }
 
-int UserDataStore::getRank(int defaultRank)
+int UserDataStore::getRank()
 {
-    return userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), defaultRank);
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK());
+}
+
+void UserDataStore::setHighRank(int value)
+{
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::HIGH_RANK(), value);
+    userDefault->flush();
+}
+
+int UserDataStore::getHighRank()
+{
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::HIGH_RANK());
+}
+
+void UserDataStore::setTotalScore(int value)
+{
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::TOTAL_SCORE(), value);
+    userDefault->flush();
+}
+
+int UserDataStore::getTotalScore()
+{
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_SCORE());
+}
+
+void UserDataStore::setTotalBreak(int value)
+{
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::TOTAL_BREAK(), value);
+    userDefault->flush();
+}
+
+int UserDataStore::getTotalBreak()
+{
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_BREAK());
 }
 
 void UserDataStore::setScoreTable(StringMapVector scoreList)

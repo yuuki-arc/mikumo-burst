@@ -93,18 +93,19 @@ void SelectScene::displayInfo()
     
     relativeLabelHeight = 8.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("NEXT RANK: ", point);
+    resultLabel = TextCreator::create("次のランク: ", point);
     this->addChild(resultLabel, ZOrder::Font);
     
     relativeLabelHeight -= 1.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create(std::to_string(currentRank), point);
-    resultLabel->setScale(BM_FONT_SIZE64(64));
+    resultLabel = TextCreator::create(std::to_string(currentRank), point, Constant::LARGE_FONT());
+    resultLabel->setScale(BM_FONT_SIZE64(32));
     this->addChild(resultLabel, ZOrder::Font);
     
     relativeLabelHeight = 4.9f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("TOTAL BATTLE RESULT ", point, Color3B(113, 212, 255));
+    resultLabel = TextCreator::create("総合バトルポイント ", point);
+    resultLabel->setColor(Color3B(113, 212, 255));
     this->addChild(resultLabel, ZOrder::Font);
     
     for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)

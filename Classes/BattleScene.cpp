@@ -152,7 +152,7 @@ void BattleScene::initStatusLayer()
     Point origin = Director::getInstance()->getVisibleOrigin();
     
     // ランク
-    Label* rankLabel = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(currentRank));
+    Label* rankLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(currentRank));
     rankLabel->setAnchorPoint(Point(0.5, 0.5));
     rankLabel->setPosition(Point(origin.x + visibleSize.width * 1 / 10,
                                  origin.y + visibleSize.height * 9.5 / 10));
@@ -160,7 +160,7 @@ void BattleScene::initStatusLayer()
     this->addChild(rankLabel, ZOrder::Font);
     
     // 時間制限
-    gameTimeLabel = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(gameTime));
+    gameTimeLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(gameTime));
     gameTimeLabel->setAnchorPoint(Point(0.5, 0.5));
     gameTimeLabel->setPosition(Point(origin.x + visibleSize.width * 9 / 10,
                                      origin.y + visibleSize.height * 9.5 / 10));
@@ -489,7 +489,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     CCLOG("onTouchBegan-playerEp:%d / %f%%",playerInfo->getEp(), playerInfo->getEpPercentage());
     
     // ダメージ値生成
-    auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(damage));
+    auto damageNumSprite = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(damage));
     damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
     damageNumSprite->setAlignment(TextHAlignment::CENTER);
     damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
@@ -602,7 +602,7 @@ void BattleScene::onTouchCancelled(Touch* touch, Event *event){
 //        CCLOG("act:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
 //
 //        // ダメージエフェクト生成
-//        auto damageNumSprite = Label::createWithBMFont("Arial_Black.fnt", StringUtils::toString(damage));
+//        auto damageNumSprite = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(damage));
 //        damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
 //        damageNumSprite->setAlignment(TextHAlignment::CENTER);
 //        damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));

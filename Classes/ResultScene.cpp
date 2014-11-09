@@ -62,7 +62,8 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     Point point;
     
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("RESULT", point, Color3B(113, 212, 255));
+    resultLabel = TextCreator::create("RESULT", point);
+    resultLabel->setColor(Color3B(113, 212, 255));
     this->addChild(resultLabel, ZOrder::Font);
 
     relativeLabelHeight -= 1.0f;
@@ -101,7 +102,7 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     scoreList.push_back(scoreMap);
     UserDataStore::getInstance()->setScoreTable(scoreList);
 
-//    Label* resultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getInstance()->getScoreTable());
+//    Label* resultLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), UserDataStore::getInstance()->getScoreTable());
 //    resultLabel->setAnchorPoint(Point(0.5, 0.5));
 //    resultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
 //                                  origin.y + visibleSize.height * 9.5 / 10));
@@ -109,6 +110,16 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 //    this->addChild(resultLabel, ZOrder::Font);
     
 }
+
+void ResultScene::displayInfo()
+{
+    
+};
+
+void ResultScene::saveData()
+{
+    
+};
 
 void ResultScene::tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType)
 {

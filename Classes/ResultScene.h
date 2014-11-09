@@ -35,6 +35,9 @@ private:
         Status,
         Font,
     };
+    
+    void displayInfo();
+    void saveData();
 };
 
 #endif /* defined(__Result_SCENE_H__) */

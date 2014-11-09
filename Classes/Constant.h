@@ -46,6 +46,9 @@ public:
         };
     };
 
+    static const char* NORMAL_FONT(){return "normal.fnt";}
+    static const char* LARGE_FONT(){return "large.fnt";}
+
     /**
      *  UserDefaultのキー
      */
