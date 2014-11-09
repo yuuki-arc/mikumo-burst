@@ -90,14 +90,14 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     
     
     // スコア保存
-    StringMapVector scoreList = UserDataStore::getInstance()->getHighScore();
+    StringMapVector scoreList = UserDataStore::getInstance()->getScoreTable();
     StringMap scoreMap;
     scoreMap.insert(std::make_pair("score", std::to_string(score)));
     scoreMap.insert(std::make_pair("break", std::to_string(ebCount)));
     scoreList.push_back(scoreMap);
-    UserDataStore::getInstance()->setHighScore(scoreList);
+    UserDataStore::getInstance()->setScoreTable(scoreList);
 
-//    Label* resultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getInstance()->getHighScore());
+//    Label* resultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getInstance()->getScoreTable());
 //    resultLabel->setAnchorPoint(Point(0.5, 0.5));
 //    resultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
 //                                  origin.y + visibleSize.height * 9.5 / 10));

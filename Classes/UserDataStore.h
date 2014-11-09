@@ -13,6 +13,7 @@ class UserDataStore
 private:
     UserDataStore();
     static UserDataStore* instance;
+    UserDefault* userDefault;
     void initialize();
     
 public:
@@ -26,8 +27,8 @@ public:
     void setRank(int rank);
     int getRank(int defaultRank = NULL);
     
-    void setHighScore(StringMapVector scoreList);
-    StringMapVector getHighScore();
+    void setScoreTable(StringMapVector scoreList);
+    StringMapVector getScoreTable();
     
 };
 

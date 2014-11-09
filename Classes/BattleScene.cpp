@@ -84,20 +84,6 @@ void BattleScene::initBattleResult()
     GameManager::getInstance()->battleEternityPoint = 0;
     
     currentRank = UserDataStore::getInstance()->getRank();
-    
-    StringMapVector list = {};
-    
-    StringMap map;
-    map.insert(std::make_pair("chain", "200"));
-    map.insert(std::make_pair("score", "12300"));
-    list.push_back(map);
-    map.clear();
-    map.insert(std::make_pair("chain", "400"));
-    map.insert(std::make_pair("score", "25000"));
-    list.push_back(map);
-    
-    UserDataStore::getInstance()->setHighScore(list);
-    list = UserDataStore::getInstance()->getHighScore();
 }
 
 /**

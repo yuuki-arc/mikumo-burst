@@ -24,6 +24,7 @@ UserDataStore* UserDataStore::getInstance()
 
 void UserDataStore::initialize()
 {
+    userDefault = UserDefault::getInstance();
 }
 
 
@@ -32,48 +33,40 @@ void UserDataStore::setupData()
     setDataStoredOn();
     setRank(10);
 
-    StringMapVector scoreList;
-    StringMap scoreMap;
-    scoreMap.insert(std::make_pair("score", std::to_string(20)));
-    scoreMap.insert(std::make_pair("break", std::to_string(30)));
-    scoreList.push_back(scoreMap);
-    setHighScore(scoreList);
+    StringMapVector list = {};
+    StringMap map;
+    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_RANK(), std::to_string(20)));
+    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_SCORE(), std::to_string(20)));
+    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_BREAK(), std::to_string(30)));
+    list.push_back(map);
+    setScoreTable(list);
 
 }
 
 void UserDataStore::setDataStoredOn()
 {
-    UserDefault* userDefault = UserDefault::getInstance();
     userDefault->setBoolForKey(Constant::UserDefaultKey::DATA_STORED(), true);
     userDefault->flush();
 }
 
 bool UserDataStore::isDataStored()
 {
-    UserDefault* userDefault = UserDefault::getInstance();
     return userDefault->getBoolForKey(Constant::UserDefaultKey::DATA_STORED(), false);
 }
 
 void UserDataStore::setRank(int rank)
 {
-    UserDefault* userDefault = UserDefault::getInstance();
-    CCLOG("DataStore-before:%d", rank);
     userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), rank);
-    CCLOG("DataStore-after:%d", getRank());
     userDefault->flush();
 }
 
 int UserDataStore::getRank(int defaultRank)
 {
-    UserDefault* userDefault = UserDefault::getInstance();
-    CCLOG("DataStore-getRank:%d", userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK()));
-    CCLOG("DataStore-getRank:%d", userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), defaultRank));
     return userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), defaultRank);
 }
 
-void UserDataStore::setHighScore(StringMapVector scoreList)
+void UserDataStore::setScoreTable(StringMapVector scoreList)
 {
-    UserDefault* userDefault = UserDefault::getInstance();
     // {
     //   1: {"chain":200, "score":12300},
     //   2: {"chain":200, "score":12300},
@@ -98,16 +91,21 @@ void UserDataStore::setHighScore(StringMapVector scoreList)
     picojson::value value;
     picojson::array detail_list;
     
+    static const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
+    static const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
+    static const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
+    
     for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)
     {
         picojson::object detail;
         StringMap map = (*it);
-        detail.insert(std::make_pair("chain", picojson::value(map["chain"])));
-        detail.insert(std::make_pair("score", picojson::value(map["score"])));
+        detail.insert(std::make_pair(KEY_RANK, picojson::value(map[KEY_RANK])));
+        detail.insert(std::make_pair(KEY_SCORE, picojson::value(map[KEY_SCORE])));
+        detail.insert(std::make_pair(KEY_BREAK, picojson::value(map[KEY_BREAK])));
         detail_list.push_back(picojson::value(detail));
     }
     value = picojson::value(detail_list);
-    userDefault->setStringForKey("ranking", value.serialize());
+    userDefault->setStringForKey(Constant::UserDefaultKey::SCORE_TABLE(), value.serialize());
     
 //    picojson::array& array = value["1"].get<picojson::array>();
 //    for (picojson::array::iterator it = array.begin(); it != array.end(); it++)
@@ -135,13 +133,16 @@ void UserDataStore::setHighScore(StringMapVector scoreList)
     userDefault->flush();
 }
 
-StringMapVector UserDataStore::getHighScore()
+StringMapVector UserDataStore::getScoreTable()
 {
     StringMapVector result = {};
     
-    UserDefault* userDefault = UserDefault::getInstance();
     std::string list = "";
-    list = userDefault->getStringForKey("ranking", "");
+    list = userDefault->getStringForKey(Constant::UserDefaultKey::SCORE_TABLE(), "");
+    
+    static const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
+    static const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
+    static const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
     
     picojson::value v;
     std::string err;
@@ -151,8 +152,9 @@ StringMapVector UserDataStore::getHighScore()
     {
         StringMap map;
         picojson::object& jsonMap = it->get<picojson::object>();
-        map["chain"] = (std::string)jsonMap["chain"].get<std::string>();
-        map["score"] = (std::string)jsonMap["score"].get<std::string>();
+        map[KEY_RANK] = (std::string)jsonMap[KEY_RANK].get<std::string>();
+        map[KEY_SCORE] = (std::string)jsonMap[KEY_SCORE].get<std::string>();
+        map[KEY_BREAK] = (std::string)jsonMap[KEY_BREAK].get<std::string>();
         result.push_back(map);
     }
     

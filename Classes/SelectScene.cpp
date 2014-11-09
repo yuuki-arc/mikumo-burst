@@ -53,7 +53,7 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // データを取得
     int currentRank = UserDataStore::getInstance()->getRank();
     CCLOG("Select - rank:%d", currentRank);
-    StringMapVector scoreList = UserDataStore::getInstance()->getHighScore();
+    StringMapVector scoreList = UserDataStore::getInstance()->getScoreTable();
     
     // スコア表示
     float labelWidth = origin.x + visibleSize.width * 1/ 10;

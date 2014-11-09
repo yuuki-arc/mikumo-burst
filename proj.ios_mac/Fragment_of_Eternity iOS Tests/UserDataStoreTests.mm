@@ -23,7 +23,7 @@ USING_NS_CC;
     [super tearDown];
 }
 
-- (std::vector<std::map<std::string, std::string>>)getHighScoreList
+- (std::vector<std::map<std::string, std::string>>)getScoreTable
 {
     std::vector<std::map<std::string, std::string>> list = {};
 
@@ -55,14 +55,14 @@ USING_NS_CC;
     XCTAssertEqual(UserDataStore::getInstance()->getRank(), 10);
 }
 
-- (void)testSetHighScore
+- (void)testSetScoreTable
 {
     UserDefault* userDefault = UserDefault::getInstance();
 
-    std::vector<std::map<std::string, std::string>> list = [self getHighScoreList];
+    std::vector<std::map<std::string, std::string>> list = [self getScoreTable];
     
-    UserDataStore::getInstance()->setHighScore(list);
-    std::string rank = userDefault->getStringForKey("ranking", "");
+    UserDataStore::getInstance()->setScoreTable(list);
+    std::string rank = userDefault->getStringForKey(Constant::UserDefaultKey::SCORE_TABLE(), "");
     CCLOG(rank);
     XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
     
@@ -70,7 +70,7 @@ USING_NS_CC;
 //    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
 }
 
-- (void)testGetHighScore
+- (void)testGetScoreTable
 {
 //    std::vector<std::string> vector = {};
 //    UserDataStore::getInstance()->setHighScore(vector);

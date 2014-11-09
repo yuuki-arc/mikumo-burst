@@ -57,7 +57,7 @@ void ScoreScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     label->getTexture()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
     
-    StringMapVector scoreList = UserDataStore::getInstance()->getHighScore();
+    StringMapVector scoreList = UserDataStore::getInstance()->getScoreTable();
     int count = 0;
     for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)
     {
@@ -81,7 +81,7 @@ void ScoreScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
         count++;
     }
     
-    //    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getInstance()->getHighScore());
+    //    Label* reultLabel = Label::createWithBMFont("Arial_Black.fnt", UserDataStore::getInstance()->getScoreTable());
     //    reultLabel->setAnchorPoint(Point(0.5, 0.5));
     //    reultLabel->setPosition(Point(origin.x + visibleSize.width * 1/ 10,
     //                                  origin.y + visibleSize.height * 9.5 / 10));
