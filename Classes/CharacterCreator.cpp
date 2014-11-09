@@ -17,6 +17,20 @@ Sprite* CharacterCreator::create(const std::string &filename, CharacterScale cha
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
+    
+    Sprite* character = Sprite::createWithSpriteFrameName(filename);
+    character->setPosition(Point(origin.x + visibleSize.width / 2,
+                                 origin.y + visibleSize.height * 5 / 10));
+    float scale = character->getScale() * characterScale / 100;
+    character->setScale(scale, scale);
+    
+    return character;
+}
+
+Sprite* CharacterCreator::create(const std::string &filename, CharacterScale characterScale)
+{
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
 
     Sprite* character = Sprite::createWithSpriteFrameName(filename);
     character->setPosition(Point(origin.x + visibleSize.width / 2,

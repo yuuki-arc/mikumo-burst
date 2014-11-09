@@ -1,6 +1,7 @@
 #include "SelectScene.h"
 #include "ScoreSceneLoader.h"
 #include "BattleSceneLoader.h"
+#include "Constant.h"
 #include "CharacterCreator.h"
 #include "SoundManager.h"
 #include "TextCreator.h"
@@ -61,6 +62,10 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     Label* resultLabel;
     Point point;
 
+    const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
+    const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
+    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
+    
     relativeLabelHeight = 8.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create("LEVEL: " + std::to_string(currentRank), point);
@@ -70,14 +75,14 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     {
         StringMap map = (*it);
         
-        relativeLabelHeight = 7.0f;
+        relativeLabelHeight -= 1.0f;
         point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create("SCORE: " + map["chain"], point);
+        resultLabel = TextCreator::create("SCORE: " + map[KEY_SCORE], point);
         this->addChild(resultLabel, ZOrder::Font);
         
-        relativeLabelHeight = 6.0f;
+        relativeLabelHeight -= 1.0f;
         point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create("BREAK: " + map["break"], point);
+        resultLabel = TextCreator::create("BREAK: " + map[KEY_BREAK], point);
         this->addChild(resultLabel, ZOrder::Font);
         
         break;
@@ -85,12 +90,12 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 
     
     // キャラ
-//    int num = 5; //CCRANDOM_0_1() * personaImageList.size();
-//    std::string personaFileName = StringUtils::format("%s.png", personaImageList.at(num).c_str());
-//    
-//    CharacterCreator* creator = new CharacterCreator();
-//    Sprite* character = creator->create(personaFileName, CharacterScale::HARF);
-//    this->addChild(character, ZOrder::Persona);
+    int num = 5; //CCRANDOM_0_1() * personaImageList.size();
+    std::string personaFileName = StringUtils::format("%s.png", personaImageList.at(num).c_str());
+    
+    CharacterCreator* creator = new CharacterCreator();
+    Sprite* character = creator->create(personaFileName, CharacterScale::HARF);
+    this->addChild(character, ZOrder::Persona);
 }
 
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)

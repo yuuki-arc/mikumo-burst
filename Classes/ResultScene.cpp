@@ -88,12 +88,16 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
         CCLOG("Result - rank:%d", UserDataStore::getInstance()->getRank());
     }
     
-    
     // スコア保存
+    const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
+    const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
+    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
+    
     StringMapVector scoreList = UserDataStore::getInstance()->getScoreTable();
     StringMap scoreMap;
-    scoreMap.insert(std::make_pair("score", std::to_string(score)));
-    scoreMap.insert(std::make_pair("break", std::to_string(ebCount)));
+    scoreMap.insert(std::make_pair(KEY_RANK, std::to_string(currentRank)));
+    scoreMap.insert(std::make_pair(KEY_RANK, std::to_string(score)));
+    scoreMap.insert(std::make_pair(KEY_BREAK, std::to_string(ebCount)));
     scoreList.push_back(scoreMap);
     UserDataStore::getInstance()->setScoreTable(scoreList);
 

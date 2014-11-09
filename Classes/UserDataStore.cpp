@@ -31,7 +31,7 @@ void UserDataStore::initialize()
 void UserDataStore::setupData()
 {
     setDataStoredOn();
-    setRank(10);
+    setRank(1);
 
     StringMapVector list = {};
     StringMap map;
