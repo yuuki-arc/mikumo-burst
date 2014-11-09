@@ -72,9 +72,9 @@ void SelectScene::displayInfo()
     // メニュー表示
     Sprite* windowSprite = Sprite::createWithSpriteFrameName("menu_window.png");
     windowSprite->setPosition(Point(origin.x + visibleSize.width / 2,
-                                    origin.y + visibleSize.height * 42 / 100));
+                                    origin.y + visibleSize.height * 41 / 100));
     windowSprite->setScale(windowSprite->getScale(),
-                           windowSprite->getScale() * 3 / 10);
+                           windowSprite->getScale() * 32 / 100);
     addChild(windowSprite, ZOrder::Menu);
     
     // データを取得
@@ -98,16 +98,21 @@ void SelectScene::displayInfo()
     resultLabel->setScale(BM_FONT_SIZE64(32));
     this->addChild(resultLabel, ZOrder::Font);
     
-    relativeLabelHeight = 4.9f;
+    relativeLabelHeight = 5.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("総合バトルポイント ", point);
+    resultLabel = TextCreator::create("総合戦績 ", point);
     resultLabel->setColor(Color3B(113, 212, 255));
     this->addChild(resultLabel, ZOrder::Font);
     
     // スコア表示
-    labelWidth = origin.x + visibleSize.width * 2 / 10;
+    labelWidth = origin.x + visibleSize.width * 15 / 100;
     
-    relativeLabelHeight -= .6f;
+    relativeLabelHeight -= .5f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("バトル回数: " + std::to_string(store->getBattleCount()) + " 回", point);
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    relativeLabelHeight -= .4f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create("最高バトルランク: " + std::to_string(store->getHighRank()), point);
     this->addChild(resultLabel, ZOrder::Font);

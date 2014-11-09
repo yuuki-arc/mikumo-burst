@@ -64,6 +64,9 @@ void ResultScene::saveData(int rank, int score, int breakCount)
 {
     auto store = UserDataStore::getInstance();
     
+    // バトル回数
+    store->setBattleCount(store->getBattleCount() + 1);
+    
     // 現在ランク
     store->setRank(rank);
     

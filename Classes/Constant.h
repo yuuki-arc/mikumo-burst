@@ -56,6 +56,7 @@ public:
     {
     public:
         static const char* DATA_STORED(){return "data_stored";}
+        static const char* BATTLE_COUNT(){return "battle_count";}
         static const char* RANK(){return "rank";}
         static const char* HIGH_RANK(){return "high_rank";}
         static const char* TOTAL_SCORE(){return "total_score";}

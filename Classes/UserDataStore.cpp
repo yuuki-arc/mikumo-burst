@@ -54,6 +54,17 @@ bool UserDataStore::isDataStored()
     return userDefault->getBoolForKey(Constant::UserDefaultKey::DATA_STORED(), false);
 }
 
+void UserDataStore::setBattleCount(int value)
+{
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::BATTLE_COUNT(), value);
+    userDefault->flush();
+}
+
+int UserDataStore::getBattleCount()
+{
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::BATTLE_COUNT());
+}
+
 void UserDataStore::setRank(int value)
 {
     userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), value);

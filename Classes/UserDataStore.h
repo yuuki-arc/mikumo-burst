@@ -24,6 +24,9 @@ public:
     void setDataStoredOn();
     bool isDataStored();
 
+    void setBattleCount(int value);
+    int getBattleCount();
+    
     void setRank(int value);
     int getRank();
 
