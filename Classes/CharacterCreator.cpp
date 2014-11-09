@@ -13,29 +13,26 @@ CharacterCreator::~CharacterCreator()
     
 }
 
-Sprite* CharacterCreator::create(const std::string &filename, CharacterScale characterScale)
+void CharacterCreator::init(CharacterScale scale = ALL)
 {
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
-    
-    Sprite* character = Sprite::createWithSpriteFrameName(filename);
-    character->setPosition(Point(origin.x + visibleSize.width / 2,
-                                 origin.y + visibleSize.height * 5 / 10));
-    float scale = character->getScale() * characterScale / 100;
-    character->setScale(scale, scale);
-    
-    return character;
+    this->scale = scale;
 }
 
-Sprite* CharacterCreator::create(const std::string &filename, CharacterScale characterScale)
+Sprite* CharacterCreator::create(const std::string &filename)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
+    Point position = Point(origin.x + visibleSize.width / 2,
+                           origin.y + visibleSize.height * 5 / 10);
+    
+    return create(filename, position);
+}
 
+Sprite* CharacterCreator::create(const std::string &filename, Point position)
+{
     Sprite* character = Sprite::createWithSpriteFrameName(filename);
-    character->setPosition(Point(origin.x + visibleSize.width / 2,
-                                  origin.y + visibleSize.height * 5 / 10));
-    float scale = character->getScale() * characterScale / 100;
+    character->setPosition(position);
+    float scale = character->getScale() * this->scale / 100;
     character->setScale(scale, scale);
     
     return character;

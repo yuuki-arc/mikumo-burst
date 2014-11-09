@@ -135,7 +135,8 @@ void BattleScene::initEnemy()
     std::string enemyFileName = StringUtils::format("%s.png", enemyImageList.at(num).c_str());
 
     CharacterCreator* creator = new CharacterCreator();
-    enemyData->setImage(creator->create(enemyFileName, CharacterScale::ALL));
+    creator->init(CharacterScale::ALL);
+    enemyData->setImage(creator->create(enemyFileName));
 
     nodeGrid = NodeGrid::create();
     nodeGrid->addChild(enemyData->getImage());

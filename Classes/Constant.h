@@ -54,6 +54,9 @@ public:
     public:
         static const char* DATA_STORED(){return "data_stored";}
         static const char* RANK(){return "rank";}
+        static const char* HIGH_RANK(){return "high_rank";}
+        static const char* TOTAL_SCORE(){return "total_score";}
+        static const char* TOTAL_BREAK(){return "total_break";}
         static const char* SCORE_TABLE(){return "score_table";}
         static const char* SCORE_TABLE_RANK(){return "score_table_rank";}
         static const char* SCORE_TABLE_SCORE(){return "score_table_score";}

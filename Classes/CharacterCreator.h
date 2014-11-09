@@ -7,7 +7,7 @@ USING_NS_CC;
 
 enum CharacterScale {
     ALL  = 100,
-    HARF = 75,
+    HARF = 60,
 };
 
 class CharacterCreator
@@ -16,8 +16,14 @@ class CharacterCreator
 public:
     CharacterCreator();
     virtual ~CharacterCreator();
-    
-    Sprite* create(const std::string &filename, CharacterScale scale = ALL);
+
+    void init(CharacterScale scale);
+    Sprite* create(const std::string &filename);
+    Sprite* create(const std::string &filename, Point position);
+
+private:
+    CharacterScale scale;
+
 };
 
 #endif /* defined(__Fragment_of_Eternity__CharacterCreator__) */

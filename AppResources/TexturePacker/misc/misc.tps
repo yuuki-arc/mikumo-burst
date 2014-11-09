@@ -192,6 +192,7 @@
             <filename>touchEffect.png</filename>
             <filename>ep_frame.png</filename>
             <filename>ep.png</filename>
+            <filename>menu_window.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

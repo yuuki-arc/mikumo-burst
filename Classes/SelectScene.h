@@ -34,11 +34,13 @@ private:
         Bg = 0,
         Persona,
         PersonaHp,
-        Status,
+        Menu,
         Font,
     };
     
     std::vector<std::string> personaImageList = {"f072", "f264", "f287", "f299", "f313", "f317", "f349", "f353", "f368"};
+    
+    void displayInfo();
 
 };
 
