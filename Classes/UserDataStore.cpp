@@ -91,9 +91,9 @@ void UserDataStore::setScoreTable(StringMapVector scoreList)
     picojson::value value;
     picojson::array detail_list;
     
-    static const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
-    static const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-    static const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
+    const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
+    const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
+    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
     
     for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)
     {
@@ -140,9 +140,9 @@ StringMapVector UserDataStore::getScoreTable()
     std::string list = "";
     list = userDefault->getStringForKey(Constant::UserDefaultKey::SCORE_TABLE(), "");
     
-    static const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
-    static const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-    static const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
+    const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
+    const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
+    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
     
     picojson::value v;
     std::string err;
