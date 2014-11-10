@@ -51,10 +51,14 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     soundManager->preloadSE("se_select");
     
     // Voice
-    soundManager->preloadVoice("i01");
-    soundManager->preloadVoice("i33");
-    soundManager->preloadVoice("i34");
-
+    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
+    Constant::StringVector::const_iterator iterator = list.begin();
+    while (iterator != list.end()) {
+        soundManager->preloadVoice(*iterator);
+        CCLOG("preloadVoice:%s", (*iterator).c_str());
+        iterator++;
+    }
+ 
     // 情報表示
     displayInfo();
 }
@@ -137,9 +141,14 @@ void SelectScene::displayInfo()
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedBattleButton eventType = %d", pControlEventType);
+
+    int num = arc4random() % 2;
+    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
+    
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
-    soundManager->playVoice("i01");
+    soundManager->playVoice(list[num]);
+    soundManager->stopBGM();
     
     Scene* scene = BattleSceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);

@@ -61,6 +61,31 @@ bool BattleScene::init()
     gameEndFlg = false;
     eternityBreakTime = 0;
     
+    // 開始テキスト表示
+    Label* label = Label::createWithSystemFont("START!", "Arial-BoldMT", 40, Size(320, 50), TextHAlignment::CENTER, TextVAlignment::CENTER);
+    this->addChild(label, ZOrder::Font);
+    
+    // 右から現れて左に消える
+    static const float labelY = 200;
+    static const float marginX = 200;
+    label->setPosition(320+marginX, labelY);
+    label->runAction(
+                     Sequence::create(
+                                      MoveTo::create(0.2f, Point(160, labelY)),
+                                      DelayTime::create(1.0f),
+                                      MoveTo::create(0.2f, Point(-marginX, labelY)),
+                                      CallFunc::create([this](){this->setupGame();}), // 開始処理を呼び出し
+                                      RemoveSelf::create(),
+                                      NULL
+                                      )
+                     );
+    
+    CCLOG("init-end");
+    return true;
+}
+
+void BattleScene::setupGame()
+{
     CCLOG("init-eternityBreakTime1: %d", eternityBreakTime);
     this->effectManager = new EffectManager();
     CCLOG("init-eternityBreakTime3: %d", eternityBreakTime);
@@ -68,11 +93,22 @@ bool BattleScene::init()
     CCLOG("init-eternityBreakTime4: %d", eternityBreakTime);
     this->scheduleUpdate();
     CCLOG("init-eternityBreakTime5: %d", eternityBreakTime);
-
     initTouchEvent();
+
+    // BGM
+    SoundManager* soundManager = new SoundManager();
+    CCLOG("onNodeLoaded-new SoundManager");
+    soundManager->playBGM("bgm_battle", true);
+    CCLOG("onNodeLoaded-playBGM");
     
-    CCLOG("init-end");
-    return true;
+    // SE
+    std::vector<std::string>::const_iterator iterator = effectList.begin();
+    CCLOG("onNodeLoaded-iterator");
+    while (iterator != effectList.end()) {
+        soundManager->preloadSE(*iterator);
+        CCLOG("preloadSE:%s", (*iterator).c_str());
+        iterator++;
+    }
 }
 
 /**
@@ -344,22 +380,7 @@ Control::Handler BattleScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
  */
 void BattleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
-    CCLOG("onNodeLoaded-start");
-    // BGM
-    SoundManager* soundManager = new SoundManager();
-    CCLOG("onNodeLoaded-new SoundManager");
-    soundManager->playBGM("bgm_battle", true);
-    CCLOG("onNodeLoaded-playBGM");
-
-    // SE
-    std::vector<std::string>::const_iterator iterator = effectList.begin();
-    CCLOG("onNodeLoaded-iterator");
-    while (iterator != effectList.end()) {
-        soundManager->preloadSE(*iterator);
-        CCLOG("preloadSE:%s", (*iterator).c_str());
-        iterator++;
-    }
-    CCLOG("onNodeLoaded-end");
+    CCLOG("onNodeLoaded");
 }
 
 /**

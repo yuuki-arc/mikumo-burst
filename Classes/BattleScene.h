@@ -30,6 +30,7 @@ public:
     
     void tappedResultButton(Ref* pTarget, Control::EventType pControlEventType);
 
+    void setupGame();
     void update(float frame);
     void updateBySchedule(float frame);
     void updateByDefeatEnemy(float frame);

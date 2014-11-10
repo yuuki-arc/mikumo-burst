@@ -51,15 +51,30 @@ public:
             "se_battle_darkness", "se_battle_fire", "se_battle_water"
         };
     };
-    static const std::vector<std::string> VOICE_LIST(){
+    
+    typedef std::vector<std::string> StringVector;
+    
+    enum Voice
+    {
+        Ready = 0,      // 準備完了(0〜2)
+        NormalAttack,   // 通常攻撃(3〜6)
+        BreakAttack,    // 限界突破(7〜10)
+        BattleEnd,      // バトル終了(11〜13)
+        EnemyDefeat,    // 敵撃破(14〜15)
+    };
+    static const std::map<Voice, StringVector> VOICE_LIST(){
         return {
-            "i01", "i33", "i34", // 準備完了(0〜2)
-            "i02", "i03", "i04","i05", // 通常攻撃(3〜6)
-            "i06", "i14", "i27", "i30", // 限界突破(7〜10)
-            "i10", "i11", "i12",  // バトル終了(11〜13)
-            "i24", "i25",  // 敵撃破(14〜15)
+            {Voice::Ready       , {"i01", "i30"}},
+            {Voice::NormalAttack, {"i02", "i03", "i04","i05"}},
+            {Voice::BreakAttack , {"i06", "i14", "i27"}},
+            {Voice::BattleEnd   , {"i10", "i11", "i12"}},
+            {Voice::EnemyDefeat , {"i24", "i25"}},
         };
     };
+    static const StringVector VOICE_LIST(Voice key){
+        std::map<Voice, StringVector> map = VOICE_LIST();
+        return map[key];
+    }
 
     static const char* NORMAL_FONT(){return "normal.fnt";}
     static const char* LARGE_FONT(){return "large.fnt";}

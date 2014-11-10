@@ -37,6 +37,12 @@ void SoundManager::playBGM(const std::string musicName, bool forceStart)
     }
 }
 
+void SoundManager::stopBGM()
+{
+    auto audioEngine = SimpleAudioEngine::getInstance();
+    audioEngine->stopBackgroundMusic();
+}
+
 void SoundManager::preloadSE(const std::string seName)
 {
     std::string fileName = "sound/" + seName + ".mp3";
