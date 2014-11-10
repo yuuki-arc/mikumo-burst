@@ -313,6 +313,13 @@ void BattleScene::update(float frame)
     {
         CCLOG("update-ep-break EP: %d", playerInfo->getEp());
         CCLOG("update-ep-break eternityBreakTime: %d", eternityBreakTime);
+
+        int num = arc4random() % 3;
+        Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::BreakAttack);
+        
+        SoundManager* soundManager = new SoundManager();
+        soundManager->playVoice(list[num]);
+        
         playerInfo->incrementBattleEpCount();
         playerInfo->setEp(0);
         eternityBreakTime = Constant::ETERNITY_BREAK_TIME;
@@ -339,6 +346,12 @@ void BattleScene::update(float frame)
  */
 void BattleScene::updateByDefeatEnemy(float frame)
 {
+    int num = arc4random() % 2;
+    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::EnemyDefeat);
+    
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playVoice(list[num]);
+    
     endBattle();
 }
 
@@ -404,6 +417,13 @@ void BattleScene::endBattle()
     GameManager::getInstance()->battleDamagePoint = enemyData->getMaxHp() - enemyData->getHp();
     GameManager::getInstance()->battleEternityPoint = playerInfo->getbattleEpCount();
 
+    int num = arc4random() % 3;
+    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::BattleEnd);
+    
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playVoice(list[num]);
+    soundManager->stopBGM();
+    
     replaceScene();
 }
 
