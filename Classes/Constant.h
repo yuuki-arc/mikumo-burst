@@ -37,30 +37,51 @@ public:
             "011", "012", "013"
         };
     };
-    static const std::vector<std::string> BATTLE_EFFECT_IMAGE_LIST(){
-        return {
-            "battleEffect107a", "battleEffect107b", "battleEffect107c",
-            "battleEffect107d", "battleEffect107e", "battleEffect107f",
-            "battleEffect107g", "battleEffect107h", "battleEffect107i",
-            "battleEffect107j"
-        };
-    };
-    static const std::vector<std::string> EFFECT_LIST(){
-        return {
-            "se_battle_blow", "se_battle_gun",
-            "se_battle_darkness", "se_battle_fire", "se_battle_water"
-        };
-    };
-    
+
     typedef std::vector<std::string> StringVector;
-    
+
+    enum ImageEffect
+    {
+        ImageNormal = 0,// 通常攻撃
+        ImageBreak,     // 限界突破
+    };
+    static const std::map<ImageEffect, StringVector> BATTLE_EFFECT_IMAGE_LIST(){
+        return {
+            {ImageEffect::ImageNormal, {"battleEffect107a", "battleEffect107b"}},
+            {ImageEffect::ImageBreak , {
+                    "battleEffect107c", "battleEffect107d", "battleEffect107e",
+                    "battleEffect107f", "battleEffect107g", "battleEffect107h",
+                    "battleEffect107i", "battleEffect107j"
+                }
+            },
+        };
+    };
+    static const StringVector BATTLE_EFFECT_IMAGE_LIST(ImageEffect key){
+        std::map<ImageEffect, StringVector> map = BATTLE_EFFECT_IMAGE_LIST();
+        return map[key];
+    }
+    enum SoundEffect
+    {
+        SoundNormal = 0,// 通常攻撃
+        SoundBreak,     // 限界突破
+    };
+    static const std::map<SoundEffect, StringVector> EFFECT_LIST(){
+        return {
+            {SoundEffect::SoundNormal, {"se_battle_blow", "se_battle_gun"}},
+            {SoundEffect::SoundBreak , {"se_battle_darkness", "se_battle_fire", "se_battle_water"}},
+        };
+    };
+    static const StringVector EFFECT_LIST(SoundEffect key){
+        std::map<SoundEffect, StringVector> map = EFFECT_LIST();
+        return map[key];
+    }
     enum Voice
     {
-        Ready = 0,      // 準備完了(0〜2)
-        NormalAttack,   // 通常攻撃(3〜6)
-        BreakAttack,    // 限界突破(7〜10)
-        BattleEnd,      // バトル終了(11〜13)
-        EnemyDefeat,    // 敵撃破(14〜15)
+        Ready = 0,      // 準備完了
+        NormalAttack,   // 通常攻撃
+        BreakAttack,    // 限界突破
+        BattleEnd,      // バトル終了
+        EnemyDefeat,    // 敵撃破
     };
     static const std::map<Voice, StringVector> VOICE_LIST(){
         return {

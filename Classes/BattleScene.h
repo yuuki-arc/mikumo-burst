@@ -71,8 +71,6 @@ private:
     MotionStreak *touchEffectMotion;
     std::vector<std::string> enemyImageList;
     std::vector<std::string> bgImageList;
-    std::vector<std::string> battleEffectImageList;
-    std::vector<std::string> effectList;
 
 //    EventListenerTouchAllAtOnce* listener;
     EventListenerTouchOneByOne* listener;

@@ -16,8 +16,6 @@ USING_NS_CC;
 BattleScene::BattleScene()
 : enemyImageList(Constant::ENEMY_IMAGE_LIST())
 , bgImageList(Constant::BG_IMAGE_LIST())
-, battleEffectImageList(Constant::BATTLE_EFFECT_IMAGE_LIST())
-, effectList(Constant::EFFECT_LIST())
 , gameTime(Constant::GAME_TIME)
 , gameEndFlg(false)
 , eternityBreakTime(0)
@@ -115,12 +113,15 @@ void BattleScene::setupGame()
     CCLOG("onNodeLoaded-playBGM");
     
     // SE
-    std::vector<std::string>::const_iterator iterator = effectList.begin();
-    CCLOG("onNodeLoaded-iterator");
-    while (iterator != effectList.end()) {
-        soundManager->preloadSE(*iterator);
-        CCLOG("preloadSE:%s", (*iterator).c_str());
-        iterator++;
+    for (auto& kv : Constant::EFFECT_LIST()) {
+        Constant::StringVector effectList = (Constant::StringVector)(kv.second);
+        Constant::StringVector::const_iterator iterator = effectList.begin();
+        CCLOG("onNodeLoaded-iterator");
+        while (iterator != effectList.end()) {
+            soundManager->preloadSE(*iterator);
+            CCLOG("preloadSE:%s", (*iterator).c_str());
+            iterator++;
+        }
     }
 }
 
@@ -496,6 +497,8 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     // タッチ位置
     auto location = touch->getLocation();
 
+    Constant::StringVector effectList;
+    Constant::StringVector battleEffectImageList;
     int damage;             // 与えたダメージ
     int soundEffectNum;     // 効果音
     int hitSpriteNum;       // ヒットエフェクト
@@ -504,24 +507,28 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     if (eternityBreakTime == 0)
     {
         // 通常時
+        effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundNormal);
+        battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageNormal);
         damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
-        soundEffectNum = CCRANDOM_0_1() * 2;
-        hitSpriteNum = CCRANDOM_0_1() * 2;
+        soundEffectNum = CCRANDOM_0_1() * effectList.size();
+        hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
     }
     else
     {
         // Eブレイク時
+        effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundBreak);
+        battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBreak);
         damage = Constant::BASE_DAMAGE_BREAK + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
-        soundEffectNum = CCRANDOM_0_1() * (effectList.size() - 2) + 2;
-        hitSpriteNum = CCRANDOM_0_1() * (battleEffectImageList.size() - 2) + 2;
+        soundEffectNum =  CCRANDOM_0_1() * (int)effectList.size();
+        hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
     }
 
     
     // 効果音
-    soundManager->playSE(effectList.at(soundEffectNum));
+    soundManager->playSE(effectList[soundEffectNum]);
     
     // ヒットエフェクト生成
-    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(hitSpriteNum), 10, location);
+    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], 10, location);
     this->addChild(effectSprite, ZOrder::TouchEffect);
     
     // 敵のHPゲージ
