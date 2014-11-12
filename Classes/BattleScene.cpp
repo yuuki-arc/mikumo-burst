@@ -62,18 +62,31 @@ bool BattleScene::init()
     eternityBreakTime = 0;
     
     // 開始テキスト表示
-    Label* label = Label::createWithSystemFont("START!", "Arial-BoldMT", 40, Size(320, 50), TextHAlignment::CENTER, TextVAlignment::CENTER);
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+    
+    Label* label = Label::createWithBMFont(Constant::NORMAL_FONT(), "BATTLE START!");
+    label->setAnchorPoint(Point(0.5, 0.5));
+    label->getTexture()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
     
-    // 右から現れて左に消える
-    static const float labelY = 200;
-    static const float marginX = 200;
-    label->setPosition(320+marginX, labelY);
+//    Label* label = Label::createWithSystemFont("START!", "Arial-BoldMT", 40, Size(320, 50), TextHAlignment::CENTER, TextVAlignment::CENTER);
+//    this->addChild(label, ZOrder::Font);
+    
+    // ゲーム開始アニメーション
+//    static const float labelY = 200;
+//    static const float marginX = 200;
+//    label->setPosition(320+marginX, labelY);
+    float marginX = label->getContentSize().width;
+    CCLOG("moveTo: %f", marginX);
+    float x = origin.x + visibleSize.width / 2;
+    float y = origin.y + visibleSize.height / 2;
+    label->setPosition(Point(x+marginX,y));
     label->runAction(
                      Sequence::create(
-                                      MoveTo::create(0.2f, Point(160, labelY)),
+                                      MoveTo::create(0.5f, Point(x, y)),
                                       DelayTime::create(1.0f),
-                                      MoveTo::create(0.2f, Point(-marginX, labelY)),
+                                      MoveTo::create(0.5f, Point(-marginX, y)),
                                       CallFunc::create([this](){this->setupGame();}), // 開始処理を呼び出し
                                       RemoveSelf::create(),
                                       NULL
