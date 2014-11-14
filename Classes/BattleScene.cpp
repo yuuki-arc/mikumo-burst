@@ -82,6 +82,7 @@ bool BattleScene::init()
     label->setPosition(Point(x+marginX,y));
     label->runAction(
                      Sequence::create(
+                                      DelayTime::create(1.0f),
                                       MoveTo::create(0.5f, Point(x, y)),
                                       DelayTime::create(1.0f),
                                       MoveTo::create(0.5f, Point(-marginX, y)),
