@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>Icon-57.png</string>
+	<string>Icon.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>co.yuukiar.FragmentOfEternity</string>
 	<key>CFBundleInfoDictionaryVersion</key>
