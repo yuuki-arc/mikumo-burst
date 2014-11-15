@@ -1,11 +1,12 @@
 package co.yuukiar.fragmentofeternity;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
+import net.app_c.cloud.plugin.c2dx.AppCCloudActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-public class SocialActivity extends Cocos2dxActivity {
+public class SocialActivity extends AppCCloudActivity {
 
     private static Cocos2dxActivity instance = null;
 

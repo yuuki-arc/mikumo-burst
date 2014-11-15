@@ -1,6 +1,8 @@
 #include "AppDelegate.h"
 #include "extensions/cocos-ext.h"
 
+#include "AppCCloudPlugin.h"
+#include "Constant.h"
 #include "GameManager.h"
 #include "TitleScene.h"
 #include "TitleSceneLoader.h"
@@ -68,6 +70,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     // turn on display FPS
     director->setDisplayStats(true);
+
+    // appC cloud 開始
+    AppCCloudPlugin::setMK_iOS(Constant::APPC_MEDIA_KEY()).start();
     
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);

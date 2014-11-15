@@ -18,7 +18,7 @@ public:
     static const int LIMIT_DAMAGE = 999999;
     static const int MAX_PLAYER_EP = 100;
     static const int EP_INCREMENT = 1;
-
+    
     static const std::vector<std::string> PERSONA_IMAGE_LIST(){
         return {
             "chara_f316", "chara_f317",
@@ -97,6 +97,7 @@ public:
         return map[key];
     }
 
+    static const char* APPC_MEDIA_KEY(){return "DumyMediaKey";}
     static const char* NORMAL_FONT(){return "normal.fnt";}
     static const char* LARGE_FONT(){return "large.fnt";}
 
