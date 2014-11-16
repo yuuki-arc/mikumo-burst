@@ -1,5 +1,6 @@
 #include "ResultScene.h"
 #include "SelectSceneLoader.h"
+#include "AppCCloudPlugin.h"
 #include "Constant.h"
 #include "GameManager.h"
 #include "SoundManager.h"
@@ -52,9 +53,12 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     int score = GameManager::getInstance()->battleDamagePoint;
     int breakCount = GameManager::getInstance()->battleEternityPoint;
     
-    // データ保存
+    // データ保存（アプリ内）
     saveData(rank, score, breakCount);
 
+    // データ保存（Gamers内）
+    saveGamers(rank, score, breakCount);
+    
     // スコア表示
     displayInfo(rank, score, breakCount);
 }
@@ -93,6 +97,28 @@ void ResultScene::saveData(int rank, int score, int breakCount)
     scoreMap.insert(std::make_pair(KEY_BREAK, std::to_string(breakCount)));
     scoreList.push_back(scoreMap);
     store->setScoreTable(scoreList);
+};
+
+void ResultScene::saveGamers(int rank, int score, int breakCount)
+{
+    auto store = UserDataStore::getInstance();
+    
+    // バトル回数
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_BATTLE_COUNT,
+                                            store->getBattleCount());
+
+    // 最高ランク
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_BATTLE_RANK,
+                                            store->getHighRank());
+    
+    // トータルスコア
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_SCORE,
+                                            store->getTotalScore());
+    
+    // トータルブレイク
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_BREAK,
+                                            store->getTotalBreak());
+    
 };
 
 void ResultScene::displayInfo(int rank, int score, int breakCount)

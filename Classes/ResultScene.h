@@ -37,6 +37,7 @@ private:
     };
     
     void saveData(int rank, int score, int breakCount);
+    void saveGamers(int rank, int score, int breakCount);
     void displayInfo(int rank, int score, int breakCount);
 };
 
