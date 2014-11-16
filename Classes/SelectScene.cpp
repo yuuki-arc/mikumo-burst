@@ -1,6 +1,7 @@
 #include "SelectScene.h"
 #include "ScoreSceneLoader.h"
 #include "BattleSceneLoader.h"
+#include "AppCCloudPlugin.h"
 #include "Constant.h"
 #include "GameManager.h"
 #include "CharacterCreator.h"
@@ -163,7 +164,10 @@ void SelectScene::tappedScoreButton(Ref* pTarget, Control::EventType pControlEve
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
     
-    Scene* scene = ScoreSceneLoader::createScene();
-    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
-    Director::getInstance()->replaceScene(trans);
+//    Scene* scene = ScoreSceneLoader::createScene();
+//    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
+//    Director::getInstance()->replaceScene(trans);
+    // GAMERS画面を開く
+    AppCCloudPlugin::Gamers::showGamersView();
+
 }
