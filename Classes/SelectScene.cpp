@@ -38,6 +38,7 @@ Control::Handler SelectScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
 {
     CCLOG("name = %s", pSelectorName);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBattleButton", SelectScene::tappedBattleButton);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedScoreButton", SelectScene::tappedScoreButton);
     return NULL;
 }
 
@@ -141,7 +142,7 @@ void SelectScene::displayInfo()
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedBattleButton eventType = %d", pControlEventType);
-
+    
     int num = arc4random() % 2;
     Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
     
@@ -151,6 +152,18 @@ void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEv
     soundManager->stopBGM();
     
     Scene* scene = BattleSceneLoader::createScene();
+    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
+    Director::getInstance()->replaceScene(trans);
+}
+
+void SelectScene::tappedScoreButton(Ref* pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedScoreButton eventType = %d", pControlEventType);
+    
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    
+    Scene* scene = ScoreSceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }

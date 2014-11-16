@@ -57,7 +57,6 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 
     // スコア表示
     displayInfo(rank, score, breakCount);
-    
 }
 
 void ResultScene::saveData(int rank, int score, int breakCount)
