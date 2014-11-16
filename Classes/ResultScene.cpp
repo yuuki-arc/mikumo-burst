@@ -6,6 +6,7 @@
 #include "SoundManager.h"
 #include "TextCreator.h"
 #include "UserDataStore.h"
+#include "NativeLauncher.h"
 
 ResultScene::ResultScene()
 {
@@ -36,6 +37,7 @@ Control::Handler ResultScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
 {
     CCLOG("name = %s", pSelectorName);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedSelectButton", ResultScene::tappedSelectButton);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedSocialButton", ResultScene::tappedSocialButton);
     return NULL;
 }
 
@@ -164,6 +166,17 @@ void ResultScene::displayInfo(int rank, int score, int breakCount)
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
 };
+
+
+void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedSocialButton eventType = %d", pControlEventType);
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+
+    //ツイート画面呼び出し
+    NativeLauncher::openTweetDialog("10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #10sec_burst");
+}
 
 void ResultScene::tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType)
 {

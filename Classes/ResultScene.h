@@ -25,6 +25,7 @@ public:
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(ResultScene, create);
     
     void tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedSocialButton(Ref* pTarget, Control::EventType pControlEventType);
 
     void pushBack(Ref* pSender);
 
