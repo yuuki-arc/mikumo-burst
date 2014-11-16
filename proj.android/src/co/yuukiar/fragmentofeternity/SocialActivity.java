@@ -10,6 +10,7 @@ public class SocialActivity extends AppCCloudActivity {
 
     private static Cocos2dxActivity instance = null;
 
+	@Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         instance = this;
