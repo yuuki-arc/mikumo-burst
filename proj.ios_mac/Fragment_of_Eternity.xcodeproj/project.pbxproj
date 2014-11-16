@@ -108,6 +108,7 @@
 		A531195F1A184FE700BFEB78 /* editbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A531195E1A184FE700BFEB78 /* editbox.png */; };
 		A53119621A1850A700BFEB78 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = A53119601A1850A700BFEB78 /* CloseNormal.png */; };
 		A53119631A1850A700BFEB78 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = A53119611A1850A700BFEB78 /* CloseSelected.png */; };
+		A53119661A1864E500BFEB78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A53119681A1864E500BFEB78 /* InfoPlist.strings */; };
 		A54AEABA19B23D6000AE6AE4 /* BattleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */; };
 		A54AEABC19B23D6000AE6AE4 /* fileLookup.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */; };
 		A54AEABD19B23D6000AE6AE4 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB319B23D6000AE6AE4 /* resources-iphone */; };
@@ -427,6 +428,8 @@
 		A531195E1A184FE700BFEB78 /* editbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editbox.png; sourceTree = "<group>"; };
 		A53119601A1850A700BFEB78 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		A53119611A1850A700BFEB78 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
+		A53119691A1864ED00BFEB78 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A531196A1A1864F400BFEB78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = BattleScene.ccbi; sourceTree = "<group>"; };
 		A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fileLookup.plist; sourceTree = "<group>"; };
 		A54AEAB319B23D6000AE6AE4 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphone"; sourceTree = "<group>"; };
@@ -569,6 +572,7 @@
 				503AE0FD17EB989F00D1A890 /* Prefix.pch */,
 				503AE0FE17EB989F00D1A890 /* RootViewController.h */,
 				503AE0FF17EB989F00D1A890 /* RootViewController.mm */,
+				A53119681A1864E500BFEB78 /* InfoPlist.strings */,
 			);
 			name = ios;
 			path = Classes;
@@ -969,6 +973,7 @@
 				French,
 				German,
 				en,
+				ja,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -1094,6 +1099,7 @@
 				A54AEABF19B23D6000AE6AE4 /* ResultScene.ccbi in Resources */,
 				A53118E91A151B0000BFEB78 /* Icon-76@2x.png in Resources */,
 				A53119481A17351400BFEB78 /* appc_micon_box_shadow@2x.png in Resources */,
+				A53119661A1864E500BFEB78 /* InfoPlist.strings in Resources */,
 				A53119361A17351400BFEB78 /* appc_cutin_btn_other@2x.png in Resources */,
 				A531193E1A17351400BFEB78 /* appc_manga_close@2x.png in Resources */,
 				A54AEABA19B23D6000AE6AE4 /* BattleScene.ccbi in Resources */,
@@ -1277,6 +1283,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A53119681A1864E500BFEB78 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A53119691A1864ED00BFEB78 /* ja */,
+				A531196A1A1864F400BFEB78 /* en */,
+			);
+			name = InfoPlist.strings;
+			path = ios;
+			sourceTree = SOURCE_ROOT;
+		};
 		A5CCD2D919BEC71D002ED2FC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
