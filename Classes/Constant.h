@@ -98,10 +98,10 @@ public:
     }
 
     static const char* APPC_MEDIA_KEY(){return "DumyMediaKey";}
-    static const int LEADERBOARD_BATTLE_COUNT = 1222;
-    static const int LEADERBOARD_BATTLE_RANK = 1223;
-    static const int LEADERBOARD_TOTAL_SCORE = 1224;
-    static const int LEADERBOARD_TOTAL_BREAK = 1225;
+    static const int LEADERBOARD_BATTLE_COUNT = 1237;
+    static const int LEADERBOARD_BATTLE_RANK = 1238;
+    static const int LEADERBOARD_TOTAL_SCORE = 1239;
+    static const int LEADERBOARD_TOTAL_BREAK = 1240;
     
     static const char* NORMAL_FONT(){return "normal.fnt";}
     static const char* LARGE_FONT(){return "large.fnt";}
