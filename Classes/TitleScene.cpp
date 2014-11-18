@@ -1,5 +1,6 @@
 #include "TitleScene.h"
 #include "SelectSceneLoader.h"
+#include "GoogleAnalyticsTracker.h"
 #include "SoundManager.h"
 
 TitleScene::TitleScene()
@@ -13,6 +14,7 @@ TitleScene::~TitleScene()
 bool TitleScene::init()
 {    
     CCLOG("TitleScene::init");
+    GoogleAnalyticsTracker::sendScreen("TitleScene");
 	if(!Layer::init())
 	{
 		return false;

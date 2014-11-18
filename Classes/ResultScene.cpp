@@ -1,5 +1,6 @@
 #include "ResultScene.h"
 #include "SelectSceneLoader.h"
+#include "GoogleAnalyticsTracker.h"
 #include "AppCCloudPlugin.h"
 #include "Constant.h"
 #include "GameManager.h"
@@ -18,6 +19,7 @@ ResultScene::~ResultScene()
 
 bool ResultScene::init()
 {
+    GoogleAnalyticsTracker::sendScreen("ResultScene");
 	if(!Layer::init())
 	{
 		return false;

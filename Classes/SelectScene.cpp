@@ -1,6 +1,7 @@
 #include "SelectScene.h"
 #include "ScoreSceneLoader.h"
 #include "BattleSceneLoader.h"
+#include "GoogleAnalyticsTracker.h"
 #include "AppCCloudPlugin.h"
 #include "Constant.h"
 #include "GameManager.h"
@@ -20,6 +21,7 @@ SelectScene::~SelectScene()
 
 bool SelectScene::init()
 {
+    GoogleAnalyticsTracker::sendScreen("SelectScene");
 	if(!Layer::init())
 	{
 		return false;

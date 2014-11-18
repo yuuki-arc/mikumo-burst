@@ -30,7 +30,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>co.yuukiar.FragmentOfEternity</string>
+			<string>co.yuukiar.app10secburst</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>appccloud.DumyMediaKey</string>

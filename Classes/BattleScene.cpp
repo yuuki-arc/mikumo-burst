@@ -1,5 +1,6 @@
 #include "BattleScene.h"
 #include "ResultSceneLoader.h"
+#include "GoogleAnalyticsTracker.h"
 #include "Constant.h"
 #include "GameManager.h"
 #include "UserDataStore.h"
@@ -42,6 +43,7 @@ BattleScene::~BattleScene()
 bool BattleScene::init()
 {
     CCLOG("init-start");
+    GoogleAnalyticsTracker::sendScreen("BattleScene");
     if(!CCLayer::init())
     {
         return false;

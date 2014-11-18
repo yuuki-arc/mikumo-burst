@@ -130,6 +130,7 @@
 		A5A7F0E019BB32E900A5BEDD /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */; };
 		A5A7F0E219BB394700A5BEDD /* sound in Resources */ = {isa = PBXBuildFile; fileRef = A5A7F0E119BB394700A5BEDD /* sound */; };
 		A5A7F0E519BB5D8400A5BEDD /* EnemyCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A7F0E319BB5D8400A5BEDD /* EnemyCharacter.cpp */; };
+		A5ADDC491A1AD42E00A492F3 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ADDC471A1AD42E00A492F3 /* libGoogleAnalyticsServices.a */; };
 		A5B2714519AC6BD30028E9E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */; };
 		A5B2714719AC6BDC0028E9E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714619AC6BDC0028E9E0 /* UIKit.framework */; };
 		A5B2714919AC6BE40028E9E0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714819AC6BE40028E9E0 /* OpenGLES.framework */; };
@@ -143,6 +144,9 @@
 		A5CAC28A19F88B6900A8E66D /* TextCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5CAC28819F88B6900A8E66D /* TextCreator.cpp */; };
 		A5CAC28D19F8BB0400A8E66D /* EnemyTargetter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5CAC28B19F8BB0400A8E66D /* EnemyTargetter.cpp */; };
 		A5CCD2C119BD661C002ED2FC /* font in Resources */ = {isa = PBXBuildFile; fileRef = A5CCD2C019BD661C002ED2FC /* font */; };
+		A5E2798F1A1A5935005D4D7F /* GoogleAnalyticsTracker.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5E2798D1A1A5935005D4D7F /* GoogleAnalyticsTracker.mm */; };
+		A5E279911A1A688E005D4D7F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E279901A1A688E005D4D7F /* CoreData.framework */; };
+		A5E279931A1A6898005D4D7F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E279921A1A6898005D4D7F /* SystemConfiguration.framework */; };
 		A5E7A4281A0FF2CA00408FC0 /* voice in Resources */ = {isa = PBXBuildFile; fileRef = A5E7A4271A0FF2CA00408FC0 /* voice */; };
 		A5ED392F19F3BC360086C17B /* PlayerBattleInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5ED392D19F3BC360086C17B /* PlayerBattleInfo.cpp */; };
 		A5F6046719F43C0100133718 /* SelectSubScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5F6046619F43C0100133718 /* SelectSubScene.ccbi */; };
@@ -452,6 +456,7 @@
 		A59917F819B040CD00A95508 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = ../Classes/ResultScene.h; sourceTree = "<group>"; };
 		A59917F919B040CD00A95508 /* ResultSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultSceneLoader.cpp; path = ../Classes/ResultSceneLoader.cpp; sourceTree = "<group>"; };
 		A59917FA19B040CD00A95508 /* ResultSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultSceneLoader.h; path = ../Classes/ResultSceneLoader.h; sourceTree = "<group>"; };
+		A59B19DC1A1B05B3004EEF49 /* NativeLauncher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NativeLauncher.cpp; path = ../Classes/NativeLauncher.cpp; sourceTree = "<group>"; };
 		A5A6ACC519C5823500800AE6 /* BattleActionCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BattleActionCreator.cpp; path = ../Classes/BattleActionCreator.cpp; sourceTree = "<group>"; };
 		A5A6ACC619C5823500800AE6 /* BattleActionCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BattleActionCreator.h; path = ../Classes/BattleActionCreator.h; sourceTree = "<group>"; };
 		A5A7F0DE19BB32E900A5BEDD /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/SoundManager.cpp; sourceTree = "<group>"; };
@@ -459,6 +464,21 @@
 		A5A7F0E119BB394700A5BEDD /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		A5A7F0E319BB5D8400A5BEDD /* EnemyCharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyCharacter.cpp; sourceTree = "<group>"; };
 		A5A7F0E419BB5D8400A5BEDD /* EnemyCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyCharacter.h; sourceTree = "<group>"; };
+		A5ADDC271A1AD08F00A492F3 /* GoogleAnalyticsTracker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GoogleAnalyticsTracker.cpp; path = ../Classes/GoogleAnalyticsTracker.cpp; sourceTree = "<group>"; };
+		A5ADDC281A1AD0DC00A492F3 /* GoogleAnalyticsTracker_JNI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GoogleAnalyticsTracker_JNI.cpp; path = ../Classes/GoogleAnalyticsTracker_JNI.cpp; sourceTree = "<group>"; };
+		A5ADDC291A1AD10100A492F3 /* GoogleAnalyticsTracker_JNI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoogleAnalyticsTracker_JNI.h; path = ../Classes/GoogleAnalyticsTracker_JNI.h; sourceTree = "<group>"; };
+		A5ADDC3C1A1AD42E00A492F3 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		A5ADDC3D1A1AD42E00A492F3 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		A5ADDC3E1A1AD42E00A492F3 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		A5ADDC3F1A1AD42E00A492F3 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		A5ADDC401A1AD42E00A492F3 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		A5ADDC411A1AD42E00A492F3 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		A5ADDC421A1AD42E00A492F3 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		A5ADDC431A1AD42E00A492F3 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		A5ADDC441A1AD42E00A492F3 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		A5ADDC451A1AD42E00A492F3 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		A5ADDC461A1AD42E00A492F3 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
+		A5ADDC471A1AD42E00A492F3 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		A5B2713A19AC6B6B0028E9E0 /* libbox2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbox2d iOS.a"; path = "../lib/libbox2d iOS.a"; sourceTree = "<group>"; };
 		A5B2713B19AC6B6B0028E9E0 /* libchipmunk iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchipmunk iOS.a"; path = "../lib/libchipmunk iOS.a"; sourceTree = "<group>"; };
 		A5B2713C19AC6B6B0028E9E0 /* libcocos2dx iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2dx iOS.a"; path = "../lib/libcocos2dx iOS.a"; sourceTree = "<group>"; };
@@ -478,6 +498,12 @@
 		A5CCD2BB19BC9DEF002ED2FC /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constant.h; path = ../Classes/Constant.h; sourceTree = "<group>"; };
 		A5CCD2C019BD661C002ED2FC /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
 		A5CCD2D219BEC71D002ED2FC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A5E2798D1A1A5935005D4D7F /* GoogleAnalyticsTracker.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GoogleAnalyticsTracker.mm; path = ../Classes/GoogleAnalyticsTracker.mm; sourceTree = "<group>"; };
+		A5E2798E1A1A5935005D4D7F /* GoogleAnalyticsTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoogleAnalyticsTracker.h; path = ../Classes/GoogleAnalyticsTracker.h; sourceTree = "<group>"; };
+		A5E279901A1A688E005D4D7F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		A5E279921A1A6898005D4D7F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		A5E279941A1A68B5005D4D7F /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ios/GoogleAnalyticsServicesiOS_3.08/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		A5E279961A1A6E87005D4D7F /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ios/GoogleAnalyticsServicesiOS/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		A5E7A4271A0FF2CA00408FC0 /* voice */ = {isa = PBXFileReference; lastKnownFileType = folder; path = voice; sourceTree = "<group>"; };
 		A5ED392D19F3BC360086C17B /* PlayerBattleInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerBattleInfo.cpp; sourceTree = "<group>"; };
 		A5ED392E19F3BC360086C17B /* PlayerBattleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerBattleInfo.h; sourceTree = "<group>"; };
@@ -498,6 +524,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5ADDC491A1AD42E00A492F3 /* libGoogleAnalyticsServices.a in Frameworks */,
+				A5E279931A1A6898005D4D7F /* SystemConfiguration.framework in Frameworks */,
+				A5E279911A1A688E005D4D7F /* CoreData.framework in Frameworks */,
 				A531195A1A17363700BFEB78 /* StoreKit.framework in Frameworks */,
 				A53119581A17362B00BFEB78 /* CoreTelephony.framework in Frameworks */,
 				A51CC73619B8B2FC009FFDE3 /* Twitter.framework in Frameworks */,
@@ -583,6 +612,7 @@
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				A51CC73019B8B2EE009FFDE3 /* NativeLauncher.h */,
 				A51CC73119B8B2EE009FFDE3 /* NativeLauncher.mm */,
+				A59B19DC1A1B05B3004EEF49 /* NativeLauncher.cpp */,
 				A518557419ACF0CB00169907 /* TitleScene.cpp */,
 				A518557519ACF0CB00169907 /* TitleScene.h */,
 				A568C35719AF7B18000547E4 /* TitleSceneLoader.cpp */,
@@ -623,6 +653,11 @@
 				A5CAC28919F88B6900A8E66D /* TextCreator.h */,
 				A5CAC28B19F8BB0400A8E66D /* EnemyTargetter.cpp */,
 				A5CAC28C19F8BB0400A8E66D /* EnemyTargetter.h */,
+				A5E2798D1A1A5935005D4D7F /* GoogleAnalyticsTracker.mm */,
+				A5E2798E1A1A5935005D4D7F /* GoogleAnalyticsTracker.h */,
+				A5ADDC271A1AD08F00A492F3 /* GoogleAnalyticsTracker.cpp */,
+				A5ADDC281A1AD0DC00A492F3 /* GoogleAnalyticsTracker_JNI.cpp */,
+				A5ADDC291A1AD10100A492F3 /* GoogleAnalyticsTracker_JNI.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -658,6 +693,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A5ADDC391A1AD42E00A492F3 /* GoogleAnalyticsServicesiOS */,
 				A53118F81A17351400BFEB78 /* appc_cloud_ios_xcode_6 */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				15AA9C4015B7EC450033D6C2 /* Classes */,
@@ -674,6 +710,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5E279961A1A6E87005D4D7F /* libGoogleAnalyticsServices.a */,
+				A5E279941A1A68B5005D4D7F /* libGoogleAnalyticsServices.a */,
+				A5E279921A1A6898005D4D7F /* SystemConfiguration.framework */,
+				A5E279901A1A688E005D4D7F /* CoreData.framework */,
 				A53119591A17363600BFEB78 /* StoreKit.framework */,
 				A53119571A17362B00BFEB78 /* CoreTelephony.framework */,
 				A51CC73519B8B2FC009FFDE3 /* Twitter.framework */,
@@ -853,6 +893,41 @@
 			path = ../Resources;
 			sourceTree = "<group>";
 		};
+		A5ADDC391A1AD42E00A492F3 /* GoogleAnalyticsServicesiOS */ = {
+			isa = PBXGroup;
+			children = (
+				A5ADDC3A1A1AD42E00A492F3 /* GoogleAnalytics */,
+				A5ADDC461A1AD42E00A492F3 /* libAdIdAccess.a */,
+				A5ADDC471A1AD42E00A492F3 /* libGoogleAnalyticsServices.a */,
+			);
+			path = GoogleAnalyticsServicesiOS;
+			sourceTree = "<group>";
+		};
+		A5ADDC3A1A1AD42E00A492F3 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				A5ADDC3B1A1AD42E00A492F3 /* Library */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		A5ADDC3B1A1AD42E00A492F3 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				A5ADDC3C1A1AD42E00A492F3 /* GAI.h */,
+				A5ADDC3D1A1AD42E00A492F3 /* GAIDictionaryBuilder.h */,
+				A5ADDC3E1A1AD42E00A492F3 /* GAIEcommerceFields.h */,
+				A5ADDC3F1A1AD42E00A492F3 /* GAIEcommerceProduct.h */,
+				A5ADDC401A1AD42E00A492F3 /* GAIEcommerceProductAction.h */,
+				A5ADDC411A1AD42E00A492F3 /* GAIEcommercePromotion.h */,
+				A5ADDC421A1AD42E00A492F3 /* GAIFields.h */,
+				A5ADDC431A1AD42E00A492F3 /* GAILogger.h */,
+				A5ADDC441A1AD42E00A492F3 /* GAITrackedViewController.h */,
+				A5ADDC451A1AD42E00A492F3 /* GAITracker.h */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		A5B2AE951A19E1CC003061A2 /* XCTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -946,6 +1021,11 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 9N47MNV46M;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					A5B2AE931A19E1CC003061A2 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -1186,6 +1266,7 @@
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */,
 				A59917F319B03F5B00A95508 /* SelectScene.cpp in Sources */,
+				A5E2798F1A1A5935005D4D7F /* GoogleAnalyticsTracker.mm in Sources */,
 				A54AEAD719B2E25F00AE6AE4 /* CharacterCreator.cpp in Sources */,
 				A509620219F4363200313EBC /* ScoreSceneLoader.cpp in Sources */,
 				A59917F219B03F5B00A95508 /* BattleSceneLoader.cpp in Sources */,
@@ -1317,6 +1398,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../lib\"",
 					"$(PROJECT_DIR)/appc_cloud_ios_xcode_6",
+					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
 				PRODUCT_NAME = "10sec_BURST iOS";
 				PROVISIONING_PROFILE = "39b5173f-aa51-482f-aac1-f61f09dbd974";
@@ -1356,6 +1438,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../lib\"",
 					"$(PROJECT_DIR)/appc_cloud_ios_xcode_6",
+					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
 				PRODUCT_NAME = "10sec_BURST iOS";
 				PROVISIONING_PROFILE = "7390784b-4b5e-46b7-b739-626745aebda6";
@@ -1486,6 +1569,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../lib\"",
 					"$(PROJECT_DIR)/appc_cloud_ios_xcode_6",
+					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
 				PRODUCT_NAME = "10sec_BURST iOS";
 				PROVISIONING_PROFILE = "efe54c51-6411-47df-bdb3-156337406c92";

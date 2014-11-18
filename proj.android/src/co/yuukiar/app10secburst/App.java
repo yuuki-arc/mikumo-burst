@@ -3,6 +3,8 @@ package co.yuukiar.app10secburst;
 import android.app.Application;
 
 import com.deploygate.sdk.DeployGate;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 
 public class App extends Application {
     @Override
@@ -18,5 +20,15 @@ public class App extends Application {
         // specify your username explicitly here, like:
         //
         // DeployGate.install(this, "YOURUSERNAME");
+    }
+
+    Tracker mTracker;
+    
+    synchronized Tracker getTracker() {
+        if (mTracker == null) {
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            mTracker = analytics.newTracker(R.xml.ga_tracker);
+        }
+        return mTracker;
     }
 }

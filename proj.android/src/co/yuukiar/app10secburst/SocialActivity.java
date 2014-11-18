@@ -1,10 +1,14 @@
 package co.yuukiar.app10secburst;
 
-import org.cocos2dx.lib.Cocos2dxActivity;
 import net.app_c.cloud.plugin.c2dx.AppCCloudActivity;
+
+import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class SocialActivity extends AppCCloudActivity {
 
@@ -25,6 +29,18 @@ public class SocialActivity extends AppCCloudActivity {
         instance.startActivity(Intent.createChooser(intent, "共有する"));
     }
 
+    public static void sendScreen(String screenName) {
+        // Get tracker.
+        Tracker t = ((App) Cocos2dxActivity.getContext().getApplicationContext()).getTracker();
+     
+        // Set screen name.
+        // Where path is a String representing the screen name.
+        t.setScreenName(screenName);
+     
+        // Send a screen view.
+        t.send(new HitBuilders.AppViewBuilder().build());
+    }
+    
     static {
         System.loadLibrary("cocos2dcpp");
     }

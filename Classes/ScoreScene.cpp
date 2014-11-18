@@ -1,5 +1,6 @@
 #include "ScoreScene.h"
 #include "SelectSceneLoader.h"
+#include "GoogleAnalyticsTracker.h"
 #include "Constant.h"
 #include "SoundManager.h"
 #include "TextCreator.h"
@@ -15,6 +16,7 @@ ScoreScene::~ScoreScene()
 
 bool ScoreScene::init()
 {
+    GoogleAnalyticsTracker::sendScreen("ScoreScene");
     if(!Layer::init())
     {
         return false;

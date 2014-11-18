@@ -27,6 +27,7 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "GoogleAnalyticsTracker.h"
 
 @implementation AppController
 
@@ -80,6 +81,9 @@ static AppDelegate s_sharedApplication;
 
     cocos2d::Application::getInstance()->run();
 
+    // GA setup
+    GoogleAnalyticsTracker::setup();
+    
     return YES;
 }
 
