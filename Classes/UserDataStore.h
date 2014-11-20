@@ -36,11 +36,14 @@ public:
     void setTotalScore(int value);
     int getTotalScore();
 
-    void setTotalBreak(int value);
+    void setTotalHit(int value);
+    int getTotalHit();
+    
+    void setTotalBurst(int value);
     int getTotalBurst();
     
-    void setScoreTable(StringMapVector scoreList);
-    StringMapVector getScoreTable();
+//    void setScoreTable(StringMapVector scoreList);
+//    StringMapVector getScoreTable();
     
 };
 

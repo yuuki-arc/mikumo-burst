@@ -9,14 +9,14 @@ class Constant
 public:
     static const int GAME_TIME = 10;
     static const int MAX_BURST_TIME = 3;
-    static const int DEFAULT_ENEMY_HP = 1000000;
-    static const int BASE_DAMAGE = 1000;
-    static const int BASE_DAMAGE_BREAK = 4000;
-    static const int DAMAGE_RANK_UP_INCREMENT = 1000;
-    static const int HP_RANK_UP_INCREMENT = 100000;
+    static const int DEFAULT_ENEMY_HP = 100;
+    static const int BASE_DAMAGE_NORMAL = 1;
+    static const int BASE_DAMAGE_BURST = 4;
+    static const int DAMAGE_RANK_UP_INCREMENT = 2;
+    static const int HP_RANK_UP_INCREMENT = 10;
     static const int LIMIT_RANK = 999;
     static const int LIMIT_DAMAGE = 999999;
-    static const int MAX_PLAYER_BP = 100;
+    static const int MAX_PLAYER_BP = 50;
     static const int BP_INCREMENT = 1;
     
     static const std::vector<std::string> PERSONA_IMAGE_LIST(){
@@ -117,11 +117,12 @@ public:
         static const char* RANK(){return "rank";}
         static const char* HIGH_RANK(){return "high_rank";}
         static const char* TOTAL_SCORE(){return "total_score";}
+        static const char* TOTAL_HIT(){return "total_hit";}
         static const char* TOTAL_BURST(){return "total_burst";}
-        static const char* SCORE_TABLE(){return "score_table";}
-        static const char* SCORE_TABLE_RANK(){return "score_table_rank";}
-        static const char* SCORE_TABLE_SCORE(){return "score_table_score";}
-        static const char* SCORE_TABLE_BURST(){return "score_table_burst";}
+//        static const char* SCORE_TABLE(){return "score_table";}
+//        static const char* SCORE_TABLE_RANK(){return "score_table_rank";}
+//        static const char* SCORE_TABLE_SCORE(){return "score_table_score";}
+//        static const char* SCORE_TABLE_BURST(){return "score_table_burst";}
     };
 };
 

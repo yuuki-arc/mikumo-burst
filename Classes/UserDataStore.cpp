@@ -33,14 +33,13 @@ void UserDataStore::setupData()
     setDataStoredOn();
     setRank(1);
 
-    StringMapVector list = {};
-    StringMap map;
-    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_RANK(), std::to_string(20)));
-    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_SCORE(), std::to_string(20)));
-    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_BURST(), std::to_string(30)));
-    list.push_back(map);
-    setScoreTable(list);
-
+//    StringMapVector list = {};
+//    StringMap map;
+//    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_RANK(), std::to_string(20)));
+//    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_SCORE(), std::to_string(20)));
+//    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_BURST(), std::to_string(30)));
+//    list.push_back(map);
+//    setScoreTable(list);
 }
 
 void UserDataStore::setDataStoredOn()
@@ -98,7 +97,18 @@ int UserDataStore::getTotalScore()
     return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_SCORE());
 }
 
-void UserDataStore::setTotalBreak(int value)
+void UserDataStore::setTotalHit(int value)
+{
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::TOTAL_HIT(), value);
+    userDefault->flush();
+}
+
+int UserDataStore::getTotalHit()
+{
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_HIT());
+}
+
+void UserDataStore::setTotalBurst(int value)
 {
     userDefault->setIntegerForKey(Constant::UserDefaultKey::TOTAL_BURST(), value);
     userDefault->flush();
@@ -109,6 +119,7 @@ int UserDataStore::getTotalBurst()
     return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_BURST());
 }
 
+/*
 void UserDataStore::setScoreTable(StringMapVector scoreList)
 {
     // {
@@ -137,7 +148,7 @@ void UserDataStore::setScoreTable(StringMapVector scoreList)
     
     const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
     const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BURST();
+    const std::string KEY_BURST = Constant::UserDefaultKey::SCORE_TABLE_BURST();
     
     for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)
     {
@@ -145,7 +156,7 @@ void UserDataStore::setScoreTable(StringMapVector scoreList)
         StringMap map = (*it);
         detail.insert(std::make_pair(KEY_RANK, picojson::value(map[KEY_RANK])));
         detail.insert(std::make_pair(KEY_SCORE, picojson::value(map[KEY_SCORE])));
-        detail.insert(std::make_pair(KEY_BREAK, picojson::value(map[KEY_BREAK])));
+        detail.insert(std::make_pair(KEY_BURST, picojson::value(map[KEY_BURST])));
         detail_list.push_back(picojson::value(detail));
     }
     value = picojson::value(detail_list);
@@ -186,7 +197,7 @@ StringMapVector UserDataStore::getScoreTable()
     
     const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
     const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BURST();
+    const std::string KEY_BURST = Constant::UserDefaultKey::SCORE_TABLE_BURST();
     
     picojson::value v;
     std::string err;
@@ -198,9 +209,10 @@ StringMapVector UserDataStore::getScoreTable()
         picojson::object& jsonMap = it->get<picojson::object>();
         map[KEY_RANK] = (std::string)jsonMap[KEY_RANK].get<std::string>();
         map[KEY_SCORE] = (std::string)jsonMap[KEY_SCORE].get<std::string>();
-        map[KEY_BREAK] = (std::string)jsonMap[KEY_BREAK].get<std::string>();
+        map[KEY_BURST] = (std::string)jsonMap[KEY_BURST].get<std::string>();
         result.push_back(map);
     }
     
     return result;
 }
+*/

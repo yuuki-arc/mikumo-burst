@@ -86,21 +86,21 @@ void ResultScene::saveData(int rank, int score, int burstCount)
     // トータルスコア
     store->setTotalScore(store->getTotalScore() + score);
     
-    // トータルブレイク
-    store->setTotalBreak(store->getTotalBurst() + burstCount);
+    // トータルバースト
+    store->setTotalBurst(store->getTotalBurst() + burstCount);
     
-    // スコアテーブル
-    const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
-    const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BURST();
-    
-    StringMapVector scoreList = store->getScoreTable();
-    StringMap scoreMap;
-    scoreMap.insert(std::make_pair(KEY_RANK, std::to_string(rank)));
-    scoreMap.insert(std::make_pair(KEY_SCORE, std::to_string(score)));
-    scoreMap.insert(std::make_pair(KEY_BREAK, std::to_string(burstCount)));
-    scoreList.push_back(scoreMap);
-    store->setScoreTable(scoreList);
+//    // スコアテーブル
+//    const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
+//    const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
+//    const std::string KEY_BURST = Constant::UserDefaultKey::SCORE_TABLE_BURST();
+//    
+//    StringMapVector scoreList = store->getScoreTable();
+//    StringMap scoreMap;
+//    scoreMap.insert(std::make_pair(KEY_RANK, std::to_string(rank)));
+//    scoreMap.insert(std::make_pair(KEY_SCORE, std::to_string(score)));
+//    scoreMap.insert(std::make_pair(KEY_BURST, std::to_string(burstCount)));
+//    scoreList.push_back(scoreMap);
+//    store->setScoreTable(scoreList);
 };
 
 void ResultScene::saveGamers(int rank, int score, int burstCount)
@@ -119,7 +119,7 @@ void ResultScene::saveGamers(int rank, int score, int burstCount)
     AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_SCORE,
                                             store->getTotalScore());
     
-    // トータルブレイク
+    // トータルバースト
     AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_BURST,
                                             store->getTotalBurst());
     
@@ -158,13 +158,19 @@ void ResultScene::displayInfo(int rank, int score, int burstCount)
     
     relativeLabelHeight -= .6f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("スコア: " + std::to_string(score) + " pt", point);
+    resultLabel = TextCreator::create("アタック: " + std::to_string(score) + " HIT", point);
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
     
     relativeLabelHeight -= .6f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("ブレイク: " + std::to_string(burstCount) + " 回", point);
+    resultLabel = TextCreator::create("バースト: " + std::to_string(burstCount) + " 回", point);
+    resultLabel->setScale(BM_FONT_SIZE64(20));
+    this->addChild(resultLabel, ZOrder::Font);
+
+    relativeLabelHeight -= .6f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("スコア: " + std::to_string(score) + " pt", point);
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
 };

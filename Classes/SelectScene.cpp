@@ -41,6 +41,7 @@ Control::Handler SelectScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
 {
     CCLOG("name = %s", pSelectorName);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBattleButton", SelectScene::tappedBattleButton);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBossButton", SelectScene::tappedBossButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedScoreButton", SelectScene::tappedScoreButton);
     return NULL;
 }
@@ -138,13 +139,32 @@ void SelectScene::displayInfo()
     
     relativeLabelHeight -= .4f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("トータルブレイク: " + std::to_string(store->getTotalBurst()) + " 回", point);
+    resultLabel = TextCreator::create("トータルバースト: " + std::to_string(store->getTotalBurst()) + " 回", point);
     this->addChild(resultLabel, ZOrder::Font);
 }
 
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedBattleButton eventType = %d", pControlEventType);
+    GameManager::getInstance()->battleMode = BattleModeNormal;
+    
+    int num = arc4random() % 2;
+    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
+    
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    soundManager->playVoice(list[num]);
+    soundManager->stopBGM();
+    
+    Scene* scene = BattleSceneLoader::createScene();
+    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
+    Director::getInstance()->replaceScene(trans);
+}
+
+void SelectScene::tappedBossButton(Ref* pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedBossButton eventType = %d", pControlEventType);
+    GameManager::getInstance()->battleMode = BattleModeBoss;
     
     int num = arc4random() % 2;
     Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);

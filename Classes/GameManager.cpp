@@ -37,6 +37,16 @@ bool GameManager::isScreenModeHd()
     return GameManager::getInstance()->screenMode == ScreenModeHd ? true : false;
 }
 
+bool GameManager::isBattleModeNormal()
+{
+    return GameManager::getInstance()->battleMode == BattleModeNormal ? true : false;
+}
+
+bool GameManager::isBattleModeBoss()
+{
+    return GameManager::getInstance()->battleMode == BattleModeBoss ? true : false;
+}
+
 int GameManager::getBattleRank()
 {
     int battleRank = UserDataStore::getInstance()->getRank() + 1;

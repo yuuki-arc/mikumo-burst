@@ -25,6 +25,7 @@ public:
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(SelectScene, create);
     
     void tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedBossButton(Ref* pTarget, Control::EventType pControlEventType);
     void tappedScoreButton(Ref* pTarget, Control::EventType pControlEventType);
     
     void pushBack(Ref* pSender);

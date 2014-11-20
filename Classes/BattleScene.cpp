@@ -325,7 +325,7 @@ void BattleScene::update(float frame)
 {
 //    CCLOG("update-start");
     
-    // EPブレイク
+    // バーストタイム
     if (playerInfo->getBp() == Constant::MAX_PLAYER_BP)
     {
         CCLOG("update-ep-break BP: %d", playerInfo->getBp());
@@ -512,7 +512,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
         // 通常時
         effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundNormal);
         battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageNormal);
-        damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
+        damage = Constant::BASE_DAMAGE_NORMAL;
         soundEffectNum = CCRANDOM_0_1() * effectList.size();
         hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
     }
@@ -521,7 +521,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
         // バーストタイム時
         effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundBurst);
         battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurst);
-        damage = Constant::BASE_DAMAGE_BREAK + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
+        damage = Constant::BASE_DAMAGE_BURST;
         soundEffectNum =  CCRANDOM_0_1() * (int)effectList.size();
         hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
     }
@@ -553,7 +553,8 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     CCLOG("onTouchBegan-playerBp:%d / %f%%",playerInfo->getBp(), playerInfo->getBpPercentage());
     
     // ダメージ値生成
-    auto damageNumSprite = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(damage));
+    std::string damageStr =StringUtils::toString(damage) + " HIT";
+    auto damageNumSprite = Label::createWithBMFont(Constant::NORMAL_FONT(), damageStr);
     damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
     damageNumSprite->setAlignment(TextHAlignment::CENTER);
     damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
@@ -645,7 +646,7 @@ void BattleScene::onTouchCancelled(Touch* touch, Event *event){
 //        auto location = touch->getLocation();
 //        
 //        // 与えたダメージ
-//        int damage = Constant::BASE_DAMAGE + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
+//        int damage = Constant::BASE_DAMAGE_NORMAL + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
 //
 //        // 効果音
 //        int num = CCRANDOM_0_1() * effectList.size();
