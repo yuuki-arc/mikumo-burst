@@ -4,8 +4,8 @@
 USING_NS_CC;
 
 PlayerBattleInfo::PlayerBattleInfo()
-: ep(0)
-, battleEpCount(0)
+: bp(0)
+, burstCount(0)
 {
 }
 
@@ -21,12 +21,12 @@ PlayerBattleInfo* PlayerBattleInfo::create()
     return info;
 }
 
-float PlayerBattleInfo::getEpPercentage()
+float PlayerBattleInfo::getBpPercentage()
 {
-    return ep * 100.f / Constant::MAX_PLAYER_EP;
+    return bp * 100.f / Constant::MAX_PLAYER_BP;
 }
 
-void PlayerBattleInfo::incrementBattleEpCount()
+void PlayerBattleInfo::incrementBurstCount()
 {
-    battleEpCount++;
+    burstCount++;
 }

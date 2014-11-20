@@ -37,9 +37,9 @@ private:
         Font,
     };
     
-    void saveData(int rank, int score, int breakCount);
-    void saveGamers(int rank, int score, int breakCount);
-    void displayInfo(int rank, int score, int breakCount);
+    void saveData(int rank, int score, int burstCount);
+    void saveGamers(int rank, int score, int burstCount);
+    void displayInfo(int rank, int score, int burstCount);
 };
 
 #endif /* defined(__Result_SCENE_H__) */

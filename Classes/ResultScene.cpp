@@ -55,19 +55,19 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // データ取得
     int rank = UserDataStore::getInstance()->getRank();
     int score = GameManager::getInstance()->battleDamagePoint;
-    int breakCount = GameManager::getInstance()->battleEternityPoint;
+    int burstCount = GameManager::getInstance()->burstCount;
     
     // データ保存（アプリ内）
-    saveData(rank, score, breakCount);
+    saveData(rank, score, burstCount);
 
     // データ保存（Gamers内）
-    saveGamers(rank, score, breakCount);
+    saveGamers(rank, score, burstCount);
     
     // スコア表示
-    displayInfo(rank, score, breakCount);
+    displayInfo(rank, score, burstCount);
 }
 
-void ResultScene::saveData(int rank, int score, int breakCount)
+void ResultScene::saveData(int rank, int score, int burstCount)
 {
     auto store = UserDataStore::getInstance();
     
@@ -87,23 +87,23 @@ void ResultScene::saveData(int rank, int score, int breakCount)
     store->setTotalScore(store->getTotalScore() + score);
     
     // トータルブレイク
-    store->setTotalBreak(store->getTotalBreak() + breakCount);
+    store->setTotalBreak(store->getTotalBurst() + burstCount);
     
     // スコアテーブル
     const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
     const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
+    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BURST();
     
     StringMapVector scoreList = store->getScoreTable();
     StringMap scoreMap;
     scoreMap.insert(std::make_pair(KEY_RANK, std::to_string(rank)));
     scoreMap.insert(std::make_pair(KEY_SCORE, std::to_string(score)));
-    scoreMap.insert(std::make_pair(KEY_BREAK, std::to_string(breakCount)));
+    scoreMap.insert(std::make_pair(KEY_BREAK, std::to_string(burstCount)));
     scoreList.push_back(scoreMap);
     store->setScoreTable(scoreList);
 };
 
-void ResultScene::saveGamers(int rank, int score, int breakCount)
+void ResultScene::saveGamers(int rank, int score, int burstCount)
 {
     auto store = UserDataStore::getInstance();
     
@@ -120,12 +120,12 @@ void ResultScene::saveGamers(int rank, int score, int breakCount)
                                             store->getTotalScore());
     
     // トータルブレイク
-    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_BREAK,
-                                            store->getTotalBreak());
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_BURST,
+                                            store->getTotalBurst());
     
 };
 
-void ResultScene::displayInfo(int rank, int score, int breakCount)
+void ResultScene::displayInfo(int rank, int score, int burstCount)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -164,7 +164,7 @@ void ResultScene::displayInfo(int rank, int score, int breakCount)
     
     relativeLabelHeight -= .6f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("ブレイク: " + std::to_string(breakCount) + " 回", point);
+    resultLabel = TextCreator::create("ブレイク: " + std::to_string(burstCount) + " 回", point);
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
 };

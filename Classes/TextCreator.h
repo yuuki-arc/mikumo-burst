@@ -1,5 +1,5 @@
-#ifndef __Fragment_of_Eternity__TextCreator__
-#define __Fragment_of_Eternity__TextCreator__
+#ifndef __10sec_BURST__TextCreator__
+#define __10sec_BURST__TextCreator__
 
 #include "cocos2d.h"
 
@@ -16,4 +16,4 @@ public:
     static Label* create(const std::string text, Point point, const std::string fontName);
 };
 
-#endif /* defined(__Fragment_of_Eternity__TextCreator__) */
+#endif /* defined(__10sec_BURST__TextCreator__) */

@@ -61,7 +61,7 @@ private:
         BattleEffect,
         TouchEffect,
         EnemyHp,
-        PlayerEp,
+        PlayerBp,
         PersonaHp,
         Status,
         Font,
@@ -77,7 +77,7 @@ private:
     NodeGrid* nodeGrid;
 //    NodeGrid* targetGrid;
     PlayerBattleInfo* playerInfo;
-    ProgressTimer* playerEpBar;
+    ProgressTimer* playerBpBar;
     EnemyCharacter* enemyData;
 //    EnemyTargetter* enemyTargetter;
     ProgressTimer* enemyHpBar;
@@ -88,7 +88,7 @@ private:
     int currentRank;
     int gameTime;
     bool gameEndFlg;
-    int eternityBreakTime;
+    int burstTime;
     
     void initBattleResult();
     void initBackground();

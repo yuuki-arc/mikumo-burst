@@ -1,5 +1,5 @@
-#ifndef __Fragment_of_Eternity__EffectManager__
-#define __Fragment_of_Eternity__EffectManager__
+#ifndef __10sec_BURST__EffectManager__
+#define __10sec_BURST__EffectManager__
 
 #include "cocos2d.h"
 
@@ -12,4 +12,4 @@ public:
     
 };
 
-#endif /* defined(__Fragment_of_Eternity__EffectManager__) */
+#endif /* defined(__10sec_BURST__EffectManager__) */

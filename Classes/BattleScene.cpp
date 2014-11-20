@@ -19,7 +19,7 @@ BattleScene::BattleScene()
 , bgImageList(Constant::BG_IMAGE_LIST())
 , gameTime(Constant::GAME_TIME)
 , gameEndFlg(false)
-, eternityBreakTime(0)
+, burstTime(0)
 {
 }
 
@@ -49,7 +49,7 @@ bool BattleScene::init()
         return false;
     }
 
-    CCLOG("init-eternityBreakTime0: %d", eternityBreakTime);
+    CCLOG("init-burstTime0: %d", burstTime);
     initBattleResult();
     initBackground();
     initPlayerInfo();
@@ -59,7 +59,7 @@ bool BattleScene::init()
     // 数値を初期化
     gameTime = Constant::GAME_TIME;
     gameEndFlg = false;
-    eternityBreakTime = 0;
+    burstTime = 0;
     
     // 開始テキスト表示
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -100,13 +100,13 @@ bool BattleScene::init()
 
 void BattleScene::setupGame()
 {
-    CCLOG("init-eternityBreakTime1: %d", eternityBreakTime);
+    CCLOG("init-burstTime1: %d", burstTime);
     this->effectManager = new EffectManager();
-    CCLOG("init-eternityBreakTime3: %d", eternityBreakTime);
+    CCLOG("init-burstTime3: %d", burstTime);
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
-    CCLOG("init-eternityBreakTime4: %d", eternityBreakTime);
+    CCLOG("init-burstTime4: %d", burstTime);
     this->scheduleUpdate();
-    CCLOG("init-eternityBreakTime5: %d", eternityBreakTime);
+    CCLOG("init-burstTime5: %d", burstTime);
     initTouchEvent();
 
     // BGM
@@ -134,7 +134,7 @@ void BattleScene::setupGame()
 void BattleScene::initBattleResult()
 {
     GameManager::getInstance()->battleDamagePoint = 0;
-    GameManager::getInstance()->battleEternityPoint = 0;
+    GameManager::getInstance()->burstCount = 0;
     
     currentRank = UserDataStore::getInstance()->getRank();
 }
@@ -170,7 +170,7 @@ void BattleScene::initPlayerInfo()
 {
     playerInfo = PlayerBattleInfo::create();
     playerInfo->retain();
-    playerInfo->setEp(0);
+    playerInfo->setBp(0);
 }
 
 /**
@@ -235,20 +235,20 @@ void BattleScene::initStatusLayer()
     enemyHpBar->setPercentage(enemyData->getHpPercentage());
     hpFrame->addChild(enemyHpBar);
 
-    // EP
-    Sprite* epFrame = Sprite::createWithSpriteFrameName("ep_frame.png");
-    epFrame->setPosition(Point(origin.x + visibleSize.width / 2,
+    // BP
+    Sprite* bpFrame = Sprite::createWithSpriteFrameName("ep_frame.png");
+    bpFrame->setPosition(Point(origin.x + visibleSize.width / 2,
                                origin.y + visibleSize.height * 0.5 / 10));
-    addChild(epFrame, ZOrder::PlayerEp);
+    addChild(bpFrame, ZOrder::PlayerBp);
     
-    Sprite* ep = Sprite::createWithSpriteFrameName("ep.png");
-    playerEpBar = ProgressTimer::create(ep);
-    playerEpBar->setPosition(Point(epFrame->getContentSize().width / 2, epFrame->getContentSize().height / 2));
-    playerEpBar->setType(ProgressTimer::Type::BAR);
-    playerEpBar->setMidpoint(Point::ZERO);
-    playerEpBar->setBarChangeRate(Point(1, 0));
-    playerEpBar->setPercentage(playerInfo->getEpPercentage());
-    epFrame->addChild(playerEpBar);
+    Sprite* bp = Sprite::createWithSpriteFrameName("ep.png");
+    playerBpBar = ProgressTimer::create(bp);
+    playerBpBar->setPosition(Point(bpFrame->getContentSize().width / 2, bpFrame->getContentSize().height / 2));
+    playerBpBar->setType(ProgressTimer::Type::BAR);
+    playerBpBar->setMidpoint(Point::ZERO);
+    playerBpBar->setBarChangeRate(Point(1, 0));
+    playerBpBar->setPercentage(playerInfo->getBpPercentage());
+    bpFrame->addChild(playerBpBar);
 }
 
 /**
@@ -280,14 +280,14 @@ void BattleScene::updateBySchedule(float frame)
     
     gameTime--;
     CCLOG("updateBySchedule-gameTime:%d", gameTime);
-    CCLOG("updateBySchedule-eternityBreakTime: %d", eternityBreakTime);
-    if (eternityBreakTime > 0)
+    CCLOG("updateBySchedule-burstTime: %d", burstTime);
+    if (burstTime > 0)
     {
-        eternityBreakTime--;
+        burstTime--;
     }
     
     gameTimeLabel->setString(StringUtils::toString(gameTime));
-    if (eternityBreakTime > 0)
+    if (burstTime > 0)
     {
         gameTimeLabel->setColor(Color3B::MAGENTA);
     }
@@ -326,22 +326,22 @@ void BattleScene::update(float frame)
 //    CCLOG("update-start");
     
     // EPブレイク
-    if (playerInfo->getEp() == Constant::MAX_PLAYER_EP)
+    if (playerInfo->getBp() == Constant::MAX_PLAYER_BP)
     {
-        CCLOG("update-ep-break EP: %d", playerInfo->getEp());
-        CCLOG("update-ep-break eternityBreakTime: %d", eternityBreakTime);
+        CCLOG("update-ep-break BP: %d", playerInfo->getBp());
+        CCLOG("update-ep-break burstTime: %d", burstTime);
 
         int num = arc4random() % 3;
-        Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::BreakAttack);
+        Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::BurstAttack);
         
         SoundManager* soundManager = new SoundManager();
         soundManager->playVoice(list[num]);
         
-        playerInfo->incrementBattleEpCount();
-        playerInfo->setEp(0);
-        eternityBreakTime = Constant::ETERNITY_BREAK_TIME;
-        CCLOG("update-ep-break EP: %d", playerInfo->getEp());
-        CCLOG("update-ep-break eternityBreakTime: %d", eternityBreakTime);
+        playerInfo->incrementBurstCount();
+        playerInfo->setBp(0);
+        burstTime = Constant::MAX_BURST_TIME;
+        CCLOG("update-ep-break BP: %d", playerInfo->getBp());
+        CCLOG("update-ep-break burstTime: %d", burstTime);
     }
     
     
@@ -432,7 +432,7 @@ void BattleScene::endBattle()
 {
     this->unschedule(schedule_selector(BattleScene::updateBySchedule));
     GameManager::getInstance()->battleDamagePoint = enemyData->getMaxHp() - enemyData->getHp();
-    GameManager::getInstance()->battleEternityPoint = playerInfo->getbattleEpCount();
+    GameManager::getInstance()->burstCount = playerInfo->getBurstCount();
 
     int num = arc4random() % 3;
     Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::BattleEnd);
@@ -505,9 +505,9 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     int damage;             // 与えたダメージ
     int soundEffectNum;     // 効果音
     int hitSpriteNum;       // ヒットエフェクト
-    CCLOG("onTouchBegan-eternityBreakTime: %d", eternityBreakTime);
+    CCLOG("onTouchBegan-burstTime: %d", burstTime);
     CCLOG("onTouchBegan-gameEndFlg: %d", gameEndFlg);
-    if (eternityBreakTime == 0)
+    if (burstTime == 0)
     {
         // 通常時
         effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundNormal);
@@ -518,9 +518,9 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     }
     else
     {
-        // Eブレイク時
-        effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundBreak);
-        battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBreak);
+        // バーストタイム時
+        effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundBurst);
+        battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurst);
         damage = Constant::BASE_DAMAGE_BREAK + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
         soundEffectNum =  CCRANDOM_0_1() * (int)effectList.size();
         hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
@@ -543,14 +543,14 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     enemyHpBar->runAction(enemyAct);
     CCLOG("onTouchBegan-enemyHp:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
     
-    // プレイヤーEPゲージ
-    auto preEpPercentage = playerInfo->getEpPercentage();
-    auto afterEp = playerInfo->getEp() + Constant::EP_INCREMENT;
-    afterEp = afterEp > Constant::MAX_PLAYER_EP ? Constant::MAX_PLAYER_EP : afterEp;
-    playerInfo->setEp(afterEp);
-    auto playerAct = ProgressFromTo::create(0.5, preEpPercentage, playerInfo->getEpPercentage());
-    playerEpBar->runAction(playerAct);
-    CCLOG("onTouchBegan-playerEp:%d / %f%%",playerInfo->getEp(), playerInfo->getEpPercentage());
+    // プレイヤーBPゲージ
+    auto preBpPercentage = playerInfo->getBpPercentage();
+    auto afterBp = playerInfo->getBp() + Constant::BP_INCREMENT;
+    afterBp = afterBp > Constant::MAX_PLAYER_BP ? Constant::MAX_PLAYER_BP : afterBp;
+    playerInfo->setBp(afterBp);
+    auto playerAct = ProgressFromTo::create(0.5, preBpPercentage, playerInfo->getBpPercentage());
+    playerBpBar->runAction(playerAct);
+    CCLOG("onTouchBegan-playerBp:%d / %f%%",playerInfo->getBp(), playerInfo->getBpPercentage());
     
     // ダメージ値生成
     auto damageNumSprite = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(damage));
@@ -558,7 +558,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     damageNumSprite->setAlignment(TextHAlignment::CENTER);
     damageNumSprite->setAnchorPoint(Vec2(-0.5, -1));
     damageNumSprite->setScale(BM_FONT_SIZE64(24));
-    if (eternityBreakTime > 0) damageNumSprite->setColor(Color3B::MAGENTA);
+    if (burstTime > 0) damageNumSprite->setColor(Color3B::MAGENTA);
 //    damageNumSprite->updateDisplayedColor(Color3B(100,200,255));
     effectSprite->addChild(damageNumSprite);
     

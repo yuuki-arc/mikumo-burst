@@ -37,7 +37,7 @@ void UserDataStore::setupData()
     StringMap map;
     map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_RANK(), std::to_string(20)));
     map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_SCORE(), std::to_string(20)));
-    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_BREAK(), std::to_string(30)));
+    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_BURST(), std::to_string(30)));
     list.push_back(map);
     setScoreTable(list);
 
@@ -100,13 +100,13 @@ int UserDataStore::getTotalScore()
 
 void UserDataStore::setTotalBreak(int value)
 {
-    userDefault->setIntegerForKey(Constant::UserDefaultKey::TOTAL_BREAK(), value);
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::TOTAL_BURST(), value);
     userDefault->flush();
 }
 
-int UserDataStore::getTotalBreak()
+int UserDataStore::getTotalBurst()
 {
-    return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_BREAK());
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_BURST());
 }
 
 void UserDataStore::setScoreTable(StringMapVector scoreList)
@@ -137,7 +137,7 @@ void UserDataStore::setScoreTable(StringMapVector scoreList)
     
     const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
     const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
+    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BURST();
     
     for (StringMapVector::iterator it = scoreList.begin(); it != scoreList.end(); it++)
     {
@@ -186,7 +186,7 @@ StringMapVector UserDataStore::getScoreTable()
     
     const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
     const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BREAK();
+    const std::string KEY_BREAK = Constant::UserDefaultKey::SCORE_TABLE_BURST();
     
     picojson::value v;
     std::string err;

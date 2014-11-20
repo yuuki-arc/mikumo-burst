@@ -1,5 +1,5 @@
-#ifndef __Fragment_of_Eternity__EnemyTargetter__
-#define __Fragment_of_Eternity__EnemyTargetter__
+#ifndef __10sec_BURST__EnemyTargetter__
+#define __10sec_BURST__EnemyTargetter__
 
 #include "cocos2d.h"
 
@@ -21,4 +21,4 @@ public:
     float radius();
 };
 
-#endif /* defined(__Fragment_of_Eternity__EnemyEnemyTargetter__) */
+#endif /* defined(__10sec_BURST__EnemyEnemyTargetter__) */

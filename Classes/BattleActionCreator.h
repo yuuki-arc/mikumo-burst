@@ -1,5 +1,5 @@
-#ifndef __Fragment_of_Eternity__BattleActionCreator__
-#define __Fragment_of_Eternity__BattleActionCreator__
+#ifndef __10sec_BURST__BattleActionCreator__
+#define __10sec_BURST__BattleActionCreator__
 
 #include "cocos2d.h"
 
@@ -21,4 +21,4 @@ public:
     
 };
 
-#endif /* defined(__Fragment_of_Eternity__BattleActionCreator__) */
+#endif /* defined(__10sec_BURST__BattleActionCreator__) */

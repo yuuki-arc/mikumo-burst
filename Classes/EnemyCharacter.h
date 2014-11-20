@@ -1,5 +1,5 @@
-#ifndef __Fragment_of_Eternity__EnemyCharacter__
-#define __Fragment_of_Eternity__EnemyCharacter__
+#ifndef __10sec_BURST__EnemyCharacter__
+#define __10sec_BURST__EnemyCharacter__
 
 #include "cocos2d.h"
 
@@ -20,4 +20,4 @@ public:
     static int getDamage(int chainCount, EnemyCharacter* attacker, EnemyCharacter* defender);
 };
 
-#endif /* defined(__Fragment_of_Eternity__EnemyEnemyCharacter__) */
+#endif /* defined(__10sec_BURST__EnemyEnemyCharacter__) */

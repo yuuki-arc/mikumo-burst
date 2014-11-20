@@ -25,7 +25,7 @@ public:
     int getBattleRank();
     
     int battleDamagePoint;
-    int battleEternityPoint;
+    int burstCount;
 
 };
 

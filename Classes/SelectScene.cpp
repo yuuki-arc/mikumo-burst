@@ -138,7 +138,7 @@ void SelectScene::displayInfo()
     
     relativeLabelHeight -= .4f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("トータルブレイク: " + std::to_string(store->getTotalBreak()) + " 回", point);
+    resultLabel = TextCreator::create("トータルブレイク: " + std::to_string(store->getTotalBurst()) + " 回", point);
     this->addChild(resultLabel, ZOrder::Font);
 }
 

@@ -1,5 +1,5 @@
-#ifndef __Fragment_of_Eternity__SoundManager__
-#define __Fragment_of_Eternity__SoundManager__
+#ifndef __10sec_BURST__SoundManager__
+#define __10sec_BURST__SoundManager__
 
 #include "cocos2d.h"
 
@@ -17,4 +17,4 @@ public:
     void playVoice(const std::string voiceName);
 };
 
-#endif /* defined(__Fragment_of_Eternity__SoundManager__) */
+#endif /* defined(__10sec_BURST__SoundManager__) */

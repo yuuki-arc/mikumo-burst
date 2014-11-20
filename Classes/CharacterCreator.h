@@ -1,5 +1,5 @@
-#ifndef __Fragment_of_Eternity__CharacterCreator__
-#define __Fragment_of_Eternity__CharacterCreator__
+#ifndef __10sec_BURST__CharacterCreator__
+#define __10sec_BURST__CharacterCreator__
 
 #include "cocos2d.h"
 
@@ -26,4 +26,4 @@ private:
 
 };
 
-#endif /* defined(__Fragment_of_Eternity__CharacterCreator__) */
+#endif /* defined(__10sec_BURST__CharacterCreator__) */

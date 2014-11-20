@@ -1,5 +1,5 @@
-#ifndef __Fragment_of_Eternity__UserDataStore__
-#define __Fragment_of_Eternity__UserDataStore__
+#ifndef __10sec_BURST__UserDataStore__
+#define __10sec_BURST__UserDataStore__
 
 #include "cocos2d.h"
 
@@ -37,11 +37,11 @@ public:
     int getTotalScore();
 
     void setTotalBreak(int value);
-    int getTotalBreak();
+    int getTotalBurst();
     
     void setScoreTable(StringMapVector scoreList);
     StringMapVector getScoreTable();
     
 };
 
-#endif /* defined(__Fragment_of_Eternity__UserDataStore__) */
+#endif /* defined(__10sec_BURST__UserDataStore__) */
