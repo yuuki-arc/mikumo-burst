@@ -69,7 +69,6 @@ private:
     
     EffectManager* effectManager;
     MotionStreak *touchEffectMotion;
-    std::vector<std::string> enemyImageList;
     std::vector<std::string> bgImageList;
 
 //    EventListenerTouchAllAtOnce* listener;

@@ -15,8 +15,7 @@
 USING_NS_CC;
 
 BattleScene::BattleScene()
-: enemyImageList(Constant::ENEMY_IMAGE_LIST())
-, bgImageList(Constant::BG_IMAGE_LIST())
+: bgImageList(Constant::BG_IMAGE_LIST())
 , gameTime(Constant::GAME_TIME)
 , gameEndFlg(false)
 , burstTime(0)
@@ -180,10 +179,16 @@ void BattleScene::initEnemy()
 {
     enemyData = EnemyCharacter::create();
     enemyData->retain();
-    enemyData->setMaxHp(Constant::DEFAULT_ENEMY_HP + currentRank * Constant::HP_RANK_UP_INCREMENT);
+    int enemyHp = GameManager::getInstance()->isBattleModeNormal() ?
+            Constant::DEFAULT_ENEMY_HP : Constant::DEFAULT_ENEMY_BOSS_HP;
+    enemyData->setMaxHp(enemyHp + currentRank * Constant::HP_RANK_UP_INCREMENT);
     enemyData->setHp(enemyData->getMaxHp());
     CCLOG("HP: %d / %d", enemyData->getMaxHp(), enemyData->getHp());
     
+    Constant::StringVector enemyImageList = Constant::ENEMY_IMAGE_LIST(
+            GameManager::getInstance()->isBattleModeNormal() ?
+            Constant::EnemyNormal : Constant::EnemyBoss
+        );
     int num = CCRANDOM_0_1() * enemyImageList.size();
     std::string enemyFileName = StringUtils::format("%s.png", enemyImageList.at(num).c_str());
 

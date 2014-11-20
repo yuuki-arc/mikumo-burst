@@ -10,6 +10,7 @@ public:
     static const int GAME_TIME = 10;
     static const int MAX_BURST_TIME = 3;
     static const int DEFAULT_ENEMY_HP = 100;
+    static const int DEFAULT_ENEMY_BOSS_HP = 1000;
     static const int BASE_DAMAGE_NORMAL = 1;
     static const int BASE_DAMAGE_BURST = 4;
     static const int DAMAGE_RANK_UP_INCREMENT = 2;
@@ -19,18 +20,33 @@ public:
     static const int MAX_PLAYER_BP = 50;
     static const int BP_INCREMENT = 1;
     
+    typedef std::vector<std::string> StringVector;
+    
     static const std::vector<std::string> PERSONA_IMAGE_LIST(){
         return {
             "chara_f316", "chara_f317",
         };
     };
 
-    static const std::vector<std::string> ENEMY_IMAGE_LIST(){
+    enum ImageEnemy
+    {
+        EnemyNormal = 0,
+        EnemyBoss,
+    };
+    static const std::map<ImageEnemy, StringVector> ENEMY_IMAGE_LIST(){
         return {
-            "f183", "f186", "f189", "f195", "f201", "f207", "f271", "f274",
-            "f277"
+            {ImageEnemy::EnemyNormal, {
+                    "f183", "f186", "f189", "f195", "f201", "f207", "f271", "f274",
+                }
+            },
+            {ImageEnemy::EnemyBoss , {"f277"}},
         };
     };
+    static const StringVector ENEMY_IMAGE_LIST(ImageEnemy key){
+        std::map<ImageEnemy, StringVector> map = ENEMY_IMAGE_LIST();
+        return map[key];
+    }
+
     static const std::vector<std::string> BG_IMAGE_LIST(){
         return {
             "000", "001", "002", "003", "004", "006", "007", "008", "010",
@@ -38,7 +54,6 @@ public:
         };
     };
 
-    typedef std::vector<std::string> StringVector;
 
     enum ImageEffect
     {

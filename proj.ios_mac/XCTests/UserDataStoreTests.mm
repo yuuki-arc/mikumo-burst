@@ -55,27 +55,27 @@
 //    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 10);
 //}
 //
-//- (void)testSetScoreTable
-//{
-//    UserDefault* userDefault = UserDefault::getInstance();
-//    
-//    std::vector<std::map<std::string, std::string>> list = [self getScoreTable];
-//    
-//    UserDataStore::getInstance()->setScoreTable(list);
-//    std::string rank = userDefault->getStringForKey(Constant::UserDefaultKey::SCORE_TABLE(), "");
-//    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
-//    
-//    //    CCLOG(UserDataStore::getInstance()->getHighScore());
-//    //    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
-//}
-//
-//- (void)testGetScoreTable
-//{
-//    //    std::vector<std::string> vector = {};
-//    //    UserDataStore::getInstance()->setHighScore(vector);
-//    //    UserDataStore::getInstance()->getHighScore();
-//    //    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
-//    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
-//}
+////- (void)testSetScoreTable
+////{
+////    UserDefault* userDefault = UserDefault::getInstance();
+////    
+////    std::vector<std::map<std::string, std::string>> list = [self getScoreTable];
+////    
+////    UserDataStore::getInstance()->setScoreTable(list);
+////    std::string rank = userDefault->getStringForKey(Constant::UserDefaultKey::SCORE_TABLE(), "");
+////    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
+////    
+////    //    CCLOG(UserDataStore::getInstance()->getHighScore());
+////    //    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
+////}
+////
+////- (void)testGetScoreTable
+////{
+////    //    std::vector<std::string> vector = {};
+////    //    UserDataStore::getInstance()->setHighScore(vector);
+////    //    UserDataStore::getInstance()->getHighScore();
+////    //    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
+////    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
+////}
 //
 //@end
