@@ -4,7 +4,8 @@
 USING_NS_CC;
 
 PlayerBattleInfo::PlayerBattleInfo()
-: bp(0)
+: rank(0)
+, bp(0)
 , burstCount(0)
 {
 }
@@ -29,4 +30,9 @@ float PlayerBattleInfo::getBpPercentage()
 void PlayerBattleInfo::incrementBurstCount()
 {
     burstCount++;
+}
+
+void PlayerBattleInfo::upBpGauge()
+{
+    bp += Constant::BP_INCREMENT + floor(rank / 10);
 }

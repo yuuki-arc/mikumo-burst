@@ -6,6 +6,8 @@
 #include "UserDataStore.h"
 #include "CharacterCreator.h"
 #include "EnemyCharacter.h"
+#include "EnemyNormalCharacter.h"
+#include "EnemyBossCharacter.h"
 //#include "EnemyTargetter.h"
 #include "EffectManager.h"
 #include "SoundManager.h"
@@ -169,6 +171,7 @@ void BattleScene::initPlayerInfo()
 {
     playerInfo = PlayerBattleInfo::create();
     playerInfo->retain();
+    playerInfo->setRank(GameManager::getInstance()->getRank());
     playerInfo->setBp(0);
 }
 
@@ -177,25 +180,16 @@ void BattleScene::initPlayerInfo()
  */
 void BattleScene::initEnemy()
 {
-    enemyData = EnemyCharacter::create();
+    if (GameManager::getInstance()->isBattleModeNormal())
+    {
+        enemyData = EnemyNormalCharacter::create();
+    }
+    else
+    {
+        enemyData = EnemyBossCharacter::create();
+    }
     enemyData->retain();
-    int enemyHp = GameManager::getInstance()->isBattleModeNormal() ?
-            Constant::DEFAULT_ENEMY_HP : Constant::DEFAULT_ENEMY_BOSS_HP;
-    enemyData->setMaxHp(enemyHp + currentRank * Constant::HP_RANK_UP_INCREMENT);
-    enemyData->setHp(enemyData->getMaxHp());
-    CCLOG("HP: %d / %d", enemyData->getMaxHp(), enemyData->getHp());
     
-    Constant::StringVector enemyImageList = Constant::ENEMY_IMAGE_LIST(
-            GameManager::getInstance()->isBattleModeNormal() ?
-            Constant::EnemyNormal : Constant::EnemyBoss
-        );
-    int num = CCRANDOM_0_1() * enemyImageList.size();
-    std::string enemyFileName = StringUtils::format("%s.png", enemyImageList.at(num).c_str());
-
-    CharacterCreator* creator = new CharacterCreator();
-    creator->init(CharacterScale::ALL);
-    enemyData->setImage(creator->create(enemyFileName));
-
     nodeGrid = NodeGrid::create();
     nodeGrid->addChild(enemyData->getImage());
     this->addChild(nodeGrid, ZOrder::Enemy);
@@ -550,7 +544,8 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     
     // プレイヤーBPゲージ
     auto preBpPercentage = playerInfo->getBpPercentage();
-    auto afterBp = playerInfo->getBp() + Constant::BP_INCREMENT;
+    playerInfo->upBpGauge();
+    auto afterBp = playerInfo->getBp();
     afterBp = afterBp > Constant::MAX_PLAYER_BP ? Constant::MAX_PLAYER_BP : afterBp;
     playerInfo->setBp(afterBp);
     auto playerAct = ProgressFromTo::create(0.5, preBpPercentage, playerInfo->getBpPercentage());

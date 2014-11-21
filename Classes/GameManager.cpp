@@ -47,7 +47,7 @@ bool GameManager::isBattleModeBoss()
     return GameManager::getInstance()->battleMode == BattleModeBoss ? true : false;
 }
 
-int GameManager::getBattleRank()
+int GameManager::getRank()
 {
     int battleRank = UserDataStore::getInstance()->getRank() + 1;
     if (battleRank > Constant::LIMIT_RANK)

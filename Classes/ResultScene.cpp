@@ -75,7 +75,7 @@ void ResultScene::saveData(int rank, int score, int burstCount)
     store->setBattleCount(store->getBattleCount() + 1);
     
     // 現在ランク
-    store->setRank(rank);
+    store->setRank(rank + 1);
     
     // 最高ランク
     if (store->getHighRank() < rank)

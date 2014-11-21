@@ -93,7 +93,7 @@ void SelectScene::displayInfo()
     addChild(windowSprite, ZOrder::Menu);
     
     // データを取得
-    int battleRank = GameManager::getInstance()->getBattleRank();
+    int battleRank = GameManager::getInstance()->getRank();
     auto store = UserDataStore::getInstance();
     
     // 次回バトルランク表示

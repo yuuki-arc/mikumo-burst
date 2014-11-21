@@ -39,6 +39,8 @@
 		5087E78B17EB975400C73F5D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5087E78A17EB975400C73F5D /* OpenGL.framework */; };
 		A50961FD19F434F700313EBC /* ScoreScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A50961FB19F434F700313EBC /* ScoreScene.cpp */; };
 		A509620219F4363200313EBC /* ScoreSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A509620019F4363200313EBC /* ScoreSceneLoader.cpp */; };
+		A5117A0D1A1EC6AC001FE774 /* EnemyBossCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5117A091A1EC6AC001FE774 /* EnemyBossCharacter.cpp */; };
+		A5117A0E1A1EC6AC001FE774 /* EnemyNormalCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5117A0B1A1EC6AC001FE774 /* EnemyNormalCharacter.cpp */; };
 		A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A518557419ACF0CB00169907 /* TitleScene.cpp */; };
 		A51CC73219B8B2EE009FFDE3 /* NativeLauncher.mm in Sources */ = {isa = PBXBuildFile; fileRef = A51CC73119B8B2EE009FFDE3 /* NativeLauncher.mm */; };
 		A51CC73619B8B2FC009FFDE3 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51CC73519B8B2FC009FFDE3 /* Twitter.framework */; };
@@ -342,6 +344,10 @@
 		A50961FC19F434F700313EBC /* ScoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreScene.h; path = ../Classes/ScoreScene.h; sourceTree = "<group>"; };
 		A509620019F4363200313EBC /* ScoreSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScoreSceneLoader.cpp; path = ../Classes/ScoreSceneLoader.cpp; sourceTree = "<group>"; };
 		A509620119F4363200313EBC /* ScoreSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreSceneLoader.h; path = ../Classes/ScoreSceneLoader.h; sourceTree = "<group>"; };
+		A5117A091A1EC6AC001FE774 /* EnemyBossCharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyBossCharacter.cpp; path = ../Classes/EnemyBossCharacter.cpp; sourceTree = "<group>"; };
+		A5117A0A1A1EC6AC001FE774 /* EnemyBossCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyBossCharacter.h; path = ../Classes/EnemyBossCharacter.h; sourceTree = "<group>"; };
+		A5117A0B1A1EC6AC001FE774 /* EnemyNormalCharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyNormalCharacter.cpp; path = ../Classes/EnemyNormalCharacter.cpp; sourceTree = "<group>"; };
+		A5117A0C1A1EC6AC001FE774 /* EnemyNormalCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyNormalCharacter.h; path = ../Classes/EnemyNormalCharacter.h; sourceTree = "<group>"; };
 		A518557419ACF0CB00169907 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		A518557519ACF0CB00169907 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		A51A5A8019C14A66000D589F /* picojson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = picojson.h; path = ../Classes/picojson.h; sourceTree = "<group>"; };
@@ -649,6 +655,10 @@
 				A5ED392E19F3BC360086C17B /* PlayerBattleInfo.h */,
 				A5A7F0E319BB5D8400A5BEDD /* EnemyCharacter.cpp */,
 				A5A7F0E419BB5D8400A5BEDD /* EnemyCharacter.h */,
+				A5117A091A1EC6AC001FE774 /* EnemyBossCharacter.cpp */,
+				A5117A0A1A1EC6AC001FE774 /* EnemyBossCharacter.h */,
+				A5117A0B1A1EC6AC001FE774 /* EnemyNormalCharacter.cpp */,
+				A5117A0C1A1EC6AC001FE774 /* EnemyNormalCharacter.h */,
 				A5CAC28819F88B6900A8E66D /* TextCreator.cpp */,
 				A5CAC28919F88B6900A8E66D /* TextCreator.h */,
 				A5CAC28B19F8BB0400A8E66D /* EnemyTargetter.cpp */,
@@ -1257,11 +1267,13 @@
 				A52B54BB19BB0CA900804FEF /* EffectManager.cpp in Sources */,
 				A5A6ACC719C5823500800AE6 /* BattleActionCreator.cpp in Sources */,
 				A59917FB19B040CD00A95508 /* ResultScene.cpp in Sources */,
+				A5117A0D1A1EC6AC001FE774 /* EnemyBossCharacter.cpp in Sources */,
 				A54AEACE19B2722800AE6AE4 /* GameManager.cpp in Sources */,
 				A53118F31A1733F300BFEB78 /* AppCCloudPlugin.mm in Sources */,
 				A568C35819AF7B18000547E4 /* TitleSceneLoader.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				A5CAC28A19F88B6900A8E66D /* TextCreator.cpp in Sources */,
+				A5117A0E1A1EC6AC001FE774 /* EnemyNormalCharacter.cpp in Sources */,
 				A50961FD19F434F700313EBC /* ScoreScene.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				A518557719ACF0CB00169907 /* TitleScene.cpp in Sources */,

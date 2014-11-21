@@ -32,7 +32,7 @@ public:
     bool isBattleModeNormal();
     bool isBattleModeBoss();
     
-    int getBattleRank();
+    int getRank();
     
     int battleDamagePoint;
     int burstCount;
