@@ -19,7 +19,8 @@ EnemyCharacter::~EnemyCharacter()
 
 void EnemyCharacter::createWithImage()
 {
-    if (imageEnemy == Constant::ImageEnemy::EnemyNormal)
+    int hp;
+    if (GameManager::getInstance()->isBattleModeNormal())
     {
         hp = Constant::DEFAULT_ENEMY_HP +
              GameManager::getInstance()->getRank() * Constant::HP_RANK_UP_INCREMENT;
@@ -32,7 +33,7 @@ void EnemyCharacter::createWithImage()
     this->setMaxHp(hp);
     this->setHp(hp);
     
-    Constant::StringVector enemyImageList = Constant::ENEMY_IMAGE_LIST(imageEnemy);
+    Constant::StringVector enemyImageList = Constant::ENEMY_IMAGE_LIST(getImageEnemy());
     int num = CCRANDOM_0_1() * enemyImageList.size();
     std::string enemyFileName = StringUtils::format("%s.png", enemyImageList.at(num).c_str());
     

@@ -9,7 +9,7 @@ USING_NS_CC;
 class EnemyNormalCharacter : public EnemyCharacter
 {
 public:
-    CC_SYNTHESIZE(Constant::ImageEnemy, imageEnemy, ImageEnemy);
+    CC_SYNTHESIZE_READONLY(Constant::ImageEnemy, imageEnemy, ImageEnemy);
     EnemyNormalCharacter();
     static EnemyNormalCharacter* create();
 };

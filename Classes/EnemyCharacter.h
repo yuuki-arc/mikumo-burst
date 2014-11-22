@@ -9,7 +9,7 @@ USING_NS_CC;
 class EnemyCharacter : public Ref
 {
 protected:
-    CC_SYNTHESIZE(Constant::ImageEnemy, imageEnemy, ImageEnemy);
+    CC_SYNTHESIZE_READONLY(Constant::ImageEnemy, imageEnemy, ImageEnemy);
     CC_SYNTHESIZE(int, hp, Hp);
     CC_SYNTHESIZE(int, maxHp, MaxHp);
     CC_SYNTHESIZE(Sprite*, image, Image);
