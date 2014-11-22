@@ -17,9 +17,13 @@ PlayerBattleInfo::~PlayerBattleInfo()
 PlayerBattleInfo* PlayerBattleInfo::create()
 {
     PlayerBattleInfo *info = new PlayerBattleInfo();
-    info->autorelease();
-    
-    return info;
+    if (info)
+    {
+        info->autorelease();
+        return info;
+    }
+    CC_SAFE_DELETE(info);
+    return NULL;
 }
 
 float PlayerBattleInfo::getBpPercentage()
