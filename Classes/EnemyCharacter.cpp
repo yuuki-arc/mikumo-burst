@@ -1,11 +1,13 @@
 #include "EnemyCharacter.h"
 #include "Constant.h"
+#include "GameManager.h"
 #include "CharacterCreator.h"
 
 USING_NS_CC;
 
 EnemyCharacter::EnemyCharacter()
-: hp(0)
+: imageEnemy()
+, hp(0)
 , maxHp(0)
 , image(nullptr)
 {
@@ -15,10 +17,20 @@ EnemyCharacter::~EnemyCharacter()
 {
 }
 
-EnemyCharacter* EnemyCharacter::create(EnemyCharacter* character, int hp, Constant::ImageEnemy imageEnemy)
+void EnemyCharacter::createWithImage()
 {
-    character->setMaxHp(hp);
-    character->setHp(hp);
+    if (imageEnemy == Constant::ImageEnemy::EnemyNormal)
+    {
+        hp = Constant::DEFAULT_ENEMY_HP +
+             GameManager::getInstance()->getRank() * Constant::HP_RANK_UP_INCREMENT;
+    }
+    else
+    {
+        hp = Constant::DEFAULT_ENEMY_BOSS_HP +
+             GameManager::getInstance()->getRank() * Constant::HP_RANK_UP_BOSS_INCREMENT;
+    }
+    this->setMaxHp(hp);
+    this->setHp(hp);
     
     Constant::StringVector enemyImageList = Constant::ENEMY_IMAGE_LIST(imageEnemy);
     int num = CCRANDOM_0_1() * enemyImageList.size();
@@ -26,9 +38,7 @@ EnemyCharacter* EnemyCharacter::create(EnemyCharacter* character, int hp, Consta
     
     CharacterCreator* creator = new CharacterCreator();
     creator->init(CharacterScale::ALL);
-    character->setImage(creator->create(enemyFileName));
-    
-    return character;
+    this->setImage(creator->create(enemyFileName));
 }
 
 float EnemyCharacter::getHpPercentage()

@@ -180,13 +180,16 @@ void BattleScene::initPlayerInfo()
  */
 void BattleScene::initEnemy()
 {
+    CCLOG("initEnemy: %d", GameManager::getInstance()->battleMode);
     if (GameManager::getInstance()->isBattleModeNormal())
     {
         enemyData = EnemyNormalCharacter::create();
+        CCLOG("initEnemy: EnemyNormal: %d", enemyData->getHp());
     }
     else
     {
         enemyData = EnemyBossCharacter::create();
+        CCLOG("initEnemy: EnemyBoss: %d", enemyData->getHp());
     }
     enemyData->retain();
     

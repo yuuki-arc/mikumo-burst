@@ -9,6 +9,7 @@ USING_NS_CC;
 class EnemyCharacter : public Ref
 {
 protected:
+    CC_SYNTHESIZE(Constant::ImageEnemy, imageEnemy, ImageEnemy);
     CC_SYNTHESIZE(int, hp, Hp);
     CC_SYNTHESIZE(int, maxHp, MaxHp);
     CC_SYNTHESIZE(Sprite*, image, Image);
@@ -16,7 +17,7 @@ protected:
 public:
     EnemyCharacter();
     ~EnemyCharacter();
-    static EnemyCharacter* create(EnemyCharacter* character, int hp, Constant::ImageEnemy imageEnemy);
+    void createWithImage();
     float getHpPercentage();
     static int getDamage(int chainCount, EnemyCharacter* attacker, EnemyCharacter* defender);
 };

@@ -15,6 +15,7 @@ public:
     static const int BASE_DAMAGE_BURST = 4;
     static const int DAMAGE_RANK_UP_INCREMENT = 2;
     static const int HP_RANK_UP_INCREMENT = 10;
+    static const int HP_RANK_UP_BOSS_INCREMENT = 100;
     static const int LIMIT_RANK = 999;
     static const int LIMIT_DAMAGE = 999999;
     static const int MAX_PLAYER_BP = 50;

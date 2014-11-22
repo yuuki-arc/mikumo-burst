@@ -9,6 +9,8 @@ USING_NS_CC;
 class EnemyBossCharacter : public EnemyCharacter
 {
 public:
+    CC_SYNTHESIZE(Constant::ImageEnemy, imageEnemy, ImageEnemy);
+    EnemyBossCharacter();
     static EnemyBossCharacter* create();
 };
 
