@@ -11,8 +11,12 @@ EnemyNormalCharacter::EnemyNormalCharacter()
 EnemyNormalCharacter* EnemyNormalCharacter::create()
 {
     EnemyNormalCharacter *character = new EnemyNormalCharacter();
-    character->autorelease();
-    character->createWithImage();
-    
-    return character;
+    if (character)
+    {
+        character->autorelease();
+        character->createWithImage();
+        return character;
+    }
+    CC_SAFE_DELETE(character);
+    return NULL;
 }

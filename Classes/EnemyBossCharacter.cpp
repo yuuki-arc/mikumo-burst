@@ -11,8 +11,12 @@ EnemyBossCharacter::EnemyBossCharacter()
 EnemyBossCharacter* EnemyBossCharacter::create()
 {
     EnemyBossCharacter *character = new EnemyBossCharacter();
-    character->autorelease();
-    character->createWithImage();
-    
-    return character;
+    if (character)
+    {
+        character->autorelease();
+        character->createWithImage();
+        return character;
+    }
+    CC_SAFE_DELETE(character);
+    return NULL;
 }
