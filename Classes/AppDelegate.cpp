@@ -1,13 +1,13 @@
 #include "AppDelegate.h"
 #include "extensions/cocos-ext.h"
 
-#include "AppCCloudPlugin.h"
-#include "Constant.h"
-#include "GameManager.h"
-#include "TitleScene.h"
-#include "TitleSceneLoader.h"
+#include "tools/AppCCloudPlugin.h"
+#include "core/Constant.h"
+#include "core/GameManager.h"
+#include "scene/TitleScene.h"
+#include "scene/TitleSceneLoader.h"
 #include "SimpleAudioEngine.h"
-#include "UserDataStore.h"
+#include "resources/UserDataStore.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
