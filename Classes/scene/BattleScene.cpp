@@ -91,7 +91,7 @@ bool BattleScene::init()
                                       MoveTo::create(0.5f, Point(-marginX, y)),
                                       CallFunc::create([this](){this->setupGame();}), // 開始処理を呼び出し
                                       RemoveSelf::create(),
-                                      NULL
+                                      nullptr
                                       )
                      );
     

@@ -27,7 +27,7 @@ Sprite* EffectManager::effectPurified(std::string effectName, int count, Point l
             {
                 sprite2->removeFromParentAndCleanup(true);
             }),
-        NULL));
+        nullptr));
     sprite2->setPosition(location);
     
     return sprite2;
