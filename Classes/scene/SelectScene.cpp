@@ -93,7 +93,7 @@ void SelectScene::displayInfo()
     addChild(windowSprite, ZOrder::Menu);
     
     // データを取得
-    int battleRank = GameManager::getInstance()->getRank();
+    int rank = GameManager::getInstance()->getRank();
     auto store = UserDataStore::getInstance();
     
     // 次回バトルランク表示
@@ -109,7 +109,7 @@ void SelectScene::displayInfo()
     
     relativeLabelHeight -= 1.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create(std::to_string(battleRank), point, Constant::LARGE_FONT());
+    resultLabel = TextCreator::create(std::to_string(rank), point, Constant::LARGE_FONT());
     resultLabel->setScale(BM_FONT_SIZE64(32));
     this->addChild(resultLabel, ZOrder::Font);
     
