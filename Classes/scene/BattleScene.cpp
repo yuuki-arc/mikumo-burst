@@ -21,6 +21,7 @@ BattleScene::BattleScene()
 , gameTime(Constant::GAME_TIME)
 , gameEndFlg(false)
 , burstTime(0)
+, burstCutInFlg(false)
 {
 }
 
@@ -61,6 +62,7 @@ bool BattleScene::init()
     gameTime = Constant::GAME_TIME;
     gameEndFlg = false;
     burstTime = 0;
+    burstCutInFlg = false;
     
     // 開始テキスト表示
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -240,6 +242,13 @@ void BattleScene::initStatusLayer()
     enemyHpBar->setPercentage(enemyData->getHpPercentage());
     hpFrame->addChild(enemyHpBar);
 
+    // キャラアイコン
+    Sprite* playerIcon = Sprite::createWithSpriteFrameName("icon_f317.png");
+    playerIcon->setPosition(Point(origin.x + visibleSize.width * 1 / 10,
+                               origin.y + visibleSize.height * 0.5 / 10));
+    playerIcon->setScale(playerIcon->getScale()*0.5, playerIcon->getScale()*0.5);
+    addChild(playerIcon, ZOrder::PlayerBp);
+    
     // BP
     Sprite* bpFrame = Sprite::createWithSpriteFrameName("ep_frame.png");
     bpFrame->setPosition(Point(origin.x + visibleSize.width / 2,
@@ -353,16 +362,27 @@ void BattleScene::update(float frame)
         Size visibleSize = Director::getInstance()->getVisibleSize();
         Point origin = Director::getInstance()->getVisibleOrigin();
         
-        float marginX = playerInfo->getCutInImage()->getContentSize().width;
-        float x = origin.x + visibleSize.width / 2;
-        float y = origin.y + visibleSize.height / 2;
-        playerInfo->getCutInImage()->setPosition(Point(x+marginX,y));
+        float x = 0;
+        float y = 0;
+
+        auto scaleAction = ScaleTo::create(0.3f, 1);
+        auto moveAction = MoveTo::create(0.3f,Point(origin.x + visibleSize.width / 2,
+                                                    origin.y + visibleSize.height / 2));
+        auto spawn1 = Spawn::create(scaleAction, moveAction, NULL);
+        
+        auto scaleAction2 = ScaleTo::create(0.3f, 4);
+        auto fadeOutAction = FadeOut::create(0.3f);
+        auto spawn2 = Spawn::create(scaleAction2, fadeOutAction, NULL);
+
+        playerInfo->getCutInImage()->setOpacity(255);
+        playerInfo->getCutInImage()->setScale(0.2f, 0.2f);
+        playerInfo->getCutInImage()->setPosition(Point(x, y));
         playerInfo->getCutInImage()->setVisible(true);
         playerInfo->getCutInImage()->runAction(
                          Sequence::create(
-                                          MoveTo::create(0.2f, Point(x, y)),
+                                          spawn1,
                                           DelayTime::create(0.5f),
-                                          MoveTo::create(0.2f, Point(-marginX, y)),
+                                          spawn2,
                                           CallFunc::create([this](){this->startBurstTime();}), // 開始処理を呼び出し
                                           nullptr
                                           )
