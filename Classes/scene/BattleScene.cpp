@@ -173,6 +173,9 @@ void BattleScene::initPlayerInfo()
     playerInfo->retain();
     playerInfo->setRank(GameManager::getInstance()->getRank());
     playerInfo->setBp(0);
+    playerInfo->getCutInImage()->setVisible(false);
+    this->addChild(playerInfo->getCutInImage(), ZOrder::PlayerCutIn);
+
 }
 
 /**
@@ -274,6 +277,9 @@ void BattleScene::initTouchEvent()
 void BattleScene::updateBySchedule(float frame)
 {
     CCLOG("updateBySchedule-start");
+    // ゲームエンドおよびカットインアニメーション時は処理しない
+    if (gameEndFlg || burstCutInFlg) return;
+
     if (gameTime <= 0)
     {
         endBattle();
@@ -326,29 +332,46 @@ void BattleScene::updateBySchedule(float frame)
 void BattleScene::update(float frame)
 {
 //    CCLOG("update-start");
+    // ゲームエンドおよびカットインアニメーション時は処理しない
+    if (gameEndFlg || burstCutInFlg) return;
     
-    // バーストタイム
+    // バーストタイム開始
     if (playerInfo->getBp() == Constant::MAX_PLAYER_BP)
     {
         CCLOG("update-ep-break BP: %d", playerInfo->getBp());
         CCLOG("update-ep-break burstTime: %d", burstTime);
 
+        // ボイス再生
         int num = arc4random() % 3;
         Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::BurstAttack);
         
         SoundManager* soundManager = new SoundManager();
         soundManager->playVoice(list[num]);
         
-        playerInfo->incrementBurstCount();
-        playerInfo->setBp(0);
-        burstTime = Constant::MAX_BURST_TIME;
-        CCLOG("update-ep-break BP: %d", playerInfo->getBp());
-        CCLOG("update-ep-break burstTime: %d", burstTime);
+        // カットインアニメーション
+        burstCutInFlg = true;
+        Size visibleSize = Director::getInstance()->getVisibleSize();
+        Point origin = Director::getInstance()->getVisibleOrigin();
+        
+        float marginX = playerInfo->getCutInImage()->getContentSize().width;
+        float x = origin.x + visibleSize.width / 2;
+        float y = origin.y + visibleSize.height / 2;
+        playerInfo->getCutInImage()->setPosition(Point(x+marginX,y));
+        playerInfo->getCutInImage()->setVisible(true);
+        playerInfo->getCutInImage()->runAction(
+                         Sequence::create(
+                                          MoveTo::create(0.2f, Point(x, y)),
+                                          DelayTime::create(0.5f),
+                                          MoveTo::create(0.2f, Point(-marginX, y)),
+                                          CallFunc::create([this](){this->startBurstTime();}), // 開始処理を呼び出し
+                                          nullptr
+                                          )
+                         );
     }
     
     
     // 敵撃破
-    if (!gameEndFlg && enemyData->getHp() == 0)
+    if (enemyData->getHp() == 0)
     {
         touchOff();
         gameEndFlg = true;
@@ -356,6 +379,19 @@ void BattleScene::update(float frame)
         this->scheduleOnce(schedule_selector(BattleScene::updateByDefeatEnemy), 5.0f);
     }
 //    CCLOG("update-end");
+}
+
+/**
+ *  バースト開始時に行う処理
+ *
+ */
+void BattleScene::startBurstTime()
+{
+    playerInfo->getCutInImage()->setVisible(false);
+    playerInfo->incrementBurstCount();
+    playerInfo->setBp(0);
+    burstTime = Constant::MAX_BURST_TIME;
+    burstCutInFlg = false;
 }
 
 /**
@@ -496,8 +532,8 @@ void BattleScene::touchOff()
 bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     SoundManager* soundManager = new SoundManager();
 
-    // ゲームエンドの場合は処理しない
-    if (gameEndFlg) return true;
+    // ゲームエンドおよびカットインアニメーション時は処理しない
+    if (gameEndFlg || burstCutInFlg) return true;
 
     // タッチ位置
     auto location = touch->getLocation();
@@ -520,7 +556,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     }
     else
     {
-        // バーストタイム時
+        // バーストタイム中
         effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundBurst);
         battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurst);
         damage = Constant::BASE_DAMAGE_BURST;
@@ -583,8 +619,8 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
  */
 void BattleScene::onTouchMoved(Touch* touch, Event *event){
     
-    // ゲームエンドの場合は処理しない
-    if (gameEndFlg) return;
+    // ゲームエンドおよびカットインアニメーション時は処理しない
+    if (gameEndFlg || burstCutInFlg) return;
     
     auto location = touch->getLocation();
     
@@ -604,8 +640,8 @@ void BattleScene::onTouchMoved(Touch* touch, Event *event){
  */
 void BattleScene::onTouchEnded(Touch* touch, Event *event){
     
-    // ゲームエンドの場合は処理しない
-    if (gameEndFlg) return;
+    // ゲームエンドおよびカットインアニメーション時は処理しない
+    if (gameEndFlg || burstCutInFlg) return;
     
     auto location = touch->getLocation();
     
@@ -622,8 +658,8 @@ void BattleScene::onTouchEnded(Touch* touch, Event *event){
  */
 void BattleScene::onTouchCancelled(Touch* touch, Event *event){
 
-    // ゲームエンドの場合は処理しない
-    if (gameEndFlg) return;
+    // ゲームエンドおよびカットインアニメーション時は処理しない
+    if (gameEndFlg || burstCutInFlg) return;
     
     auto location = touch->getLocation();
 

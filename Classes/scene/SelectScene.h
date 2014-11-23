@@ -40,8 +40,6 @@ private:
         Font,
     };
     
-    std::vector<std::string> personaImageList;
-    
     void displayInfo();
 
 };

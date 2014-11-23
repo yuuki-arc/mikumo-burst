@@ -58,6 +58,7 @@ private:
         Bg = 0,
         Enemy,
 //        EnemyTargetter,
+        PlayerCutIn,
         BattleEffect,
         TouchEffect,
         EnemyHp,
@@ -82,12 +83,11 @@ private:
     ProgressTimer* enemyHpBar;
     Label* gameTimeLabel;
     
-    UserDefault* userDefault = UserDefault::getInstance();
-    
     int currentRank;
     int gameTime;
     bool gameEndFlg;
     int burstTime;
+    bool burstCutInFlg;
     
     void initBattleResult();
     void initBackground();
@@ -95,7 +95,8 @@ private:
     void initEnemy();
     void initStatusLayer();
     void initTouchEvent();
-    
+
+    void startBurstTime();
     void endBattle();
     void replaceScene();
 };

@@ -11,6 +11,7 @@ private:
     CC_SYNTHESIZE(int, rank, Rank);
     CC_SYNTHESIZE(int, bp, Bp);
     CC_SYNTHESIZE(int, burstCount, BurstCount);
+    CC_SYNTHESIZE(Sprite*, cutInImage, CutInImage);
     
 public:
     PlayerBattleInfo();

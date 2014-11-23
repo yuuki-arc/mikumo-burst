@@ -11,7 +11,6 @@
 #include "resources/UserDataStore.h"
 
 SelectScene::SelectScene()
-: personaImageList(Constant::PERSONA_IMAGE_LIST())
 {
 }
 
@@ -75,7 +74,7 @@ void SelectScene::displayInfo()
     
     // キャラ
     int num = 1; //CCRANDOM_0_1() * personaImageList.size();
-    std::string personaFileName = StringUtils::format("%s.png", personaImageList.at(num).c_str());
+    std::string personaFileName = StringUtils::format("%s.png", Constant::PERSONA_IMAGE_LIST().at(num).c_str());
     Point position = Point(origin.x + visibleSize.width * 2 / 3,
                            origin.y + visibleSize.height * 6 / 10);
     
