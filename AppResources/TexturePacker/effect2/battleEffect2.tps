@@ -203,14 +203,6 @@
             <filename>ef09-5.png</filename>
             <filename>ef09-6.png</filename>
             <filename>ef09-7.png</filename>
-            <filename>ef12-0.png</filename>
-            <filename>ef12-1.png</filename>
-            <filename>ef12-2.png</filename>
-            <filename>ef12-3.png</filename>
-            <filename>ef12-4.png</filename>
-            <filename>ef12-5.png</filename>
-            <filename>ef12-6.png</filename>
-            <filename>ef12-7.png</filename>
             <filename>ef14-0.png</filename>
             <filename>ef14-1.png</filename>
             <filename>ef14-2.png</filename>
@@ -243,6 +235,106 @@
             <filename>ef25-5.png</filename>
             <filename>ef25-6.png</filename>
             <filename>ef25-7.png</filename>
+            <filename>ef02-0.png</filename>
+            <filename>ef02-1.png</filename>
+            <filename>ef02-2.png</filename>
+            <filename>ef02-3.png</filename>
+            <filename>ef02-4.png</filename>
+            <filename>ef02-5.png</filename>
+            <filename>ef02-6.png</filename>
+            <filename>ef02-7.png</filename>
+            <filename>ef16-0.png</filename>
+            <filename>ef16-1.png</filename>
+            <filename>ef16-2.png</filename>
+            <filename>ef16-3.png</filename>
+            <filename>ef16-4.png</filename>
+            <filename>ef16-5.png</filename>
+            <filename>ef16-6.png</filename>
+            <filename>ef16-7.png</filename>
+            <filename>ef16-8.png</filename>
+            <filename>ef16-9.png</filename>
+            <filename>ef17-0.png</filename>
+            <filename>ef17-1.png</filename>
+            <filename>ef17-2.png</filename>
+            <filename>ef17-3.png</filename>
+            <filename>ef17-4.png</filename>
+            <filename>ef17-5.png</filename>
+            <filename>ef17-6.png</filename>
+            <filename>ef17-7.png</filename>
+            <filename>ef17-8.png</filename>
+            <filename>ef17-9.png</filename>
+            <filename>ef17-10.png</filename>
+            <filename>ef17-11.png</filename>
+            <filename>ef17-12.png</filename>
+            <filename>ef17-13.png</filename>
+            <filename>ef17-14.png</filename>
+            <filename>ef17-15.png</filename>
+            <filename>ef17-16.png</filename>
+            <filename>ef17-17.png</filename>
+            <filename>ef17-18.png</filename>
+            <filename>ef17-19.png</filename>
+            <filename>ef17-20.png</filename>
+            <filename>ef17-21.png</filename>
+            <filename>ef17-22.png</filename>
+            <filename>ef17-23.png</filename>
+            <filename>ef17-24.png</filename>
+            <filename>ef17-25.png</filename>
+            <filename>ef17-26.png</filename>
+            <filename>ef17-27.png</filename>
+            <filename>ef17-28.png</filename>
+            <filename>ef17-29.png</filename>
+            <filename>ef17-30.png</filename>
+            <filename>ef17-31.png</filename>
+            <filename>ef17-32.png</filename>
+            <filename>ef17-33.png</filename>
+            <filename>ef17-34.png</filename>
+            <filename>ef17-35.png</filename>
+            <filename>ef17-36.png</filename>
+            <filename>ef17-37.png</filename>
+            <filename>ef17-38.png</filename>
+            <filename>ef17-39.png</filename>
+            <filename>ef20-0.png</filename>
+            <filename>ef20-1.png</filename>
+            <filename>ef20-2.png</filename>
+            <filename>ef20-3.png</filename>
+            <filename>ef20-4.png</filename>
+            <filename>ef20-5.png</filename>
+            <filename>ef20-6.png</filename>
+            <filename>ef20-7.png</filename>
+            <filename>ef20-8.png</filename>
+            <filename>ef20-9.png</filename>
+            <filename>ef20-10.png</filename>
+            <filename>ef20-11.png</filename>
+            <filename>ef31-2-0.png</filename>
+            <filename>ef31-2-1.png</filename>
+            <filename>ef31-2-2.png</filename>
+            <filename>ef31-2-3.png</filename>
+            <filename>ef31-2-4.png</filename>
+            <filename>ef31-2-5.png</filename>
+            <filename>ef31-2-6.png</filename>
+            <filename>ef31-2-7.png</filename>
+            <filename>ef31-2-8.png</filename>
+            <filename>ef31-2-9.png</filename>
+            <filename>ef31-2-10.png</filename>
+            <filename>ef31-2-11.png</filename>
+            <filename>ef31-2-12.png</filename>
+            <filename>ef31-2-13.png</filename>
+            <filename>ef31-2-14.png</filename>
+            <filename>ef32-0.png</filename>
+            <filename>ef32-1.png</filename>
+            <filename>ef32-2.png</filename>
+            <filename>ef32-3.png</filename>
+            <filename>ef32-4.png</filename>
+            <filename>ef32-5.png</filename>
+            <filename>ef32-6.png</filename>
+            <filename>ef32-7.png</filename>
+            <filename>ef32-8.png</filename>
+            <filename>ef32-9.png</filename>
+            <filename>ef32-10.png</filename>
+            <filename>ef32-11.png</filename>
+            <filename>ef32-12.png</filename>
+            <filename>ef32-13.png</filename>
+            <filename>ef32-14.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
