@@ -63,11 +63,16 @@ public:
     };
     static const std::map<ImageEffect, StringVector> BATTLE_EFFECT_IMAGE_LIST(){
         return {
-            {ImageEffect::ImageNormal, {"battleEffect107a", "battleEffect107b"}},
+//            {ImageEffect::ImageNormal, {"battleEffect107a", "battleEffect107b"}},
+//            {ImageEffect::ImageBurst , {
+//                    "battleEffect107c", "battleEffect107d", "battleEffect107e",
+//                    "battleEffect107f", "battleEffect107g", "battleEffect107h",
+//                    "battleEffect107i", "battleEffect107j"
+//                }
+//            },
+            {ImageEffect::ImageNormal, {"ef22", "ef24", "ef25"}},
             {ImageEffect::ImageBurst , {
-                    "battleEffect107c", "battleEffect107d", "battleEffect107e",
-                    "battleEffect107f", "battleEffect107g", "battleEffect107h",
-                    "battleEffect107i", "battleEffect107j"
+                    "ef07", "ef09", "ef12", "ef14"
                 }
             },
         };

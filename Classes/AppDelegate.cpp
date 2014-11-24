@@ -88,11 +88,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     frameCache->addSpriteFramesWithFile("misc/misc.plist");
     frameCache->addSpriteFramesWithFile("bg/bg.plist");
 
-    frameCache->addSpriteFramesWithFile("effect/battleEffect0.plist");
-    if (GameManager::getInstance()->isScreenModeHd())
-    {
-        frameCache->addSpriteFramesWithFile("effect/battleEffect1.plist");
-    }
+//    frameCache->addSpriteFramesWithFile("effect/battleEffect0.plist");
+//    if (GameManager::getInstance()->isScreenModeHd())
+//    {
+//        frameCache->addSpriteFramesWithFile("effect/battleEffect1.plist");
+//    }
+    frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
 
     // ゲームデータが存在するか判定し、存在しない場合は初期セットアップを行う
     if (!UserDataStore::getInstance()->isDataStored())

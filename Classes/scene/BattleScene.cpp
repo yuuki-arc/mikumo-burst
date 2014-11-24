@@ -576,7 +576,8 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     soundManager->playSE(effectList[soundEffectNum]);
     
     // ヒットエフェクト生成
-    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], 10, location);
+//    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], 10, location);
+    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], 8, location);
     this->addChild(effectSprite, ZOrder::TouchEffect);
     
     // 敵のHPゲージ
