@@ -64,6 +64,29 @@ bool BattleScene::init()
     burstTime = 0;
     burstCutInFlg = false;
     
+    // BGM
+    SoundManager* soundManager = new SoundManager();
+    if (GameManager::getInstance()->isBattleModeNormal())
+    {
+        soundManager->playBGM("bgm_battle", true);
+    }
+    else
+    {
+        soundManager->playBGM("bgm_battle_boss", true);
+    }
+    
+    // SE
+    for (auto& kv : Constant::EFFECT_LIST()) {
+        Constant::StringVector effectList = (Constant::StringVector)(kv.second);
+        Constant::StringVector::const_iterator iterator = effectList.begin();
+        CCLOG("onNodeLoaded-iterator");
+        while (iterator != effectList.end()) {
+            soundManager->preloadSE(*iterator);
+            CCLOG("preloadSE:%s", (*iterator).c_str());
+            iterator++;
+        }
+    }
+
     // 開始テキスト表示
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -111,24 +134,6 @@ void BattleScene::setupGame()
     this->scheduleUpdate();
     CCLOG("init-burstTime5: %d", burstTime);
     initTouchEvent();
-
-    // BGM
-    SoundManager* soundManager = new SoundManager();
-    CCLOG("onNodeLoaded-new SoundManager");
-    soundManager->playBGM("bgm_battle", true);
-    CCLOG("onNodeLoaded-playBGM");
-    
-    // SE
-    for (auto& kv : Constant::EFFECT_LIST()) {
-        Constant::StringVector effectList = (Constant::StringVector)(kv.second);
-        Constant::StringVector::const_iterator iterator = effectList.begin();
-        CCLOG("onNodeLoaded-iterator");
-        while (iterator != effectList.end()) {
-            soundManager->preloadSE(*iterator);
-            CCLOG("preloadSE:%s", (*iterator).c_str());
-            iterator++;
-        }
-    }
 }
 
 /**
@@ -357,12 +362,20 @@ void BattleScene::update(float frame)
         SoundManager* soundManager = new SoundManager();
         soundManager->playVoice(list[num]);
         
-        // カットインアニメーション
-        burstCutInFlg = true;
-        CallFunc* callback = CallFunc::create([this](){this->startBurstTime();}); // 開始処理を呼び出し
-        playerInfo->getCutInImage()->runAction(
-            BattleActionCreator::burstCutIn(playerInfo->getCutInImage(), callback));
-    }    
+        if (burstTime == 0)
+        {
+            // カットインアニメーション
+            burstCutInFlg = true;
+            CallFunc* callback = CallFunc::create([this](){this->startBurstTime();}); // 開始処理を呼び出し
+            playerInfo->getCutInImage()->runAction(
+                BattleActionCreator::burstCutIn(playerInfo->getCutInImage(), callback));
+        }
+        else
+        {
+            // バーストタイム中の場合はカットイン省略
+            this->startBurstTime();
+        }
+    }
     
     // 敵撃破
     if (enemyData->getHp() == 0)

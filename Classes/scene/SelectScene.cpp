@@ -49,7 +49,7 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
     // BGM
     SoundManager* soundManager = new SoundManager();
-    soundManager->playBGM("bgm_title", true);
+    soundManager->playBGM("bgm_select", true);
     
     // SE
     soundManager->preloadSE("se_select");
