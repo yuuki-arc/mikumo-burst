@@ -14,6 +14,7 @@ public:
 
     static ActionInterval* appearEnemy();
     static ActionInterval* attackToEnemy();
+    static ActionInterval* burstCutIn(Sprite *sprite, CallFunc *callback);
     static ActionInterval* damageToEnemy();
     static ActionInterval* damageToEnemy2();
     static ActionInterval* damageToEnemy3();

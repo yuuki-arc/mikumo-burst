@@ -359,36 +359,10 @@ void BattleScene::update(float frame)
         
         // カットインアニメーション
         burstCutInFlg = true;
-        Size visibleSize = Director::getInstance()->getVisibleSize();
-        Point origin = Director::getInstance()->getVisibleOrigin();
-        
-        float x = 0;
-        float y = 0;
-
-        auto scaleAction = ScaleTo::create(0.3f, 1);
-        auto moveAction = MoveTo::create(0.3f,Point(origin.x + visibleSize.width / 2,
-                                                    origin.y + visibleSize.height / 2));
-        auto spawn1 = Spawn::create(scaleAction, moveAction, NULL);
-        
-        auto scaleAction2 = ScaleTo::create(0.3f, 4);
-        auto fadeOutAction = FadeOut::create(0.3f);
-        auto spawn2 = Spawn::create(scaleAction2, fadeOutAction, NULL);
-
-        playerInfo->getCutInImage()->setOpacity(255);
-        playerInfo->getCutInImage()->setScale(0.2f, 0.2f);
-        playerInfo->getCutInImage()->setPosition(Point(x, y));
-        playerInfo->getCutInImage()->setVisible(true);
+        CallFunc* callback = CallFunc::create([this](){this->startBurstTime();}); // 開始処理を呼び出し
         playerInfo->getCutInImage()->runAction(
-                         Sequence::create(
-                                          spawn1,
-                                          DelayTime::create(0.5f),
-                                          spawn2,
-                                          CallFunc::create([this](){this->startBurstTime();}), // 開始処理を呼び出し
-                                          nullptr
-                                          )
-                         );
-    }
-    
+            BattleActionCreator::burstCutIn(playerInfo->getCutInImage(), callback));
+    }    
     
     // 敵撃破
     if (enemyData->getHp() == 0)
