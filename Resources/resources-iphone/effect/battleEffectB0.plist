@@ -4,46 +4,98 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>ef07-0.png</key>
+            <key>ef02-0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{330,584},{28,42}}</string>
+                <string>{{524,963},{60,52}}</string>
                 <key>offset</key>
-                <string>{0,-1}</string>
+                <string>{-8,12}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{36,30},{28,42}}</string>
+                <string>{{12,12},{60,52}}</string>
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef07-1.png</key>
+            <key>ef02-1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{292,584},{36,48}}</string>
+                <string>{{661,750},{80,84}}</string>
+                <key>offset</key>
+                <string>{2,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{12,12},{80,84}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef02-2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{413,423},{80,96}}</string>
+                <key>offset</key>
+                <string>{6,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{16,4},{80,96}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef02-3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{637,194},{84,92}}</string>
+                <key>offset</key>
+                <string>{0,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,8},{84,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef02-4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{470,863},{98,96}}</string>
+                <key>offset</key>
+                <string>{-1,2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{98,96}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef02-5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{469,761},{100,96}}</string>
                 <key>offset</key>
                 <string>{0,2}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{32,24},{36,48}}</string>
+                <string>{{0,0},{100,96}}</string>
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef07-2.png</key>
+            <key>ef02-6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{242,584},{48,48}}</string>
+                <string>{{413,325},{96,96}}</string>
                 <key>offset</key>
-                <string>{1,-2}</string>
+                <string>{2,2}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{27,28},{48,48}}</string>
+                <string>{{4,0},{96,96}}</string>
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef07-3.png</key>
+            <key>ef02-7.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{333,121},{100,100}}</string>
@@ -56,7 +108,46 @@
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef07-4.png</key>
+            <key>ef07-0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{319,461},{28,42}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{36,30},{28,42}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef07-1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{465,701},{36,48}}</string>
+                <key>offset</key>
+                <string>{0,2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{32,24},{36,48}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef07-2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{973,64},{48,48}}</string>
+                <key>offset</key>
+                <string>{1,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{27,28},{48,48}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef07-3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{361,2},{100,100}}</string>
@@ -69,10 +160,10 @@
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef07-5.png</key>
+            <key>ef07-4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{242,482},{100,100}}</string>
+                <string>{{242,510},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -82,59 +173,7 @@
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef07-6.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{363,665},{94,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{3,0},{94,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef07-7.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{465,529},{96,96}}</string>
-                <key>offset</key>
-                <string>{2,-2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{4,4},{96,96}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef09-0.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{465,627},{92,88}}</string>
-                <key>offset</key>
-                <string>{0,2}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{4,4},{92,88}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef09-1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{767,2},{92,92}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{4,4},{92,92}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef09-2.png</key>
+            <key>ef07-5.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{311,359},{100,100}}</string>
@@ -147,10 +186,75 @@
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
+            <key>ef07-6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{355,223},{94,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{3,0},{94,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef07-7.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{446,505},{96,96}}</string>
+                <key>offset</key>
+                <string>{2,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{4,4},{96,96}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef09-0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{555,586},{92,88}}</string>
+                <key>offset</key>
+                <string>{0,2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{4,4},{92,88}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef09-1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{567,753},{92,92}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{4,4},{92,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef09-2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{344,505},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
             <key>ef09-3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{344,461},{100,100}}</string>
+                <string>{{363,637},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +267,7 @@
             <key>ef09-4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{667,2},{98,100}}</string>
+                <string>{{369,761},{98,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +280,7 @@
             <key>ef09-5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{661,206},{96,94}}</string>
+                <string>{{451,206},{96,94}}</string>
                 <key>offset</key>
                 <string>{1,1}</string>
                 <key>rotated</key>
@@ -189,7 +293,7 @@
             <key>ef09-6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{741,104},{92,96}}</string>
+                <string>{{529,104},{92,96}}</string>
                 <key>offset</key>
                 <string>{0,2}</string>
                 <key>rotated</key>
@@ -202,7 +306,7 @@
             <key>ef09-7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{470,863},{92,100}}</string>
+                <string>{{435,104},{92,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -212,211 +316,432 @@
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef12-0.png</key>
+            <key>ef16-0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{355,223},{100,100}}</string>
+                <string>{{129,482},{30,26}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,3},{30,26}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef16-1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{225,482},{28,26}}</string>
+                <key>offset</key>
+                <string>{2,3}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{4,0},{28,26}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef16-2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{161,482},{30,26}}</string>
+                <key>offset</key>
+                <string>{-1,3}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{30,26}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef16-3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{285,482},{24,32}}</string>
+                <key>offset</key>
+                <string>{2,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{6,0},{24,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef16-4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{193,482},{26,30}}</string>
+                <key>offset</key>
+                <string>{-1,1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{2,0},{26,30}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef16-5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{352,607},{28,32}}</string>
+                <key>offset</key>
+                <string>{2,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{4,0},{28,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef16-6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{255,482},{26,28}}</string>
+                <key>offset</key>
+                <string>{1,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{4,4},{26,28}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef16-7.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{355,325},{30,32}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{30,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef16-8.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{386,607},{28,30}}</string>
+                <key>offset</key>
+                <string>{0,1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{2,0},{28,30}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef16-9.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{418,607},{28,30}}</string>
+                <key>offset</key>
+                <string>{0,1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{2,0},{28,30}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>ef17-0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{333,223},{14,14}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{3,3},{14,14}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{20,20}</string>
             </dict>
-            <key>ef12-1.png</key>
+            <key>ef17-1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{435,104},{100,100}}</string>
+                <string>{{242,612},{20,20}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef17-10.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{264,612},{20,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef17-2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{286,612},{20,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef17-3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{308,612},{20,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef17-4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{330,612},{20,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef17-5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{363,739},{20,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef17-6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{385,739},{20,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef17-7.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{407,739},{20,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef17-8.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{429,739},{20,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef17-9.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{451,739},{20,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,20}}</string>
+                <key>sourceSize</key>
+                <string>{20,20}</string>
+            </dict>
+            <key>ef20-0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{387,325},{24,24}}</string>
+                <key>offset</key>
+                <string>{-22,30}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{16,8},{24,24}}</string>
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef12-2.png</key>
+            <key>ef20-1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{548,410},{96,96}}</string>
+                <string>{{973,2},{48,60}}</string>
+                <key>offset</key>
+                <string>{-22,16}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{4,4},{48,60}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef20-10.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{759,370},{48,80}}</string>
                 <key>offset</key>
                 <string>{-2,2}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{96,96}}</string>
+                <string>{{24,8},{48,80}}</string>
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef12-3.png</key>
+            <key>ef20-11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{463,2},{100,100}}</string>
+                <string>{{875,162},{48,48}}</string>
+                <key>offset</key>
+                <string>{-6,-14}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{20,40},{48,48}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef20-2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{651,660},{88,80}}</string>
+                <key>offset</key>
+                <string>{-6,10}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{88,80}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef20-3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{601,296},{92,88}}</string>
+                <key>offset</key>
+                <string>{-4,6}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{92,88}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef20-4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{465,603},{96,88}}</string>
+                <key>offset</key>
+                <string>{-2,6}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{96,88}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef20-5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{557,2},{96,92}}</string>
+                <key>offset</key>
+                <string>{2,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{4,4},{96,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef20-6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{463,2},{100,92}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,4},{100,92}}</string>
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef12-4.png</key>
+            <key>ef20-7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{413,325},{100,100}}</string>
+                <string>{{601,390},{88,88}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{6,-2}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{12,8},{88,88}}</string>
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef12-5.png</key>
+            <key>ef20-8.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{457,206},{100,100}}</string>
+                <string>{{713,96},{76,92}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{8,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{20,4},{76,92}}</string>
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>ef12-6.png</key>
+            <key>ef20-9.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{537,104},{100,100}}</string>
+                <string>{{662,836},{80,84}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{10,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef12-7.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{565,2},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef14-0.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{471,721},{76,76}}</string>
-                <key>offset</key>
-                <string>{12,-12}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{24,24},{76,76}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef14-1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{363,563},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef14-2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{369,761},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef14-3.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{446,427},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef14-4.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{515,308},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef14-5.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{559,206},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef14-6.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{639,104},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>ef14-7.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{617,308},{96,96}}</string>
-                <key>offset</key>
-                <string>{2,2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{4,0},{96,96}}</string>
+                <string>{{20,8},{80,84}}</string>
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
@@ -732,6 +1057,396 @@
                 <key>sourceSize</key>
                 <string>{125,125}</string>
             </dict>
+            <key>ef31-2-0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{349,461},{36,62}}</string>
+                <key>offset</key>
+                <string>{-4,-19}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{28,38},{36,62}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{875,212},{48,48}}</string>
+                <key>offset</key>
+                <string>{2,2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{28,24},{48,48}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-10.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{511,304},{88,92}}</string>
+                <key>offset</key>
+                <string>{2,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,4},{88,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-11.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{547,202},{88,92}}</string>
+                <key>offset</key>
+                <string>{6,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{12,4},{88,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-12.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{623,100},{88,92}}</string>
+                <key>offset</key>
+                <string>{2,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,4},{88,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-13.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{651,2},{88,92}}</string>
+                <key>offset</key>
+                <string>{2,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,4},{88,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-14.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{741,2},{82,90}}</string>
+                <key>offset</key>
+                <string>{1,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{10,6},{82,90}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{470,963},{52,56}}</string>
+                <key>offset</key>
+                <string>{-4,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{20,24},{52,56}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{925,176},{64,66}}</string>
+                <key>offset</key>
+                <string>{-6,-6}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{12,23},{64,66}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{691,370},{80,66}}</string>
+                <key>offset</key>
+                <string>{-2,-6}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{8,23},{80,66}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{511,398},{88,92}}</string>
+                <key>offset</key>
+                <string>{2,4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,0},{88,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{586,941},{92,80}}</string>
+                <key>offset</key>
+                <string>{4,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,12},{92,80}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-7.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{634,480},{88,88}}</string>
+                <key>offset</key>
+                <string>{2,2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,4},{88,88}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-8.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{568,847},{92,92}}</string>
+                <key>offset</key>
+                <string>{4,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,4},{92,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef31-2-9.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{544,492},{88,92}}</string>
+                <key>offset</key>
+                <string>{2,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,4},{88,92}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{899,2},{72,72}}</string>
+                <key>offset</key>
+                <string>{2,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{16,16},{72,72}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{645,570},{88,84}}</string>
+                <key>offset</key>
+                <string>{2,-4}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{8,12},{88,84}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-10.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{791,94},{72,80}}</string>
+                <key>offset</key>
+                <string>{-2,2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{12,8},{72,80}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-11.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{865,84},{76,72}}</string>
+                <key>offset</key>
+                <string>{0,6}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{12,8},{76,72}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-12.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{581,680},{68,68}}</string>
+                <key>offset</key>
+                <string>{0,4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{16,12},{68,68}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-13.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{939,114},{60,68}}</string>
+                <key>offset</key>
+                <string>{0,4}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{20,12},{60,68}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-14.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1018},{1,1}}</string>
+                <key>offset</key>
+                <string>{-49.5,49.5}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{1,1}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{680,922},{84,76}}</string>
+                <key>offset</key>
+                <string>{0,-4}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{8,16},{84,76}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{825,2},{80,72}}</string>
+                <key>offset</key>
+                <string>{2,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{12,16},{80,72}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{773,272},{76,76}}</string>
+                <key>offset</key>
+                <string>{0,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{12,16},{76,76}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{724,452},{60,80}}</string>
+                <key>offset</key>
+                <string>{4,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{24,12},{60,80}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-6.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{723,190},{76,80}}</string>
+                <key>offset</key>
+                <string>{0,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{12,12},{76,80}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-7.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{691,288},{80,80}}</string>
+                <key>offset</key>
+                <string>{-2,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,12},{80,80}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-8.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{801,176},{72,76}}</string>
+                <key>offset</key>
+                <string>{-2,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{12,12},{72,76}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>ef32-9.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{515,701},{50,64}}</string>
+                <key>offset</key>
+                <string>{-2,6}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{23,12},{50,64}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -742,7 +1457,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:530767c42b1bc301547854903397eed0:f4da33029d5b8f8ef5efb20929cff79a:494b1aab2763761ccf67fabeb48f2962$</string>
+            <string>$TexturePacker:SmartUpdate:9d2d1a35398b6ffc21229a69fc6d7a29:f051e809ed99d2ec83d4976e1c6ba747:494b1aab2763761ccf67fabeb48f2962$</string>
             <key>textureFileName</key>
             <string>battleEffectB0.png</string>
         </dict>

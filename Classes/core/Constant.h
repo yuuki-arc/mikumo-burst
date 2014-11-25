@@ -60,6 +60,7 @@ public:
     {
         ImageNormal = 0,// 通常攻撃
         ImageBurst,     // バーストタイム
+        ImageBurstSub,  // バーストタイム（サブエフェクト）
     };
     static const std::map<ImageEffect, StringVector> BATTLE_EFFECT_IMAGE_LIST(){
         return {
@@ -70,11 +71,9 @@ public:
 //                    "battleEffect107i", "battleEffect107j"
 //                }
 //            },
-            {ImageEffect::ImageNormal, {"ef22", "ef24", "ef25"}},
-            {ImageEffect::ImageBurst , {
-                    "ef07", "ef09", "ef12", "ef14"
-                }
-            },
+            {ImageEffect::ImageNormal  , {"ef22", "ef24", "ef25"}},
+            {ImageEffect::ImageBurst   , {"ef02", "ef07", "ef09", "ef20", "ef31-2", "ef32"}},
+            {ImageEffect::ImageBurstSub, {"ef16", "ef17"}}
         };
     };
     static const StringVector BATTLE_EFFECT_IMAGE_LIST(ImageEffect key){

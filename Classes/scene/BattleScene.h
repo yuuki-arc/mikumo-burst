@@ -61,6 +61,7 @@ private:
         PlayerCutIn,
         BattleEffect,
         TouchEffect,
+        TouchEffectSub,
         EnemyHp,
         PlayerBp,
         PersonaHp,

@@ -569,15 +569,25 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
         damage = Constant::BASE_DAMAGE_BURST;
         soundEffectNum =  CCRANDOM_0_1() * (int)effectList.size();
         hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
+        
     }
+    Constant::StringVector battleEffectSubImageList =
+    Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurstSub);
+    int hitSpriteSubNum = CCRANDOM_0_1() * battleEffectSubImageList.size();
+    Point pos = location;
+    pos.add(Vec2(arc4random() % 100 - 50, arc4random() % 100 - 50));
+    Sprite* effectSubSprite = this->effectManager->effectPurifiedTwice(battleEffectSubImageList[hitSpriteSubNum], pos, 0.05f);
+    
+    this->addChild(effectSubSprite, ZOrder::TouchEffect);
+    
 
     
     // 効果音
     soundManager->playSE(effectList[soundEffectNum]);
     
     // ヒットエフェクト生成
-//    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], 10, location);
-    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], 8, location);
+//    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], location);
+    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], location);
     this->addChild(effectSprite, ZOrder::TouchEffect);
     
     // 敵のHPゲージ
@@ -701,7 +711,7 @@ void BattleScene::onTouchCancelled(Touch* touch, Event *event){
 //
 //        // ヒットエフェクト生成
 //        num = CCRANDOM_0_1() * battleEffectImageList.size();
-//        Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(num), 10, location);
+//        Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(num), location);
 //        this->addChild(effectSprite, ZOrder::TouchEffect);
 //        
 //        // 敵のHPゲージ
