@@ -26,6 +26,8 @@ public:
     
     void tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType);
     void tappedSocialButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedRewardButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedMoreGamesButton(Ref* pTarget, Control::EventType pControlEventType);
 
     void pushBack(Ref* pSender);
 

@@ -63,7 +63,7 @@
 		A5152C851A2072AF00C75DDE /* TextCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C811A2072AF00C75DDE /* TextCreator.cpp */; };
 		A51CC73619B8B2FC009FFDE3 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51CC73519B8B2FC009FFDE3 /* Twitter.framework */; };
 		A52164F01A243FFC00E8D77D /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = A52164EF1A243FFC00E8D77D /* HelloWorld.png */; };
-		A52164F31A24437B00E8D77D /* RewardScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A52164F11A24437B00E8D77D /* RewardScene.cpp */; };
+		A52164F61A255FDB00E8D77D /* AdScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A52164F41A255FDB00E8D77D /* AdScene.cpp */; };
 		A53118D21A151AED00BFEB78 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = A53118CB1A151AED00BFEB78 /* Icon-60.png */; };
 		A53118D31A151AED00BFEB78 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A53118CC1A151AED00BFEB78 /* Icon-72.png */; };
 		A53118D41A151AED00BFEB78 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53118CD1A151AED00BFEB78 /* Icon-72@2x.png */; };
@@ -399,8 +399,8 @@
 		A5152C821A2072AF00C75DDE /* TextCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCreator.h; sourceTree = "<group>"; };
 		A51CC73519B8B2FC009FFDE3 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Twitter.framework; sourceTree = DEVELOPER_DIR; };
 		A52164EF1A243FFC00E8D77D /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
-		A52164F11A24437B00E8D77D /* RewardScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RewardScene.cpp; sourceTree = "<group>"; };
-		A52164F21A24437B00E8D77D /* RewardScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardScene.h; sourceTree = "<group>"; };
+		A52164F41A255FDB00E8D77D /* AdScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AdScene.cpp; sourceTree = "<group>"; };
+		A52164F51A255FDB00E8D77D /* AdScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdScene.h; sourceTree = "<group>"; };
 		A53118CB1A151AED00BFEB78 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		A53118CC1A151AED00BFEB78 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		A53118CD1A151AED00BFEB78 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
@@ -776,8 +776,8 @@
 		A5152C291A205B9E00C75DDE /* scene */ = {
 			isa = PBXGroup;
 			children = (
-				A52164F11A24437B00E8D77D /* RewardScene.cpp */,
-				A52164F21A24437B00E8D77D /* RewardScene.h */,
+				A52164F41A255FDB00E8D77D /* AdScene.cpp */,
+				A52164F51A255FDB00E8D77D /* AdScene.h */,
 				A5152C2A1A205B9E00C75DDE /* BattleScene.cpp */,
 				A5152C2B1A205B9E00C75DDE /* BattleScene.h */,
 				A5152C2C1A205B9E00C75DDE /* BattleSceneLoader.cpp */,
@@ -1319,6 +1319,7 @@
 				A505441F1A207A2100BDD5C7 /* AppCCloudPlugin.mm in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				A5152C471A205B9E00C75DDE /* SelectScene.cpp in Sources */,
+				A52164F61A255FDB00E8D77D /* AdScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				A5152C851A2072AF00C75DDE /* TextCreator.cpp in Sources */,
@@ -1331,7 +1332,6 @@
 				A5152C401A205B9E00C75DDE /* BattleScene.cpp in Sources */,
 				A5152C461A205B9E00C75DDE /* ScoreSceneLoader.cpp in Sources */,
 				A5152C411A205B9E00C75DDE /* BattleSceneLoader.cpp in Sources */,
-				A52164F31A24437B00E8D77D /* RewardScene.cpp in Sources */,
 				A5152C431A205B9E00C75DDE /* ResultScene.cpp in Sources */,
 				A5152C4A1A205B9E00C75DDE /* TitleSceneLoader.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

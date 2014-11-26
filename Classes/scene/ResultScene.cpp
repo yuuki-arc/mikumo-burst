@@ -196,3 +196,13 @@ void ResultScene::tappedSelectButton(Ref* pTarget, Control::EventType pControlEv
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }
+
+void ResultScene::tappedRewardButton(Ref* pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedRewardButton eventType = %d", pControlEventType);
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    
+    //　ポイント画面表示処理
+    AppCCloudPlugin::Reward::openRewardPointView();
+}

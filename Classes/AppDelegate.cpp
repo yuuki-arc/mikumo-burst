@@ -9,8 +9,8 @@
 #include "SimpleAudioEngine.h"
 #include "resources/UserDataStore.h"
 
-//#include "scene/AdScene.h"
-#include "scene/RewardScene.h"
+#include "scene/AdScene.h"
+//#include "scene/RewardScene.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -75,7 +75,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setDisplayStats(true);
 
     // appC cloud 開始
-//    AppCCloudPlugin::setOptions(API_GAMERS).setMK_iOS(Constant::APPC_MEDIA_KEY()).start();
+    AppCCloudPlugin::setOptions(API_GAMERS|API_PURCHASE|API_REWARD).setMK_iOS(Constant::APPC_MEDIA_KEY()).start();
     
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
@@ -109,8 +109,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    auto *pScene = TitleSceneLoader::createScene();
 
     // create a scene. it's an autorelease object
-//    auto pScene = Ad::createScene();
-    auto pScene = Reward::createScene();
+    auto pScene = Ad::createScene();
+//    auto pScene = Reward::createScene();
   
     // run
     director->runWithScene(pScene);
