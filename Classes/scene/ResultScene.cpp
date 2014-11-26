@@ -40,6 +40,8 @@ Control::Handler ResultScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
     CCLOG("name = %s", pSelectorName);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedSelectButton", ResultScene::tappedSelectButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedSocialButton", ResultScene::tappedSocialButton);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedRewardButton", ResultScene::tappedRewardButton);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedMoreGamesButton", ResultScene::tappedMoreGamesButton);
     return NULL;
 }
 
@@ -205,4 +207,31 @@ void ResultScene::tappedRewardButton(Ref* pTarget, Control::EventType pControlEv
     
     //　ポイント画面表示処理
     AppCCloudPlugin::Reward::openRewardPointView();
+}
+
+void ResultScene::tappedMoreGamesButton(Ref* pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedMoreGamesButton eventType = %d", pControlEventType);
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    
+    // 広告リスト型表示
+    AppCCloudPlugin::Ad::openAdListView();
+
+//    // シンプル型表示
+//    int index = arc4random() % 2;
+//    switch(index){
+//        case 0:
+//            // シンプル表示（上側）
+//            AppCCloudPlugin::Ad::showSimpleView(AppCCloudPlugin::TOP);
+//            break;
+//        case 1:
+//            // シンプル表示 (下側)
+//            AppCCloudPlugin::Ad::showSimpleView(AppCCloudPlugin::BOTTOM);
+//            break;
+//        default:
+//            // シンプル消去
+//            AppCCloudPlugin::Ad::hideSimpleView();
+//            break;
+//    }
 }

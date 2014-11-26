@@ -9,9 +9,6 @@
 #include "SimpleAudioEngine.h"
 #include "resources/UserDataStore.h"
 
-#include "scene/AdScene.h"
-//#include "scene/RewardScene.h"
-
 USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace cocosbuilder;
@@ -105,13 +102,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
         UserDataStore::getInstance()->setupData();
     }
     
-//    // CocosBuilderのファイルを読み込みゲーム画面を生成する
-//    auto *pScene = TitleSceneLoader::createScene();
+    // CocosBuilderのファイルを読み込みゲーム画面を生成する
+    auto *pScene = TitleSceneLoader::createScene();
 
-    // create a scene. it's an autorelease object
-    auto pScene = Ad::createScene();
-//    auto pScene = Reward::createScene();
-  
     // run
     director->runWithScene(pScene);
     
