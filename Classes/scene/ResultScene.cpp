@@ -215,9 +215,34 @@ void ResultScene::tappedMoreGamesButton(Ref* pTarget, Control::EventType pContro
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
     
-    // 広告リスト型表示
-    AppCCloudPlugin::Ad::openAdListView();
+//    // 広告リスト型表示
+//    AppCCloudPlugin::Ad::openAdListView();
 
+    //    int index = arc4random() % 2;
+    int index = arc4random() % 4;
+    switch(index){
+        case 0:
+            // マッチアップバナー表示（左上）
+            AppCCloudPlugin::Ad::showMatchAppView(AppCCloudPlugin::LEFT, AppCCloudPlugin::TOP);
+            break;
+        case 1:
+            // マッチアップバナー表示 (右上)
+            AppCCloudPlugin::Ad::showMatchAppView(AppCCloudPlugin::RIGHT, AppCCloudPlugin::TOP);
+            break;
+        case 2:
+            // マッチアップバナー表示 (右下)
+            AppCCloudPlugin::Ad::showMatchAppView(AppCCloudPlugin::RIGHT, AppCCloudPlugin::BOTTOM);
+            break;
+        case 3:
+            // マッチアップバナー表示 (左下)
+            AppCCloudPlugin::Ad::showMatchAppView(AppCCloudPlugin::LEFT, AppCCloudPlugin::BOTTOM);
+            break;
+        default:
+            // マッチアップバナー消去
+            AppCCloudPlugin::Ad::hideMatchAppView();
+            break;
+    }
+    
 //    // シンプル型表示
 //    int index = arc4random() % 2;
 //    switch(index){
