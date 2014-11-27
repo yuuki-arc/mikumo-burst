@@ -398,6 +398,21 @@ void BattleScene::startBurstTime()
     playerInfo->incrementBurstCount();
     playerInfo->setBp(0);
     burstTime = Constant::MAX_BURST_TIME;
+    gameTime += Constant::BURST_GAME_TIME_INCREMENT;
+
+    // ゲームタイムUPエフェクト
+    std::string str = "+" + StringUtils::toString(Constant::BURST_GAME_TIME_INCREMENT);
+    auto sprite = Label::createWithBMFont(Constant::NORMAL_FONT(), str);
+    sprite->setPosition(gameTimeLabel->getContentSize().width / 2, gameTimeLabel->getContentSize().height / 2);
+    sprite->setAlignment(TextHAlignment::CENTER);
+    sprite->setAnchorPoint(Vec2(-0.5, -1));
+    sprite->setScale(BM_FONT_SIZE64(24));
+    sprite->setColor(Color3B::MAGENTA);
+    this->addChild(sprite);
+
+    // エフェクト生成
+    sprite->runAction(BattleActionCreator::attackToEnemy());
+    
     burstCutInFlg = false;
 }
 
@@ -586,7 +601,6 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     soundManager->playSE(effectList[soundEffectNum]);
     
     // ヒットエフェクト生成
-//    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], location);
     Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], location);
     this->addChild(effectSprite, ZOrder::TouchEffect);
     
