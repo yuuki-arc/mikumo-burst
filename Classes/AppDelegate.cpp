@@ -69,7 +69,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     glview->setDesignResolutionSize(designSize.width, designSize.height, policy);
     
     // turn on display FPS
-    director->setDisplayStats(true);
+//    director->setDisplayStats(true);
 
     // appC cloud 開始
     AppCCloudPlugin::setOptions(API_GAMERS|API_PURCHASE|API_REWARD)
