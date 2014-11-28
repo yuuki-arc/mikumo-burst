@@ -46,7 +46,7 @@
 
         <!-- AppC Core Setting Start -->
         <meta-data android:name="appc_media_key"
-                   android:value="e709cb212d26748ea2e2cdeb19c9d74adda99c91" />
+                   android:value="@string/appc_media_key" />
         <meta-data android:name="com.google.android.gms.version"
                    android:value="@integer/google_play_services_version" />
         <activity android:name="net.app_c.cloud.sdk.AppCAdActivity"
