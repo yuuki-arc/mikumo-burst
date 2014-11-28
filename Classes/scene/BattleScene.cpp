@@ -19,6 +19,7 @@ USING_NS_CC;
 BattleScene::BattleScene()
 : bgImageList(Constant::BG_IMAGE_LIST())
 , gameTime(Constant::GAME_TIME)
+, upGameTime(0)
 , gameEndFlg(false)
 , burstTime(0)
 , burstCutInFlg(false)
@@ -51,7 +52,6 @@ bool BattleScene::init()
         return false;
     }
 
-    CCLOG("init-burstTime0: %d", burstTime);
     initBattleResult();
     initBackground();
     initPlayerInfo();
@@ -60,6 +60,7 @@ bool BattleScene::init()
     
     // 数値を初期化
     gameTime = Constant::GAME_TIME;
+    upGameTime = 0;
     gameEndFlg = false;
     burstTime = 0;
     burstCutInFlg = false;
@@ -79,7 +80,6 @@ bool BattleScene::init()
     for (auto& kv : Constant::EFFECT_LIST()) {
         Constant::StringVector effectList = (Constant::StringVector)(kv.second);
         Constant::StringVector::const_iterator iterator = effectList.begin();
-        CCLOG("onNodeLoaded-iterator");
         while (iterator != effectList.end()) {
             soundManager->preloadSE(*iterator);
             CCLOG("preloadSE:%s", (*iterator).c_str());
@@ -104,7 +104,6 @@ bool BattleScene::init()
 //    static const float marginX = 200;
 //    label->setPosition(320+marginX, labelY);
     float marginX = label->getContentSize().width;
-    CCLOG("moveTo: %f", marginX);
     float x = origin.x + visibleSize.width / 2;
     float y = origin.y + visibleSize.height / 2;
     label->setPosition(Point(x+marginX,y));
@@ -126,13 +125,9 @@ bool BattleScene::init()
 
 void BattleScene::setupGame()
 {
-    CCLOG("init-burstTime1: %d", burstTime);
     this->effectManager = new EffectManager();
-    CCLOG("init-burstTime3: %d", burstTime);
     this->schedule(schedule_selector(BattleScene::updateBySchedule), 1.0f);
-    CCLOG("init-burstTime4: %d", burstTime);
     this->scheduleUpdate();
-    CCLOG("init-burstTime5: %d", burstTime);
     initTouchEvent();
 }
 
@@ -216,14 +211,6 @@ void BattleScene::initStatusLayer()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
-    // ランク
-    Label* rankLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(currentRank));
-    rankLabel->setAnchorPoint(Point(0.5, 0.5));
-    rankLabel->setPosition(Point(origin.x + visibleSize.width * 1 / 10,
-                                 origin.y + visibleSize.height * 9.5 / 10));
-    rankLabel->getTexture()->setAliasTexParameters();
-    this->addChild(rankLabel, ZOrder::Font);
-    
     // 時間制限
     gameTimeLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(gameTime));
     gameTimeLabel->setAnchorPoint(Point(0.5, 0.5));
@@ -251,12 +238,20 @@ void BattleScene::initStatusLayer()
     Sprite* playerIcon = Sprite::createWithSpriteFrameName("icon_f317.png");
     playerIcon->setPosition(Point(origin.x + visibleSize.width * 1 / 10,
                                origin.y + visibleSize.height * 0.5 / 10));
-    playerIcon->setScale(playerIcon->getScale()*0.5, playerIcon->getScale()*0.5);
+    playerIcon->setScale(playerIcon->getScale()*0.4, playerIcon->getScale()*0.4);
     addChild(playerIcon, ZOrder::PlayerBp);
+    
+    // ランク
+    Label* rankLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(currentRank));
+    rankLabel->setAnchorPoint(Point(0.5, 0.5));
+    rankLabel->setPosition(Point(origin.x + visibleSize.width * 1.5 / 10,
+                                 origin.y + visibleSize.height * 0.5 / 10));
+    rankLabel->getTexture()->setAliasTexParameters();
+    this->addChild(rankLabel, ZOrder::Font);
     
     // BP
     Sprite* bpFrame = Sprite::createWithSpriteFrameName("ep_frame.png");
-    bpFrame->setPosition(Point(origin.x + visibleSize.width / 2,
+    bpFrame->setPosition(Point(origin.x + visibleSize.width * 6 / 10,
                                origin.y + visibleSize.height * 0.5 / 10));
     addChild(bpFrame, ZOrder::PlayerBp);
     
@@ -398,21 +393,27 @@ void BattleScene::startBurstTime()
     playerInfo->incrementBurstCount();
     playerInfo->setBp(0);
     burstTime = Constant::MAX_BURST_TIME;
-    gameTime += Constant::BURST_GAME_TIME_INCREMENT;
 
-    // ゲームタイムUPエフェクト
-    std::string str = "+" + StringUtils::toString(Constant::BURST_GAME_TIME_INCREMENT);
-    auto sprite = Label::createWithBMFont(Constant::NORMAL_FONT(), str);
-    sprite->setPosition(gameTimeLabel->getContentSize().width / 2, gameTimeLabel->getContentSize().height / 2);
-    sprite->setAlignment(TextHAlignment::CENTER);
-    sprite->setAnchorPoint(Vec2(-0.5, -1));
-    sprite->setScale(BM_FONT_SIZE64(24));
-    sprite->setColor(Color3B::MAGENTA);
-    this->addChild(sprite);
+    // バーストによるゲームタイム増加の許容判定
+    if (upGameTime < Constant::MAX_UP_GAME_TIME)
+    {
+        gameTime += Constant::BURST_GAME_TIME_INCREMENT;
+        upGameTime += Constant::BURST_GAME_TIME_INCREMENT;
 
-    // エフェクト生成
-    sprite->runAction(BattleActionCreator::attackToEnemy());
-    
+        // ゲームタイムUPエフェクト
+        std::string str = "+" + StringUtils::toString(Constant::BURST_GAME_TIME_INCREMENT);
+        auto sprite = Label::createWithBMFont(Constant::NORMAL_FONT(), str);
+        sprite->setPosition(gameTimeLabel->getContentSize().width / 2, gameTimeLabel->getContentSize().height / 2);
+        sprite->setAlignment(TextHAlignment::CENTER);
+        sprite->setAnchorPoint(Vec2(-0.5, -1));
+        sprite->setScale(BM_FONT_SIZE64(24));
+        sprite->setColor(Color3B::MAGENTA);
+        this->addChild(sprite);
+        
+        // エフェクト生成
+        sprite->runAction(BattleActionCreator::attackToEnemy());
+    }
+
     burstCutInFlg = false;
 }
 

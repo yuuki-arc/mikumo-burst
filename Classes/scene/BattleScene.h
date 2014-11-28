@@ -86,6 +86,7 @@ private:
     
     int currentRank;
     int gameTime;
+    int upGameTime;
     bool gameEndFlg;
     int burstTime;
     bool burstCutInFlg;
