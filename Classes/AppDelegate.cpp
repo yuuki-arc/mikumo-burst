@@ -32,7 +32,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     srand((unsigned int)time(NULL));
     
-    Size designSize = Size(320, 480); // ベースサイズ
+    Size designSize = Size(320, 620); // ベースサイズ
     Size resourceSize;
     Size screenSize = glview->getFrameSize();   //画面サイズ取得
     
@@ -45,11 +45,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCLOG("height: %f, width: %f", screenSize.width, screenSize.height);
 
     if (screenSize.height >= 960) {
-        resourceSize = Size(640, 960);
+        resourceSize = Size(640, 1240);
         resDirOrders.push_back("resources-iphonehd");
         GameManager::getInstance()->screenMode = ScreenModeHd;
     } else {
-        resourceSize = Size(320, 480);
+        resourceSize = Size(320, 620);
         resDirOrders.push_back("resources-iphone");
         GameManager::getInstance()->screenMode = ScreenModeSd;
     }

@@ -5,7 +5,7 @@
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>currentSequenceId</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -44,7 +44,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>52.008800506591797</real>
+							<real>53.088802337646484</real>
 							<real>50</real>
 							<integer>4</integer>
 						</array>
@@ -68,7 +68,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>1</real>
+							<real>1.2933762073516846</real>
 							<true/>
 							<integer>0</integer>
 						</array>
@@ -116,8 +116,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>80</real>
-							<real>15</real>
+							<real>79.459999084472656</real>
+							<real>18.623226165771484</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -301,6 +301,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -509,8 +511,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -611,7 +611,7 @@
 			<key>ext</key>
 			<string>iphone</string>
 			<key>height</key>
-			<integer>480</integer>
+			<integer>620</integer>
 			<key>name</key>
 			<string>iPhone Portrait</string>
 			<key>scale</key>
@@ -625,7 +625,7 @@
 			<key>ext</key>
 			<string>ipad iphonehd</string>
 			<key>height</key>
-			<integer>960</integer>
+			<integer>1240</integer>
 			<key>name</key>
 			<string>iPad Portrait</string>
 			<key>scale</key>
