@@ -74,6 +74,10 @@
 			<key>path</key>
 			<string>Resource</string>
 		</dict>
+		<dict>
+			<key>path</key>
+			<string>Resource-fonts</string>
+		</dict>
 	</array>
 	<key>versionStr</key>
 	<string>Version: 3.0-alpha5
