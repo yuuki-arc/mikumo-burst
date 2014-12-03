@@ -27,7 +27,8 @@ public:
     
     static const std::vector<std::string> PERSONA_IMAGE_LIST(){
         return {
-            "chara_f316", "chara_f317",
+//            "chara_f316", "chara_f317",
+            "persona_conoha", "persona_anzu",
         };
     };
 

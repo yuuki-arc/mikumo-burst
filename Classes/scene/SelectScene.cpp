@@ -73,7 +73,7 @@ void SelectScene::displayInfo()
     Point origin = Director::getInstance()->getVisibleOrigin();
     
     // キャラ
-    int num = 0; //CCRANDOM_0_1() * personaImageList.size();
+    int num = CCRANDOM_0_1() * Constant::PERSONA_IMAGE_LIST().size();
     std::string personaFileName = StringUtils::format("%s.png", Constant::PERSONA_IMAGE_LIST().at(num).c_str());
     Point position = Point(origin.x + visibleSize.width * 2 / 3,
                            origin.y + visibleSize.height * 6 / 10);
