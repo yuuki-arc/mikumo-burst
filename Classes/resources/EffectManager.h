@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__EffectManager__
-#define __10sec_BURST__EffectManager__
+#ifndef __mikumoburst__EffectManager__
+#define __mikumoburst__EffectManager__
 
 #include "cocos2d.h"
 
@@ -14,4 +14,4 @@ private:
     Animate* createFrameAnimation(std::string effectName, Point location, float delay = 0.1f);
 };
 
-#endif /* defined(__10sec_BURST__EffectManager__) */
+#endif /* defined(__mikumoburst__EffectManager__) */

@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__SoundManager__
-#define __10sec_BURST__SoundManager__
+#ifndef __mikumoburst__SoundManager__
+#define __mikumoburst__SoundManager__
 
 #include "cocos2d.h"
 
@@ -17,4 +17,4 @@ public:
     void playVoice(const std::string voiceName);
 };
 
-#endif /* defined(__10sec_BURST__SoundManager__) */
+#endif /* defined(__mikumoburst__SoundManager__) */

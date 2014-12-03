@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__PlayerBattleInfo__
-#define __10sec_BURST__PlayerBattleInfo__
+#ifndef __mikumoburst__PlayerBattleInfo__
+#define __mikumoburst__PlayerBattleInfo__
 
 #include "cocos2d.h"
 
@@ -22,4 +22,4 @@ public:
     void upBpGauge();
 };
 
-#endif /* defined(__10sec_BURST__EnemyPlayerBattleInfo__) */
+#endif /* defined(__mikumoburst__EnemyPlayerBattleInfo__) */

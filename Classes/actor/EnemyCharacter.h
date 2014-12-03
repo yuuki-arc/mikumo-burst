@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__EnemyCharacter__
-#define __10sec_BURST__EnemyCharacter__
+#ifndef __mikumoburst__EnemyCharacter__
+#define __mikumoburst__EnemyCharacter__
 
 #include "cocos2d.h"
 #include "core/Constant.h"
@@ -22,4 +22,4 @@ public:
     static int getDamage(int chainCount, EnemyCharacter* attacker, EnemyCharacter* defender);
 };
 
-#endif /* defined(__10sec_BURST__EnemyEnemyCharacter__) */
+#endif /* defined(__mikumoburst__EnemyEnemyCharacter__) */

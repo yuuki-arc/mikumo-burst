@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__EnemyTargetter__
-#define __10sec_BURST__EnemyTargetter__
+#ifndef __mikumoburst__EnemyTargetter__
+#define __mikumoburst__EnemyTargetter__
 
 #include "cocos2d.h"
 
@@ -21,4 +21,4 @@ public:
     float radius();
 };
 
-#endif /* defined(__10sec_BURST__EnemyEnemyTargetter__) */
+#endif /* defined(__mikumoburst__EnemyEnemyTargetter__) */

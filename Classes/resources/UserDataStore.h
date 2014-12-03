@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__UserDataStore__
-#define __10sec_BURST__UserDataStore__
+#ifndef __mikumoburst__UserDataStore__
+#define __mikumoburst__UserDataStore__
 
 #include "cocos2d.h"
 
@@ -47,4 +47,4 @@ public:
     
 };
 
-#endif /* defined(__10sec_BURST__UserDataStore__) */
+#endif /* defined(__mikumoburst__UserDataStore__) */

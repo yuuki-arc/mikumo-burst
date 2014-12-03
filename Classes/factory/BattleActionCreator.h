@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__BattleActionCreator__
-#define __10sec_BURST__BattleActionCreator__
+#ifndef __mikumoburst__BattleActionCreator__
+#define __mikumoburst__BattleActionCreator__
 
 #include "cocos2d.h"
 
@@ -22,4 +22,4 @@ public:
     
 };
 
-#endif /* defined(__10sec_BURST__BattleActionCreator__) */
+#endif /* defined(__mikumoburst__BattleActionCreator__) */

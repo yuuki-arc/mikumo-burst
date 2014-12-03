@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__TextCreator__
-#define __10sec_BURST__TextCreator__
+#ifndef __mikumoburst__TextCreator__
+#define __mikumoburst__TextCreator__
 
 #include "cocos2d.h"
 
@@ -16,4 +16,4 @@ public:
     static Label* create(const std::string text, Point point, const std::string fontName);
 };
 
-#endif /* defined(__10sec_BURST__TextCreator__) */
+#endif /* defined(__mikumoburst__TextCreator__) */

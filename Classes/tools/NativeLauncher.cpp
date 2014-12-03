@@ -6,7 +6,7 @@
 #include "tools/NativeLauncher.h"
 #include <jni.h>
 #include "platform/android/jni/JniHelper.h"
-#define JNICLASSNAME "co/yuukiar/app10secburst/SocialActivity"
+#define JNICLASSNAME "co/yuukiar/mikumoburst/SocialActivity"
 #define TWEET "tweet"
 
 using namespace cocos2d;

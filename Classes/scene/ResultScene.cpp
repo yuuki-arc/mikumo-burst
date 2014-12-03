@@ -185,7 +185,7 @@ void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEv
     soundManager->playSE("se_select");
 
     //ツイート画面呼び出し
-    NativeLauncher::openTweetDialog("10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #10sec_burst");
+    NativeLauncher::openTweetDialog("10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #mikumoburst");
 }
 
 void ResultScene::tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType)

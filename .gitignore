@@ -24,6 +24,7 @@ cocos2d/build/build/
 lib/*.a
 proj.ios_mac/Build/*
 proj.ios_mac/ipa_generator.sh
+proj.android/apk_generator.sh
 docs/html/
 
 #CocoaPod

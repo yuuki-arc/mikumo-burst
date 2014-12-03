@@ -1,5 +1,5 @@
-#ifndef ___10sec_BURST__GoogleAnalyticsTracker__
-#define ___10sec_BURST__GoogleAnalyticsTracker__
+#ifndef ___mikumoburst__GoogleAnalyticsTracker__
+#define ___mikumoburst__GoogleAnalyticsTracker__
 
 #include "cocos2d.h"
 
@@ -18,4 +18,4 @@ public:
     static void sendScreen(const char* screenName);
 };
 
-#endif /* defined(___10sec_BURST__GoogleAnalyticsTracker__) */
+#endif /* defined(___mikumoburst__GoogleAnalyticsTracker__) */

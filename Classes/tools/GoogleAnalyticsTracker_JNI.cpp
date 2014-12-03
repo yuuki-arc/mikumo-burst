@@ -2,7 +2,7 @@
 #include "platform/android/jni/JniHelper.h"
 #include "tools/GoogleAnalyticsTracker_JNI.h"
 
-#define CLASS_NAME "co/yuukiar/app10secburst/SocialActivity"
+#define CLASS_NAME "co/yuukiar/mikumoburst/SocialActivity"
 
 void sendScreenJNI(const char* screenName) {
     cocos2d::JniMethodInfo t;

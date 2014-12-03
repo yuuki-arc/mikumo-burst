@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__EnemyNormalCharacter__
-#define __10sec_BURST__EnemyNormalCharacter__
+#ifndef __mikumoburst__EnemyNormalCharacter__
+#define __mikumoburst__EnemyNormalCharacter__
 
 #include "cocos2d.h"
 #include "actor/EnemyCharacter.h"
@@ -14,4 +14,4 @@ public:
     static EnemyNormalCharacter* create();
 };
 
-#endif /* defined(__10sec_BURST__EnemyEnemyNormalCharacter__) */
+#endif /* defined(__mikumoburst__EnemyEnemyNormalCharacter__) */

@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__CharacterCreator__
-#define __10sec_BURST__CharacterCreator__
+#ifndef __mikumoburst__CharacterCreator__
+#define __mikumoburst__CharacterCreator__
 
 #include "cocos2d.h"
 
@@ -26,4 +26,4 @@ private:
 
 };
 
-#endif /* defined(__10sec_BURST__CharacterCreator__) */
+#endif /* defined(__mikumoburst__CharacterCreator__) */

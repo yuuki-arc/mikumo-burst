@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__Constant__
-#define __10sec_BURST__Constant__
+#ifndef __mikumoburst__Constant__
+#define __mikumoburst__Constant__
 
 #define BM_FONT_SIZE(__SIZE , __BASE) (CC_CONTENT_SCALE_FACTOR() * ((float)__SIZE / (float)__BASE))
 #define BM_FONT_SIZE64(__SIZE) (BM_FONT_SIZE(__SIZE , 64))
@@ -148,4 +148,4 @@ public:
     };
 };
 
-#endif /* defined(__10sec_BURST__Constant__) */
+#endif /* defined(__mikumoburst__Constant__) */

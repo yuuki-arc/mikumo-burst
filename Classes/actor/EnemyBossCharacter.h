@@ -1,5 +1,5 @@
-#ifndef __10sec_BURST__EnemyBossCharacter__
-#define __10sec_BURST__EnemyBossCharacter__
+#ifndef __mikumoburst__EnemyBossCharacter__
+#define __mikumoburst__EnemyBossCharacter__
 
 #include "cocos2d.h"
 #include "actor/EnemyCharacter.h"
@@ -14,4 +14,4 @@ public:
     static EnemyBossCharacter* create();
 };
 
-#endif /* defined(__10sec_BURST__EnemyEnemyBossCharacter__) */
+#endif /* defined(__mikumoburst__EnemyEnemyBossCharacter__) */
