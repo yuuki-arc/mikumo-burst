@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.3.1</string>
         <key>fileName</key>
-        <string>/Users/usr0600205/src/github.com/yuuki-arc/10sec_BURST/AppResources/TexturePacker/effect2/battleEffect2.tps</string>
+        <string>/Users/usr0600205/src/github.com/yuuki-arc/mikumo-burst/AppResources/TexturePacker/effect2/battleEffect2.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
