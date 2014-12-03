@@ -38,7 +38,7 @@ void EnemyCharacter::createWithImage()
     std::string enemyFileName = StringUtils::format("%s.png", enemyImageList.at(num).c_str());
     
     CharacterCreator* creator = new CharacterCreator();
-    creator->init(CharacterScale::ALL);
+    creator->init(CharacterScale::DOUBLE);
     this->setImage(creator->create(enemyFileName));
 }
 

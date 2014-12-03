@@ -13,7 +13,7 @@ CharacterCreator::~CharacterCreator()
     
 }
 
-void CharacterCreator::init(CharacterScale scale = ALL)
+void CharacterCreator::init(CharacterScale scale = NORMAL)
 {
     this->scale = scale;
 }

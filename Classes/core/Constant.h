@@ -39,10 +39,19 @@ public:
     static const std::map<ImageEnemy, StringVector> ENEMY_IMAGE_LIST(){
         return {
             {ImageEnemy::EnemyNormal, {
-                    "f183", "f186", "f189", "f195", "f201", "f207", "f271", "f274",
+//                    "f183", "f186", "f189", "f195", "f201", "f207", "f271", "f274",
+                    "anpo_1", "anpo_2", "anpo_5", "bis", "dimetrodon_r", "dimetrodon_z",
+                    "flying_cat", "heishi_2", "heishi_3", "heishi", "load_dark", "load",
+                    "magic_black", "magic_white", "magic", "mino_2", "mino_3",
+                    "necro", "onbonoyasu_1", "oni_r_1", "oni_r_2", "rev_1", "rev_2",
+                    "ride_cat_ice", "ride_cat", "rion_l", "rion_r", "rion",
                 }
             },
-            {ImageEnemy::EnemyBoss , {"f277"}},
+            {ImageEnemy::EnemyBoss , {
+//                    "f277"
+                    "Hecatoncheir_1L", "Hecatoncheir_2L", "Hecatoncheir_3L",
+                }
+            },
         };
     };
     static const StringVector ENEMY_IMAGE_LIST(ImageEnemy key){

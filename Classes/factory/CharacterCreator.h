@@ -6,7 +6,8 @@
 USING_NS_CC;
 
 enum CharacterScale {
-    ALL  = 100,
+    DOUBLE = 200,
+    NORMAL = 100,
     HARF = 60,
 };
 

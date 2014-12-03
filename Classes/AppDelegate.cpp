@@ -84,7 +84,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     // テクスチャアトラスを読み込む
     SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
-    frameCache->addSpriteFramesWithFile("character/enemy/enemy.plist");
+//    frameCache->addSpriteFramesWithFile("character/enemy/enemy.plist");
+    frameCache->addSpriteFramesWithFile("character/enemy2/enemy2.plist");
     frameCache->addSpriteFramesWithFile("character/persona/persona.plist");
     frameCache->addSpriteFramesWithFile("misc/misc.plist");
     frameCache->addSpriteFramesWithFile("bg/bg.plist");

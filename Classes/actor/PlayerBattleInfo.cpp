@@ -27,7 +27,7 @@ PlayerBattleInfo* PlayerBattleInfo::create()
         std::string fileName = StringUtils::format("%s.png", Constant::PERSONA_IMAGE_LIST().at(1).c_str());
         CCLOG("PlayerBattleInfo: %s", fileName.c_str());
         CharacterCreator* creator = new CharacterCreator();
-        creator->init(CharacterScale::ALL);
+        creator->init(CharacterScale::NORMAL);
         info->setCutInImage(creator->create(fileName));
 
         return info;
