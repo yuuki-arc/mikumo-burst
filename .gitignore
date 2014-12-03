@@ -23,6 +23,7 @@ profile
 cocos2d/build/build/
 lib/*.a
 proj.ios_mac/Build/*
+proj.ios_mac/ipa_generator.sh
 docs/html/
 
 #CocoaPod
@@ -47,3 +48,4 @@ out/
 
 #CocosBuilder
 cocosBuilder/Published-*
+
