@@ -4,13 +4,18 @@
 #include "cocos2d.h"
 
 enum ScreenMode {
-    ScreenModeSd ,
-    ScreenModeHd ,
+    ScreenModeSd,
+    ScreenModeHd,
+};
+
+enum CharaSelect {
+    CharaSelectConoha = 0,
+    CharaSelectAnzu = 1,
 };
 
 enum BattleMode {
-    BattleModeNormal ,
-    BattleModeBoss ,
+    BattleModeNormal,
+    BattleModeBoss,
 };
 
 class GameManager
@@ -27,6 +32,10 @@ public:
     ScreenMode screenMode;
     bool isScreenModeSd();
     bool isScreenModeHd();
+
+    CharaSelect charaSelect;
+    bool isCharaSelectConoha();
+    bool isCharaSelectAnzu();
     
     BattleMode battleMode;
     bool isBattleModeNormal();

@@ -39,6 +39,7 @@ SEL_MenuHandler SelectScene::onResolveCCBCCMenuItemSelector(Ref* pTarget, const 
 Control::Handler SelectScene::onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName)
 {
     CCLOG("name = %s", pSelectorName);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedChangeButton", SelectScene::tappedChangeButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBattleButton", SelectScene::tappedBattleButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBossButton", SelectScene::tappedBossButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedScoreButton", SelectScene::tappedScoreButton);
@@ -72,18 +73,6 @@ void SelectScene::displayInfo()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
-    // キャラ
-    Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
-    int num = CCRANDOM_0_1() * personaList.size();
-    std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
-    Point position = Point(origin.x + visibleSize.width * 2 / 3,
-                           origin.y + visibleSize.height * 6 / 10);
-    
-    CharacterCreator* creator = new CharacterCreator();
-    creator->init(CharacterScale::HARF);
-    Sprite* character = creator->create(personaFileName, position);
-    this->addChild(character, ZOrder::Persona);
-    
     // メニュー表示
     Sprite* windowSprite = Sprite::createWithSpriteFrameName("menu_window.png");
     windowSprite->setPosition(Point(origin.x + visibleSize.width / 2,
@@ -92,26 +81,15 @@ void SelectScene::displayInfo()
                            windowSprite->getScale() * 32 / 100);
     addChild(windowSprite, ZOrder::Menu);
     
-    // データを取得
-    int rank = GameManager::getInstance()->getRank();
-    auto store = UserDataStore::getInstance();
+    // キャラ＆ランク表示
+    displayCharacterInfo();
     
-    // 次回バトルランク表示
+    // 総合戦績表示
+    auto store = UserDataStore::getInstance();
     float labelWidth = origin.x + visibleSize.width * 1 / 10;
     float relativeLabelHeight;
     Label* resultLabel;
     Point point;
-    
-    relativeLabelHeight = 8.0f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("次のバトルランク: ", point);
-    this->addChild(resultLabel, ZOrder::Font);
-    
-    relativeLabelHeight -= 1.0f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create(std::to_string(rank), point, Constant::LARGE_FONT());
-    resultLabel->setScale(BM_FONT_SIZE64(32));
-    this->addChild(resultLabel, ZOrder::Font);
     
     relativeLabelHeight = 5.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
@@ -119,7 +97,6 @@ void SelectScene::displayInfo()
     resultLabel->setColor(Color3B(113, 212, 255));
     this->addChild(resultLabel, ZOrder::Font);
     
-    // スコア表示
     labelWidth = origin.x + visibleSize.width * 15 / 100;
     
     relativeLabelHeight -= .5f;
@@ -141,6 +118,69 @@ void SelectScene::displayInfo()
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create("トータルバースト: " + std::to_string(store->getTotalBurst()) + " 回", point);
     this->addChild(resultLabel, ZOrder::Font);
+}
+
+void SelectScene::displayCharacterInfo()
+{
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+
+    // キャラクター
+    Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
+    int num = GameManager::getInstance()->charaSelect;
+    std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
+    Point position = Point(origin.x + visibleSize.width * 2 / 3,
+                           origin.y + visibleSize.height * 6 / 10);
+    
+    CharacterCreator* creator = new CharacterCreator();
+    creator->init(CharacterScale::HARF);
+    Sprite* character = creator->create(personaFileName, position);
+    this->addChild(character, ZOrder::Persona);
+    
+    // ランク
+    int rank = GameManager::getInstance()->getRank();
+
+    float labelWidth = origin.x + visibleSize.width * 1 / 10;
+    float relativeLabelHeight;
+    Label* resultLabel;
+    Point point;
+
+    relativeLabelHeight = 8.0f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("次のバトルランク: ", point);
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    relativeLabelHeight -= 1.0f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create(std::to_string(rank), point, Constant::LARGE_FONT());
+    resultLabel->setScale(BM_FONT_SIZE64(32));
+    this->addChild(resultLabel, ZOrder::Font);
+}
+
+void SelectScene::tappedChangeButton(Ref* pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedChangeButton eventType = %d", pControlEventType);
+
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+
+    if (GameManager::getInstance()->isCharaSelectConoha())
+    {
+        GameManager::getInstance()->charaSelect = CharaSelect::CharaSelectAnzu;
+    }
+    else
+    {
+        GameManager::getInstance()->charaSelect = CharaSelect::CharaSelectConoha;
+    }
+    
+    int num = arc4random() % 2;
+    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
+    
+    soundManager->playSE("se_select");
+    soundManager->playVoice(list[num]);
+    soundManager->stopBGM();
+
+    displayCharacterInfo();
 }
 
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)

@@ -37,6 +37,16 @@ bool GameManager::isScreenModeHd()
     return GameManager::getInstance()->screenMode == ScreenModeHd ? true : false;
 }
 
+bool GameManager::isCharaSelectConoha()
+{
+    return GameManager::getInstance()->charaSelect == CharaSelectConoha ? true : false;
+}
+
+bool GameManager::isCharaSelectAnzu()
+{
+    return GameManager::getInstance()->charaSelect == CharaSelectAnzu ? true : false;
+}
+
 bool GameManager::isBattleModeNormal()
 {
     return GameManager::getInstance()->battleMode == BattleModeNormal ? true : false;

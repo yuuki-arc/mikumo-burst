@@ -24,6 +24,7 @@ public:
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(SelectScene, create);
     
+    void tappedChangeButton(Ref* pTarget, Control::EventType pControlEventType);
     void tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType);
     void tappedBossButton(Ref* pTarget, Control::EventType pControlEventType);
     void tappedScoreButton(Ref* pTarget, Control::EventType pControlEventType);
@@ -41,6 +42,7 @@ private:
     };
     
     void displayInfo();
+    void displayCharacterInfo();
 
 };
 
