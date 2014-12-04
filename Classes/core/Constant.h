@@ -27,20 +27,18 @@ public:
 
     enum ImagePersona
     {
-        PersonaSelect = 0,
-        PersonaBattle,
+        PersonaSelect = 0,  // 選択画面
+        PersonaBattle1,     // 戦闘カットインver.1
+        PersonaBattle2,     // 戦闘カットインver.2
+        PersonaBattle3,     // 戦闘カットイン最終
     };
     static const std::map<ImagePersona, StringVector> PERSONA_IMAGE_LIST(){
         return {
-            {ImagePersona::PersonaSelect, {
 //                "chara_f316", "chara_f317",
-                    "persona_conoha", "persona_anzu",
-                }
-            },
-            {ImagePersona::PersonaBattle , {
-                    "chara_f317",
-                }
-            },
+            {ImagePersona::PersonaSelect, {"persona_conoha", "persona_anzu"}},
+            {ImagePersona::PersonaBattle1, {"chara_f317"}},
+            {ImagePersona::PersonaBattle2, {"chara_f317"}},
+            {ImagePersona::PersonaBattle3, {"chara_f317"}},
         };
     };
     static const StringVector PERSONA_IMAGE_LIST(ImagePersona key){
