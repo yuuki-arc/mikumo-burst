@@ -21,6 +21,7 @@ public:
     void init(CharacterScale scale);
     Sprite* create(const std::string &filename);
     Sprite* create(const std::string &filename, Point position);
+    void change(Sprite* sprite, const std::string &filename);
 
 private:
     CharacterScale scale;

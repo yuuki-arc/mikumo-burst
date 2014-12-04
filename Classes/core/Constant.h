@@ -25,6 +25,19 @@ public:
     
     typedef std::vector<std::string> StringVector;
 
+    enum CharaSelect {
+        Conoha = 0,
+        Anzu = 1,
+    };
+    static const char* charaKey(CharaSelect charaSelect){
+        std::string key = "";
+        switch (charaSelect){
+            case Conoha: key = "conoha"; break;
+            case Anzu:   key = "anzu"; break;
+        }
+        return key.c_str();
+    };
+    
     enum ImagePersona
     {
         PersonaSelect = 0,  // 選択画面
@@ -162,6 +175,7 @@ public:
         static const char* BATTLE_COUNT(){return "battle_count";}
         static const char* RANK(){return "rank";}
         static const char* HIGH_RANK(){return "high_rank";}
+        static const char* RANK_LIST(){return "rank_list";}
         static const char* TOTAL_SCORE(){return "total_score";}
         static const char* TOTAL_HIT(){return "total_hit";}
         static const char* TOTAL_BURST(){return "total_burst";}

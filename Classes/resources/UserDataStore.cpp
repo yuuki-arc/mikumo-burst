@@ -32,7 +32,8 @@ void UserDataStore::setupData()
 {
     setDataStoredOn();
     setRank(1);
-
+    setRankList(getDefaultRankList());
+    
 //    StringMapVector list = {};
 //    StringMap map;
 //    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_RANK(), std::to_string(20)));
@@ -40,6 +41,16 @@ void UserDataStore::setupData()
 //    map.insert(std::make_pair(Constant::UserDefaultKey::SCORE_TABLE_BURST(), std::to_string(30)));
 //    list.push_back(map);
 //    setScoreTable(list);
+}
+
+StringMapVector UserDataStore::getDefaultRankList()
+{
+    StringMapVector list = {};
+    StringMap map;
+    map[Constant::charaKey(Constant::Conoha)] = "1";
+    map[Constant::charaKey(Constant::Anzu)] = "10";
+    list.push_back(map);
+    return list;
 }
 
 void UserDataStore::setDataStoredOn()
@@ -84,6 +95,52 @@ void UserDataStore::setHighRank(int value)
 int UserDataStore::getHighRank()
 {
     return userDefault->getIntegerForKey(Constant::UserDefaultKey::HIGH_RANK());
+}
+
+void UserDataStore::setRankList(StringMapVector rankList)
+{
+    picojson::value value;
+    picojson::array detail_list;
+    
+    for (StringMapVector::iterator it = rankList.begin(); it != rankList.end(); it++)
+    {
+        picojson::object detail;
+        StringMap map = (*it);
+        detail.insert({"conoha", picojson::value(map["conoha"])});
+        detail.insert({"anzu", picojson::value(map["anzu"])});
+        detail_list.push_back(picojson::value(detail));
+    }
+    value = picojson::value(detail_list);
+    userDefault->setStringForKey(Constant::UserDefaultKey::RANK_LIST(), value.serialize());
+    userDefault->flush();
+}
+
+StringMapVector UserDataStore::getRankList()
+{
+    StringMapVector result = {};
+    
+    std::string list = "";
+    list = userDefault->getStringForKey(Constant::UserDefaultKey::RANK_LIST(), "");
+    if (list.empty())
+    {
+        setRankList(getDefaultRankList());
+        list = userDefault->getStringForKey(Constant::UserDefaultKey::RANK_LIST(), "");
+    }
+    
+    picojson::value v;
+    std::string err;
+    picojson::parse(v, list.begin(), list.end(), &err);
+    picojson::array& array = v.get<picojson::array>();
+    for (picojson::array::iterator it = array.begin(); it != array.end(); it++)
+    {
+        StringMap map;
+        picojson::object& jsonMap = it->get<picojson::object>();
+        map["conoha"] = (std::string)jsonMap["conoha"].get<std::string>();
+        map["anzu"] = (std::string)jsonMap["anzu"].get<std::string>();
+        result.push_back(map);
+    }
+    
+    return result;
 }
 
 void UserDataStore::setTotalScore(int value)

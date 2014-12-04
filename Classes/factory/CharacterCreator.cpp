@@ -37,3 +37,11 @@ Sprite* CharacterCreator::create(const std::string &filename, Point position)
     
     return character;
 }
+
+void CharacterCreator::change(Sprite* sprite, const std::string &filename)
+{
+    SpriteFrame *frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(filename);
+    sprite->setTexture(frame->getTexture());
+    sprite->setTextureRect(frame->getRect());
+    sprite->setDisplayFrame(frame);
+}

@@ -39,12 +39,12 @@ bool GameManager::isScreenModeHd()
 
 bool GameManager::isCharaSelectConoha()
 {
-    return GameManager::getInstance()->charaSelect == CharaSelectConoha ? true : false;
+    return GameManager::getInstance()->charaSelect == Constant::Conoha ? true : false;
 }
 
 bool GameManager::isCharaSelectAnzu()
 {
-    return GameManager::getInstance()->charaSelect == CharaSelectAnzu ? true : false;
+    return GameManager::getInstance()->charaSelect == Constant::Anzu ? true : false;
 }
 
 bool GameManager::isBattleModeNormal()
@@ -64,5 +64,6 @@ int GameManager::getRank()
     {
         rank = Constant::LIMIT_RANK;
     }
+    
     return rank;
 }

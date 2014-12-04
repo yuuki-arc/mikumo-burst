@@ -1,7 +1,6 @@
 //#import <XCTest/XCTest.h>
 //#include "UserDataStore.h"
 //#include "Constant.h"
-//#include "cocos2d.h"
 //
 //USING_NS_CC;
 //
@@ -39,21 +38,57 @@
 //    return list;
 //}
 //
-//
-//- (void)testSetRank
+//- (StringMapVector)getRankList
 //{
-//    UserDataStore::getInstance()->setRank(20);
-//    UserDefault* userDefault = UserDefault::getInstance();
-//    int rank = userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 0);
-//    XCTAssertEqual(rank, 20);
+//    StringMapVector list = {};
+//    
+//    StringMap map;
+//    map["conoha"] = "100";
+//    map["anzu"] = "200";
+//    list.push_back(map);
+//    
+//    return list;
 //}
 //
-//- (void)testGetRank
+//- (void)testSetRankList
 //{
-//    UserDefault* userDefault = UserDefault::getInstance();
-//    userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), 10);
-//    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 10);
+//    StringMapVector sourceList = [self getRankList];
+//    UserDataStore::getInstance()->setRankList(sourceList);
+//    
+//    StringMapVector rankList = UserDataStore::getInstance()->getRankList();
+//    for (StringMapVector::iterator it = rankList.begin(); it != rankList.end(); it++)
+//    {
+//        StringMap map = (*it);
+//        CCLOG("conoha = %s", map["conoha"].c_str());
+//        CCLOG("anzu = %s", map["anzu"].c_str());
+//    }
+//    
 //}
+//
+////- (void)testGetRankList
+////{
+////    //    std::vector<std::string> vector = {};
+////    //    UserDataStore::getInstance()->setHighScore(vector);
+////    //    UserDataStore::getInstance()->getHighScore();
+////    //    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
+////    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 5);
+////}
+//
+//
+////- (void)testSetRank
+////{
+////    UserDataStore::getInstance()->setRank(20);
+////    UserDefault* userDefault = UserDefault::getInstance();
+////    int rank = userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK(), 0);
+////    XCTAssertEqual(rank, 20);
+////}
+////
+////- (void)testGetRank
+////{
+////    UserDefault* userDefault = UserDefault::getInstance();
+////    userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), 10);
+////    XCTAssertEqual(UserDataStore::getInstance()->getRank(), 10);
+////}
 //
 ////- (void)testSetScoreTable
 ////{

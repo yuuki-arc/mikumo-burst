@@ -41,8 +41,14 @@ private:
         Font,
     };
     
+    enum Tag
+    {
+        Character = 0,
+        Rank,
+    };
+    
     void displayInfo();
-    void displayCharacterInfo();
+    void changeCharacter();
 
 };
 

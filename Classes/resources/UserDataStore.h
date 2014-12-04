@@ -20,6 +20,7 @@ public:
     static UserDataStore* getInstance();
 
     void setupData();
+    StringMapVector getDefaultRankList();
     
     void setDataStoredOn();
     bool isDataStored();
@@ -32,6 +33,9 @@ public:
 
     void setHighRank(int value);
     int getHighRank();
+
+    void setRankList(StringMapVector rankList);
+    StringMapVector getRankList();
 
     void setTotalScore(int value);
     int getTotalScore();

@@ -2,15 +2,11 @@
 #define __GAME_MANAGER__
 
 #include "cocos2d.h"
+#include "core/Constant.h"
 
 enum ScreenMode {
     ScreenModeSd,
     ScreenModeHd,
-};
-
-enum CharaSelect {
-    CharaSelectConoha = 0,
-    CharaSelectAnzu = 1,
 };
 
 enum BattleMode {
@@ -33,7 +29,7 @@ public:
     bool isScreenModeSd();
     bool isScreenModeHd();
 
-    CharaSelect charaSelect;
+    Constant::CharaSelect charaSelect;
     bool isCharaSelectConoha();
     bool isCharaSelectAnzu();
     
