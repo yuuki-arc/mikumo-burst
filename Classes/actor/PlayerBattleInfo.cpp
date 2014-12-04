@@ -23,8 +23,8 @@ PlayerBattleInfo* PlayerBattleInfo::create()
     {
         info->autorelease();
 
-        Constant::StringVector imageList = Constant::Constant::PERSONA_IMAGE_LIST();
-        std::string fileName = StringUtils::format("%s.png", Constant::PERSONA_IMAGE_LIST().at(1).c_str());
+        Constant::StringVector list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle);
+        std::string fileName = StringUtils::format("%s.png", list[0].c_str());
         CCLOG("PlayerBattleInfo: %s", fileName.c_str());
         CharacterCreator* creator = new CharacterCreator();
         creator->init(CharacterScale::NORMAL);

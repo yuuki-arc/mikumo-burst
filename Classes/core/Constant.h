@@ -24,13 +24,29 @@ public:
     static const int BURST_GAME_TIME_INCREMENT = 1;
     
     typedef std::vector<std::string> StringVector;
-    
-    static const std::vector<std::string> PERSONA_IMAGE_LIST(){
+
+    enum ImagePersona
+    {
+        PersonaSelect = 0,
+        PersonaBattle,
+    };
+    static const std::map<ImagePersona, StringVector> PERSONA_IMAGE_LIST(){
         return {
-//            "chara_f316", "chara_f317",
-            "persona_conoha", "persona_anzu",
+            {ImagePersona::PersonaSelect, {
+//                "chara_f316", "chara_f317",
+                    "persona_conoha", "persona_anzu",
+                }
+            },
+            {ImagePersona::PersonaBattle , {
+                    "chara_f317",
+                }
+            },
         };
     };
+    static const StringVector PERSONA_IMAGE_LIST(ImagePersona key){
+        std::map<ImagePersona, StringVector> map = PERSONA_IMAGE_LIST();
+        return map[key];
+    }
 
     enum ImageEnemy
     {
