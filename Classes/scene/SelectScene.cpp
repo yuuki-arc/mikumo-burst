@@ -201,6 +201,14 @@ void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEv
     CCLOG("tappedBattleButton eventType = %d", pControlEventType);
     GameManager::getInstance()->battleMode = BattleModeNormal;
     
+    // バトルランク設定（選択キャラ）
+    auto store = UserDataStore::getInstance();
+    StringMap rankList = store->getRankList()[0];
+    std::string key = Constant::charaKey(GameManager::getInstance()->charaSelect);
+    int battleRank = std::stoi(rankList[key]);
+    GameManager::getInstance()->setBattleRank(battleRank);
+    
+    // 音声
     int num = arc4random() % 2;
     Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
     
@@ -219,6 +227,18 @@ void SelectScene::tappedBossButton(Ref* pTarget, Control::EventType pControlEven
     CCLOG("tappedBossButton eventType = %d", pControlEventType);
     GameManager::getInstance()->battleMode = BattleModeBoss;
     
+    // バトルランク設定（合計値）
+    auto store = UserDataStore::getInstance();
+    StringMap rankList = store->getRankList()[0];
+    int battleRank = 0;
+    for (int idx = Constant::CharaSelectStart; idx < Constant::CharaSelectEnd; idx++)
+    {
+        std::string key = Constant::charaKey((Constant::CharaSelect)idx);
+        battleRank += std::stoi(rankList[key]);
+    }
+    GameManager::getInstance()->setBattleRank(battleRank);
+
+    // 音声
     int num = arc4random() % 2;
     Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
     

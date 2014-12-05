@@ -19,6 +19,7 @@ class GameManager
 private:
     GameManager();
     static GameManager* instance;
+    int battleRank;
     
 public:
     static GameManager* getInstance();
@@ -37,7 +38,8 @@ public:
     bool isBattleModeNormal();
     bool isBattleModeBoss();
     
-    int getRank();
+    void setBattleRank(int battleRank);
+    int getBattleRank();
     
     int battleDamagePoint;
     int burstCount;

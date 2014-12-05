@@ -23,12 +23,12 @@ void EnemyCharacter::createWithImage()
     if (GameManager::getInstance()->isBattleModeNormal())
     {
         hp = Constant::DEFAULT_ENEMY_HP +
-             GameManager::getInstance()->getRank() * Constant::HP_RANK_UP_INCREMENT;
+             GameManager::getInstance()->getBattleRank() * Constant::HP_RANK_UP_INCREMENT;
     }
     else
     {
         hp = Constant::DEFAULT_ENEMY_BOSS_HP +
-             GameManager::getInstance()->getRank() * Constant::HP_RANK_UP_BOSS_INCREMENT;
+             GameManager::getInstance()->getBattleRank() * Constant::HP_RANK_UP_BOSS_INCREMENT;
     }
     this->setMaxHp(hp);
     this->setHp(hp);

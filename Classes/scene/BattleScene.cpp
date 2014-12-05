@@ -173,7 +173,7 @@ void BattleScene::initPlayerInfo()
 {
     playerInfo = PlayerBattleInfo::create();
     playerInfo->retain();
-    playerInfo->setRank(GameManager::getInstance()->getRank());
+    playerInfo->setRank(GameManager::getInstance()->getBattleRank());
     playerInfo->setBp(0);
     playerInfo->getCutInImage()->setVisible(false);
     this->addChild(playerInfo->getCutInImage(), ZOrder::PlayerCutIn);

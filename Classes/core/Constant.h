@@ -28,6 +28,8 @@ public:
     enum CharaSelect {
         Conoha = 0,
         Anzu = 1,
+        CharaSelectStart = Conoha,
+        CharaSelectEnd = Anzu,
     };
     static const char* charaKey(CharaSelect charaSelect){
         std::string key = "";

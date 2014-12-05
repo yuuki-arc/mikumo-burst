@@ -24,7 +24,9 @@ GameManager* GameManager::getInstance()
 
 void GameManager::initialize()
 {
-    
+    battleRank = 0;
+    battleDamagePoint = 0;
+    burstCount = 0;
 }
 
 bool GameManager::isScreenModeSd()
@@ -57,13 +59,17 @@ bool GameManager::isBattleModeBoss()
     return GameManager::getInstance()->battleMode == BattleModeBoss ? true : false;
 }
 
-int GameManager::getRank()
+void GameManager::setBattleRank(int battleRank)
 {
-    int rank = UserDataStore::getInstance()->getRank();
-    if (rank > Constant::LIMIT_RANK)
-    {
-        rank = Constant::LIMIT_RANK;
-    }
-    
-    return rank;
+    this->battleRank = battleRank;
+}
+
+int GameManager::getBattleRank()
+{
+//    int rank = UserDataStore::getInstance()->getRank();
+//    if (rank > Constant::LIMIT_RANK)
+//    {
+//        rank = Constant::LIMIT_RANK;
+//    }
+    return this->battleRank;
 }
