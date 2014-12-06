@@ -157,18 +157,15 @@ void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int
     resultLabel = TextCreator::create("BATTLE RESULT", point, Constant::LARGE_FONT());
     resultLabel->setScale(BM_FONT_SIZE64(16));
     this->addChild(resultLabel, ZOrder::Font);
-    
+
     relativeLabelHeight = 6.5f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("トータルランク: " + std::to_string(battleRank), point);
-    resultLabel->setScale(BM_FONT_SIZE64(20));
-    this->addChild(resultLabel, ZOrder::Font);
-    
-    relativeLabelHeight -= .6f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create(charaName + "のランク: " + charaRank, point);
-    resultLabel->setScale(BM_FONT_SIZE64(20));
-    this->addChild(resultLabel, ZOrder::Font);
+    if (GameManager::getInstance()->isBattleModeBoss())
+    {
+        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+        resultLabel = TextCreator::create("トータルランク: " + std::to_string(battleRank), point);
+        resultLabel->setScale(BM_FONT_SIZE64(20));
+        this->addChild(resultLabel, ZOrder::Font);
+    }
     
     relativeLabelHeight -= .6f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
@@ -182,11 +179,28 @@ void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
 
-    relativeLabelHeight -= 1.0f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("+1 ランクアップ！", point);
-    resultLabel->setScale(BM_FONT_SIZE64(32));
-    this->addChild(resultLabel, ZOrder::Font);
+    if (GameManager::getInstance()->isBattleModeBoss())
+    {
+        relativeLabelHeight -= 1.0f;
+        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+        resultLabel = TextCreator::create("ボスに挑戦した !", point);
+        resultLabel->setScale(BM_FONT_SIZE64(32));
+        this->addChild(resultLabel, ZOrder::Font);
+    }
+    else
+    {
+        relativeLabelHeight -= .6f;
+        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+        resultLabel = TextCreator::create(charaName + "のランク: " + charaRank, point);
+        resultLabel->setScale(BM_FONT_SIZE64(20));
+        this->addChild(resultLabel, ZOrder::Font);
+        
+        relativeLabelHeight -= 1.0f;
+        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+        resultLabel = TextCreator::create("ランク+1 アップ !", point);
+        resultLabel->setScale(BM_FONT_SIZE64(32));
+        this->addChild(resultLabel, ZOrder::Font);
+    }
 };
 
 

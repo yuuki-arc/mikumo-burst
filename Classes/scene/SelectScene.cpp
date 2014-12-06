@@ -113,7 +113,7 @@ void SelectScene::displayInfo()
     relativeLabelHeight = 8.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     std::string charaName = Constant::charaName(GameManager::getInstance()->charaSelect);
-    resultLabel = TextCreator::create(charaName + "のランク: ", point);
+    resultLabel = TextCreator::create(charaName + "のランク", point);
     resultLabel->setTag(Tag::RankStr);
     this->addChild(resultLabel, ZOrder::Font);
     
@@ -194,7 +194,7 @@ void SelectScene::changeCharacter()
     Label* label;
     std::string charaName = Constant::charaName(GameManager::getInstance()->charaSelect);
     label = (Label*)this->getChildByTag(Tag::RankStr);
-    label->setString(charaName + "のランク: ");
+    label->setString(charaName + "のランク");
     
     // ランク切り替え
     auto store = UserDataStore::getInstance();
