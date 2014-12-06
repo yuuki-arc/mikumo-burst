@@ -96,13 +96,7 @@ bool BattleScene::init()
     label->getTexture()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
     
-//    Label* label = Label::createWithSystemFont("START!", "Arial-BoldMT", 40, Size(320, 50), TextHAlignment::CENTER, TextVAlignment::CENTER);
-//    this->addChild(label, ZOrder::Font);
-    
     // ゲーム開始アニメーション
-//    static const float labelY = 200;
-//    static const float marginX = 200;
-//    label->setPosition(320+marginX, labelY);
     float marginX = label->getContentSize().width;
     float x = origin.x + visibleSize.width / 2;
     float y = origin.y + visibleSize.height / 2;
@@ -350,9 +344,9 @@ void BattleScene::update(float frame)
         CCLOG("update-ep-break burstTime: %d", burstTime);
 
         // ボイス再生
-        int num = arc4random() % 3;
         Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
                                                            Constant::Voice::BurstAttack);
+        int num = arc4random() % list.size();
         
         SoundManager* soundManager = new SoundManager();
         soundManager->playVoice(list[num]);
@@ -424,9 +418,9 @@ void BattleScene::startBurstTime()
  */
 void BattleScene::updateByDefeatEnemy(float frame)
 {
-    int num = arc4random() % 2;
     Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
                                                        Constant::Voice::EnemyDefeat);
+    int num = arc4random() % list.size();
     
     SoundManager* soundManager = new SoundManager();
     soundManager->playVoice(list[num]);
@@ -496,9 +490,9 @@ void BattleScene::endBattle()
     GameManager::getInstance()->battleDamagePoint = enemyData->getMaxHp() - enemyData->getHp();
     GameManager::getInstance()->burstCount = playerInfo->getBurstCount();
 
-    int num = arc4random() % 3;
     Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
                                                        Constant::Voice::BattleEnd);
+    int num = arc4random() % list.size();
     
     SoundManager* soundManager = new SoundManager();
     soundManager->playVoice(list[num]);
