@@ -31,7 +31,7 @@ void UserDataStore::initialize()
 void UserDataStore::setupData()
 {
     setDataStoredOn();
-    setRank(1);
+    setTotalRank(2);
     setRankList(getDefaultRankList());
     
 //    StringMapVector list = {};
@@ -75,26 +75,15 @@ int UserDataStore::getBattleCount()
     return userDefault->getIntegerForKey(Constant::UserDefaultKey::BATTLE_COUNT());
 }
 
-void UserDataStore::setRank(int value)
+void UserDataStore::setTotalRank(int value)
 {
-    userDefault->setIntegerForKey(Constant::UserDefaultKey::RANK(), value);
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::TOTAL_RANK(), value);
     userDefault->flush();
 }
 
-int UserDataStore::getRank()
+int UserDataStore::getTotalRank()
 {
-    return userDefault->getIntegerForKey(Constant::UserDefaultKey::RANK());
-}
-
-void UserDataStore::setHighRank(int value)
-{
-    userDefault->setIntegerForKey(Constant::UserDefaultKey::HIGH_RANK(), value);
-    userDefault->flush();
-}
-
-int UserDataStore::getHighRank()
-{
-    return userDefault->getIntegerForKey(Constant::UserDefaultKey::HIGH_RANK());
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_RANK());
 }
 
 void UserDataStore::setRankList(StringMapVector rankList)

@@ -84,7 +84,6 @@ private:
     ProgressTimer* enemyHpBar;
     Label* gameTimeLabel;
     
-    int currentRank;
     int gameTime;
     int upGameTime;
     bool gameEndFlg;

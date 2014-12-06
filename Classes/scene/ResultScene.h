@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
+#include "resources/UserDataStore.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -39,9 +40,9 @@ private:
         Font,
     };
     
-    void saveData(int rank, int score, int burstCount);
-    void saveGamers(int rank, int score, int burstCount);
-    void displayInfo(int rank, int score, int burstCount);
+    void saveData(int battleRank, StringMapVector charaRankList, int score, int burstCount);
+    void saveGamers();
+    void displayInfo(int battleRank, StringMapVector charaRankList, int score, int burstCount);
 };
 
 #endif /* defined(__Result_SCENE_H__) */

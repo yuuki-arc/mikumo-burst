@@ -55,35 +55,43 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     soundManager->preloadSE("se_select");
 
     // データ取得
-    int rank = UserDataStore::getInstance()->getRank();
+    int battleRank = GameManager::getInstance()->getBattleRank();
+    StringMapVector charaRankList = UserDataStore::getInstance()->getRankList();
     int score = GameManager::getInstance()->battleDamagePoint;
     int burstCount = GameManager::getInstance()->burstCount;
     
     // データ保存（アプリ内）
-    saveData(rank, score, burstCount);
+    saveData(battleRank, charaRankList, score, burstCount);
 
     // データ保存（Gamers内）
-    saveGamers(rank, score, burstCount);
+    saveGamers();
     
     // スコア表示
-    displayInfo(rank, score, burstCount);
+    displayInfo(battleRank, charaRankList, score, burstCount);
 }
 
-void ResultScene::saveData(int rank, int score, int burstCount)
+void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int score, int burstCount)
 {
     auto store = UserDataStore::getInstance();
     
     // バトル回数
     store->setBattleCount(store->getBattleCount() + 1);
     
-    // 現在ランク
-    store->setRank(rank + 1);
+    // キャラクターランク
+    std::string key = Constant::charaKey(GameManager::getInstance()->charaSelect);
+    std::string charaRank = charaRankList[0][key];
+    charaRankList[0][key] = std::to_string(std::stoi(charaRankList[0][key]) + 1);
+    store->setRankList(charaRankList);
     
-    // 最高ランク
-    if (store->getHighRank() < rank)
+    // トータルランク
+    int totalRank = 0;
+    for (int idx = Constant::CharaSelectStart; idx <= Constant::CharaSelectEnd; idx++)
     {
-        store->setHighRank(rank);
-    };
+        std::string key = Constant::charaKey((Constant::CharaSelect)idx);
+        totalRank += std::stoi(charaRankList[0][key]);
+        CCLOG("totalRank: %d", totalRank);
+    }
+    store->setTotalRank(totalRank);
 
     // トータルスコア
     store->setTotalScore(store->getTotalScore() + score);
@@ -105,29 +113,24 @@ void ResultScene::saveData(int rank, int score, int burstCount)
 //    store->setScoreTable(scoreList);
 };
 
-void ResultScene::saveGamers(int rank, int score, int burstCount)
+void ResultScene::saveGamers()
 {
     auto store = UserDataStore::getInstance();
     
-    // バトル回数
-    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_BATTLE_COUNT,
-                                            store->getBattleCount());
-
-    // 最高ランク
-    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_BATTLE_RANK,
-                                            store->getHighRank());
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_BATTLE_COUNT, store->getBattleCount());
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_RANK, store->getTotalRank());
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_SCORE, store->getTotalScore());
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_BURST, store->getTotalBurst());
     
-    // トータルスコア
-    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_SCORE,
-                                            store->getTotalScore());
-    
-    // トータルバースト
-    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_BURST,
-                                            store->getTotalBurst());
-    
+    StringMap charaRankList = store->getRankList()[0];
+    std::string key;
+    key = Constant::charaKey(Constant::CharaSelect::Conoha);
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_RANK_CONOHA, std::stoi(charaRankList[key]));
+    key = Constant::charaKey(Constant::CharaSelect::Anzu);
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_RANK_ANZU, std::stoi(charaRankList[key]));
 };
 
-void ResultScene::displayInfo(int rank, int score, int burstCount)
+void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int score, int burstCount)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -145,6 +148,9 @@ void ResultScene::displayInfo(int rank, int score, int burstCount)
     float relativeLabelHeight;
     Label* resultLabel;
     Point point;
+    std::string charaName = Constant::charaName(GameManager::getInstance()->charaSelect);
+    std::string key = Constant::charaKey(GameManager::getInstance()->charaSelect);
+    std::string charaRank = charaRankList[0][key];
     
     relativeLabelHeight = 8.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
@@ -154,7 +160,13 @@ void ResultScene::displayInfo(int rank, int score, int burstCount)
     
     relativeLabelHeight = 6.5f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("バトルランク: " + std::to_string(rank), point);
+    resultLabel = TextCreator::create("トータルランク: " + std::to_string(battleRank), point);
+    resultLabel->setScale(BM_FONT_SIZE64(20));
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    relativeLabelHeight -= .6f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create(charaName + "のランク: " + charaRank, point);
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
     
@@ -170,10 +182,10 @@ void ResultScene::displayInfo(int rank, int score, int burstCount)
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
 
-    relativeLabelHeight -= .6f;
+    relativeLabelHeight -= 1.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("スコア: " + std::to_string(score) + " pt", point);
-    resultLabel->setScale(BM_FONT_SIZE64(20));
+    resultLabel = TextCreator::create("+1 ランクアップ！", point);
+    resultLabel->setScale(BM_FONT_SIZE64(32));
     this->addChild(resultLabel, ZOrder::Font);
 };
 

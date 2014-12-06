@@ -108,13 +108,17 @@ void SelectScene::displayInfo()
     
     relativeLabelHeight = 8.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("次のバトルランク: ", point);
+    std::string charaName = Constant::charaName(GameManager::getInstance()->charaSelect);
+    resultLabel = TextCreator::create(charaName + "のランク: ", point);
+    resultLabel->setTag(Tag::RankStr);
     this->addChild(resultLabel, ZOrder::Font);
     
     relativeLabelHeight -= 1.0f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    point = Point(origin.x + visibleSize.width * 5 / 20,
+                  origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create(rank, point, Constant::LARGE_FONT());
     resultLabel->setScale(BM_FONT_SIZE64(32));
+    resultLabel->setAnchorPoint(Point(0.5f, 0.5f));
     resultLabel->setTag(Tag::Rank);
     this->addChild(resultLabel, ZOrder::Font);
     
@@ -134,7 +138,7 @@ void SelectScene::displayInfo()
     
     relativeLabelHeight -= .4f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("最高ランク: " + std::to_string(store->getHighRank()), point);
+    resultLabel = TextCreator::create("トータルランク: " + std::to_string(store->getTotalRank()), point);
     this->addChild(resultLabel, ZOrder::Font);
     
     relativeLabelHeight -= .4f;
@@ -150,6 +154,8 @@ void SelectScene::displayInfo()
 
 void SelectScene::changeCharacter()
 {
+    Label* label;
+    
     // キャラクタ切り替え
     Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
     int num = GameManager::getInstance()->charaSelect;
@@ -160,13 +166,18 @@ void SelectScene::changeCharacter()
     creator->init(CharacterScale::HARF);
     creator->change(character, personaFileName);
 
+    // ランクネーム切り替え
+    std::string charaName = Constant::charaName(GameManager::getInstance()->charaSelect);
+    label = (Label*)this->getChildByTag(Tag::RankStr);
+    label->setString(charaName + "のランク: ");
+    
     // ランク切り替え
     auto store = UserDataStore::getInstance();
     StringMap rankList = store->getRankList()[0];
     std::string key = Constant::charaKey(GameManager::getInstance()->charaSelect);
     std::string rank = rankList[key];
 
-    Label* label = (Label*)this->getChildByTag(Tag::Rank);
+    label = (Label*)this->getChildByTag(Tag::Rank);
     label->setString(rank);
 }
 
@@ -231,7 +242,7 @@ void SelectScene::tappedBossButton(Ref* pTarget, Control::EventType pControlEven
     auto store = UserDataStore::getInstance();
     StringMap rankList = store->getRankList()[0];
     int battleRank = 0;
-    for (int idx = Constant::CharaSelectStart; idx < Constant::CharaSelectEnd; idx++)
+    for (int idx = Constant::CharaSelectStart; idx <= Constant::CharaSelectEnd; idx++)
     {
         std::string key = Constant::charaKey((Constant::CharaSelect)idx);
         battleRank += std::stoi(rankList[key]);

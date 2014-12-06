@@ -32,12 +32,20 @@ public:
         CharaSelectEnd = Anzu,
     };
     static const char* charaKey(CharaSelect charaSelect){
-        std::string key = "";
+        std::string value = "";
         switch (charaSelect){
-            case Conoha: key = "conoha"; break;
-            case Anzu:   key = "anzu"; break;
+            case Conoha: value = "conoha"; break;
+            case Anzu:   value = "anzu"; break;
         }
-        return key.c_str();
+        return value.c_str();
+    };
+    static const char* charaName(CharaSelect charaSelect){
+        std::string value = "";
+        switch (charaSelect){
+            case Conoha: value = "このは"; break;
+            case Anzu:   value = "あんず"; break;
+        }
+        return value.c_str();
     };
     
     enum ImagePersona
@@ -73,7 +81,7 @@ public:
                     "anpo_1", "anpo_2", "anpo_5", "bis", "dimetrodon_r", "dimetrodon_z",
                     "flying_cat", "heishi_2", "heishi_3", "heishi", "load_dark", "load",
                     "magic_black", "magic_white", "magic", "mino_2", "mino_3",
-                    "necro", "onbonoyasu_1", "oni_r_1", "oni_r_2", "rev_1", "rev_2",
+                    "necro", "onbonoyasu_1", "rev_1", "rev_2",
                     "ride_cat_ice", "ride_cat", "rion_l", "rion_r", "rion",
                 }
             },
@@ -160,9 +168,11 @@ public:
 
     static const char* APPC_MEDIA_KEY(){return "DumyMediaKey";}
     static const int LEADERBOARD_BATTLE_COUNT = 1237;
-    static const int LEADERBOARD_BATTLE_RANK = 1238;
+    static const int LEADERBOARD_TOTAL_RANK = 1238;
     static const int LEADERBOARD_TOTAL_SCORE = 1239;
     static const int LEADERBOARD_TOTAL_BURST = 1240;
+    static const int LEADERBOARD_RANK_CONOHA = 1257;
+    static const int LEADERBOARD_RANK_ANZU = 1258;
     
     static const char* NORMAL_FONT(){return "normal.fnt";}
     static const char* LARGE_FONT(){return "large.fnt";}
@@ -176,7 +186,7 @@ public:
         static const char* DATA_STORED(){return "data_stored";}
         static const char* BATTLE_COUNT(){return "battle_count";}
         static const char* RANK(){return "rank";}
-        static const char* HIGH_RANK(){return "high_rank";}
+        static const char* TOTAL_RANK(){return "total_rank";}
         static const char* RANK_LIST(){return "rank_list";}
         static const char* TOTAL_SCORE(){return "total_score";}
         static const char* TOTAL_HIT(){return "total_hit";}

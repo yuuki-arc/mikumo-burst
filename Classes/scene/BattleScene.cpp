@@ -138,8 +138,6 @@ void BattleScene::initBattleResult()
 {
     GameManager::getInstance()->battleDamagePoint = 0;
     GameManager::getInstance()->burstCount = 0;
-    
-    currentRank = UserDataStore::getInstance()->getRank();
 }
 
 /**
@@ -242,7 +240,8 @@ void BattleScene::initStatusLayer()
     addChild(playerIcon, ZOrder::PlayerBp);
     
     // ランク
-    Label* rankLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(currentRank));
+    std::string battleRank = std::to_string(GameManager::getInstance()->getBattleRank());
+    Label* rankLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), battleRank);
     rankLabel->setAnchorPoint(Point(0.5, 0.5));
     rankLabel->setPosition(Point(origin.x + visibleSize.width * 1.5 / 10,
                                  origin.y + visibleSize.height * 0.5 / 10));

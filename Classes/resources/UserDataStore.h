@@ -28,15 +28,12 @@ public:
     void setBattleCount(int value);
     int getBattleCount();
     
-    void setRank(int value);
-    int getRank();
-
-    void setHighRank(int value);
-    int getHighRank();
-
     void setRankList(StringMapVector rankList);
     StringMapVector getRankList();
 
+    void setTotalRank(int value);
+    int getTotalRank();
+    
     void setTotalScore(int value);
     int getTotalScore();
 

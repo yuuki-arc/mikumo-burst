@@ -44,6 +44,7 @@ private:
     enum Tag
     {
         Character = 0,
+        RankStr,
         Rank,
     };
     
