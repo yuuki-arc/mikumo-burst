@@ -24,7 +24,8 @@ GameManager* GameManager::getInstance()
 
 void GameManager::initialize()
 {
-    battleRank = 0;
+    charaSelect = Constant::Conoha;
+    battleRank = 2;
     battleDamagePoint = 0;
     burstCount = 0;
 }

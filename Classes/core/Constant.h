@@ -57,7 +57,6 @@ public:
     };
     static const std::map<ImagePersona, StringVector> PERSONA_IMAGE_LIST(){
         return {
-//                "chara_f316", "chara_f317",
             {ImagePersona::PersonaSelect, {"persona_conoha", "persona_anzu"}},
             {ImagePersona::PersonaBattle1, {"chara_f317"}},
             {ImagePersona::PersonaBattle2, {"chara_f317"}},
@@ -77,7 +76,6 @@ public:
     static const std::map<ImageEnemy, StringVector> ENEMY_IMAGE_LIST(){
         return {
             {ImageEnemy::EnemyNormal, {
-//                    "f183", "f186", "f189", "f195", "f201", "f207", "f271", "f274",
                     "anpo_1", "anpo_2", "anpo_5", "bis", "dimetrodon_r", "dimetrodon_z",
                     "flying_cat", "heishi_2", "heishi_3", "heishi", "load_dark", "load",
                     "magic_black", "magic_white", "magic", "mino_2", "mino_3",
@@ -86,7 +84,6 @@ public:
                 }
             },
             {ImageEnemy::EnemyBoss , {
-//                    "f277"
                     "Hecatoncheir_1L", "Hecatoncheir_2L", "Hecatoncheir_3L",
                 }
             },
@@ -113,13 +110,6 @@ public:
     };
     static const std::map<ImageEffect, StringVector> BATTLE_EFFECT_IMAGE_LIST(){
         return {
-//            {ImageEffect::ImageNormal, {"battleEffect107a", "battleEffect107b"}},
-//            {ImageEffect::ImageBurst , {
-//                    "battleEffect107c", "battleEffect107d", "battleEffect107e",
-//                    "battleEffect107f", "battleEffect107g", "battleEffect107h",
-//                    "battleEffect107i", "battleEffect107j"
-//                }
-//            },
             {ImageEffect::ImageNormal  , {"ef22", "ef24", "ef25"}},
             {ImageEffect::ImageBurst   , {"ef02", "ef07", "ef09", "ef20", "ef31-2", "ef32"}},
             {ImageEffect::ImageBurstSub, {"ef16", "ef17"}}
@@ -146,23 +136,39 @@ public:
     }
     enum Voice
     {
-        Ready = 0,      // 準備完了
+        Select = 0,     // キャラ選択
+        Ready,          // 準備完了
         NormalAttack,   // 通常攻撃
         BurstAttack,    // バーストタイム
         BattleEnd,      // バトル終了
         EnemyDefeat,    // 敵撃破
     };
-    static const std::map<Voice, StringVector> VOICE_LIST(){
-        return {
-            {Voice::Ready       , {"i01", "i30"}},
-            {Voice::NormalAttack, {"i02", "i03", "i04","i05"}},
-            {Voice::BurstAttack , {"i06", "i14", "i27"}},
-            {Voice::BattleEnd   , {"i10", "i11", "i12"}},
-            {Voice::EnemyDefeat , {"i24", "i25"}},
-        };
+    static const std::map<Voice, StringVector> VOICE_LIST(CharaSelect charaSelect){
+        switch (charaSelect){
+            case Conoha:
+                return {
+                    {Voice::Select      , {"i18", "i34"}},
+                    {Voice::Ready       , {"i01", "i30"}},
+                    {Voice::NormalAttack, {"i02", "i03", "i04","i05"}},
+                    {Voice::BurstAttack , {"i06", "i14", "i27"}},
+                    {Voice::BattleEnd   , {"i10", "i11", "i12"}},
+                    {Voice::EnemyDefeat , {"i24", "i25"}},
+                };
+                break;
+            case Anzu:
+                return {
+                    {Voice::Select      , {"u16", "u19"}},
+                    {Voice::Ready       , {"u26", "u28"}},
+                    {Voice::NormalAttack, {"u02", "u03", "u04","u05"}},
+                    {Voice::BurstAttack , {"u01", "u25", "u32"}},
+                    {Voice::BattleEnd   , {"u20", "u27", "u31"}},
+                    {Voice::EnemyDefeat , {"u24", "u36"}},
+                };
+                break;
+        }
     };
-    static const StringVector VOICE_LIST(Voice key){
-        std::map<Voice, StringVector> map = VOICE_LIST();
+    static const StringVector VOICE_LIST(CharaSelect charaSelect, Voice key){
+        std::map<Voice, StringVector> map = VOICE_LIST(charaSelect);
         return map[key];
     }
 
@@ -191,10 +197,6 @@ public:
         static const char* TOTAL_SCORE(){return "total_score";}
         static const char* TOTAL_HIT(){return "total_hit";}
         static const char* TOTAL_BURST(){return "total_burst";}
-//        static const char* SCORE_TABLE(){return "score_table";}
-//        static const char* SCORE_TABLE_RANK(){return "score_table_rank";}
-//        static const char* SCORE_TABLE_SCORE(){return "score_table_score";}
-//        static const char* SCORE_TABLE_BURST(){return "score_table_burst";}
     };
 };
 

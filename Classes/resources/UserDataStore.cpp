@@ -31,7 +31,7 @@ void UserDataStore::initialize()
 void UserDataStore::setupData()
 {
     setDataStoredOn();
-    setTotalRank(2);
+    setTotalRank(1 + 1);
     setRankList(getDefaultRankList());
     
 //    StringMapVector list = {};
@@ -48,7 +48,7 @@ StringMapVector UserDataStore::getDefaultRankList()
     StringMapVector list = {};
     StringMap map;
     map[Constant::charaKey(Constant::Conoha)] = "1";
-    map[Constant::charaKey(Constant::Anzu)] = "10";
+    map[Constant::charaKey(Constant::Anzu)] = "1";
     list.push_back(map);
     return list;
 }

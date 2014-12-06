@@ -351,7 +351,8 @@ void BattleScene::update(float frame)
 
         // ボイス再生
         int num = arc4random() % 3;
-        Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::BurstAttack);
+        Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+                                                           Constant::Voice::BurstAttack);
         
         SoundManager* soundManager = new SoundManager();
         soundManager->playVoice(list[num]);
@@ -424,7 +425,8 @@ void BattleScene::startBurstTime()
 void BattleScene::updateByDefeatEnemy(float frame)
 {
     int num = arc4random() % 2;
-    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::EnemyDefeat);
+    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+                                                       Constant::Voice::EnemyDefeat);
     
     SoundManager* soundManager = new SoundManager();
     soundManager->playVoice(list[num]);
@@ -495,7 +497,8 @@ void BattleScene::endBattle()
     GameManager::getInstance()->burstCount = playerInfo->getBurstCount();
 
     int num = arc4random() % 3;
-    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::BattleEnd);
+    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+                                                       Constant::Voice::BattleEnd);
     
     SoundManager* soundManager = new SoundManager();
     soundManager->playVoice(list[num]);

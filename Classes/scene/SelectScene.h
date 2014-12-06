@@ -50,7 +50,8 @@ private:
     
     void displayInfo();
     void changeCharacter();
-
+    
+    Point charaPos;
 };
 
 #endif /* defined(__SELECT_SCENE_H__) */

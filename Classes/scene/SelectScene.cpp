@@ -55,13 +55,17 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // SE
     soundManager->preloadSE("se_select");
     
-    // Voice
-    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
-    Constant::StringVector::const_iterator iterator = list.begin();
-    while (iterator != list.end()) {
-        soundManager->preloadVoice(*iterator);
-        CCLOG("preloadVoice:%s", (*iterator).c_str());
-        iterator++;
+    // Voice（全キャラクター読み込む）
+    for (int idx = Constant::CharaSelectStart; idx <= Constant::CharaSelectEnd; idx++)
+    {
+        Constant::StringVector list = Constant::VOICE_LIST((Constant::CharaSelect)idx,
+                                                           Constant::Voice::Ready);
+        Constant::StringVector::const_iterator iterator = list.begin();
+        while (iterator != list.end()) {
+            soundManager->preloadVoice(*iterator);
+            CCLOG("preloadVoice:%s", (*iterator).c_str());
+            iterator++;
+        }
     }
  
     // 情報表示
@@ -85,12 +89,12 @@ void SelectScene::displayInfo()
     Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
     int num = GameManager::getInstance()->charaSelect;
     std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
-    Point position = Point(origin.x + visibleSize.width * 2 / 3,
+    charaPos = Point(origin.x + visibleSize.width * 2 / 3,
                            origin.y + visibleSize.height * 6 / 10);
     
     CharacterCreator* creator = new CharacterCreator();
     creator->init(CharacterScale::HARF);
-    Sprite* character = creator->create(personaFileName, position);
+    Sprite* character = creator->create(personaFileName, charaPos);
     character->setTag(Tag::Character);
     this->addChild(character, ZOrder::Persona);
     
@@ -154,19 +158,40 @@ void SelectScene::displayInfo()
 
 void SelectScene::changeCharacter()
 {
-    Label* label;
-    
-    // キャラクタ切り替え
-    Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
-    int num = GameManager::getInstance()->charaSelect;
-    std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
-    
+    // 音声
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+                                                       Constant::Voice::Select);
+    int num = arc4random() % list.size();
+    soundManager->playVoice(list[num]);
+
+    // 切り替えアニメーション
     Sprite* character = (Sprite*)this->getChildByTag(Tag::Character);
-    CharacterCreator* creator = new CharacterCreator();
-    creator->init(CharacterScale::HARF);
-    creator->change(character, personaFileName);
+    float marginX = character->getContentSize().width;
+    float x = charaPos.x;
+    float y = charaPos.y;
+    character->runAction(
+                     Sequence::create(
+                                      MoveTo::create(0.2f, Point(-marginX, y)),
+                                      CallFunc::create([character, x, y, marginX](){
+                                          // キャラクタ切り替え
+                                          Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
+                                          int num = GameManager::getInstance()->charaSelect;
+                                          std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
+                                          CharacterCreator* creator = new CharacterCreator();
+                                          creator->init(CharacterScale::HARF);
+                                          creator->change(character, personaFileName);
+                                          character->setPosition(Point(x+marginX,y));
+                                        }
+                                      ),
+                                      MoveTo::create(0.2f, Point(x, y)),
+                                      nullptr
+                                      )
+                     );
 
     // ランクネーム切り替え
+    Label* label;
     std::string charaName = Constant::charaName(GameManager::getInstance()->charaSelect);
     label = (Label*)this->getChildByTag(Tag::RankStr);
     label->setString(charaName + "のランク: ");
@@ -185,9 +210,6 @@ void SelectScene::tappedChangeButton(Ref* pTarget, Control::EventType pControlEv
 {
     CCLOG("tappedChangeButton eventType = %d", pControlEventType);
 
-    SoundManager* soundManager = new SoundManager();
-    soundManager->playSE("se_select");
-
     if (GameManager::getInstance()->isCharaSelectConoha())
     {
         GameManager::getInstance()->charaSelect = Constant::Anzu;
@@ -196,13 +218,6 @@ void SelectScene::tappedChangeButton(Ref* pTarget, Control::EventType pControlEv
     {
         GameManager::getInstance()->charaSelect = Constant::Conoha;
     }
-    
-    int num = arc4random() % 2;
-    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
-    
-    soundManager->playSE("se_select");
-    soundManager->playVoice(list[num]);
-    soundManager->stopBGM();
 
     changeCharacter();
 }
@@ -220,8 +235,9 @@ void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEv
     GameManager::getInstance()->setBattleRank(battleRank);
     
     // 音声
-    int num = arc4random() % 2;
-    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
+    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+                                                       Constant::Voice::Ready);
+    int num = arc4random() % list.size();
     
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
@@ -250,12 +266,15 @@ void SelectScene::tappedBossButton(Ref* pTarget, Control::EventType pControlEven
     GameManager::getInstance()->setBattleRank(battleRank);
 
     // 音声
-    int num = arc4random() % 2;
-    Constant::StringVector list = Constant::VOICE_LIST(Constant::Voice::Ready);
-    
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
-    soundManager->playVoice(list[num]);
+    for (int idx = Constant::CharaSelectStart; idx <= Constant::CharaSelectEnd; idx++)
+    {
+        Constant::StringVector list = Constant::VOICE_LIST((Constant::CharaSelect)idx,
+                                                           Constant::Voice::Ready);
+        int num = arc4random() % list.size();
+        soundManager->playVoice(list[num]);
+    }
     soundManager->stopBGM();
     
     Scene* scene = BattleSceneLoader::createScene();
