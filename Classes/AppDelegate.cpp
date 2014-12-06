@@ -84,19 +84,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     // テクスチャアトラスを読み込む
     SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
-//    frameCache->addSpriteFramesWithFile("character/enemy/enemy.plist");
-    frameCache->addSpriteFramesWithFile("character/enemy2/enemy2.plist");
-//    frameCache->addSpriteFramesWithFile("character/persona/persona.plist");
-    frameCache->addSpriteFramesWithFile("character/persona2/persona2.plist");
-    frameCache->addSpriteFramesWithFile("misc/misc.plist");
     frameCache->addSpriteFramesWithFile("bg/bg.plist");
-
-//    frameCache->addSpriteFramesWithFile("effect/battleEffect0.plist");
-//    if (GameManager::getInstance()->isScreenModeHd())
-//    {
-//        frameCache->addSpriteFramesWithFile("effect/battleEffect1.plist");
-//    }
-    frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
 
     // ゲームデータが存在するか判定し、存在しない場合は初期セットアップを行う
     if (!UserDataStore::getInstance()->isDataStored())

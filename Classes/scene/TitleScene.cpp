@@ -81,7 +81,15 @@ void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEven
     CCLOG("tappedStartButton eventType = %d", pControlEventType);
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
+
+    // テクスチャアトラスを読み込む
+    SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
+    frameCache->addSpriteFramesWithFile("character/enemy2/enemy2.plist");
+    frameCache->addSpriteFramesWithFile("character/persona2/persona2.plist");
+    frameCache->addSpriteFramesWithFile("misc/misc.plist");
+    frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
     
+
     Scene* scene = SelectSceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
