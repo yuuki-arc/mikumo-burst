@@ -19,7 +19,7 @@ PlayerBattleInfo::~PlayerBattleInfo()
 {
 }
 
-PlayerBattleInfo* PlayerBattleInfo::create()
+PlayerBattleInfo* PlayerBattleInfo::create(Constant::CharaSelect charaSelect)
 {
     PlayerBattleInfo *info = new PlayerBattleInfo();
     if (info)
@@ -35,7 +35,7 @@ PlayerBattleInfo* PlayerBattleInfo::create()
 
         // キャラクターアイコン
         list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaIcon);
-        fileName = StringUtils::format("%s.png", list[0].c_str());
+        fileName = StringUtils::format("%s.png", list[charaSelect].c_str());
         Point position = Point(origin.x + visibleSize.width * 1 / 10,
                                origin.y + visibleSize.height * 0.5 / 10);
         creator->init(CharacterScale::NORMAL);
@@ -43,19 +43,19 @@ PlayerBattleInfo* PlayerBattleInfo::create()
         
         // カットインアニメーション１
         list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle1);
-        fileName = StringUtils::format("%s.png", list[0].c_str());
+        fileName = StringUtils::format("%s.png", list[charaSelect].c_str());
         creator->init(CharacterScale::NORMAL);
         info->setCutInImage1(creator->create(fileName));
         
         // カットインアニメーション２
         list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle2);
-        fileName = StringUtils::format("%s.png", list[0].c_str());
+        fileName = StringUtils::format("%s.png", list[charaSelect].c_str());
         creator->init(CharacterScale::NORMAL);
         info->setCutInImage2(creator->create(fileName));
         
         // カットインアニメーション３
         list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle3);
-        fileName = StringUtils::format("%s.png", list[0].c_str());
+        fileName = StringUtils::format("%s.png", list[charaSelect].c_str());
         creator->init(CharacterScale::NORMAL);
         info->setCutInImage3(creator->create(fileName));
 

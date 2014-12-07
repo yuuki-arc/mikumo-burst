@@ -32,12 +32,12 @@ void GameManager::initialize()
 
 bool GameManager::isScreenModeSd()
 {
-    return GameManager::getInstance()->screenMode == ScreenModeSd ? true : false;
+    return getInstance()->screenMode == ScreenModeSd ? true : false;
 }
 
 bool GameManager::isScreenModeHd()
 {
-    return GameManager::getInstance()->screenMode == ScreenModeHd ? true : false;
+    return getInstance()->screenMode == ScreenModeHd ? true : false;
 }
 
 void GameManager::setCharaSelect(Constant::CharaSelect charaSelect)
@@ -47,35 +47,37 @@ void GameManager::setCharaSelect(Constant::CharaSelect charaSelect)
 
 Constant::CharaSelect GameManager::getCharaSelect()
 {
-    return this->charaSelect;
+    Constant::CharaSelect charaSelect;
+    switch (this->battleMode) {
+        case BattleModeNormal:
+            charaSelect = this->charaSelect;
+            break;
+        case BattleModeBoss:
+            charaSelect = Constant::CharaSelect::VsBoss;
+            break;
+        default:
+            charaSelect = this->charaSelect;
+            break;
+    }
+    return charaSelect;
 }
 
 bool GameManager::isCharaSelectConoha()
 {
-    return GameManager::getInstance()->charaSelect == Constant::Conoha ? true : false;
+    return getInstance()->charaSelect == Constant::Conoha ? true : false;
 }
 
 bool GameManager::isCharaSelectAnzu()
 {
-    return GameManager::getInstance()->charaSelect == Constant::Anzu ? true : false;
+    return getInstance()->charaSelect == Constant::Anzu ? true : false;
 }
 
 bool GameManager::isBattleModeNormal()
 {
-    return GameManager::getInstance()->battleMode == BattleModeNormal ? true : false;
+    return getInstance()->battleMode == BattleModeNormal ? true : false;
 }
 
 bool GameManager::isBattleModeBoss()
 {
-    return GameManager::getInstance()->battleMode == BattleModeBoss ? true : false;
-}
-
-void GameManager::setBattleRank(int battleRank)
-{
-    this->battleRank = battleRank;
-}
-
-int GameManager::getBattleRank()
-{
-    return this->battleRank;
+    return getInstance()->battleMode == BattleModeBoss ? true : false;
 }

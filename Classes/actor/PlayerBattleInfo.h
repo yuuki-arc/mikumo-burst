@@ -2,6 +2,7 @@
 #define __mikumoburst__PlayerBattleInfo__
 
 #include "cocos2d.h"
+#include "core/Constant.h"
 
 USING_NS_CC;
 
@@ -19,7 +20,7 @@ private:
 public:
     PlayerBattleInfo();
     ~PlayerBattleInfo();
-    static PlayerBattleInfo* create();
+    static PlayerBattleInfo* create(Constant::CharaSelect charaSelect);
     float getBpPercentage();
     void incrementBurstCount();
     void upBpGauge();

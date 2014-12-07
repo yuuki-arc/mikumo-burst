@@ -69,6 +69,7 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     }
  
     // 情報表示
+    GameManager::getInstance()->setBattleMode(BattleModeNormal);
     displayInfo();
 }
 
@@ -225,7 +226,7 @@ void SelectScene::tappedChangeButton(Ref* pTarget, Control::EventType pControlEv
 void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedBattleButton eventType = %d", pControlEventType);
-    GameManager::getInstance()->battleMode = BattleModeNormal;
+    GameManager::getInstance()->setBattleMode(BattleModeNormal);
     
     // バトルランク設定（選択キャラ）
     auto store = UserDataStore::getInstance();
@@ -252,7 +253,7 @@ void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEv
 void SelectScene::tappedBossButton(Ref* pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedBossButton eventType = %d", pControlEventType);
-    GameManager::getInstance()->battleMode = BattleModeBoss;
+    GameManager::getInstance()->setBattleMode(BattleModeBoss);
     
     // バトルランク設定（合計値）
     auto store = UserDataStore::getInstance();

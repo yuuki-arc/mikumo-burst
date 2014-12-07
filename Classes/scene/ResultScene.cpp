@@ -78,18 +78,21 @@ void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int sc
     store->setBattleCount(store->getBattleCount() + 1);
     
     // キャラクターランク
-    std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
-    std::string charaRank = charaRankList[0][key];
-    charaRankList[0][key] = std::to_string(std::stoi(charaRankList[0][key]) + 1);
+    if (GameManager::getInstance()->isBattleModeNormal())
+    {
+        // 通常バトル時のみランクアップする
+        std::string charaRankKey = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
+        std::string charaRank = charaRankList[0][charaRankKey];
+        charaRankList[0][charaRankKey] = std::to_string(std::stoi(charaRankList[0][charaRankKey]) + 1);
+    }
     store->setRankList(charaRankList);
     
     // トータルランク
     int totalRank = 0;
     for (int idx = Constant::CharaSelectStart; idx <= Constant::CharaSelectEnd; idx++)
     {
-        std::string key = Constant::charaKey((Constant::CharaSelect)idx);
-        totalRank += std::stoi(charaRankList[0][key]);
-        CCLOG("totalRank: %d", totalRank);
+        std::string totalRankKey = Constant::charaKey((Constant::CharaSelect)idx);
+        totalRank += std::stoi(charaRankList[0][totalRankKey]);
     }
     store->setTotalRank(totalRank);
 
@@ -98,19 +101,6 @@ void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int sc
     
     // トータルバースト
     store->setTotalBurst(store->getTotalBurst() + burstCount);
-    
-//    // スコアテーブル
-//    const std::string KEY_RANK = Constant::UserDefaultKey::SCORE_TABLE_RANK();
-//    const std::string KEY_SCORE = Constant::UserDefaultKey::SCORE_TABLE_SCORE();
-//    const std::string KEY_BURST = Constant::UserDefaultKey::SCORE_TABLE_BURST();
-//    
-//    StringMapVector scoreList = store->getScoreTable();
-//    StringMap scoreMap;
-//    scoreMap.insert(std::make_pair(KEY_RANK, std::to_string(rank)));
-//    scoreMap.insert(std::make_pair(KEY_SCORE, std::to_string(score)));
-//    scoreMap.insert(std::make_pair(KEY_BURST, std::to_string(burstCount)));
-//    scoreList.push_back(scoreMap);
-//    store->setScoreTable(scoreList);
 };
 
 void ResultScene::saveGamers()
@@ -148,9 +138,6 @@ void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int
     float relativeLabelHeight;
     Label* resultLabel;
     Point point;
-    std::string charaName = Constant::charaName(GameManager::getInstance()->getCharaSelect());
-    std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
-    std::string charaRank = charaRankList[0][key];
     
     relativeLabelHeight = 8.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
@@ -179,16 +166,13 @@ void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
 
-    if (GameManager::getInstance()->isBattleModeBoss())
+    if (GameManager::getInstance()->isBattleModeNormal())
     {
-        relativeLabelHeight -= 1.0f;
-        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create("ボスに挑戦した !", point);
-        resultLabel->setScale(BM_FONT_SIZE64(32));
-        this->addChild(resultLabel, ZOrder::Font);
-    }
-    else
-    {
+        // 通常バトル時はキャラクターランクを表示
+        std::string charaName = Constant::charaName(GameManager::getInstance()->getCharaSelect());
+        std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
+        std::string charaRank = charaRankList[0][key];
+        
         relativeLabelHeight -= .6f;
         point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
         resultLabel = TextCreator::create(charaName + "のランク: " + charaRank, point);
@@ -198,6 +182,15 @@ void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int
         relativeLabelHeight -= 1.0f;
         point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
         resultLabel = TextCreator::create("ランク+1 アップ !", point);
+        resultLabel->setScale(BM_FONT_SIZE64(32));
+        this->addChild(resultLabel, ZOrder::Font);
+    }
+    else
+    {
+        // ボスバトル時は固定テキストを表示
+        relativeLabelHeight -= 1.0f;
+        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+        resultLabel = TextCreator::create("ボスに挑戦した !", point);
         resultLabel->setScale(BM_FONT_SIZE64(32));
         this->addChild(resultLabel, ZOrder::Font);
     }

@@ -163,7 +163,7 @@ void BattleScene::initBackground()
  */
 void BattleScene::initPlayerInfo()
 {
-    playerInfo = PlayerBattleInfo::create();
+    playerInfo = PlayerBattleInfo::create(GameManager::getInstance()->getCharaSelect());
     playerInfo->retain();
     playerInfo->setRank(GameManager::getInstance()->getBattleRank());
     playerInfo->setBp(0);
@@ -182,16 +182,13 @@ void BattleScene::initPlayerInfo()
  */
 void BattleScene::initEnemy()
 {
-    CCLOG("initEnemy: %d", GameManager::getInstance()->battleMode);
     if (GameManager::getInstance()->isBattleModeNormal())
     {
         enemyData = EnemyNormalCharacter::create();
-        CCLOG("initEnemy: EnemyNormal: %d", enemyData->getHp());
     }
     else
     {
         enemyData = EnemyBossCharacter::create();
-        CCLOG("initEnemy: EnemyBoss: %d", enemyData->getHp());
     }
     enemyData->retain();
     
@@ -303,24 +300,6 @@ void BattleScene::updateBySchedule(float frame)
     {
         gameTimeLabel->setColor(Color3B(255,255,255));
     }
-    
-//    if (gameTime == 10)
-//    {
-//        Size visibleSize = Director::getInstance()->getVisibleSize();
-//        Point origin = Director::getInstance()->getVisibleOrigin();
-//        
-//        EnemyTargetter* enemyTargetter = EnemyTargetter::create();
-//        targetter->retain();
-//        std::string fileName = "touchEffect.png";
-//        CharacterCreator* creator = new CharacterCreator();
-//        targetter->setImage(creator->create(fileName, CharacterScale::ALL));
-//        
-//        Point point = Point(origin.x + visibleSize.width * 1/ 10,
-//                            origin.y + visibleSize.height * 9.5 / 10);
-//        targetter->setPosition(point);
-//        Node* targetGrid = NodeGrid::create();
-//        targetGrid->addChild(enemyData->getImage(), ZOrder::EnemyTargetter);
-//    }
     CCLOG("updateBySchedule-end");
 }
 

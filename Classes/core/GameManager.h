@@ -20,7 +20,8 @@ private:
     GameManager();
     static GameManager* instance;
     Constant::CharaSelect charaSelect;
-    int battleRank;
+    CC_SYNTHESIZE(int, battleRank, BattleRank);
+    CC_SYNTHESIZE(BattleMode, battleMode, BattleMode);
     
 public:
     static GameManager* getInstance();
@@ -36,12 +37,8 @@ public:
     bool isCharaSelectConoha();
     bool isCharaSelectAnzu();
     
-    BattleMode battleMode;
     bool isBattleModeNormal();
     bool isBattleModeBoss();
-    
-    void setBattleRank(int battleRank);
-    int getBattleRank();
     
     int battleDamagePoint;
     int burstCount;
