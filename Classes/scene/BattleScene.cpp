@@ -167,9 +167,14 @@ void BattleScene::initPlayerInfo()
     playerInfo->retain();
     playerInfo->setRank(GameManager::getInstance()->getBattleRank());
     playerInfo->setBp(0);
-    playerInfo->getCutInImage()->setVisible(false);
-    this->addChild(playerInfo->getCutInImage(), ZOrder::PlayerCutIn);
+    this->addChild(playerInfo->getIconImage(), ZOrder::PlayerBp);
 
+    playerInfo->getCutInImage1()->setVisible(false);
+    this->addChild(playerInfo->getCutInImage1(), ZOrder::PlayerCutIn);
+    playerInfo->getCutInImage2()->setVisible(false);
+    this->addChild(playerInfo->getCutInImage2(), ZOrder::PlayerCutIn);
+    playerInfo->getCutInImage3()->setVisible(false);
+    this->addChild(playerInfo->getCutInImage3(), ZOrder::PlayerCutIn);
 }
 
 /**
@@ -226,13 +231,6 @@ void BattleScene::initStatusLayer()
     enemyHpBar->setPercentage(enemyData->getHpPercentage());
     hpFrame->addChild(enemyHpBar);
 
-    // キャラアイコン
-    Sprite* playerIcon = Sprite::createWithSpriteFrameName("icon_f317.png");
-    playerIcon->setPosition(Point(origin.x + visibleSize.width * 1 / 10,
-                               origin.y + visibleSize.height * 0.5 / 10));
-    playerIcon->setScale(playerIcon->getScale()*0.4, playerIcon->getScale()*0.4);
-    addChild(playerIcon, ZOrder::PlayerBp);
-    
     // ランク
     std::string battleRank = std::to_string(GameManager::getInstance()->getBattleRank());
     Label* rankLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), battleRank);
@@ -344,7 +342,7 @@ void BattleScene::update(float frame)
         CCLOG("update-ep-break burstTime: %d", burstTime);
 
         // ボイス再生
-        Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+        Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
                                                            Constant::Voice::BurstAttack);
         int num = arc4random() % list.size();
         
@@ -356,8 +354,8 @@ void BattleScene::update(float frame)
             // カットインアニメーション
             burstCutInFlg = true;
             CallFunc* callback = CallFunc::create([this](){this->startBurstTime();}); // 開始処理を呼び出し
-            playerInfo->getCutInImage()->runAction(
-                BattleActionCreator::burstCutIn(playerInfo->getCutInImage(), callback));
+            playerInfo->getCutInImage1()->runAction(
+                BattleActionCreator::burstCutIn(playerInfo->getCutInImage1(), callback));
         }
         else
         {
@@ -383,7 +381,7 @@ void BattleScene::update(float frame)
  */
 void BattleScene::startBurstTime()
 {
-    playerInfo->getCutInImage()->setVisible(false);
+    playerInfo->getCutInImage1()->setVisible(false);
     playerInfo->incrementBurstCount();
     playerInfo->setBp(0);
     burstTime = Constant::MAX_BURST_TIME;
@@ -418,7 +416,7 @@ void BattleScene::startBurstTime()
  */
 void BattleScene::updateByDefeatEnemy(float frame)
 {
-    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
                                                        Constant::Voice::EnemyDefeat);
     int num = arc4random() % list.size();
     
@@ -490,7 +488,7 @@ void BattleScene::endBattle()
     GameManager::getInstance()->battleDamagePoint = enemyData->getMaxHp() - enemyData->getHp();
     GameManager::getInstance()->burstCount = playerInfo->getBurstCount();
 
-    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
                                                        Constant::Voice::BattleEnd);
     int num = arc4random() % list.size();
     
@@ -559,6 +557,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
 
     Constant::StringVector effectList;
     Constant::StringVector battleEffectImageList;
+    float scale;
     int damage;             // 与えたダメージ
     int soundEffectNum;     // 効果音
     int hitSpriteNum;       // ヒットエフェクト
@@ -569,6 +568,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
         // 通常時
         effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundNormal);
         battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageNormal);
+        scale = 1.0f;
         damage = Constant::BASE_DAMAGE_NORMAL;
         soundEffectNum = CCRANDOM_0_1() * effectList.size();
         hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
@@ -578,19 +578,20 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
         // バーストタイム中
         effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundBurst);
         battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurst);
+        scale = 1.5f;
         damage = Constant::BASE_DAMAGE_BURST;
         soundEffectNum =  CCRANDOM_0_1() * (int)effectList.size();
         hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
         
     }
-    Constant::StringVector battleEffectSubImageList =
-    Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurstSub);
-    int hitSpriteSubNum = CCRANDOM_0_1() * battleEffectSubImageList.size();
-    Point pos = location;
-    pos.add(Vec2(arc4random() % 100 - 50, arc4random() % 100 - 50));
-    Sprite* effectSubSprite = this->effectManager->effectPurifiedTwice(battleEffectSubImageList[hitSpriteSubNum], pos, 0.05f);
-    
-    this->addChild(effectSubSprite, ZOrder::TouchEffect);
+//    Constant::StringVector battleEffectSubImageList =
+//    Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurstSub);
+//    int hitSpriteSubNum = CCRANDOM_0_1() * battleEffectSubImageList.size();
+//    Point pos = location;
+//    pos.add(Vec2(arc4random() % 100 - 50, arc4random() % 100 - 50));
+//    Sprite* effectSubSprite = this->effectManager->effectPurifiedTwice(battleEffectSubImageList[hitSpriteSubNum], pos, scale, 0.05f);
+//    
+//    this->addChild(effectSubSprite, ZOrder::TouchEffect);
     
 
     
@@ -598,7 +599,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     soundManager->playSE(effectList[soundEffectNum]);
     
     // ヒットエフェクト生成
-    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], location);
+    Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], location, scale);
     this->addChild(effectSprite, ZOrder::TouchEffect);
     
     // 敵のHPゲージ

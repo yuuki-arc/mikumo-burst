@@ -87,7 +87,7 @@ void SelectScene::displayInfo()
     
     // キャラクター表示
     Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
-    int num = GameManager::getInstance()->charaSelect;
+    int num = GameManager::getInstance()->getCharaSelect();
     std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
     charaPos = Point(origin.x + visibleSize.width * 2 / 3,
                            origin.y + visibleSize.height * 6 / 10);
@@ -102,7 +102,7 @@ void SelectScene::displayInfo()
 //    int rank = GameManager::getInstance()->getRank();
     auto store = UserDataStore::getInstance();
     StringMap rankList = store->getRankList()[0];
-    std::string key = Constant::charaKey(GameManager::getInstance()->charaSelect);
+    std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
     std::string rank = rankList[key];
     
     float labelWidth = origin.x + visibleSize.width * 1 / 10;
@@ -112,7 +112,7 @@ void SelectScene::displayInfo()
     
     relativeLabelHeight = 8.0f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    std::string charaName = Constant::charaName(GameManager::getInstance()->charaSelect);
+    std::string charaName = Constant::charaName(GameManager::getInstance()->getCharaSelect());
     resultLabel = TextCreator::create(charaName + "のランク", point);
     resultLabel->setTag(Tag::RankStr);
     this->addChild(resultLabel, ZOrder::Font);
@@ -161,7 +161,7 @@ void SelectScene::changeCharacter()
     // 音声
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
-    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
                                                        Constant::Voice::Select);
     int num = arc4random() % list.size();
     soundManager->playVoice(list[num]);
@@ -177,7 +177,7 @@ void SelectScene::changeCharacter()
                                       CallFunc::create([character, x, y, marginX](){
                                           // キャラクタ切り替え
                                           Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
-                                          int num = GameManager::getInstance()->charaSelect;
+                                          int num = GameManager::getInstance()->getCharaSelect();
                                           std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
                                           CharacterCreator* creator = new CharacterCreator();
                                           creator->init(CharacterScale::HARF);
@@ -192,14 +192,14 @@ void SelectScene::changeCharacter()
 
     // ランクネーム切り替え
     Label* label;
-    std::string charaName = Constant::charaName(GameManager::getInstance()->charaSelect);
+    std::string charaName = Constant::charaName(GameManager::getInstance()->getCharaSelect());
     label = (Label*)this->getChildByTag(Tag::RankStr);
     label->setString(charaName + "のランク");
     
     // ランク切り替え
     auto store = UserDataStore::getInstance();
     StringMap rankList = store->getRankList()[0];
-    std::string key = Constant::charaKey(GameManager::getInstance()->charaSelect);
+    std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
     std::string rank = rankList[key];
 
     label = (Label*)this->getChildByTag(Tag::Rank);
@@ -212,11 +212,11 @@ void SelectScene::tappedChangeButton(Ref* pTarget, Control::EventType pControlEv
 
     if (GameManager::getInstance()->isCharaSelectConoha())
     {
-        GameManager::getInstance()->charaSelect = Constant::Anzu;
+        GameManager::getInstance()->setCharaSelect(Constant::Anzu);
     }
     else
     {
-        GameManager::getInstance()->charaSelect = Constant::Conoha;
+        GameManager::getInstance()->setCharaSelect(Constant::Conoha);
     }
 
     changeCharacter();
@@ -230,12 +230,12 @@ void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEv
     // バトルランク設定（選択キャラ）
     auto store = UserDataStore::getInstance();
     StringMap rankList = store->getRankList()[0];
-    std::string key = Constant::charaKey(GameManager::getInstance()->charaSelect);
+    std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
     int battleRank = std::stoi(rankList[key]);
     GameManager::getInstance()->setBattleRank(battleRank);
     
     // 音声
-    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->charaSelect,
+    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
                                                        Constant::Voice::Ready);
     int num = arc4random() % list.size();
     

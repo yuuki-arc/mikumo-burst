@@ -26,16 +26,18 @@ public:
     typedef std::vector<std::string> StringVector;
 
     enum CharaSelect {
-        Conoha = 0,
-        Anzu = 1,
-        CharaSelectStart = Conoha,
-        CharaSelectEnd = Anzu,
+        Conoha = 0,                 // 通常バトル（このは）
+        Anzu = 1,                   // 通常バトル（あんず）
+        VsBoss = 2,                 // ボスバトル
+        CharaSelectStart = Conoha,  // ループ用
+        CharaSelectEnd = Anzu,      // ループ用
     };
     static const char* charaKey(CharaSelect charaSelect){
         std::string value = "";
         switch (charaSelect){
             case Conoha: value = "conoha"; break;
-            case Anzu:   value = "anzu"; break;
+            case Anzu:   value = "anzu";   break;
+            default:     value = "";       break;
         }
         return value.c_str();
     };
@@ -44,6 +46,7 @@ public:
         switch (charaSelect){
             case Conoha: value = "このは"; break;
             case Anzu:   value = "あんず"; break;
+            default:     value = "";      break;
         }
         return value.c_str();
     };
@@ -51,16 +54,18 @@ public:
     enum ImagePersona
     {
         PersonaSelect = 0,  // 選択画面
+        PersonaIcon,        // キャラクターアイコン
         PersonaBattle1,     // 戦闘カットインver.1
         PersonaBattle2,     // 戦闘カットインver.2
         PersonaBattle3,     // 戦闘カットイン最終
     };
     static const std::map<ImagePersona, StringVector> PERSONA_IMAGE_LIST(){
         return {
-            {ImagePersona::PersonaSelect, {"persona_conoha", "persona_anzu"}},
-            {ImagePersona::PersonaBattle1, {"chara_f317"}},
-            {ImagePersona::PersonaBattle2, {"chara_f317"}},
-            {ImagePersona::PersonaBattle3, {"chara_f317"}},
+            {ImagePersona::PersonaSelect , {"persona_conoha", "persona_anzu", ""}},
+            {ImagePersona::PersonaIcon   , {"icon_conoha"   , "icon_anzu"   , "icon_anco"}},
+            {ImagePersona::PersonaBattle1, {"cutin_conoha1" , "cutin_anzu1" , "cutin_conoha1"}},
+            {ImagePersona::PersonaBattle2, {"cutin_conoha2" , "cutin_anzu2" , "cutin_anzu2"}},
+            {ImagePersona::PersonaBattle3, {"cutin_anco"    , "cutin_anco"  , "cutin_anco"}},
         };
     };
     static const StringVector PERSONA_IMAGE_LIST(ImagePersona key){
@@ -163,6 +168,16 @@ public:
                     {Voice::BurstAttack , {"u01", "u25", "u32"}},
                     {Voice::BattleEnd   , {"u20", "u27", "u31"}},
                     {Voice::EnemyDefeat , {"u24", "u36"}},
+                };
+                break;
+            default:
+                return {
+                    {Voice::Select      , {"i18", "i34"}},
+                    {Voice::Ready       , {"i01", "i30"}},
+                    {Voice::NormalAttack, {"i02", "i03", "i04","i05"}},
+                    {Voice::BurstAttack , {"i06", "i14", "i27"}},
+                    {Voice::BattleEnd   , {"i10", "i11", "i12"}},
+                    {Voice::EnemyDefeat , {"i24", "i25"}},
                 };
                 break;
         }

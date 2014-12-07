@@ -40,6 +40,16 @@ bool GameManager::isScreenModeHd()
     return GameManager::getInstance()->screenMode == ScreenModeHd ? true : false;
 }
 
+void GameManager::setCharaSelect(Constant::CharaSelect charaSelect)
+{
+    this->charaSelect = charaSelect;
+}
+
+Constant::CharaSelect GameManager::getCharaSelect()
+{
+    return this->charaSelect;
+}
+
 bool GameManager::isCharaSelectConoha()
 {
     return GameManager::getInstance()->charaSelect == Constant::Conoha ? true : false;
@@ -67,10 +77,5 @@ void GameManager::setBattleRank(int battleRank)
 
 int GameManager::getBattleRank()
 {
-//    int rank = UserDataStore::getInstance()->getRank();
-//    if (rank > Constant::LIMIT_RANK)
-//    {
-//        rank = Constant::LIMIT_RANK;
-//    }
     return this->battleRank;
 }

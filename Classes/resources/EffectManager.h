@@ -8,10 +8,10 @@ USING_NS_CC;
 class EffectManager
 {
 public:
-    Sprite* effectPurified(std::string effectName, Point location, float delay = 0.1f);
-    Sprite* effectPurifiedTwice(std::string effectName, Point location, float delay = 0.1f);
+    Sprite* effectPurified(std::string effectName, Point location, float scale, float delay = 0.1f);
+    Sprite* effectPurifiedTwice(std::string effectName, Point location, float scale, float delay = 0.1f);
 private:
-    Animate* createFrameAnimation(std::string effectName, Point location, float delay = 0.1f);
+    Animate* createFrameAnimation(std::string effectName, Point location, float scale, float delay = 0.1f);
 };
 
 #endif /* defined(__mikumoburst__EffectManager__) */

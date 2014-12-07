@@ -8,7 +8,10 @@ PlayerBattleInfo::PlayerBattleInfo()
 : rank(0)
 , bp(0)
 , burstCount(0)
-, cutInImage(nullptr)
+, iconImage(nullptr)
+, cutInImage1(nullptr)
+, cutInImage2(nullptr)
+, cutInImage3(nullptr)
 {
 }
 
@@ -23,12 +26,38 @@ PlayerBattleInfo* PlayerBattleInfo::create()
     {
         info->autorelease();
 
-        Constant::StringVector list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle1);
-        std::string fileName = StringUtils::format("%s.png", list[0].c_str());
-        CCLOG("PlayerBattleInfo: %s", fileName.c_str());
+        Size visibleSize = Director::getInstance()->getVisibleSize();
+        Point origin = Director::getInstance()->getVisibleOrigin();
+
+        Constant::StringVector list;
+        std::string fileName;
         CharacterCreator* creator = new CharacterCreator();
+
+        // キャラクターアイコン
+        list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaIcon);
+        fileName = StringUtils::format("%s.png", list[0].c_str());
+        Point position = Point(origin.x + visibleSize.width * 1 / 10,
+                               origin.y + visibleSize.height * 0.5 / 10);
         creator->init(CharacterScale::NORMAL);
-        info->setCutInImage(creator->create(fileName));
+        info->setIconImage(creator->create(fileName, position));
+        
+        // カットインアニメーション１
+        list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle1);
+        fileName = StringUtils::format("%s.png", list[0].c_str());
+        creator->init(CharacterScale::NORMAL);
+        info->setCutInImage1(creator->create(fileName));
+        
+        // カットインアニメーション２
+        list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle2);
+        fileName = StringUtils::format("%s.png", list[0].c_str());
+        creator->init(CharacterScale::NORMAL);
+        info->setCutInImage2(creator->create(fileName));
+        
+        // カットインアニメーション３
+        list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle3);
+        fileName = StringUtils::format("%s.png", list[0].c_str());
+        creator->init(CharacterScale::NORMAL);
+        info->setCutInImage3(creator->create(fileName));
 
         return info;
     }

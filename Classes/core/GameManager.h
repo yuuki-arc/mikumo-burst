@@ -19,6 +19,7 @@ class GameManager
 private:
     GameManager();
     static GameManager* instance;
+    Constant::CharaSelect charaSelect;
     int battleRank;
     
 public:
@@ -30,7 +31,8 @@ public:
     bool isScreenModeSd();
     bool isScreenModeHd();
 
-    Constant::CharaSelect charaSelect;
+    void setCharaSelect(Constant::CharaSelect charaSelect);
+    Constant::CharaSelect getCharaSelect();
     bool isCharaSelectConoha();
     bool isCharaSelectAnzu();
     

@@ -187,13 +187,16 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>icon_f316.png</filename>
-            <filename>icon_f317.png</filename>
-            <filename>myp_f316.png</filename>
-            <filename>myp_f317.png</filename>
             <filename>persona_anzu.png</filename>
             <filename>persona_conoha.png</filename>
-            <filename>chara_f317.png</filename>
+            <filename>cutin_anco.png</filename>
+            <filename>cutin_anzu1.png</filename>
+            <filename>cutin_anzu2.png</filename>
+            <filename>cutin_conoha1.png</filename>
+            <filename>cutin_conoha2.png</filename>
+            <filename>icon_conoha.png</filename>
+            <filename>icon_anco.png</filename>
+            <filename>icon_anzu.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

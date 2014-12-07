@@ -78,7 +78,7 @@ void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int sc
     store->setBattleCount(store->getBattleCount() + 1);
     
     // キャラクターランク
-    std::string key = Constant::charaKey(GameManager::getInstance()->charaSelect);
+    std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
     std::string charaRank = charaRankList[0][key];
     charaRankList[0][key] = std::to_string(std::stoi(charaRankList[0][key]) + 1);
     store->setRankList(charaRankList);
@@ -148,8 +148,8 @@ void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int
     float relativeLabelHeight;
     Label* resultLabel;
     Point point;
-    std::string charaName = Constant::charaName(GameManager::getInstance()->charaSelect);
-    std::string key = Constant::charaKey(GameManager::getInstance()->charaSelect);
+    std::string charaName = Constant::charaName(GameManager::getInstance()->getCharaSelect());
+    std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
     std::string charaRank = charaRankList[0][key];
     
     relativeLabelHeight = 8.0f;

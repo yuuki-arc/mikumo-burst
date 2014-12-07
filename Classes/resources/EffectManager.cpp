@@ -4,12 +4,13 @@
 
 USING_NS_CC;
 
-Sprite* EffectManager::effectPurified(std::string effectName, Point location, float delay)
+Sprite* EffectManager::effectPurified(std::string effectName, Point location, float scale, float delay)
 {
-    Animate* animateAction = createFrameAnimation(effectName, location, delay);
+    Animate* animateAction = createFrameAnimation(effectName, location, scale, delay);
     
     auto sprite2 = Sprite::create();
     sprite2->setAnchorPoint(Vec2(0.5,0.5));
+    sprite2->setScale(scale);
     sprite2->runAction(
         Sequence::create(
             animateAction,
@@ -23,9 +24,9 @@ Sprite* EffectManager::effectPurified(std::string effectName, Point location, fl
     return sprite2;
 }
 
-Sprite* EffectManager::effectPurifiedTwice(std::string effectName, Point location, float delay)
+Sprite* EffectManager::effectPurifiedTwice(std::string effectName, Point location, float scale, float delay)
 {
-    Animate* animateAction1 = createFrameAnimation(effectName, location, delay);
+    Animate* animateAction1 = createFrameAnimation(effectName, location, scale, delay);
     Animate* animateAction2 = animateAction1->clone();
     
     ActionInterval* moveAction1 = MoveBy::create(delay, Vec2(50, 50));
@@ -49,7 +50,7 @@ Sprite* EffectManager::effectPurifiedTwice(std::string effectName, Point locatio
     return sprite2;
 }
 
-Animate* EffectManager::createFrameAnimation(std::string effectName, Point location, float delay)
+Animate* EffectManager::createFrameAnimation(std::string effectName, Point location, float scale, float delay)
 {
     auto spriteFrameCache = SpriteFrameCache::getInstance();
     auto frames = new Vector<SpriteFrame *>();
