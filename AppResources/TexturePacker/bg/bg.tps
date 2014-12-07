@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.3.1</string>
         <key>fileName</key>
-        <string>/Users/usr0600205/src/github.com/yuuki-arc/Fragment_of_Eternity/AppResources/TexturePacker/bg/bg.tps</string>
+        <string>/Users/usr0600205/src/github.com/yuuki-arc/mikumo-burst/AppResources/TexturePacker/bg/bg.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -188,17 +188,12 @@
         <key>fileList</key>
         <array>
             <filename>001.png</filename>
-            <filename>002.png</filename>
-            <filename>003.png</filename>
-            <filename>004.png</filename>
             <filename>006.png</filename>
             <filename>007.png</filename>
             <filename>008.png</filename>
             <filename>011.png</filename>
             <filename>012.png</filename>
-            <filename>013.png</filename>
             <filename>000.png</filename>
-            <filename>010.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
