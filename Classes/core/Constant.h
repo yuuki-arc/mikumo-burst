@@ -1,6 +1,8 @@
 #ifndef __mikumoburst__Constant__
 #define __mikumoburst__Constant__
 
+#include "core/DefineAppc.h"
+
 #define BM_FONT_SIZE(__SIZE , __BASE) (CC_CONTENT_SCALE_FACTOR() * ((float)__SIZE / (float)__BASE))
 #define BM_FONT_SIZE64(__SIZE) (BM_FONT_SIZE(__SIZE , 64))
 
@@ -186,13 +188,23 @@ public:
         return map[key];
     }
 
-    static const char* APPC_MEDIA_KEY(){return "DumyMediaKey";}
-    static const int LEADERBOARD_BATTLE_COUNT = 1237;
-    static const int LEADERBOARD_TOTAL_RANK = 1238;
-    static const int LEADERBOARD_TOTAL_SCORE = 1239;
-    static const int LEADERBOARD_TOTAL_BURST = 1240;
-    static const int LEADERBOARD_RANK_CONOHA = 1257;
-    static const int LEADERBOARD_RANK_ANZU = 1258;
+#ifdef __mikumoburst__DefineAppc__
+    static const char* APPC_MEDIA_KEY(){return __APPC_MEDIA_KEY;}
+    static const int LEADERBOARD_BATTLE_COUNT = __LEADERBOARD_BATTLE_COUNT;
+    static const int LEADERBOARD_TOTAL_RANK   = __LEADERBOARD_TOTAL_RANK;
+    static const int LEADERBOARD_TOTAL_SCORE  = __LEADERBOARD_TOTAL_SCORE;
+    static const int LEADERBOARD_TOTAL_BURST  = __LEADERBOARD_TOTAL_BURST;
+    static const int LEADERBOARD_RANK_CONOHA  = __LEADERBOARD_RANK_CONOHA;
+    static const int LEADERBOARD_RANK_ANZU    = __LEADERBOARD_RANK_ANZU;
+#else
+    static const char* APPC_MEDIA_KEY(){return "dummy_media_key";}
+    static const int LEADERBOARD_BATTLE_COUNT = 1;
+    static const int LEADERBOARD_TOTAL_RANK   = 2;
+    static const int LEADERBOARD_TOTAL_SCORE  = 3;
+    static const int LEADERBOARD_TOTAL_BURST  = 4;
+    static const int LEADERBOARD_RANK_CONOHA  = 5;
+    static const int LEADERBOARD_RANK_ANZU    = 6;
+#endif
     
     static const char* NORMAL_FONT(){return "normal.fnt";}
     static const char* LARGE_FONT(){return "large.fnt";}
