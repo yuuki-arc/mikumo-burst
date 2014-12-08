@@ -30,8 +30,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
     
-    srand((unsigned int)time(NULL));
-    
     Size designSize = Size(320, 620); // ベースサイズ
     Size resourceSize;
     Size screenSize = glview->getFrameSize();   //画面サイズ取得

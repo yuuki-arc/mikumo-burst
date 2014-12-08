@@ -142,7 +142,7 @@ void BattleScene::initBackground()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
-    int num = CCRANDOM_0_1() * bgImageList.size();
+    int num = arc4random() % bgImageList.size();
     Sprite* background = Sprite::createWithSpriteFrameName(StringUtils::format("%s.png", bgImageList.at(num).c_str()));
     background->setPosition(Point(origin.x + visibleSize.width / 2,
                                   origin.y + visibleSize.height / 2));
@@ -549,8 +549,8 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
         battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageNormal);
         scale = 1.0f;
         damage = Constant::BASE_DAMAGE_NORMAL;
-        soundEffectNum = CCRANDOM_0_1() * effectList.size();
-        hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
+        soundEffectNum = arc4random() % effectList.size();
+        hitSpriteNum = arc4random() % battleEffectImageList.size();
     }
     else
     {
@@ -559,13 +559,13 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
         battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurst);
         scale = 1.5f;
         damage = Constant::BASE_DAMAGE_BURST;
-        soundEffectNum =  CCRANDOM_0_1() * (int)effectList.size();
-        hitSpriteNum = CCRANDOM_0_1() * battleEffectImageList.size();
+        soundEffectNum =  arc4random() % effectList.size();
+        hitSpriteNum = arc4random() % battleEffectImageList.size();
         
     }
 //    Constant::StringVector battleEffectSubImageList =
 //    Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurstSub);
-//    int hitSpriteSubNum = CCRANDOM_0_1() * battleEffectSubImageList.size();
+//    int hitSpriteSubNum = arc4random() % battleEffectSubImageList.size();
 //    Point pos = location;
 //    pos.add(Vec2(arc4random() % 100 - 50, arc4random() % 100 - 50));
 //    Sprite* effectSubSprite = this->effectManager->effectPurifiedTwice(battleEffectSubImageList[hitSpriteSubNum], pos, scale, 0.05f);
@@ -694,14 +694,14 @@ void BattleScene::onTouchCancelled(Touch* touch, Event *event){
 //        auto location = touch->getLocation();
 //        
 //        // 与えたダメージ
-//        int damage = Constant::BASE_DAMAGE_NORMAL + CCRANDOM_0_1() * Constant::DAMAGE_RANK_UP_INCREMENT;
+//        int damage = Constant::BASE_DAMAGE_NORMAL + arc4random() % Constant::DAMAGE_RANK_UP_INCREMENT;
 //
 //        // 効果音
-//        int num = CCRANDOM_0_1() * effectList.size();
+//        int num = arc4random() % effectList.size();
 //        soundManager->playSE(effectList.at(num));
 //
 //        // ヒットエフェクト生成
-//        num = CCRANDOM_0_1() * battleEffectImageList.size();
+//        num = arc4random() % battleEffectImageList.size();
 //        Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList.at(num), location);
 //        this->addChild(effectSprite, ZOrder::TouchEffect);
 //        

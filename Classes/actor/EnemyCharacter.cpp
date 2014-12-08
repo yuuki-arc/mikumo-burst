@@ -34,7 +34,7 @@ void EnemyCharacter::createWithImage()
     this->setHp(hp);
     
     Constant::StringVector enemyImageList = Constant::ENEMY_IMAGE_LIST(getImageEnemy());
-    int num = CCRANDOM_0_1() * enemyImageList.size();
+    int num = arc4random() % enemyImageList.size();
     std::string enemyFileName = StringUtils::format("%s.png", enemyImageList.at(num).c_str());
     
     CharacterCreator* creator = new CharacterCreator();
