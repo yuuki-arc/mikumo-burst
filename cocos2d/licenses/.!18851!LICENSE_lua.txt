@@ -1,3 +1,0 @@
-License for Lua 5.0 and later versions
-http://www.lua.org/license.html
-
