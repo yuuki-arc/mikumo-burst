@@ -77,7 +77,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
     
     // 音楽設定
-    SimpleAudioEngine::getInstance()->setEffectsVolume(0.3);
+    SimpleAudioEngine::getInstance()->setEffectsVolume(0.5);
     SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.3);
     
     // テクスチャアトラスを読み込む
