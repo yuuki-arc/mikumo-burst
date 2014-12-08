@@ -50,3 +50,6 @@ out/
 #CocosBuilder
 cocosBuilder/Published-*
 
+#project
+Classes/core/DefineAppc.h
+proj.android/res/values/secret.xml

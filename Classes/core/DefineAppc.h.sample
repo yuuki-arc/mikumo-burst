@@ -1,0 +1,12 @@
+#ifndef __mikumoburst__DefineAppc__
+#define __mikumoburst__DefineAppc__
+
+#define __APPC_MEDIA_KEY "DumyMediaKey"
+#define __LEADERBOARD_BATTLE_COUNT 1
+#define __LEADERBOARD_TOTAL_RANK 2
+#define __LEADERBOARD_TOTAL_SCORE 3
+#define __LEADERBOARD_TOTAL_BURST 4
+#define __LEADERBOARD_RANK_CONOHA 5
+#define __LEADERBOARD_RANK_ANZU 6
+
+#endif /* defined(__mikumoburst__DefineAppc__) */
