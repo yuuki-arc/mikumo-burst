@@ -130,8 +130,8 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AppComponent\Fragment_of_EternityComponent.vcxproj">
-      <Name>Fragment_of_EternityComponent</Name>
+    <ProjectReference Include="..\AppComponent\mikumo-burstComponent.vcxproj">
+      <Name>mikumo-burstComponent</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +161,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  
+
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
@@ -173,5 +173,5 @@
   </Target>
     -->
 <ProjectExtensions />
- 
+
 </Project>
