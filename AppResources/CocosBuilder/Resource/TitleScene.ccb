@@ -301,6 +301,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -347,8 +349,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.57488429546356201</real>
-							<real>0.57488429546356201</real>
+							<real>0.5</real>
+							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -369,7 +371,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>title_logo2.png</string>
+							<string>title_logo.png</string>
 						</array>
 					</dict>
 				</array>

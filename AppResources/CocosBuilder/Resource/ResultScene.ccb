@@ -117,7 +117,7 @@
 						<key>value</key>
 						<array>
 							<real>80.9375</real>
-							<real>18.064516067504883</real>
+							<real>18.655914306640625</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -187,7 +187,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Verdana</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -196,7 +196,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>24</real>
+							<real>18</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -208,7 +208,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>1.2000000476837158</real>
 						</array>
 					</dict>
 					<dict>
@@ -218,8 +218,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>90</real>
+							<real>72</real>
+							<real>72</real>
 							<integer>5</integer>
 						</array>
 					</dict>
@@ -239,7 +239,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -249,9 +249,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>255</integer>
-							<integer>255</integer>
-							<integer>255</integer>
+							<integer>0</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 					<dict>
@@ -262,7 +262,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_on.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -285,7 +285,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -295,9 +295,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>255</integer>
-							<integer>255</integer>
-							<integer>255</integer>
+							<integer>0</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 				</array>
@@ -324,8 +324,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>51.453495025634766</real>
-							<real>18.54838752746582</real>
+							<real>51.5625</real>
+							<real>18.655914306640625</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -395,7 +395,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Verdana</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -404,7 +404,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>24</real>
+							<real>18</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -416,7 +416,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>1.2000000476837158</real>
 						</array>
 					</dict>
 					<dict>
@@ -426,8 +426,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>90</real>
+							<real>72</real>
+							<real>72</real>
 							<integer>5</integer>
 						</array>
 					</dict>
@@ -447,7 +447,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -457,9 +457,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>255</integer>
-							<integer>255</integer>
-							<integer>255</integer>
+							<integer>0</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 					<dict>
@@ -470,7 +470,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_on.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -493,7 +493,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -503,9 +503,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>255</integer>
-							<integer>255</integer>
-							<integer>255</integer>
+							<integer>0</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 				</array>
@@ -603,7 +603,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Verdana</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -612,7 +612,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>24</real>
+							<real>12</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -624,7 +624,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>1.3999999761581421</real>
 						</array>
 					</dict>
 					<dict>
@@ -634,8 +634,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>90</real>
+							<real>72</real>
+							<real>72</real>
 							<integer>5</integer>
 						</array>
 					</dict>
@@ -655,7 +655,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -665,9 +665,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>255</integer>
-							<integer>255</integer>
-							<integer>255</integer>
+							<integer>0</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 					<dict>
@@ -678,7 +678,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_on.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -701,7 +701,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -740,8 +740,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>21.209047317504883</real>
-							<real>19.366378784179688</real>
+							<real>21.25</real>
+							<real>18.655914306640625</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -811,7 +811,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Verdana</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -820,7 +820,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>24</real>
+							<real>18</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -832,7 +832,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>1.2000000476837158</real>
 						</array>
 					</dict>
 					<dict>
@@ -842,8 +842,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>90</real>
+							<real>72</real>
+							<real>72</real>
 							<integer>5</integer>
 						</array>
 					</dict>
@@ -863,7 +863,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -873,9 +873,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>255</integer>
-							<integer>255</integer>
-							<integer>255</integer>
+							<integer>0</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 					<dict>
@@ -886,7 +886,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_on.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -909,7 +909,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -919,9 +919,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>255</integer>
-							<integer>255</integer>
-							<integer>255</integer>
+							<integer>0</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 				</array>

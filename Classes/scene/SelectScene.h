@@ -27,7 +27,8 @@ public:
     void tappedChangeButton(Ref* pTarget, Control::EventType pControlEventType);
     void tappedBattleButton(Ref* pTarget, Control::EventType pControlEventType);
     void tappedBossButton(Ref* pTarget, Control::EventType pControlEventType);
-    void tappedScoreButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedRankingButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedMenuButton(Ref* pTarget, Control::EventType pControlEventType);
     
     void pushBack(Ref* pSender);
 

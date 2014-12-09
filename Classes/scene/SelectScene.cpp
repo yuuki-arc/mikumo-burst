@@ -42,7 +42,8 @@ Control::Handler SelectScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedChangeButton", SelectScene::tappedChangeButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBattleButton", SelectScene::tappedBattleButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBossButton", SelectScene::tappedBossButton);
-    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedScoreButton", SelectScene::tappedScoreButton);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedRankingButton", SelectScene::tappedRankingButton);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedMenuButton", SelectScene::tappedMenuButton);
     return NULL;
 }
 
@@ -232,6 +233,9 @@ void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEv
     auto store = UserDataStore::getInstance();
     StringMap rankList = store->getRankList()[0];
     std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
+    CCLOG("charaSelect = %s", (char*)GameManager::getInstance()->getCharaSelect());
+    CCLOG("key = %s", key.c_str());
+    CCLOG("rankListSize = %lu", rankList.size());
     int battleRank = std::stoi(rankList[key]);
     GameManager::getInstance()->setBattleRank(battleRank);
     
@@ -283,17 +287,26 @@ void SelectScene::tappedBossButton(Ref* pTarget, Control::EventType pControlEven
     Director::getInstance()->replaceScene(trans);
 }
 
-void SelectScene::tappedScoreButton(Ref* pTarget, Control::EventType pControlEventType)
+void SelectScene::tappedRankingButton(Ref* pTarget, Control::EventType pControlEventType)
 {
-    CCLOG("tappedScoreButton eventType = %d", pControlEventType);
+    CCLOG("tappedRankingButton eventType = %d", pControlEventType);
     
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
     
-//    Scene* scene = ScoreSceneLoader::createScene();
-//    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
-//    Director::getInstance()->replaceScene(trans);
     // GAMERS画面を開く
     AppCCloudPlugin::Gamers::showGamersView();
 
+}
+
+void SelectScene::tappedMenuButton(Ref* pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedMenuButton eventType = %d", pControlEventType);
+    
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    
+        Scene* scene = ScoreSceneLoader::createScene();
+        TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
+        Director::getInstance()->replaceScene(trans);
 }

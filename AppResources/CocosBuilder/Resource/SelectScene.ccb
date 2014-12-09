@@ -104,7 +104,7 @@
 				<key>displayName</key>
 				<string>CCControlButton</string>
 				<key>memberVarAssignmentName</key>
-				<string>mScoreControlButton</string>
+				<string>mRankingControlButton</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -116,8 +116,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>85.508003234863281</real>
-							<real>18.88800048828125</real>
+							<real>84</real>
+							<real>18.978494644165039</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -160,7 +160,7 @@
 						<string>BlockCCControl</string>
 						<key>value</key>
 						<array>
-							<string>tappedScoreButton</string>
+							<string>tappedRankingButton</string>
 							<integer>1</integer>
 							<integer>32</integer>
 						</array>
@@ -187,7 +187,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Verdana</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -196,7 +196,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>24</real>
+							<real>16</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -208,7 +208,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>1.3500000238418579</real>
 						</array>
 					</dict>
 					<dict>
@@ -218,8 +218,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>90</real>
+							<real>72</real>
+							<real>72</real>
 							<integer>5</integer>
 						</array>
 					</dict>
@@ -239,7 +239,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -250,8 +250,8 @@
 						<key>value</key>
 						<array>
 							<integer>0</integer>
-							<integer>145</integer>
-							<integer>146</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 					<dict>
@@ -262,7 +262,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_on.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -272,9 +272,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>114</integer>
-							<integer>252</integer>
-							<integer>213</integer>
+							<integer>254</integer>
+							<integer>255</integer>
+							<integer>255</integer>
 						</array>
 					</dict>
 					<dict>
@@ -285,7 +285,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -296,8 +296,8 @@
 						<key>value</key>
 						<array>
 							<integer>0</integer>
-							<integer>145</integer>
-							<integer>146</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 				</array>
@@ -324,8 +324,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>51.757999420166016</real>
-							<real>19.068000793457031</real>
+							<real>53</real>
+							<real>19.032258987426758</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -395,7 +395,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Verdana</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -404,7 +404,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>24</real>
+							<real>18</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -416,7 +416,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>1.2000000476837158</real>
 						</array>
 					</dict>
 					<dict>
@@ -426,8 +426,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>90</real>
+							<real>72</real>
+							<real>72</real>
 							<integer>5</integer>
 						</array>
 					</dict>
@@ -447,7 +447,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -458,8 +458,8 @@
 						<key>value</key>
 						<array>
 							<integer>0</integer>
-							<integer>145</integer>
-							<integer>146</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 					<dict>
@@ -470,7 +470,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_on.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -480,9 +480,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>114</integer>
-							<integer>252</integer>
-							<integer>213</integer>
+							<integer>254</integer>
+							<integer>255</integer>
+							<integer>255</integer>
 						</array>
 					</dict>
 					<dict>
@@ -493,7 +493,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -504,8 +504,8 @@
 						<key>value</key>
 						<array>
 							<integer>0</integer>
-							<integer>145</integer>
-							<integer>146</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 				</array>
@@ -532,8 +532,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>19.627996444702148</real>
-							<real>19.068000793457031</real>
+							<real>22</real>
+							<real>18.978494644165039</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -603,7 +603,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Verdana</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -612,7 +612,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>24</real>
+							<real>18</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -624,7 +624,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>1.2000000476837158</real>
 						</array>
 					</dict>
 					<dict>
@@ -634,8 +634,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>90</real>
+							<real>72</real>
+							<real>72</real>
 							<integer>5</integer>
 						</array>
 					</dict>
@@ -655,7 +655,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -666,8 +666,8 @@
 						<key>value</key>
 						<array>
 							<integer>0</integer>
-							<integer>145</integer>
-							<integer>146</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 					<dict>
@@ -678,7 +678,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_on.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -688,9 +688,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>114</integer>
-							<integer>252</integer>
-							<integer>213</integer>
+							<integer>254</integer>
+							<integer>255</integer>
+							<integer>255</integer>
 						</array>
 					</dict>
 					<dict>
@@ -701,7 +701,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -712,11 +712,13 @@
 						<key>value</key>
 						<array>
 							<integer>0</integer>
-							<integer>145</integer>
-							<integer>146</integer>
+							<integer>65</integer>
+							<integer>66</integer>
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -740,8 +742,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>84.883003234863281</real>
-							<real>35.984775543212891</real>
+							<real>31.758003234863281</real>
+							<real>60.500904083251953</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -803,7 +805,7 @@
 						<key>type</key>
 						<string>String</string>
 						<key>value</key>
-						<string>Select</string>
+						<string>Change</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -811,7 +813,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Verdana-Bold</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -820,7 +822,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>24</real>
+							<real>18</real>
 							<integer>1</integer>
 						</array>
 					</dict>
@@ -831,8 +833,8 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.30000001192092896</real>
+							<real>0.34999999403953552</real>
 						</array>
 					</dict>
 					<dict>
@@ -842,8 +844,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>90</real>
+							<real>120</real>
+							<real>32</real>
 							<integer>5</integer>
 						</array>
 					</dict>
@@ -863,7 +865,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>freebu32_4.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -873,9 +875,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>0</integer>
-							<integer>145</integer>
-							<integer>146</integer>
+							<integer>64</integer>
+							<integer>120</integer>
+							<integer>121</integer>
 						</array>
 					</dict>
 					<dict>
@@ -886,7 +888,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>freebu32_2.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -896,9 +898,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>114</integer>
-							<integer>252</integer>
-							<integer>213</integer>
+							<integer>254</integer>
+							<integer>255</integer>
+							<integer>255</integer>
 						</array>
 					</dict>
 					<dict>
@@ -909,7 +911,517 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>icon-reflection-none-orange.png</string>
+							<string>freebu32_4.png</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>titleColor|3</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>64</integer>
+							<integer>120</integer>
+							<integer>121</integer>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCSprite</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>icon_white-cat</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>21.875</real>
+							<real>20.806451797485352</real>
+							<integer>4</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>displayFrame</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string></string>
+							<string>icon_white-cat.png</string>
+						</array>
+					</dict>
+				</array>
+				<key>seqExpanded</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCSprite</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>icon_sharp-smile</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>53.125</real>
+							<real>20.645160675048828</real>
+							<integer>4</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>0.80000001192092896</real>
+							<real>0.80000001192092896</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>displayFrame</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string></string>
+							<string>icon_sharp-smile.png</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCSprite</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>icon_laurel-crown</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>84.0625</real>
+							<real>20.645160675048828</real>
+							<integer>4</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>displayFrame</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string></string>
+							<string>icon_laurel-crown.png</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCSprite</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>icon_cycle</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>19.6875</real>
+							<real>60.645160675048828</real>
+							<integer>4</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>displayFrame</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string></string>
+							<string>icon_cycle.png</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>254</integer>
+							<integer>255</integer>
+							<integer>255</integer>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCControlButton</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCControlButton</string>
+				<key>memberVarAssignmentName</key>
+				<string>mMenuControlButton</string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>84.625</real>
+							<real>32.68817138671875</real>
+							<integer>4</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccControl</string>
+						<key>type</key>
+						<string>BlockCCControl</string>
+						<key>value</key>
+						<array>
+							<string>tappedMenuButton</string>
+							<integer>1</integer>
+							<integer>32</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>enabled</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>title|1</string>
+						<key>type</key>
+						<string>String</string>
+						<key>value</key>
+						<string>Menu</string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>titleTTF|1</string>
+						<key>type</key>
+						<string>FontTTF</string>
+						<key>value</key>
+						<string>Verdana</string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>titleTTFSize|1</string>
+						<key>type</key>
+						<string>FloatScale</string>
+						<key>value</key>
+						<array>
+							<real>16</real>
+							<integer>1</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>labelAnchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>1.3500000238418579</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>preferedSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>72</real>
+							<real>72</real>
+							<integer>5</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>zoomOnTouchDown</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundSpriteFrame|1</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string></string>
+							<string>menu_button_off.png</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>titleColor|1</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>0</integer>
+							<integer>65</integer>
+							<integer>66</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundSpriteFrame|2</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string></string>
+							<string>menu_button_on.png</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>titleColor|2</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>254</integer>
+							<integer>255</integer>
+							<integer>255</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundSpriteFrame|3</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string></string>
+							<string>menu_button_off.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -920,8 +1432,80 @@
 						<key>value</key>
 						<array>
 							<integer>0</integer>
-							<integer>145</integer>
-							<integer>146</integer>
+							<integer>65</integer>
+							<integer>66</integer>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCSprite</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>icon_envelope</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>85</real>
+							<real>34.193550109863281</real>
+							<integer>4</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>displayFrame</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string></string>
+							<string>icon_envelope.png</string>
 						</array>
 					</dict>
 				</array>
