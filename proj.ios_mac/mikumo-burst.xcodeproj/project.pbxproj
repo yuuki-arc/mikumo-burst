@@ -62,7 +62,7 @@
 		A5152C841A2072AF00C75DDE /* CharacterCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C7F1A2072AF00C75DDE /* CharacterCreator.cpp */; };
 		A5152C851A2072AF00C75DDE /* TextCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C811A2072AF00C75DDE /* TextCreator.cpp */; };
 		A51CC73619B8B2FC009FFDE3 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51CC73519B8B2FC009FFDE3 /* Twitter.framework */; };
-		A52164F01A243FFC00E8D77D /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = A52164EF1A243FFC00E8D77D /* HelloWorld.png */; };
+		A52164F01A243FFC00E8D77D /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = A52164EF1A243FFC00E8D77D /* splash.png */; };
 		A53118D21A151AED00BFEB78 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = A53118CB1A151AED00BFEB78 /* Icon-60.png */; };
 		A53118D31A151AED00BFEB78 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = A53118CC1A151AED00BFEB78 /* Icon-72.png */; };
 		A53118D41A151AED00BFEB78 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A53118CD1A151AED00BFEB78 /* Icon-72@2x.png */; };
@@ -122,9 +122,6 @@
 		A53119561A17351400BFEB78 /* libappCCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A531192E1A17351400BFEB78 /* libappCCloud.a */; };
 		A53119581A17362B00BFEB78 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53119571A17362B00BFEB78 /* CoreTelephony.framework */; };
 		A531195A1A17363700BFEB78 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53119591A17363600BFEB78 /* StoreKit.framework */; };
-		A531195F1A184FE700BFEB78 /* editbox.png in Resources */ = {isa = PBXBuildFile; fileRef = A531195E1A184FE700BFEB78 /* editbox.png */; };
-		A53119621A1850A700BFEB78 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = A53119601A1850A700BFEB78 /* CloseNormal.png */; };
-		A53119631A1850A700BFEB78 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = A53119611A1850A700BFEB78 /* CloseSelected.png */; };
 		A53119661A1864E500BFEB78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A53119681A1864E500BFEB78 /* InfoPlist.strings */; };
 		A54AEABA19B23D6000AE6AE4 /* BattleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */; };
 		A54AEABC19B23D6000AE6AE4 /* fileLookup.plist in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB219B23D6000AE6AE4 /* fileLookup.plist */; };
@@ -397,7 +394,7 @@
 		A5152C811A2072AF00C75DDE /* TextCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextCreator.cpp; sourceTree = "<group>"; };
 		A5152C821A2072AF00C75DDE /* TextCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCreator.h; sourceTree = "<group>"; };
 		A51CC73519B8B2FC009FFDE3 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Twitter.framework; sourceTree = DEVELOPER_DIR; };
-		A52164EF1A243FFC00E8D77D /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
+		A52164EF1A243FFC00E8D77D /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		A53118CB1A151AED00BFEB78 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		A53118CC1A151AED00BFEB78 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		A53118CD1A151AED00BFEB78 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
@@ -469,9 +466,6 @@
 		A531192E1A17351400BFEB78 /* libappCCloud.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libappCCloud.a; sourceTree = "<group>"; };
 		A53119571A17362B00BFEB78 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		A53119591A17363600BFEB78 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
-		A531195E1A184FE700BFEB78 /* editbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editbox.png; sourceTree = "<group>"; };
-		A53119601A1850A700BFEB78 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
-		A53119611A1850A700BFEB78 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		A53119691A1864ED00BFEB78 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A531196A1A1864F400BFEB78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A54AEAB019B23D6000AE6AE4 /* BattleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = BattleScene.ccbi; sourceTree = "<group>"; };
@@ -938,11 +932,8 @@
 		A59058B919AE4C2800A26037 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A52164EF1A243FFC00E8D77D /* HelloWorld.png */,
+				A52164EF1A243FFC00E8D77D /* splash.png */,
 				A5777FCF1A1A2040008211C7 /* Images.xcassets */,
-				A53119601A1850A700BFEB78 /* CloseNormal.png */,
-				A53119611A1850A700BFEB78 /* CloseSelected.png */,
-				A531195E1A184FE700BFEB78 /* editbox.png */,
 				A5F6046619F43C0100133718 /* SelectSubScene.ccbi */,
 				A5E7A4271A0FF2CA00408FC0 /* voice */,
 				A5CCD2C019BD661C002ED2FC /* font */,
@@ -1215,7 +1206,6 @@
 				A53119321A17351400BFEB78 /* appc_cutin2_close@2x.png in Resources */,
 				A53118D61A151AED00BFEB78 /* Icon-Small-50@2x.png in Resources */,
 				A53119351A17351400BFEB78 /* appc_cutin_btn_inst_on@2x.png in Resources */,
-				A53119621A1850A700BFEB78 /* CloseNormal.png in Resources */,
 				A53118EB1A151B0000BFEB78 /* Icon-Small@2x.png in Resources */,
 				A5A7F0E219BB394700A5BEDD /* sound in Resources */,
 				A53118D41A151AED00BFEB78 /* Icon-72@2x.png in Resources */,
@@ -1247,7 +1237,7 @@
 				A53119421A17351400BFEB78 /* appc_manga_logo@2x.png in Resources */,
 				A53119521A17351400BFEB78 /* appcc_web_splash_cayto.png in Resources */,
 				A53119541A17351400BFEB78 /* appcc_web_splash_logo.png in Resources */,
-				A52164F01A243FFC00E8D77D /* HelloWorld.png in Resources */,
+				A52164F01A243FFC00E8D77D /* splash.png in Resources */,
 				A53118E31A151B0000BFEB78 /* Icon-40.png in Resources */,
 				A54AEABD19B23D6000AE6AE4 /* resources-iphone in Resources */,
 				A54AEABC19B23D6000AE6AE4 /* fileLookup.plist in Resources */,
@@ -1257,7 +1247,6 @@
 				A5CCD2C119BD661C002ED2FC /* font in Resources */,
 				A531194F1A17351400BFEB78 /* appcc_cutin2_noapp_icon@2x.png in Resources */,
 				A531194D1A17351400BFEB78 /* appc_web_close@2x.png in Resources */,
-				A531195F1A184FE700BFEB78 /* editbox.png in Resources */,
 				A531193D1A17351400BFEB78 /* appc_manga_background@2x.png in Resources */,
 				A53118E81A151B0000BFEB78 /* Icon-76.png in Resources */,
 				A53118D21A151AED00BFEB78 /* Icon-60.png in Resources */,
@@ -1272,7 +1261,6 @@
 				A53119511A17351400BFEB78 /* appcc_simple_appc_icon@2x.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				A53118D31A151AED00BFEB78 /* Icon-72.png in Resources */,
-				A53119631A1850A700BFEB78 /* CloseSelected.png in Resources */,
 				A53119391A17351400BFEB78 /* appc_cutin_free@2x.png in Resources */,
 				A53118E41A151B0000BFEB78 /* Icon-40@2x.png in Resources */,
 				A53118E71A151B0000BFEB78 /* Icon-60@3x.png in Resources */,
