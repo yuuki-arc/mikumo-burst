@@ -80,14 +80,15 @@ public:
         return {
             {ImageEnemy::EnemyNormal, {
                     "anpo_1", "anpo_2", "anpo_5", "bis", "dimetrodon_r", "dimetrodon_z",
-                    "flying_cat", "heishi_2", "heishi_3", "heishi", "load_dark", "load",
+                    "heishi_2", "heishi_3", "heishi", "load_dark", "load",
                     "magic_black", "magic_white", "magic", "mino_2", "mino_3",
-                    "necro", "onbonoyasu_1", "rev_1", "rev_2",
-                    "ride_cat_ice", "ride_cat", "rion_l", "rion_r", "rion",
+                    "necro", "rev_1", "rev_2",
+//                    "ride_cat_ice", "ride_cat", "flying_cat", "onbonoyasu_1", "rion_l", "rion_r", "rion",
                 }
             },
             {ImageEnemy::EnemyBoss , {
-                    "Hecatoncheir_1L", "Hecatoncheir_2L", "Hecatoncheir_3L",
+//                    "Hecatoncheir_1L", "Hecatoncheir_2L", "Hecatoncheir_3L",
+                    "Hecatoncheir_3L",
                 }
             },
         };
@@ -108,13 +109,13 @@ public:
     {
         ImageNormal = 0,// 通常攻撃
         ImageBurst,     // バーストタイム
-        ImageBurstSub,  // バーストタイム（サブエフェクト）
+//        ImageBurstSub,  // バーストタイム（サブエフェクト）
     };
     static const std::map<ImageEffect, StringVector> BATTLE_EFFECT_IMAGE_LIST(){
         return {
             {ImageEffect::ImageNormal  , {"ef22", "ef24", "ef25"}},
             {ImageEffect::ImageBurst   , {"ef02", "ef07", "ef09", "ef20", "ef31-2", "ef32"}},
-            {ImageEffect::ImageBurstSub, {"ef16", "ef17"}}
+//            {ImageEffect::ImageBurstSub, {"ef16", "ef17"}}
         };
     };
     static const StringVector BATTLE_EFFECT_IMAGE_LIST(ImageEffect key){

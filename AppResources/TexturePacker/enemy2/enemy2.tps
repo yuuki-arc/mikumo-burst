@@ -193,9 +193,6 @@
             <filename>bis.png</filename>
             <filename>dimetrodon_r.png</filename>
             <filename>dimetrodon_z.png</filename>
-            <filename>flying_cat.png</filename>
-            <filename>Hecatoncheir_1L.png</filename>
-            <filename>Hecatoncheir_2L.png</filename>
             <filename>Hecatoncheir_3L.png</filename>
             <filename>heishi_2.png</filename>
             <filename>heishi_3.png</filename>
@@ -208,14 +205,8 @@
             <filename>mino_2.png</filename>
             <filename>mino_3.png</filename>
             <filename>necro.png</filename>
-            <filename>onbonoyasu_1.png</filename>
             <filename>rev_1.png</filename>
             <filename>rev_2.png</filename>
-            <filename>ride_cat_ice.png</filename>
-            <filename>ride_cat.png</filename>
-            <filename>rion_l.png</filename>
-            <filename>rion_r.png</filename>
-            <filename>rion.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -235,27 +235,6 @@
             <filename>ef02-5.png</filename>
             <filename>ef02-6.png</filename>
             <filename>ef02-7.png</filename>
-            <filename>ef16-0.png</filename>
-            <filename>ef16-1.png</filename>
-            <filename>ef16-2.png</filename>
-            <filename>ef16-3.png</filename>
-            <filename>ef16-4.png</filename>
-            <filename>ef16-5.png</filename>
-            <filename>ef16-6.png</filename>
-            <filename>ef16-7.png</filename>
-            <filename>ef16-8.png</filename>
-            <filename>ef16-9.png</filename>
-            <filename>ef17-0.png</filename>
-            <filename>ef17-1.png</filename>
-            <filename>ef17-2.png</filename>
-            <filename>ef17-3.png</filename>
-            <filename>ef17-4.png</filename>
-            <filename>ef17-5.png</filename>
-            <filename>ef17-6.png</filename>
-            <filename>ef17-7.png</filename>
-            <filename>ef17-8.png</filename>
-            <filename>ef17-9.png</filename>
-            <filename>ef17-10.png</filename>
             <filename>ef20-0.png</filename>
             <filename>ef20-1.png</filename>
             <filename>ef20-2.png</filename>
