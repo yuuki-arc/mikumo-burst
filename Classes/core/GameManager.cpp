@@ -48,6 +48,8 @@ void GameManager::setCharaSelect(Constant::CharaSelect charaSelect)
 Constant::CharaSelect GameManager::getCharaSelect()
 {
     Constant::CharaSelect charaSelect;
+    CCLOG("GameManager->battleMode:%d",getInstance()->battleMode);
+    CCLOG("GameManager->charaSelect-before:%d",getInstance()->charaSelect);
     switch (getInstance()->battleMode) {
         case BattleModeNormal:
             charaSelect = getInstance()->charaSelect;
@@ -59,6 +61,7 @@ Constant::CharaSelect GameManager::getCharaSelect()
             charaSelect = getInstance()->charaSelect;
             break;
     }
+    CCLOG("GameManager->charaSelect-after:%d",charaSelect);
     return charaSelect;
 }
 
