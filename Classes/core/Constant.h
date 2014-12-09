@@ -35,22 +35,18 @@ public:
         CharaSelectEnd = Anzu,      // ループ用
     };
     static const char* charaKey(CharaSelect charaSelect){
-        std::string value = "";
         switch (charaSelect){
-            case Conoha: value = "conoha"; break;
-            case Anzu:   value = "anzu";   break;
-            default:     value = "";       break;
+            case Conoha: return "conoha"; break;
+            case Anzu:   return "anzu";   break;
+            default:     return "";       break;
         }
-        return value.c_str();
     };
     static const char* charaName(CharaSelect charaSelect){
-        std::string value = "";
         switch (charaSelect){
-            case Conoha: value = "このは"; break;
-            case Anzu:   value = "あんず"; break;
-            default:     value = "";      break;
+            case Conoha: return "このは"; break;
+            case Anzu:   return "あんず"; break;
+            default:     return "";      break;
         }
-        return value.c_str();
     };
     
     enum ImagePersona
