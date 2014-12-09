@@ -4,6 +4,7 @@
 #include "core/Constant.h"
 #include "resources/SoundManager.h"
 #include "factory/TextCreator.h"
+#include "tools/NativeLauncher.h"
 
 MenuScene::MenuScene()
 {
@@ -62,6 +63,7 @@ void MenuScene::tappedReviewButton(Ref* pTarget, Control::EventType pControlEven
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
     // アプリストアに遷移
+    NativeLauncher::openStoreReview("");
 }
 
 void MenuScene::tappedCreditButton(Ref* pTarget, Control::EventType pControlEventType)

@@ -5,6 +5,7 @@ import net.app_c.cloud.plugin.c2dx.AppCCloudActivity;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -27,6 +28,14 @@ public class SocialActivity extends AppCCloudActivity {
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, msg);
         instance.startActivity(Intent.createChooser(intent, "共有する"));
+    }
+
+    public static void review(String msg){
+        Intent intent = new Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse("https://play.google.com/store/apps/developer?id=yuukiar.co&amp;hl=ja")
+        );
+        instance.startActivity(intent);
     }
 
     public static void sendScreen(String screenName) {
