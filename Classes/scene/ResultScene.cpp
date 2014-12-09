@@ -204,7 +204,10 @@ void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEv
     soundManager->playSE("se_select");
 
     //ツイート画面呼び出し
-    NativeLauncher::openTweetDialog("10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #mikumoburst");
+    DataStoreData tweetText = AppCCloudPlugin::Data::getDataStore("tweet_text");
+//    std::string str = tweetText.getText();
+    str = "10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #mikumoburst";
+    NativeLauncher::openTweetDialog(str.c_str());
 }
 
 void ResultScene::tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType)
