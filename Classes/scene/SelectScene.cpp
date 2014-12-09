@@ -1,5 +1,5 @@
 #include "scene/SelectScene.h"
-#include "scene/ScoreSceneLoader.h"
+#include "scene/MenuSceneLoader.h"
 #include "scene/BattleSceneLoader.h"
 #include "tools/GoogleAnalyticsTracker.h"
 #include "tools/AppCCloudPlugin.h"
@@ -311,7 +311,7 @@ void SelectScene::tappedMenuButton(Ref* pTarget, Control::EventType pControlEven
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
     
-        Scene* scene = ScoreSceneLoader::createScene();
+        Scene* scene = MenuSceneLoader::createScene();
         TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
         Director::getInstance()->replaceScene(trans);
 }

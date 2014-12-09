@@ -206,7 +206,7 @@ void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEv
     //ツイート画面呼び出し
     DataStoreData tweetText = AppCCloudPlugin::Data::getDataStore("tweet_text");
 //    std::string str = tweetText.getText();
-    str = "10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #mikumoburst";
+    std::string str = "10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #mikumoburst";
     NativeLauncher::openTweetDialog(str.c_str());
 }
 

@@ -1,5 +1,5 @@
-#ifndef __SCORE_SCENE_H__
-#define __SCORE_SCENE_H__
+#ifndef __MENU_SCENE_H__
+#define __MENU_SCENE_H__
 
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
@@ -9,22 +9,24 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace cocosbuilder;
 
-class ScoreScene : public Layer
+class MenuScene : public Layer
 , public CCBSelectorResolver
 , public NodeLoaderListener
 {
 public:
-    ScoreScene();
-    virtual ~ScoreScene();
+    MenuScene();
+    virtual ~MenuScene();
     
     virtual bool init();
     virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName);
     virtual Control::Handler onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName);
     virtual void onNodeLoaded(Node* pNode, NodeLoader* pNodeLoader);
     
-    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(ScoreScene, create);
+    CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MenuScene, create);
     
-    void tappedScoreButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedInformationButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedReviewButton(Ref* pTarget, Control::EventType pControlEventType);
+    void tappedCreditButton(Ref* pTarget, Control::EventType pControlEventType);
     void tappedBackButton(Ref* pTarget, Control::EventType pControlEventType);
     
     void pushBack(Ref* pSender);
@@ -38,4 +40,4 @@ private:
     };
 };
 
-#endif /* defined(__Score_SCENE_H__) */
+#endif /* defined(__MENU_SCENE_H__) */

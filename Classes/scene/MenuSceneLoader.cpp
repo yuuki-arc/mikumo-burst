@@ -1,9 +1,9 @@
-#include "scene/ScoreSceneLoader.h"
+#include "scene/MenuSceneLoader.h"
 
-Scene* ScoreSceneLoader::createScene()
+Scene* MenuSceneLoader::createScene()
 {
     cocosbuilder::NodeLoaderLibrary* nodeLoaderLibrary = cocosbuilder::NodeLoaderLibrary::newDefaultNodeLoaderLibrary();
-    nodeLoaderLibrary->registerNodeLoader("SelectSubScene", ScoreSceneLoader::loader());
+    nodeLoaderLibrary->registerNodeLoader("SelectSubScene", MenuSceneLoader::loader());
     
     cocosbuilder::CCBReader* ccbReader = new cocosbuilder::CCBReader(nodeLoaderLibrary);
     Node* node = ccbReader->readNodeGraphFromFile("SelectSubScene.ccbi");

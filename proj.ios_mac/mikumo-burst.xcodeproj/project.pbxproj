@@ -44,8 +44,8 @@
 		A5152C421A205B9E00C75DDE /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C2E1A205B9E00C75DDE /* HelloWorldScene.cpp */; };
 		A5152C431A205B9E00C75DDE /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C301A205B9E00C75DDE /* ResultScene.cpp */; };
 		A5152C441A205B9E00C75DDE /* ResultSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C321A205B9E00C75DDE /* ResultSceneLoader.cpp */; };
-		A5152C451A205B9E00C75DDE /* ScoreScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C341A205B9E00C75DDE /* ScoreScene.cpp */; };
-		A5152C461A205B9E00C75DDE /* ScoreSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C361A205B9E00C75DDE /* ScoreSceneLoader.cpp */; };
+		A5152C451A205B9E00C75DDE /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C341A205B9E00C75DDE /* MenuScene.cpp */; };
+		A5152C461A205B9E00C75DDE /* MenuSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C361A205B9E00C75DDE /* MenuSceneLoader.cpp */; };
 		A5152C471A205B9E00C75DDE /* SelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C381A205B9E00C75DDE /* SelectScene.cpp */; };
 		A5152C481A205B9E00C75DDE /* SelectSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C3A1A205B9E00C75DDE /* SelectSceneLoader.cpp */; };
 		A5152C491A205B9E00C75DDE /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C3C1A205B9E00C75DDE /* TitleScene.cpp */; };
@@ -360,10 +360,10 @@
 		A5152C311A205B9E00C75DDE /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultScene.h; sourceTree = "<group>"; };
 		A5152C321A205B9E00C75DDE /* ResultSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultSceneLoader.cpp; sourceTree = "<group>"; };
 		A5152C331A205B9E00C75DDE /* ResultSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultSceneLoader.h; sourceTree = "<group>"; };
-		A5152C341A205B9E00C75DDE /* ScoreScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreScene.cpp; sourceTree = "<group>"; };
-		A5152C351A205B9E00C75DDE /* ScoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreScene.h; sourceTree = "<group>"; };
-		A5152C361A205B9E00C75DDE /* ScoreSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreSceneLoader.cpp; sourceTree = "<group>"; };
-		A5152C371A205B9E00C75DDE /* ScoreSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreSceneLoader.h; sourceTree = "<group>"; };
+		A5152C341A205B9E00C75DDE /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
+		A5152C351A205B9E00C75DDE /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		A5152C361A205B9E00C75DDE /* MenuSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuSceneLoader.cpp; sourceTree = "<group>"; };
+		A5152C371A205B9E00C75DDE /* MenuSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSceneLoader.h; sourceTree = "<group>"; };
 		A5152C381A205B9E00C75DDE /* SelectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectScene.cpp; sourceTree = "<group>"; };
 		A5152C391A205B9E00C75DDE /* SelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectScene.h; sourceTree = "<group>"; };
 		A5152C3A1A205B9E00C75DDE /* SelectSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectSceneLoader.cpp; sourceTree = "<group>"; };
@@ -784,10 +784,10 @@
 				A5152C311A205B9E00C75DDE /* ResultScene.h */,
 				A5152C321A205B9E00C75DDE /* ResultSceneLoader.cpp */,
 				A5152C331A205B9E00C75DDE /* ResultSceneLoader.h */,
-				A5152C341A205B9E00C75DDE /* ScoreScene.cpp */,
-				A5152C351A205B9E00C75DDE /* ScoreScene.h */,
-				A5152C361A205B9E00C75DDE /* ScoreSceneLoader.cpp */,
-				A5152C371A205B9E00C75DDE /* ScoreSceneLoader.h */,
+				A5152C341A205B9E00C75DDE /* MenuScene.cpp */,
+				A5152C351A205B9E00C75DDE /* MenuScene.h */,
+				A5152C361A205B9E00C75DDE /* MenuSceneLoader.cpp */,
+				A5152C371A205B9E00C75DDE /* MenuSceneLoader.h */,
 				A5152C381A205B9E00C75DDE /* SelectScene.cpp */,
 				A5152C391A205B9E00C75DDE /* SelectScene.h */,
 				A5152C3A1A205B9E00C75DDE /* SelectSceneLoader.cpp */,
@@ -1326,7 +1326,7 @@
 				A5152C761A20710900C75DDE /* UserDataStore.cpp in Sources */,
 				A5152C6B1A206F4F00C75DDE /* GameManager.cpp in Sources */,
 				A5152C401A205B9E00C75DDE /* BattleScene.cpp in Sources */,
-				A5152C461A205B9E00C75DDE /* ScoreSceneLoader.cpp in Sources */,
+				A5152C461A205B9E00C75DDE /* MenuSceneLoader.cpp in Sources */,
 				A5152C411A205B9E00C75DDE /* BattleSceneLoader.cpp in Sources */,
 				A5152C431A205B9E00C75DDE /* ResultScene.cpp in Sources */,
 				A5152C4A1A205B9E00C75DDE /* TitleSceneLoader.cpp in Sources */,
@@ -1336,7 +1336,7 @@
 				A5152C5C1A206E3000C75DDE /* EffectManager.cpp in Sources */,
 				A5152C591A206E3000C75DDE /* EnemyBossCharacter.cpp in Sources */,
 				A5152C481A205B9E00C75DDE /* SelectSceneLoader.cpp in Sources */,
-				A5152C451A205B9E00C75DDE /* ScoreScene.cpp in Sources */,
+				A5152C451A205B9E00C75DDE /* MenuScene.cpp in Sources */,
 				A5152C441A205B9E00C75DDE /* ResultSceneLoader.cpp in Sources */,
 				A5152C491A205B9E00C75DDE /* TitleScene.cpp in Sources */,
 				A50544111A2078CB00BDD5C7 /* PlayerBattleInfo.cpp in Sources */,
