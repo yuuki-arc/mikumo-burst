@@ -238,9 +238,10 @@ void SelectScene::tappedBattleButton(Ref* pTarget, Control::EventType pControlEv
     auto store = UserDataStore::getInstance();
     StringMap rankList = store->getRankList()[0];
     std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
-    CCLOG("charaSelect = %s", (char*)GameManager::getInstance()->getCharaSelect());
+    CCLOG("charaSelect = %d", GameManager::getInstance()->getCharaSelect());
     CCLOG("key = %s", key.c_str());
     CCLOG("rankListSize = %lu", rankList.size());
+    CCLOG("battleRank = %s", rankList[key].c_str());
     int battleRank = std::stoi(rankList[key]);
     GameManager::getInstance()->setBattleRank(battleRank);
     

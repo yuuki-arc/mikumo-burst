@@ -192,8 +192,9 @@ public:
     static const char* APPC_MEDIA_KEY(){return __APPC_MEDIA_KEY;}
     static const int LEADERBOARD_BATTLE_COUNT = __LEADERBOARD_BATTLE_COUNT;
     static const int LEADERBOARD_TOTAL_RANK   = __LEADERBOARD_TOTAL_RANK;
-    static const int LEADERBOARD_TOTAL_SCORE  = __LEADERBOARD_TOTAL_SCORE;
+    static const int LEADERBOARD_TOTAL_TAP    = __LEADERBOARD_TOTAL_TAP;
     static const int LEADERBOARD_TOTAL_BURST  = __LEADERBOARD_TOTAL_BURST;
+    static const int LEADERBOARD_TOTAL_SCORE  = __LEADERBOARD_TOTAL_SCORE;
     static const int LEADERBOARD_RANK_CONOHA  = __LEADERBOARD_RANK_CONOHA;
     static const int LEADERBOARD_RANK_ANZU    = __LEADERBOARD_RANK_ANZU;
 #else
@@ -221,7 +222,7 @@ public:
         static const char* TOTAL_RANK(){return "total_rank";}
         static const char* RANK_LIST(){return "rank_list";}
         static const char* TOTAL_SCORE(){return "total_score";}
-        static const char* TOTAL_HIT(){return "total_hit";}
+        static const char* TOTAL_TAP(){return "total_tap";}
         static const char* TOTAL_BURST(){return "total_burst";}
     };
 };

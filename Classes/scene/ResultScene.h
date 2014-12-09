@@ -40,9 +40,9 @@ private:
         Font,
     };
     
-    void saveData(int battleRank, StringMapVector charaRankList, int score, int burstCount);
+    void saveData(int battleRank, StringMapVector charaRankList, int tap, int burstCount, int score);
     void saveGamers();
-    void displayInfo(int battleRank, StringMapVector charaRankList, int score, int burstCount);
+    void displayInfo(int battleRank, StringMapVector charaRankList, int tap, int burstCount, int score);
 };
 
 #endif /* defined(__Result_SCENE_H__) */

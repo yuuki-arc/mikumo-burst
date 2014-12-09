@@ -143,15 +143,15 @@ int UserDataStore::getTotalScore()
     return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_SCORE());
 }
 
-void UserDataStore::setTotalHit(int value)
+void UserDataStore::setTotalTap(int value)
 {
-    userDefault->setIntegerForKey(Constant::UserDefaultKey::TOTAL_HIT(), value);
+    userDefault->setIntegerForKey(Constant::UserDefaultKey::TOTAL_TAP(), value);
     userDefault->flush();
 }
 
-int UserDataStore::getTotalHit()
+int UserDataStore::getTotalTap()
 {
-    return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_HIT());
+    return userDefault->getIntegerForKey(Constant::UserDefaultKey::TOTAL_TAP());
 }
 
 void UserDataStore::setTotalBurst(int value)

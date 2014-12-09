@@ -57,20 +57,21 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // データ取得
     int battleRank = GameManager::getInstance()->getBattleRank();
     StringMapVector charaRankList = UserDataStore::getInstance()->getRankList();
-    int score = GameManager::getInstance()->battleDamagePoint;
+    int tap = GameManager::getInstance()->battleDamagePoint;
     int burstCount = GameManager::getInstance()->burstCount;
+    int score = tap * 1000;//+ボーナス
     
     // データ保存（アプリ内）
-    saveData(battleRank, charaRankList, score, burstCount);
+    saveData(battleRank, charaRankList, tap, burstCount, score);
 
     // データ保存（Gamers内）
     saveGamers();
     
     // スコア表示
-    displayInfo(battleRank, charaRankList, score, burstCount);
+    displayInfo(battleRank, charaRankList, tap, burstCount, score);
 }
 
-void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int score, int burstCount)
+void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int tap, int burstCount, int score)
 {
     auto store = UserDataStore::getInstance();
     
@@ -96,11 +97,14 @@ void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int sc
     }
     store->setTotalRank(totalRank);
 
-    // トータルスコア
-    store->setTotalScore(store->getTotalScore() + score);
+    // トータルタップ
+    store->setTotalTap(store->getTotalTap() + tap);
     
     // トータルバースト
     store->setTotalBurst(store->getTotalBurst() + burstCount);
+
+    // トータルスコア
+    store->setTotalScore(store->getTotalScore() + score);
 };
 
 void ResultScene::saveGamers()
@@ -109,8 +113,9 @@ void ResultScene::saveGamers()
     
     AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_BATTLE_COUNT, store->getBattleCount());
     AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_RANK, store->getTotalRank());
-    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_SCORE, store->getTotalScore());
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_TAP, store->getTotalTap());
     AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_BURST, store->getTotalBurst());
+    AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_TOTAL_SCORE, store->getTotalScore());
     
     StringMap charaRankList = store->getRankList()[0];
     std::string key;
@@ -120,7 +125,7 @@ void ResultScene::saveGamers()
     AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_RANK_ANZU, std::stoi(charaRankList[key]));
 };
 
-void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int score, int burstCount)
+void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int tap, int burstCount, int score)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -156,7 +161,7 @@ void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int
     
     relativeLabelHeight -= .6f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("タップ: " + std::to_string(score) + " TAP", point);
+    resultLabel = TextCreator::create("タップ: " + std::to_string(tap) + " TAP", point);
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
     
@@ -166,6 +171,12 @@ void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
 
+    relativeLabelHeight -= .6f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("スコア: " + std::to_string(score) + " pt", point);
+    resultLabel->setScale(BM_FONT_SIZE64(20));
+    this->addChild(resultLabel, ZOrder::Font);
+    
     if (GameManager::getInstance()->isBattleModeNormal())
     {
         // 通常バトル時はキャラクターランクを表示

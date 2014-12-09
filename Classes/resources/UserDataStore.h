@@ -37,8 +37,8 @@ public:
     void setTotalScore(int value);
     int getTotalScore();
 
-    void setTotalHit(int value);
-    int getTotalHit();
+    void setTotalTap(int value);
+    int getTotalTap();
     
     void setTotalBurst(int value);
     int getTotalBurst();
