@@ -42,21 +42,21 @@ bool GameManager::isScreenModeHd()
 
 void GameManager::setCharaSelect(Constant::CharaSelect charaSelect)
 {
-    this->charaSelect = charaSelect;
+    getInstance()->charaSelect = charaSelect;
 }
 
 Constant::CharaSelect GameManager::getCharaSelect()
 {
     Constant::CharaSelect charaSelect;
-    switch (this->battleMode) {
+    switch (getInstance()->battleMode) {
         case BattleModeNormal:
-            charaSelect = this->charaSelect;
+            charaSelect = getInstance()->charaSelect;
             break;
         case BattleModeBoss:
             charaSelect = Constant::CharaSelect::VsBoss;
             break;
         default:
-            charaSelect = this->charaSelect;
+            charaSelect = getInstance()->charaSelect;
             break;
     }
     return charaSelect;
