@@ -216,6 +216,7 @@ void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEv
 
     //ツイート画面呼び出し
     const string DATAKEY_STR("tweet_text");
+
     std::string strSrc = "10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #mikumoburst";
     AppCCloudPlugin::Data::setDataStore(DATAKEY_STR, strSrc);
     
@@ -253,46 +254,4 @@ void ResultScene::tappedMoreGamesButton(Ref* pTarget, Control::EventType pContro
     
     // 広告リスト型表示
     AppCCloudPlugin::Ad::openAdListView();
-
-//    //    int index = arc4random() % 2;
-//    int index = arc4random() % 4;
-//    switch(index){
-//        case 0:
-//            // マッチアップバナー表示（左上）
-//            AppCCloudPlugin::Ad::showMatchAppView(AppCCloudPlugin::LEFT, AppCCloudPlugin::TOP);
-//            break;
-//        case 1:
-//            // マッチアップバナー表示 (右上)
-//            AppCCloudPlugin::Ad::showMatchAppView(AppCCloudPlugin::RIGHT, AppCCloudPlugin::TOP);
-//            break;
-//        case 2:
-//            // マッチアップバナー表示 (右下)
-//            AppCCloudPlugin::Ad::showMatchAppView(AppCCloudPlugin::RIGHT, AppCCloudPlugin::BOTTOM);
-//            break;
-//        case 3:
-//            // マッチアップバナー表示 (左下)
-//            AppCCloudPlugin::Ad::showMatchAppView(AppCCloudPlugin::LEFT, AppCCloudPlugin::BOTTOM);
-//            break;
-//        default:
-//            // マッチアップバナー消去
-//            AppCCloudPlugin::Ad::hideMatchAppView();
-//            break;
-//    }
-    
-//    // シンプル型表示
-//    int index = arc4random() % 2;
-//    switch(index){
-//        case 0:
-//            // シンプル表示（上側）
-//            AppCCloudPlugin::Ad::showSimpleView(AppCCloudPlugin::TOP);
-//            break;
-//        case 1:
-//            // シンプル表示 (下側)
-//            AppCCloudPlugin::Ad::showSimpleView(AppCCloudPlugin::BOTTOM);
-//            break;
-//        default:
-//            // シンプル消去
-//            AppCCloudPlugin::Ad::hideSimpleView();
-//            break;
-//    }
 }

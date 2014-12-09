@@ -97,7 +97,7 @@ bool BattleScene::init()
     this->addChild(label, ZOrder::Font);
     
     // ゲーム開始アニメーション
-    float marginX = label->getContentSize().width;
+    float marginX = label->getContentSize().width * 2;
     float x = origin.x + visibleSize.width / 2;
     float y = origin.y + visibleSize.height / 2;
     label->setPosition(Point(x+marginX,y));
@@ -228,14 +228,14 @@ void BattleScene::initStatusLayer()
     enemyHpBar->setPercentage(enemyData->getHpPercentage());
     hpFrame->addChild(enemyHpBar);
 
-    // ランク
-    std::string battleRank = std::to_string(GameManager::getInstance()->getBattleRank());
-    Label* rankLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), battleRank);
-    rankLabel->setAnchorPoint(Point(0.5, 0.5));
-    rankLabel->setPosition(Point(origin.x + visibleSize.width * 1.5 / 10,
-                                 origin.y + visibleSize.height * 0.5 / 10));
-    rankLabel->getTexture()->setAliasTexParameters();
-    this->addChild(rankLabel, ZOrder::Font);
+//    // ランク
+//    std::string battleRank = std::to_string(GameManager::getInstance()->getBattleRank());
+//    Label* rankLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), battleRank);
+//    rankLabel->setAnchorPoint(Point(0.5, 0.5));
+//    rankLabel->setPosition(Point(origin.x + visibleSize.width * 1.5 / 10,
+//                                 origin.y + visibleSize.height * 0.5 / 10));
+//    rankLabel->getTexture()->setAliasTexParameters();
+//    this->addChild(rankLabel, ZOrder::Font);
     
     // BP
     Sprite* bpFrame = Sprite::createWithSpriteFrameName("ep_frame.png");
@@ -601,7 +601,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     CCLOG("onTouchBegan-playerBp:%d / %f%%",playerInfo->getBp(), playerInfo->getBpPercentage());
     
     // ダメージ値生成
-    std::string damageStr = StringUtils::toString(damage) + (burstTime > 0 ? "BURST!!" : "TAP!");
+    std::string damageStr = (burstTime > 0 ? "BURST!!" : "TAP!");
     auto damageNumSprite = Label::createWithBMFont(Constant::NORMAL_FONT(), damageStr);
     damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
     damageNumSprite->setAlignment(TextHAlignment::CENTER);
