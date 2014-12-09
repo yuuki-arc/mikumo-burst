@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.3.1</string>
         <key>fileName</key>
-        <string>/Users/usr0600205/src/github.com/yuuki-arc/Fragment_of_Eternity/AppResources/TexturePacker/misc/misc.tps</string>
+        <string>/Users/usr0600205/src/github.com/yuuki-arc/mikumo-burst/AppResources/TexturePacker/misc/misc.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -189,7 +189,6 @@
         <array>
             <filename>hp_frame.png</filename>
             <filename>hp.png</filename>
-            <filename>touchEffect.png</filename>
             <filename>ep_frame.png</filename>
             <filename>ep.png</filename>
             <filename>menu_window.png</filename>

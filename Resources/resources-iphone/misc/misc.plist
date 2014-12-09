@@ -7,54 +7,54 @@
             <key>ep.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{284,29},{210,25}}</string>
+                <string>{{284,62},{210,28}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{210,25}}</string>
+                <string>{{0,0},{210,28}}</string>
                 <key>sourceSize</key>
-                <string>{210,25}</string>
+                <string>{210,28}</string>
             </dict>
             <key>ep_frame.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{284,2},{210,25}}</string>
+                <string>{{284,32},{210,28}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{210,25}}</string>
+                <string>{{0,0},{210,28}}</string>
                 <key>sourceSize</key>
-                <string>{210,25}</string>
+                <string>{210,28}</string>
             </dict>
             <key>hp.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{284,29},{210,25}}</string>
+                <string>{{284,2},{210,28}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{210,25}}</string>
+                <string>{{0,0},{210,28}}</string>
                 <key>sourceSize</key>
-                <string>{210,25}</string>
+                <string>{210,28}</string>
             </dict>
             <key>hp_frame.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{284,2},{210,25}}</string>
+                <string>{{284,32},{210,28}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{210,25}}</string>
+                <string>{{0,0},{210,28}}</string>
                 <key>sourceSize</key>
-                <string>{210,25}</string>
+                <string>{210,28}</string>
             </dict>
             <key>menu_window.png</key>
             <dict>
@@ -69,19 +69,6 @@
                 <key>sourceSize</key>
                 <string>{280,420}</string>
             </dict>
-            <key>touchEffect.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,424},{86,86}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{5,5},{86,86}}</string>
-                <key>sourceSize</key>
-                <string>{96,96}</string>
-            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -92,7 +79,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cc6f1dbfe72b78bf00c414ae903902b8:2e8408ed3df39117d5cfdd82380ae7d9:c0c053a3aa7d34b5b1daf0abf4de0606$</string>
+            <string>$TexturePacker:SmartUpdate:11c2439e452ee0b4675d9267b9ef6488:8815457e5c0227c0744926065eb012e8:c0c053a3aa7d34b5b1daf0abf4de0606$</string>
             <key>textureFileName</key>
             <string>misc.png</string>
         </dict>
