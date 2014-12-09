@@ -71,7 +71,7 @@ void SelectScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
  
     // 項目初期値
     GameManager::getInstance()->setBattleMode(BattleModeNormal);
-    if (GameManager::getInstance()->getCharaSelect())
+    if (!GameManager::getInstance()->getCharaSelect())
     {
         GameManager::getInstance()->setCharaSelect(Constant::Conoha);
     }
