@@ -26,8 +26,12 @@ void NativeLauncher::openTweetDialog(const char *$tweet){
     tweet = nil;
 }
 
+void NativeLauncher::openUrl(const char *$url){
+    NSURL *siteUrl = [NSURL URLWithString:[NSString stringWithUTF8String:$url]];
+    [[UIApplication sharedApplication] openURL:siteUrl];
+}
+
 void NativeLauncher::openStoreReview(const char *$url){
-    //レビュー誘導のURL
     NSURL *reviewUrl = [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", @"dummy"]];
     [[UIApplication sharedApplication] openURL:reviewUrl];
 }

@@ -30,7 +30,15 @@ public class SocialActivity extends AppCCloudActivity {
         instance.startActivity(Intent.createChooser(intent, "共有する"));
     }
 
-    public static void review(String msg){
+    public static void openUrl(String url){
+        Intent intent = new Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse(url)
+        );
+        instance.startActivity(intent);
+    }
+
+    public static void review(String url){
         Intent intent = new Intent(
             Intent.ACTION_VIEW,
             Uri.parse("https://play.google.com/store/apps/developer?id=yuukiar.co&amp;hl=ja")

@@ -156,7 +156,7 @@ void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int
     
     relativeLabelHeight -= .6f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("アタック: " + std::to_string(score) + " HIT", point);
+    resultLabel = TextCreator::create("タップ: " + std::to_string(score) + " TAP", point);
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
     
@@ -204,9 +204,12 @@ void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEv
     soundManager->playSE("se_select");
 
     //ツイート画面呼び出し
-    DataStoreData tweetText = AppCCloudPlugin::Data::getDataStore("tweet_text");
-//    std::string str = tweetText.getText();
-    std::string str = "10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #mikumoburst";
+    const string DATAKEY_STR("tweet_text");
+    std::string strSrc = "10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #mikumoburst";
+    AppCCloudPlugin::Data::setDataStore(DATAKEY_STR, strSrc);
+    
+    DataStoreData tweetText = AppCCloudPlugin::Data::getDataStore(DATAKEY_STR);
+    std::string str = tweetText.getText();
     NativeLauncher::openTweetDialog(str.c_str());
 }
 

@@ -601,7 +601,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     CCLOG("onTouchBegan-playerBp:%d / %f%%",playerInfo->getBp(), playerInfo->getBpPercentage());
     
     // ダメージ値生成
-    std::string damageStr = StringUtils::toString(damage) + " HIT";
+    std::string damageStr = StringUtils::toString(damage) + (burstTime > 0 ? "BURST!!" : "TAP!");
     auto damageNumSprite = Label::createWithBMFont(Constant::NORMAL_FONT(), damageStr);
     damageNumSprite->setPosition(effectSprite->getContentSize().width / 2, effectSprite->getContentSize().height / 2);
     damageNumSprite->setAlignment(TextHAlignment::CENTER);
