@@ -11,6 +11,7 @@
 //#include "actor/EnemyTargetter.h"
 #include "resources/EffectManager.h"
 #include "resources/SoundManager.h"
+#include "factory/TextCreator.h"
 #include "factory/BattleActionCreator.h"
 #include <random>
 
@@ -91,7 +92,7 @@ bool BattleScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
-    Label* label = Label::createWithBMFont(Constant::NORMAL_FONT(), "BATTLE START!");
+    Label* label = TextCreator::create("BATTLE START!", Point(0,0));
     label->setAnchorPoint(Point(0.5, 0.5));
     label->getTexture()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
@@ -206,10 +207,11 @@ void BattleScene::initStatusLayer()
     Point origin = Director::getInstance()->getVisibleOrigin();
     
     // 時間制限
-    gameTimeLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), StringUtils::toString(gameTime));
+    Point point;
+    point = Point(origin.x + visibleSize.width * 9 / 10,
+                  origin.y + visibleSize.height * 9.5 / 10);
+    gameTimeLabel = TextCreator::create(StringUtils::toString(gameTime), point);
     gameTimeLabel->setAnchorPoint(Point(0.5, 0.5));
-    gameTimeLabel->setPosition(Point(origin.x + visibleSize.width * 9 / 10,
-                                     origin.y + visibleSize.height * 9.5 / 10));
     gameTimeLabel->getTexture()->setAliasTexParameters();
     this->addChild(gameTimeLabel, ZOrder::Font);
     
@@ -230,10 +232,10 @@ void BattleScene::initStatusLayer()
 
 //    // ランク
 //    std::string battleRank = std::to_string(GameManager::getInstance()->getBattleRank());
-//    Label* rankLabel = Label::createWithBMFont(Constant::NORMAL_FONT(), battleRank);
+//    point = Point(origin.x + visibleSize.width * 1.5 / 10,
+//                  origin.y + visibleSize.height * 0.5 / 10);
+//    Label* rankLabel = TextCreator::create(battleRank, point);
 //    rankLabel->setAnchorPoint(Point(0.5, 0.5));
-//    rankLabel->setPosition(Point(origin.x + visibleSize.width * 1.5 / 10,
-//                                 origin.y + visibleSize.height * 0.5 / 10));
 //    rankLabel->getTexture()->setAliasTexParameters();
 //    this->addChild(rankLabel, ZOrder::Font);
     
