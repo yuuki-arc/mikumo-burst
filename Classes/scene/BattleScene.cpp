@@ -94,6 +94,7 @@ bool BattleScene::init()
     
     Label* label = TextCreator::create("BATTLE START!", Point(0,0));
     label->setAnchorPoint(Point(0.5, 0.5));
+    label->setScale(BM_FONT_SIZE64(32));
     label->getTexture()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
     
@@ -209,16 +210,17 @@ void BattleScene::initStatusLayer()
     // 時間制限
     Point point;
     point = Point(origin.x + visibleSize.width * 9 / 10,
-                  origin.y + visibleSize.height * 9.5 / 10);
+                  origin.y + visibleSize.height * 9 / 10);
     gameTimeLabel = TextCreator::create(StringUtils::toString(gameTime), point);
     gameTimeLabel->setAnchorPoint(Point(0.5, 0.5));
+    gameTimeLabel->setScale(BM_FONT_SIZE64(32));
     gameTimeLabel->getTexture()->setAliasTexParameters();
     this->addChild(gameTimeLabel, ZOrder::Font);
     
     // HP
     Sprite* hpFrame = Sprite::createWithSpriteFrameName("hp_frame.png");
     hpFrame->setPosition(Point(origin.x + visibleSize.width / 2,
-                               origin.y + visibleSize.height * 9.5 / 10));
+                               origin.y + visibleSize.height * 9 / 10));
     addChild(hpFrame, ZOrder::EnemyHp);
     
     Sprite* hp = Sprite::createWithSpriteFrameName("hp.png");
@@ -242,7 +244,7 @@ void BattleScene::initStatusLayer()
     // BP
     Sprite* bpFrame = Sprite::createWithSpriteFrameName("ep_frame.png");
     bpFrame->setPosition(Point(origin.x + visibleSize.width * 6 / 10,
-                               origin.y + visibleSize.height * 0.5 / 10));
+                               origin.y + visibleSize.height * 1 / 10));
     addChild(bpFrame, ZOrder::PlayerBp);
     
     Sprite* bp = Sprite::createWithSpriteFrameName("ep.png");

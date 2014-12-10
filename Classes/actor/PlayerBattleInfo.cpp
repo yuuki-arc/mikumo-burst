@@ -36,8 +36,8 @@ PlayerBattleInfo* PlayerBattleInfo::create(Constant::CharaSelect charaSelect)
         // キャラクターアイコン
         list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaIcon);
         fileName = StringUtils::format("%s.png", list[charaSelect].c_str());
-        Point position = Point(origin.x + visibleSize.width * 1 / 10,
-                               origin.y + visibleSize.height * 0.5 / 10);
+        Point position = Point(origin.x + visibleSize.width * 1.5 / 10,
+                               origin.y + visibleSize.height * 1 / 10);
         creator->init(CharacterScale::NORMAL);
         info->setIconImage(creator->create(fileName, position));
         
@@ -77,5 +77,5 @@ void PlayerBattleInfo::incrementBurstCount()
 
 void PlayerBattleInfo::upBpGauge()
 {
-    bp += Constant::BP_INCREMENT + floor(rank / 10);
+    bp += Constant::BP_INCREMENT + floor(rank / 20);
 }

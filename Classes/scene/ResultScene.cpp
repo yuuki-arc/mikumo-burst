@@ -141,9 +141,9 @@ void ResultScene::displayInfo(StringMapVector charaRankList, int battleRank, int
     // メニュー表示
     Sprite* windowSprite = Sprite::createWithSpriteFrameName("menu_window.png");
     windowSprite->setPosition(Point(origin.x + visibleSize.width / 2,
-                                    origin.y + visibleSize.height * 48 / 100));
+                                    origin.y + visibleSize.height * 56 / 100));
     windowSprite->setScale(windowSprite->getScale(),
-                           windowSprite->getScale() * 6 / 10);
+                           windowSprite->getScale() * 4 / 10);
     addChild(windowSprite, ZOrder::Menu);
 
     // スコア表示
@@ -158,61 +158,43 @@ void ResultScene::displayInfo(StringMapVector charaRankList, int battleRank, int
     resultLabel->setScale(BM_FONT_SIZE64(16));
     this->addChild(resultLabel, ZOrder::Font);
 
-    relativeLabelHeight = 6.5f;
-    if (GameManager::getInstance()->isBattleModeBoss())
-    {
-        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create("トータルランク: " + std::to_string(battleRank), point);
-        resultLabel->setScale(BM_FONT_SIZE64(20));
-        this->addChild(resultLabel, ZOrder::Font);
-    }
-    
-    relativeLabelHeight -= .6f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("タップ: " + std::to_string(tap) + " TAP", point);
-    resultLabel->setScale(BM_FONT_SIZE64(20));
-    this->addChild(resultLabel, ZOrder::Font);
-    
-    relativeLabelHeight -= .6f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("バースト: " + std::to_string(burstCount) + " 回", point);
-    resultLabel->setScale(BM_FONT_SIZE64(20));
-    this->addChild(resultLabel, ZOrder::Font);
-
-    relativeLabelHeight -= .6f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("スコア: " + std::to_string(score) + " pt", point);
-    resultLabel->setScale(BM_FONT_SIZE64(20));
-    this->addChild(resultLabel, ZOrder::Font);
-    
+    std::string rankStr;
     if (GameManager::getInstance()->isBattleModeNormal())
     {
         // 通常バトル時はキャラクターランクを表示
         std::string charaName = Constant::charaName(GameManager::getInstance()->getCharaSelect());
         std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
         std::string charaRank = charaRankList[0][key];
-        
-        relativeLabelHeight -= .6f;
-        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create(charaName + "のランク: " + charaRank, point);
-        resultLabel->setScale(BM_FONT_SIZE64(20));
-        this->addChild(resultLabel, ZOrder::Font);
-        
-        relativeLabelHeight -= 1.0f;
-        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create("ランク+1 アップ !", point);
-        resultLabel->setScale(BM_FONT_SIZE64(32));
-        this->addChild(resultLabel, ZOrder::Font);
+        rankStr = charaName + "のランク: " + charaRank;
     }
     else
     {
-        // ボスバトル時は固定テキストを表示
-        relativeLabelHeight -= 1.0f;
-        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-        resultLabel = TextCreator::create("ボスに挑戦した !", point);
-        resultLabel->setScale(BM_FONT_SIZE64(32));
-        this->addChild(resultLabel, ZOrder::Font);
+        rankStr = "トータルランク: " + std::to_string(battleRank);
     }
+    relativeLabelHeight = 6.7f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create(rankStr, point);
+    resultLabel->setScale(BM_FONT_SIZE64(20));
+    this->addChild(resultLabel, ZOrder::Font);
+
+    relativeLabelHeight -= .7f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("タップ: " + std::to_string(tap) + " 回", point);
+    resultLabel->setScale(BM_FONT_SIZE64(20));
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    relativeLabelHeight -= .4f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("バースト: " + std::to_string(burstCount) + " 回", point);
+    resultLabel->setScale(BM_FONT_SIZE64(20));
+    this->addChild(resultLabel, ZOrder::Font);
+
+    relativeLabelHeight -= .7f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("スコア: " + std::to_string(score) + " pt", point);
+    resultLabel->setScale(BM_FONT_SIZE64(20));
+    this->addChild(resultLabel, ZOrder::Font);
+    
 };
 
 
