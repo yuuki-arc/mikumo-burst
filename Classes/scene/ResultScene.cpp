@@ -63,7 +63,7 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     this->battleRank = GameManager::getInstance()->getBattleRank();
     this->tap = GameManager::getInstance()->battleDamagePoint;
     this->burstCount = GameManager::getInstance()->burstCount;
-    this->score = tap * 1000;//+ボーナス
+    this->score = tap * 100;//+ボーナス
     
     // データ保存（アプリ内）
     saveData(charaRankList, this->battleRank, this->tap, this->burstCount, this->score);
@@ -152,7 +152,7 @@ void ResultScene::displayInfo(StringMapVector charaRankList, int battleRank, int
     Label* resultLabel;
     Point point;
     
-    relativeLabelHeight = 8.0f;
+    relativeLabelHeight = 7.8f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create("BATTLE RESULT", point, Constant::LARGE_FONT());
     resultLabel->setScale(BM_FONT_SIZE64(16));
@@ -171,7 +171,7 @@ void ResultScene::displayInfo(StringMapVector charaRankList, int battleRank, int
     {
         rankStr = "トータルランク: " + std::to_string(battleRank);
     }
-    relativeLabelHeight = 6.7f;
+    relativeLabelHeight = 6.5f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create(rankStr, point);
     resultLabel->setScale(BM_FONT_SIZE64(20));
@@ -211,8 +211,8 @@ void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEv
     std::string strSrc = Constant::TWEET_TEXT_TEMPLATE();
     AppCCloudPlugin::Data::setDataStore(DATAKEY_STR, strSrc);
     
-    DataStoreData tweetText = AppCCloudPlugin::Data::getDataStore(DATAKEY_STR);
-    std::string str = tweetText.getText();
+//    DataStoreData tweetText = AppCCloudPlugin::Data::getDataStore(DATAKEY_STR);
+//    std::string str = tweetText.getText();
     std::string strDest = StringUtils::format(strSrc.c_str(),
                                               Constant::charaName(GameManager::getInstance()->getCharaSelect()),
                                               this->battleRank,
