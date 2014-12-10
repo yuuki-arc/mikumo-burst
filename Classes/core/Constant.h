@@ -45,7 +45,7 @@ public:
         switch (charaSelect){
             case Conoha: return "このは"; break;
             case Anzu:   return "あんず"; break;
-            default:     return "";      break;
+            default:     return "このは＆あんず"; break;
         }
     };
     
@@ -222,6 +222,10 @@ public:
         static const char* TOTAL_TAP(){return "total_tap";}
         static const char* TOTAL_BURST(){return "total_burst";}
     };
+    
+    static const char* TWEET_TEXT_TEMPLATE(){
+        return "%s【ランク %d｜タップ %d 回｜バースト %d 回｜スコア %d pt】 http://yuukiar.co/app/mikumo-burst #みくもバースト！ #マスコットアプリ文化祭";
+    }
 };
 
 #endif /* defined(__mikumoburst__Constant__) */

@@ -10,6 +10,10 @@
 #include "tools/NativeLauncher.h"
 
 ResultScene::ResultScene()
+: battleRank(0)
+, tap(0)
+, burstCount(0)
+, score(0)
 {
 }
 
@@ -55,23 +59,23 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     soundManager->preloadSE("se_select");
 
     // データ取得
-    int battleRank = GameManager::getInstance()->getBattleRank();
     StringMapVector charaRankList = UserDataStore::getInstance()->getRankList();
-    int tap = GameManager::getInstance()->battleDamagePoint;
-    int burstCount = GameManager::getInstance()->burstCount;
-    int score = tap * 1000;//+ボーナス
+    this->battleRank = GameManager::getInstance()->getBattleRank();
+    this->tap = GameManager::getInstance()->battleDamagePoint;
+    this->burstCount = GameManager::getInstance()->burstCount;
+    this->score = tap * 1000;//+ボーナス
     
     // データ保存（アプリ内）
-    saveData(battleRank, charaRankList, tap, burstCount, score);
+    saveData(charaRankList, this->battleRank, this->tap, this->burstCount, this->score);
 
     // データ保存（Gamers内）
     saveGamers();
     
     // スコア表示
-    displayInfo(battleRank, charaRankList, tap, burstCount, score);
+    displayInfo(charaRankList, this->battleRank, this->tap, this->burstCount, this->score);
 }
 
-void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int tap, int burstCount, int score)
+void ResultScene::saveData(StringMapVector charaRankList, int battleRank, int tap, int burstCount, int score)
 {
     auto store = UserDataStore::getInstance();
     
@@ -79,11 +83,12 @@ void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int ta
     store->setBattleCount(store->getBattleCount() + 1);
     
     // キャラクターランク
+    std::string charaRank;
     if (GameManager::getInstance()->isBattleModeNormal())
     {
         // 通常バトル時のみランクアップする
         std::string charaRankKey = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
-        std::string charaRank = charaRankList[0][charaRankKey];
+        charaRank = charaRankList[0][charaRankKey];
         charaRankList[0][charaRankKey] = std::to_string(std::stoi(charaRankList[0][charaRankKey]) + 1);
     }
     store->setRankList(charaRankList);
@@ -96,7 +101,7 @@ void ResultScene::saveData(int battleRank, StringMapVector charaRankList, int ta
         totalRank += std::stoi(charaRankList[0][totalRankKey]);
     }
     store->setTotalRank(totalRank);
-
+    
     // トータルタップ
     store->setTotalTap(store->getTotalTap() + tap);
     
@@ -125,7 +130,7 @@ void ResultScene::saveGamers()
     AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_RANK_ANZU, std::stoi(charaRankList[key]));
 };
 
-void ResultScene::displayInfo(int battleRank, StringMapVector charaRankList, int tap, int burstCount, int score)
+void ResultScene::displayInfo(StringMapVector charaRankList, int battleRank, int tap, int burstCount, int score)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -217,12 +222,21 @@ void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEv
     //ツイート画面呼び出し
     const string DATAKEY_STR("tweet_text");
 
-    std::string strSrc = "10sec BURST!【ランク 27｜スコア 9,999pt｜ブレイク 1回】 http://~ #mikumoburst";
+    //ツイートテンプレート登録
+    std::string strSrc = Constant::TWEET_TEXT_TEMPLATE();
     AppCCloudPlugin::Data::setDataStore(DATAKEY_STR, strSrc);
     
     DataStoreData tweetText = AppCCloudPlugin::Data::getDataStore(DATAKEY_STR);
     std::string str = tweetText.getText();
-    NativeLauncher::openTweetDialog(str.c_str());
+    std::string strDest = StringUtils::format(strSrc.c_str(),
+                                              Constant::charaName(GameManager::getInstance()->getCharaSelect()),
+                                              this->battleRank,
+                                              this->tap,
+                                              this->burstCount,
+                                              this->score
+                                              );
+
+    NativeLauncher::openTweetDialog(strDest.c_str());
 }
 
 void ResultScene::tappedSelectButton(Ref* pTarget, Control::EventType pControlEventType)
