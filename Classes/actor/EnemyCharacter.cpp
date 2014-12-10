@@ -20,15 +20,17 @@ EnemyCharacter::~EnemyCharacter()
 void EnemyCharacter::createWithImage()
 {
     int hp;
+    int rank10UpBase = floor(GameManager::getInstance()->getBattleRank() / 10);
+    
     if (GameManager::getInstance()->isBattleModeNormal())
     {
         hp = Constant::DEFAULT_ENEMY_HP +
-             GameManager::getInstance()->getBattleRank() * Constant::HP_RANK_UP_INCREMENT;
+             rank10UpBase * Constant::HP_RANK_10_UP_INCREMENT;
     }
     else
     {
         hp = Constant::DEFAULT_ENEMY_BOSS_HP +
-             GameManager::getInstance()->getBattleRank() * Constant::HP_RANK_UP_BOSS_INCREMENT;
+             rank10UpBase * Constant::HP_RANK_10_UP_BOSS_INCREMENT;
     }
     this->setMaxHp(hp);
     this->setHp(hp);

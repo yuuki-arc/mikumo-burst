@@ -14,12 +14,12 @@ public:
     static const int DEFAULT_ENEMY_HP = 100;
     static const int DEFAULT_ENEMY_BOSS_HP = 1000;
     static const int BASE_DAMAGE_NORMAL = 1;
-    static const int BASE_DAMAGE_BURST = 4;
-    static const int DAMAGE_RANK_UP_INCREMENT = 2;
-    static const int HP_RANK_UP_INCREMENT = 10;
-    static const int HP_RANK_UP_BOSS_INCREMENT = 100;
+    static const int BASE_DAMAGE_BURST = 1;
+//    static const int DAMAGE_RANK_UP_INCREMENT = 2;
+    static const int HP_RANK_10_UP_INCREMENT = 10;
+    static const int HP_RANK_10_UP_BOSS_INCREMENT = 10;
     static const int LIMIT_RANK = 999;
-    static const int LIMIT_DAMAGE = 999999;
+//    static const int LIMIT_DAMAGE = 999999;
     static const int MAX_PLAYER_BP = 50;
     static const int BP_INCREMENT = 1;
     static const int MAX_BURST_TIME = 2;

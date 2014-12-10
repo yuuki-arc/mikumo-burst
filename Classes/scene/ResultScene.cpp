@@ -83,13 +83,16 @@ void ResultScene::saveData(StringMapVector charaRankList, int battleRank, int ta
     store->setBattleCount(store->getBattleCount() + 1);
     
     // キャラクターランク
-    std::string charaRank;
+    int charaRank;
     if (GameManager::getInstance()->isBattleModeNormal())
     {
         // 通常バトル時のみランクアップする
         std::string charaRankKey = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
-        charaRank = charaRankList[0][charaRankKey];
-        charaRankList[0][charaRankKey] = std::to_string(std::stoi(charaRankList[0][charaRankKey]) + 1);
+        charaRank = std::stoi(charaRankList[0][charaRankKey]);
+        if (charaRank < Constant::LIMIT_RANK)
+        {
+            charaRankList[0][charaRankKey] = std::to_string(charaRank + 1);
+        }
     }
     store->setRankList(charaRankList);
     

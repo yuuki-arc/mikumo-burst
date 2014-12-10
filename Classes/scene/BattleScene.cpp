@@ -559,7 +559,7 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
         // バーストタイム中
         effectList = Constant::EFFECT_LIST(Constant::SoundEffect::SoundBurst);
         battleEffectImageList = Constant::BATTLE_EFFECT_IMAGE_LIST(Constant::ImageEffect::ImageBurst);
-        scale = 1.5f;
+        scale = 1.0f;
         damage = Constant::BASE_DAMAGE_BURST;
         soundEffectNum =  arc4random() % effectList.size();
         hitSpriteNum = arc4random() % battleEffectImageList.size();
