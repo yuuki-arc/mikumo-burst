@@ -327,20 +327,66 @@ void BattleScene::update(float frame)
         CCLOG("update-ep-break burstTime: %d", burstTime);
 
         // ボイス再生
-        Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
-                                                           Constant::Voice::BurstAttack);
-        int num = arc4random() % list.size();
-        
-        SoundManager* soundManager = new SoundManager();
-        soundManager->playVoice(list[num]);
+        if (GameManager::getInstance()->isBattleModeNormal())
+        {
+            Constant::StringVector list;
+            list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
+                                        Constant::Voice::BurstAttack);
+            int num = arc4random() % list.size();
+            
+            SoundManager* soundManager = new SoundManager();
+            soundManager->playVoice(list[num]);
+        }
+        else
+        {
+            SoundManager* soundManager = new SoundManager();
+            Constant::StringVector list;
+            Constant::CharaSelect charaSelect;
+            int num;
+            int burstNum = playerInfo->getBurstCount() % 3;
+            switch (burstNum) {
+                case 0:
+                    charaSelect = Constant::CharaSelect::Conoha;
+                    list = Constant::VOICE_LIST(charaSelect, Constant::Voice::BurstAttack);
+                    num = arc4random() % list.size();
+                    soundManager->playVoice(list[num]);
+                    break;
+                case 1:
+                    charaSelect = Constant::CharaSelect::Anzu;
+                    list = Constant::VOICE_LIST(charaSelect, Constant::Voice::BurstAttack);
+                    num = arc4random() % list.size();
+                    soundManager->playVoice(list[num]);
+                    break;
+                case 2:
+                    list = Constant::VOICE_LIST(Constant::CharaSelect::Conoha, Constant::Voice::BurstAttack);
+                    num = arc4random() % list.size();
+                    SoundManager* soundManager = new SoundManager();
+                    soundManager->playVoice(list[num]);
+                    list = Constant::VOICE_LIST(Constant::CharaSelect::Anzu, Constant::Voice::BurstAttack);
+                    num = arc4random() % list.size();
+                    soundManager->playVoice(list[num]);
+                    break;
+            }
+        }
         
         if (burstTime == 0)
         {
             // カットインアニメーション
             burstCutInFlg = true;
             CallFunc* callback = CallFunc::create([this](){this->startBurstTime();}); // 開始処理を呼び出し
-            playerInfo->getCutInImage1()->runAction(
-                BattleActionCreator::burstCutIn(playerInfo->getCutInImage1(), callback));
+            Sprite* cutInImage;
+            int burstNum = playerInfo->getBurstCount() %
+                      (GameManager::getInstance()->isBattleModeNormal() ? 2 : 3); // 通常２パターン、ボスバトルは３パターン
+            CCLOG("burst-burst:%d", burstNum);
+            switch (burstNum) {
+                case 0:  cutInImage = playerInfo->getCutInImage1(); break;
+                case 1:  cutInImage = playerInfo->getCutInImage2(); break;
+                case 2:  cutInImage = playerInfo->getCutInImage3(); break;
+                default: cutInImage = playerInfo->getCutInImage1(); break;
+            }
+            
+            cutInImage->runAction(
+                BattleActionCreator::burstCutIn(cutInImage, callback));
         }
         else
         {
@@ -578,6 +624,14 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     
     // 効果音
     soundManager->playSE(effectList[soundEffectNum]);
+    
+//    if (arc4random() % 10 == 0)
+//    {
+//        Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
+//                                                           Constant::Voice::NormalAttack);
+//        int num = arc4random() % list.size();
+//        soundManager->playVoice(list[num]);
+//    }
     
     // ヒットエフェクト生成
     Sprite* effectSprite = this->effectManager->effectPurified(battleEffectImageList[hitSpriteNum], location, scale);
