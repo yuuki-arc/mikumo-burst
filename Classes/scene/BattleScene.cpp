@@ -149,18 +149,8 @@ void BattleScene::initBackground()
     background->setPosition(Point(origin.x + visibleSize.width / 2,
                                   origin.y + visibleSize.height / 2));
     
-    if (GameManager::getInstance()->isScreenModeHd())
-    {
-        CCLOG("battleScene:bg-HD");
-        background->setScale(background->getScale()*1.6, background->getScale()*1.6);
-    }
-    else
-    {
-        CCLOG("battleScene:bg-SD");
-        background->setScale(background->getScale()*0.8, background->getScale()*0.8);
-    }
-//    float scale = Director::getInstance()->getContentScaleFactor();
-//    background->setScale(background->getScale()*scale, background->getScale()*scale);
+    float scale = Director::getInstance()->getContentScaleFactor();
+    background->setScale(background->getScale()*scale, background->getScale()*scale);
     
     this->addChild(background, ZOrder::Bg);
 }
