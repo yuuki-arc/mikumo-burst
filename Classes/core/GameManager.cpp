@@ -27,6 +27,7 @@ void GameManager::initialize()
     charaSelect = Constant::Conoha;
     battleRank = 2;
     battleDamagePoint = 0;
+    tapCount = 0;
     burstCount = 0;
 }
 

@@ -11,7 +11,7 @@
 
 ResultScene::ResultScene()
 : battleRank(0)
-, tap(0)
+, tapCount(0)
 , burstCount(0)
 , score(0)
 {
@@ -61,21 +61,23 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // データ取得
     StringMapVector charaRankList = UserDataStore::getInstance()->getRankList();
     this->battleRank = GameManager::getInstance()->getBattleRank();
-    this->tap = GameManager::getInstance()->battleDamagePoint;
+    this->tapCount = GameManager::getInstance()->tapCount;
     this->burstCount = GameManager::getInstance()->burstCount;
-    this->score = tap * 100;//+ボーナス
+    this->score = GameManager::getInstance()->battleDamagePoint * 10 +
+                  tapCount * 10 +
+                  burstCount * 1000;
     
     // データ保存（アプリ内）
-    saveData(charaRankList, this->battleRank, this->tap, this->burstCount, this->score);
+    saveData(charaRankList, this->battleRank, this->tapCount, this->burstCount, this->score);
 
     // データ保存（Gamers内）
     saveGamers();
     
     // スコア表示
-    displayInfo(charaRankList, this->battleRank, this->tap, this->burstCount, this->score);
+    displayInfo(charaRankList, this->battleRank, this->tapCount, this->burstCount, this->score);
 }
 
-void ResultScene::saveData(StringMapVector charaRankList, int battleRank, int tap, int burstCount, int score)
+void ResultScene::saveData(StringMapVector charaRankList, int battleRank, int tapCount, int burstCount, int score)
 {
     auto store = UserDataStore::getInstance();
     
@@ -106,7 +108,7 @@ void ResultScene::saveData(StringMapVector charaRankList, int battleRank, int ta
     store->setTotalRank(totalRank);
     
     // トータルタップ
-    store->setTotalTap(store->getTotalTap() + tap);
+    store->setTotalTap(store->getTotalTap() + tapCount);
     
     // トータルバースト
     store->setTotalBurst(store->getTotalBurst() + burstCount);
@@ -133,7 +135,7 @@ void ResultScene::saveGamers()
     AppCCloudPlugin::Gamers::setLeaderBoard(Constant::LEADERBOARD_RANK_ANZU, std::stoi(charaRankList[key]));
 };
 
-void ResultScene::displayInfo(StringMapVector charaRankList, int battleRank, int tap, int burstCount, int score)
+void ResultScene::displayInfo(StringMapVector charaRankList, int battleRank, int tapCount, int burstCount, int score)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -179,7 +181,7 @@ void ResultScene::displayInfo(StringMapVector charaRankList, int battleRank, int
 
     relativeLabelHeight -= .7f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("タップ: " + std::to_string(tap) + " 回", point);
+    resultLabel = TextCreator::create("タップ: " + std::to_string(tapCount) + " 回", point);
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel, ZOrder::Font);
     
@@ -216,7 +218,7 @@ void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEv
     std::string strDest = StringUtils::format(str.c_str(),
                                               Constant::charaName(GameManager::getInstance()->getCharaSelect()),
                                               this->battleRank,
-                                              this->tap,
+                                              this->tapCount,
                                               this->burstCount,
                                               this->score
                                               );

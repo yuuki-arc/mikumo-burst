@@ -41,6 +41,7 @@ public:
     bool isBattleModeBoss();
     
     int battleDamagePoint;
+    int tapCount;
     int burstCount;
 
 };

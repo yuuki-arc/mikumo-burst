@@ -133,6 +133,7 @@ void BattleScene::setupGame()
 void BattleScene::initBattleResult()
 {
     GameManager::getInstance()->battleDamagePoint = 0;
+    GameManager::getInstance()->tapCount = 0;
     GameManager::getInstance()->burstCount = 0;
 }
 
@@ -464,6 +465,7 @@ void BattleScene::endBattle()
 {
     this->unschedule(schedule_selector(BattleScene::updateBySchedule));
     GameManager::getInstance()->battleDamagePoint = enemyData->getMaxHp() - enemyData->getHp();
+    GameManager::getInstance()->tapCount = playerInfo->getTapCount();
     GameManager::getInstance()->burstCount = playerInfo->getBurstCount();
 
     Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
@@ -588,6 +590,9 @@ bool BattleScene::onTouchBegan(Touch* touch, Event *event){
     auto enemyAct = ProgressFromTo::create(0.5, preHpPercentage, enemyData->getHpPercentage());
     enemyHpBar->runAction(enemyAct);
     CCLOG("onTouchBegan-enemyHp:%d / %f%%",enemyData->getHp(), enemyData->getHpPercentage());
+    
+    // プレイヤータップカウント
+    playerInfo->incrementTapCount();
     
     // プレイヤーBPゲージ
     auto preBpPercentage = playerInfo->getBpPercentage();

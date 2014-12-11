@@ -7,6 +7,7 @@ USING_NS_CC;
 PlayerBattleInfo::PlayerBattleInfo()
 : rank(0)
 , bp(0)
+, tapCount(0)
 , burstCount(0)
 , iconImage(nullptr)
 , cutInImage1(nullptr)
@@ -70,6 +71,11 @@ float PlayerBattleInfo::getBpPercentage()
     return bp * 100.f / Constant::MAX_PLAYER_BP;
 }
 
+void PlayerBattleInfo::incrementTapCount()
+{
+    tapCount++;
+}
+
 void PlayerBattleInfo::incrementBurstCount()
 {
     burstCount++;
@@ -77,5 +83,5 @@ void PlayerBattleInfo::incrementBurstCount()
 
 void PlayerBattleInfo::upBpGauge()
 {
-    bp += Constant::BP_INCREMENT + floor(rank / 20);
+    bp += Constant::BP_INCREMENT + floor(rank / 5);
 }

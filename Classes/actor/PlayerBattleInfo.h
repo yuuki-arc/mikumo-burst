@@ -11,6 +11,7 @@ class PlayerBattleInfo : public Ref
 private:
     CC_SYNTHESIZE(int, rank, Rank);
     CC_SYNTHESIZE(int, bp, Bp);
+    CC_SYNTHESIZE(int, tapCount, TapCount);
     CC_SYNTHESIZE(int, burstCount, BurstCount);
     CC_SYNTHESIZE(Sprite*, iconImage, IconImage);
     CC_SYNTHESIZE(Sprite*, cutInImage1, CutInImage1);
@@ -22,6 +23,7 @@ public:
     ~PlayerBattleInfo();
     static PlayerBattleInfo* create(Constant::CharaSelect charaSelect);
     float getBpPercentage();
+    void incrementTapCount();
     void incrementBurstCount();
     void upBpGauge();
 };

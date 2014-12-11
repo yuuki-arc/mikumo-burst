@@ -24,13 +24,14 @@ void EnemyCharacter::createWithImage()
     
     if (GameManager::getInstance()->isBattleModeNormal())
     {
-        hp = Constant::DEFAULT_ENEMY_HP +
-             rank10UpBase * Constant::HP_RANK_10_UP_INCREMENT;
+        // 通常バトルの場合は0〜10TAPほど幅をもたせる
+        hp = Constant::DEFAULT_ENEMY_HP + (arc4random() % 10) * 10 +
+             rank10UpBase * Constant::HP_RANK_5_UP_BOSS_INCREMENT;
     }
     else
     {
         hp = Constant::DEFAULT_ENEMY_BOSS_HP +
-             rank10UpBase * Constant::HP_RANK_10_UP_BOSS_INCREMENT;
+             rank10UpBase * Constant::HP_RANK_5_UP_BOSS_INCREMENT;
     }
     this->setMaxHp(hp);
     this->setHp(hp);

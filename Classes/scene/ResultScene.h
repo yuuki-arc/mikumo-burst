@@ -40,12 +40,12 @@ private:
         Font,
     };
     
-    void saveData(StringMapVector charaRankList, int battleRank, int tap, int burstCount, int score);
+    void saveData(StringMapVector charaRankList, int battleRank, int tapCount, int burstCount, int score);
     void saveGamers();
-    void displayInfo(StringMapVector charaRankList, int battleRank, int tap, int burstCount, int score);
+    void displayInfo(StringMapVector charaRankList, int battleRank, int tapCount, int burstCount, int score);
     
     int battleRank;
-    int tap;
+    int tapCount;
     int burstCount;
     int score;
 };
