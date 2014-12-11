@@ -41,7 +41,7 @@ public class SocialActivity extends AppCCloudActivity {
     public static void review(String url){
         Intent intent = new Intent(
             Intent.ACTION_VIEW,
-            Uri.parse("https://play.google.com/store/apps/developer?id=yuukiar.co&amp;hl=ja")
+            Uri.parse("https://play.google.com/store/apps/details?id=co.yuukiar.mikumoburst&amp;hl=ja")
         );
         instance.startActivity(intent);
     }
