@@ -198,10 +198,11 @@ public:
     static const char* APPC_MEDIA_KEY(){return "dummy_media_key";}
     static const int LEADERBOARD_BATTLE_COUNT = 1;
     static const int LEADERBOARD_TOTAL_RANK   = 2;
-    static const int LEADERBOARD_TOTAL_SCORE  = 3;
-    static const int LEADERBOARD_TOTAL_BURST  = 4;
-    static const int LEADERBOARD_RANK_CONOHA  = 5;
-    static const int LEADERBOARD_RANK_ANZU    = 6;
+    static const int LEADERBOARD_TOTAL_TAP    = 3;
+    static const int LEADERBOARD_TOTAL_SCORE  = 4;
+    static const int LEADERBOARD_TOTAL_BURST  = 5;
+    static const int LEADERBOARD_RANK_CONOHA  = 6;
+    static const int LEADERBOARD_RANK_ANZU    = 7;
 #endif
     
     static const char* NORMAL_FONT(){return "normal.fnt";}
@@ -224,7 +225,7 @@ public:
     };
     
     static const char* TWEET_TEXT_TEMPLATE(){
-        return "%s【ランク %d｜タップ %d 回｜バースト %d 回｜スコア %d pt】 http://yuukiar.co/app/mikumo-burst #みくもバースト！ #マスコットアプリ文化祭";
+        return "%s【ランク %d｜タップ %d 回｜バースト %d 回｜スコア %d pt】 http://yuukiar.co/apps/mikumo-burst/ #みくもバースト！ #マスコットアプリ文化祭";
     }
 };
 
