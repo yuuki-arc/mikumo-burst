@@ -279,6 +279,12 @@ void BattleScene::updateBySchedule(float frame)
 
     if (gameTime <= 0)
     {
+        Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
+                                                           Constant::Voice::BattleEnd);
+        int num = arc4random() % list.size();
+        SoundManager* soundManager = new SoundManager();
+        soundManager->playVoice(list[num]);
+        
         endBattle();
         return;
     }
@@ -468,12 +474,7 @@ void BattleScene::endBattle()
     GameManager::getInstance()->tapCount = playerInfo->getTapCount();
     GameManager::getInstance()->burstCount = playerInfo->getBurstCount();
 
-    Constant::StringVector list = Constant::VOICE_LIST(GameManager::getInstance()->getCharaSelect(),
-                                                       Constant::Voice::BattleEnd);
-    int num = arc4random() % list.size();
-    
     SoundManager* soundManager = new SoundManager();
-    soundManager->playVoice(list[num]);
     soundManager->stopBGM();
     
     replaceScene();
