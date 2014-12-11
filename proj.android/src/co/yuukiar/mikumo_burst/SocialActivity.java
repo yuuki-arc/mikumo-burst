@@ -1,4 +1,4 @@
-package co.yuukiar.mikumoburst;
+package co.yuukiar.mikumo_burst;
 
 import net.app_c.cloud.plugin.c2dx.AppCCloudActivity;
 
@@ -41,7 +41,7 @@ public class SocialActivity extends AppCCloudActivity {
     public static void review(String url){
         Intent intent = new Intent(
             Intent.ACTION_VIEW,
-            Uri.parse("https://play.google.com/store/apps/details?id=co.yuukiar.mikumoburst&amp;hl=ja")
+            Uri.parse("https://play.google.com/store/apps/details?id=co.yuukiar.mikumo_burst&amp;hl=ja")
         );
         instance.startActivity(intent);
     }

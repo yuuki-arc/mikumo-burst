@@ -1,8 +1,8 @@
-package co.yuukiar.mikumoburst;
+package co.yuukiar.mikumo_burst;
 
 import android.app.Application;
 
-import co.yuukiar.mikumoburst.R;
+import co.yuukiar.mikumo_burst.R;
 
 import com.deploygate.sdk.DeployGate;
 import com.google.android.gms.analytics.GoogleAnalytics;
