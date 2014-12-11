@@ -87,9 +87,9 @@ void SelectScene::displayInfo()
     // メニュー表示
     Sprite* windowSprite = Sprite::createWithSpriteFrameName("menu_window.png");
     windowSprite->setPosition(Point(origin.x + visibleSize.width / 2,
-                                    origin.y + visibleSize.height * 41 / 100));
+                                    origin.y + visibleSize.height * 45 / 100));
     windowSprite->setScale(windowSprite->getScale(),
-                           windowSprite->getScale() * 32 / 100);
+                           windowSprite->getScale() * 34 / 100);
     addChild(windowSprite, ZOrder::Menu);
     
     // キャラクター表示
@@ -97,7 +97,7 @@ void SelectScene::displayInfo()
     int num = GameManager::getInstance()->getCharaSelect();
     std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
     charaPos = Point(origin.x + visibleSize.width * 2 / 3,
-                           origin.y + visibleSize.height * 6 / 10);
+                           origin.y + visibleSize.height * 65 / 100);
     
     CharacterCreator* creator = new CharacterCreator();
     creator->init(CharacterScale::HARF);
@@ -106,7 +106,6 @@ void SelectScene::displayInfo()
     this->addChild(character, ZOrder::Persona);
     
     // ランク表示
-//    int rank = GameManager::getInstance()->getRank();
     auto store = UserDataStore::getInstance();
     StringMap rankList = store->getRankList()[0];
     std::string key = Constant::charaKey(GameManager::getInstance()->getCharaSelect());
@@ -117,7 +116,7 @@ void SelectScene::displayInfo()
     Label* resultLabel;
     Point point;
     
-    relativeLabelHeight = 8.0f;
+    relativeLabelHeight = 8.8f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     std::string charaName = Constant::charaName(GameManager::getInstance()->getCharaSelect());
     resultLabel = TextCreator::create(charaName + "のランク", point);
@@ -134,7 +133,7 @@ void SelectScene::displayInfo()
     this->addChild(resultLabel, ZOrder::Font);
     
     // 総合戦績表示
-    relativeLabelHeight = 5.0f;
+    relativeLabelHeight = 5.5f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create("総合戦績 ", point);
     resultLabel->setColor(Color3B(113, 212, 255));
@@ -142,7 +141,7 @@ void SelectScene::displayInfo()
     
     labelWidth = origin.x + visibleSize.width * 15 / 100;
     
-    relativeLabelHeight -= .5f;
+    relativeLabelHeight -= .4f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create("バトル回数: " + std::to_string(store->getBattleCount()) + " 回", point);
     this->addChild(resultLabel, ZOrder::Font);
@@ -154,12 +153,17 @@ void SelectScene::displayInfo()
     
     relativeLabelHeight -= .4f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("トータルスコア: " + std::to_string(store->getTotalScore()) + " pt", point);
+    resultLabel = TextCreator::create("トータルタップ: " + std::to_string(store->getTotalTap()) + " 回", point);
     this->addChild(resultLabel, ZOrder::Font);
     
     relativeLabelHeight -= .4f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create("トータルバースト: " + std::to_string(store->getTotalBurst()) + " 回", point);
+    this->addChild(resultLabel, ZOrder::Font);
+    
+    relativeLabelHeight -= .4f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    resultLabel = TextCreator::create("トータルスコア: " + std::to_string(store->getTotalScore()) + " pt", point);
     this->addChild(resultLabel, ZOrder::Font);
 }
 

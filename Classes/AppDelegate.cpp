@@ -43,12 +43,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCLOG("height: %f, width: %f", screenSize.width, screenSize.height);
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    if (screenSize.height > 620) {
+    if (screenSize.height == 2208) {
         resourceSize = Size(640, 1240);
         resDirOrders.push_back("resources-iphonehd");
         GameManager::getInstance()->screenMode = ScreenModeHd;
+    } else if (screenSize.height > 480) {
+        resourceSize = Size(640, 960);
+        resDirOrders.push_back("resources-iphonehd");
+        GameManager::getInstance()->screenMode = ScreenModeHd;
     } else {
-        resourceSize = Size(320, 620);
+        resourceSize = Size(320, 480);
         resDirOrders.push_back("resources-iphone");
         GameManager::getInstance()->screenMode = ScreenModeSd;
     }
