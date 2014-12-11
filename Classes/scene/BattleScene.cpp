@@ -377,7 +377,6 @@ void BattleScene::update(float frame)
             Sprite* cutInImage;
             int burstNum = playerInfo->getBurstCount() %
                       (GameManager::getInstance()->isBattleModeNormal() ? 2 : 3); // 通常２パターン、ボスバトルは３パターン
-            CCLOG("burst-burst:%d", burstNum);
             switch (burstNum) {
                 case 0:  cutInImage = playerInfo->getCutInImage1(); break;
                 case 1:  cutInImage = playerInfo->getCutInImage2(); break;

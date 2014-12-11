@@ -47,21 +47,18 @@ PlayerBattleInfo* PlayerBattleInfo::create(Constant::CharaSelect charaSelect)
         fileName = StringUtils::format("%s.png", list[charaSelect].c_str());
         creator->init(CharacterScale::NORMAL);
         info->setCutInImage1(creator->create(fileName));
-        CCLOG("player-battle-info:%s", fileName.c_str());
         
         // カットインアニメーション２
         list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle2);
         fileName = StringUtils::format("%s.png", list[charaSelect].c_str());
         creator->init(CharacterScale::NORMAL);
         info->setCutInImage2(creator->create(fileName));
-        CCLOG("player-battle-info:%s", fileName.c_str());
         
         // カットインアニメーション３
         list = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaBattle3);
         fileName = StringUtils::format("%s.png", list[charaSelect].c_str());
         creator->init(CharacterScale::NORMAL);
         info->setCutInImage3(creator->create(fileName));
-        CCLOG("player-battle-info:%s", fileName.c_str());
 
         return info;
     }
