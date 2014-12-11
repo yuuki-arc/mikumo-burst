@@ -208,12 +208,12 @@ void ResultScene::tappedSocialButton(Ref* pTarget, Control::EventType pControlEv
     const string DATAKEY_STR("tweet_text");
 
     //ツイートテンプレート登録
-    std::string strSrc = Constant::TWEET_TEXT_TEMPLATE();
-    AppCCloudPlugin::Data::setDataStore(DATAKEY_STR, strSrc);
+//    std::string strSrc = Constant::TWEET_TEXT_TEMPLATE();
+//    AppCCloudPlugin::Data::setDataStore(DATAKEY_STR, strSrc);
     
-//    DataStoreData tweetText = AppCCloudPlugin::Data::getDataStore(DATAKEY_STR);
-//    std::string str = tweetText.getText();
-    std::string strDest = StringUtils::format(strSrc.c_str(),
+    DataStoreData tweetText = AppCCloudPlugin::Data::getDataStore(DATAKEY_STR);
+    std::string str = tweetText.getText();
+    std::string strDest = StringUtils::format(str.c_str(),
                                               Constant::charaName(GameManager::getInstance()->getCharaSelect()),
                                               this->battleRank,
                                               this->tap,
