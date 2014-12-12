@@ -55,7 +55,7 @@ void MenuScene::tappedInformationButton(Ref* pTarget, Control::EventType pContro
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
     // お知らせサイトに遷移
-    NativeLauncher::openUrl("http://yuukiar.co/apps/mikumo-burst");
+    NativeLauncher::openUrl("http://yuukiar.co/apps/mikumo-burst/");
 }
 
 void MenuScene::tappedReviewButton(Ref* pTarget, Control::EventType pControlEventType)

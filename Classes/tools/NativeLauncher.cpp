@@ -6,7 +6,7 @@
 #include "tools/NativeLauncher.h"
 #include <jni.h>
 #include "platform/android/jni/JniHelper.h"
-#define JNICLASSNAME "co/yuukiar/mikumo_burst/SocialActivity"
+#define JNICLASSNAME "co/yuukiar/mikumo_burst2/SocialActivity"
 #define TWEET "tweet"
 #define OPEN_URL "openUrl"
 #define REVIEW "review"
