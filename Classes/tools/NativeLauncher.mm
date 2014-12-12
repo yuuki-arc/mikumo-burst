@@ -32,6 +32,6 @@ void NativeLauncher::openUrl(const char *$url){
 }
 
 void NativeLauncher::openStoreReview(const char *$url){
-    NSURL *reviewUrl = [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", @"dummy"]];
+    NSURL *reviewUrl = [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", @"950881439"]];
     [[UIApplication sharedApplication] openURL:reviewUrl];
 }
