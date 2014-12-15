@@ -51,5 +51,8 @@ out/
 cocosBuilder/Published-*
 
 #project
+AppResource
+AppResource/*
 Classes/core/DefineAppc.h
 proj.android/res/values/secret.xml
+proj.android/ant.properties
