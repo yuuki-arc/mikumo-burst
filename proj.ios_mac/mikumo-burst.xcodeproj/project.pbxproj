@@ -41,7 +41,6 @@
 		A50544241A207A2100BDD5C7 /* NativeLauncher.mm in Sources */ = {isa = PBXBuildFile; fileRef = A505441D1A207A2100BDD5C7 /* NativeLauncher.mm */; };
 		A5152C401A205B9E00C75DDE /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C2A1A205B9E00C75DDE /* BattleScene.cpp */; };
 		A5152C411A205B9E00C75DDE /* BattleSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C2C1A205B9E00C75DDE /* BattleSceneLoader.cpp */; };
-		A5152C421A205B9E00C75DDE /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C2E1A205B9E00C75DDE /* HelloWorldScene.cpp */; };
 		A5152C431A205B9E00C75DDE /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C301A205B9E00C75DDE /* ResultScene.cpp */; };
 		A5152C441A205B9E00C75DDE /* ResultSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C321A205B9E00C75DDE /* ResultSceneLoader.cpp */; };
 		A5152C451A205B9E00C75DDE /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C341A205B9E00C75DDE /* MenuScene.cpp */; };
@@ -56,7 +55,6 @@
 		A5152C5C1A206E3000C75DDE /* EffectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C551A206E3000C75DDE /* EffectManager.cpp */; };
 		A5152C5D1A206E3000C75DDE /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C571A206E3000C75DDE /* SoundManager.cpp */; };
 		A5152C6B1A206F4F00C75DDE /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C601A206F4F00C75DDE /* GameManager.cpp */; };
-		A5152C731A2070FC00C75DDE /* EnemyTargetter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C711A2070FC00C75DDE /* EnemyTargetter.cpp */; };
 		A5152C761A20710900C75DDE /* UserDataStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C741A20710900C75DDE /* UserDataStore.cpp */; };
 		A5152C831A2072AF00C75DDE /* BattleActionCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C7D1A2072AF00C75DDE /* BattleActionCreator.cpp */; };
 		A5152C841A2072AF00C75DDE /* CharacterCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5152C7F1A2072AF00C75DDE /* CharacterCreator.cpp */; };
@@ -351,8 +349,6 @@
 		A5152C2B1A205B9E00C75DDE /* BattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleScene.h; sourceTree = "<group>"; };
 		A5152C2C1A205B9E00C75DDE /* BattleSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleSceneLoader.cpp; sourceTree = "<group>"; };
 		A5152C2D1A205B9E00C75DDE /* BattleSceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleSceneLoader.h; sourceTree = "<group>"; };
-		A5152C2E1A205B9E00C75DDE /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
-		A5152C2F1A205B9E00C75DDE /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
 		A5152C301A205B9E00C75DDE /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultScene.cpp; sourceTree = "<group>"; };
 		A5152C311A205B9E00C75DDE /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultScene.h; sourceTree = "<group>"; };
 		A5152C321A205B9E00C75DDE /* ResultSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultSceneLoader.cpp; sourceTree = "<group>"; };
@@ -383,8 +379,6 @@
 		A5152C601A206F4F00C75DDE /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
 		A5152C611A206F4F00C75DDE /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		A5152C6A1A206F4F00C75DDE /* picojson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = picojson.h; sourceTree = "<group>"; };
-		A5152C711A2070FC00C75DDE /* EnemyTargetter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyTargetter.cpp; sourceTree = "<group>"; };
-		A5152C721A2070FC00C75DDE /* EnemyTargetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyTargetter.h; sourceTree = "<group>"; };
 		A5152C741A20710900C75DDE /* UserDataStore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserDataStore.cpp; sourceTree = "<group>"; };
 		A5152C751A20710900C75DDE /* UserDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataStore.h; sourceTree = "<group>"; };
 		A5152C7D1A2072AF00C75DDE /* BattleActionCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleActionCreator.cpp; sourceTree = "<group>"; };
@@ -772,8 +766,6 @@
 				A5152C2B1A205B9E00C75DDE /* BattleScene.h */,
 				A5152C2C1A205B9E00C75DDE /* BattleSceneLoader.cpp */,
 				A5152C2D1A205B9E00C75DDE /* BattleSceneLoader.h */,
-				A5152C2E1A205B9E00C75DDE /* HelloWorldScene.cpp */,
-				A5152C2F1A205B9E00C75DDE /* HelloWorldScene.h */,
 				A5152C301A205B9E00C75DDE /* ResultScene.cpp */,
 				A5152C311A205B9E00C75DDE /* ResultScene.h */,
 				A5152C321A205B9E00C75DDE /* ResultSceneLoader.cpp */,
@@ -800,8 +792,6 @@
 			children = (
 				A505440F1A2078CB00BDD5C7 /* PlayerBattleInfo.cpp */,
 				A50544101A2078CB00BDD5C7 /* PlayerBattleInfo.h */,
-				A5152C711A2070FC00C75DDE /* EnemyTargetter.cpp */,
-				A5152C721A2070FC00C75DDE /* EnemyTargetter.h */,
 				A5152C4E1A206E3000C75DDE /* EnemyBossCharacter.cpp */,
 				A5152C4F1A206E3000C75DDE /* EnemyBossCharacter.h */,
 				A5152C501A206E3000C75DDE /* EnemyCharacter.cpp */,
@@ -1299,7 +1289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50544211A207A2100BDD5C7 /* GoogleAnalyticsTracker.mm in Sources */,
-				A5152C421A205B9E00C75DDE /* HelloWorldScene.cpp in Sources */,
 				A5152C841A2072AF00C75DDE /* CharacterCreator.cpp in Sources */,
 				A505441F1A207A2100BDD5C7 /* AppCCloudPlugin.mm in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -1310,7 +1299,6 @@
 				A5152C5B1A206E3000C75DDE /* EnemyNormalCharacter.cpp in Sources */,
 				A5152C5D1A206E3000C75DDE /* SoundManager.cpp in Sources */,
 				A50544241A207A2100BDD5C7 /* NativeLauncher.mm in Sources */,
-				A5152C731A2070FC00C75DDE /* EnemyTargetter.cpp in Sources */,
 				A5152C761A20710900C75DDE /* UserDataStore.cpp in Sources */,
 				A5152C6B1A206F4F00C75DDE /* GameManager.cpp in Sources */,
 				A5152C401A205B9E00C75DDE /* BattleScene.cpp in Sources */,
@@ -1913,7 +1901,7 @@
 				A53118C61A147CE400BFEB78 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		5087E76C17EB910900C73F5D /* Build configuration list for PBXNativeTarget "mikumo-burst Mac" */ = {
 			isa = XCConfigurationList;
@@ -1923,7 +1911,7 @@
 				A53118C71A147CE400BFEB78 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		A5B2AEA11A19E1CC003061A2 /* Build configuration list for PBXNativeTarget "XCTests" */ = {
 			isa = XCConfigurationList;
@@ -1933,7 +1921,7 @@
 				A5B2AE9E1A19E1CC003061A2 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "mikumo-burst" */ = {
 			isa = XCConfigurationList;
@@ -1943,7 +1931,7 @@
 				A53118C51A147CE400BFEB78 /* AdHoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
