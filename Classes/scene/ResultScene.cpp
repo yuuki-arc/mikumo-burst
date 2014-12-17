@@ -71,7 +71,7 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     saveData(charaRankList, this->battleRank, this->tapCount, this->burstCount, this->score);
 
     // データ保存（Gamers内）
-    saveGamers();
+//    saveGamers();
     
     // スコア表示
     displayInfo(charaRankList, this->battleRank, this->tapCount, this->burstCount, this->score);
