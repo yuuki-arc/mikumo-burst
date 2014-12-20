@@ -1,7 +1,7 @@
 #ifndef __mikumoburst__Constant__
 #define __mikumoburst__Constant__
 
-#include "core/DefineAppc.h"
+#include "core/DefineParameters.h"
 
 #define BM_FONT_SIZE(__SIZE , __BASE) (CC_CONTENT_SCALE_FACTOR() * ((float)__SIZE / (float)__BASE))
 #define BM_FONT_SIZE64(__SIZE) (BM_FONT_SIZE(__SIZE , 64))
@@ -185,7 +185,7 @@ public:
         return map[key];
     }
 
-#ifdef __mikumoburst__DefineAppc__
+#ifdef __mikumoburst__DefineParameters__
     static const char* APPC_MEDIA_KEY(){return __APPC_MEDIA_KEY;}
     static const int LEADERBOARD_BATTLE_COUNT = __LEADERBOARD_BATTLE_COUNT;
     static const int LEADERBOARD_TOTAL_RANK   = __LEADERBOARD_TOTAL_RANK;

@@ -106,6 +106,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
         CCLOG("appdelegate: datastore-NG");
         UserDataStore::getInstance()->setupData();
     }
+
+#ifdef __DEBUG_RANK_OFF
+#else
+    // デバッグ用ランク情報をセット
+    DefineParameters::setStoreDebugInfo(Constant::charaKey(Constant::Conoha),
+                                        Constant::charaKey(Constant::Anzu));
+#endif
     
     // CocosBuilderのファイルを読み込みゲーム画面を生成する
     auto *pScene = TitleSceneLoader::createScene();

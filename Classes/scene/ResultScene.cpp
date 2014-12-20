@@ -70,8 +70,11 @@ void ResultScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // データ保存（アプリ内）
     saveData(charaRankList, this->battleRank, this->tapCount, this->burstCount, this->score);
 
+#ifdef __APPC_SAVE_GAMERS_ON
     // データ保存（Gamers内）
     saveGamers();
+    CCLOG("ResultScene: GAMERS Save On");
+#endif
     
     // スコア表示
     displayInfo(charaRankList, this->battleRank, this->tapCount, this->burstCount, this->score);

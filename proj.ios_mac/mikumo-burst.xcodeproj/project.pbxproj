@@ -471,7 +471,7 @@
 		A54AEAB919B23D6000AE6AE4 /* TitleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = TitleScene.ccbi; sourceTree = "<group>"; };
 		A54AEADD19B3781100AE6AE4 /* particle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle; sourceTree = "<group>"; };
 		A5777FCF1A1A2040008211C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "mikumo-burst iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
-		A5948EB81A356545008F44CC /* DefineAppc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineAppc.h; sourceTree = "<group>"; };
+		A5948EB81A356545008F44CC /* DefineParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineParameters.h; sourceTree = "<group>"; };
 		A5A7F0E119BB394700A5BEDD /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		A5ADDC3C1A1AD42E00A492F3 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		A5ADDC3D1A1AD42E00A492F3 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -820,7 +820,7 @@
 		A5152C5E1A206F4F00C75DDE /* core */ = {
 			isa = PBXGroup;
 			children = (
-				A5948EB81A356545008F44CC /* DefineAppc.h */,
+				A5948EB81A356545008F44CC /* DefineParameters.h */,
 				A5152C5F1A206F4F00C75DDE /* Constant.h */,
 				A5152C601A206F4F00C75DDE /* GameManager.cpp */,
 				A5152C611A206F4F00C75DDE /* GameManager.h */,
