@@ -483,7 +483,6 @@
 		A5ADDC431A1AD42E00A492F3 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
 		A5ADDC441A1AD42E00A492F3 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
 		A5ADDC451A1AD42E00A492F3 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		A5ADDC461A1AD42E00A492F3 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
 		A5ADDC471A1AD42E00A492F3 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		A5B2713A19AC6B6B0028E9E0 /* libbox2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libbox2d iOS.a"; path = "../lib/libbox2d iOS.a"; sourceTree = "<group>"; };
 		A5B2713B19AC6B6B0028E9E0 /* libchipmunk iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libchipmunk iOS.a"; path = "../lib/libchipmunk iOS.a"; sourceTree = "<group>"; };
@@ -945,7 +944,6 @@
 			isa = PBXGroup;
 			children = (
 				A5ADDC3A1A1AD42E00A492F3 /* GoogleAnalytics */,
-				A5ADDC461A1AD42E00A492F3 /* libAdIdAccess.a */,
 				A5ADDC471A1AD42E00A492F3 /* libGoogleAnalyticsServices.a */,
 			);
 			path = GoogleAnalyticsServicesiOS;
