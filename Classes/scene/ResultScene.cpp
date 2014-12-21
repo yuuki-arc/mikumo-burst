@@ -157,7 +157,7 @@ void ResultScene::displayInfo(StringMapVector charaRankList, int battleRank, int
     Label* resultLabel;
     Point point;
     
-    relativeLabelHeight = 7.8f;
+    relativeLabelHeight = 7.9f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     resultLabel = TextCreator::create("BATTLE RESULT", point, Constant::LARGE_FONT());
     resultLabel->setScale(BM_FONT_SIZE64(16));
