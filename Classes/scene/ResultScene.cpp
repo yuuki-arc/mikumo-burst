@@ -117,7 +117,12 @@ void ResultScene::saveData(StringMapVector charaRankList, int battleRank, int ta
     store->setTotalBurst(store->getTotalBurst() + burstCount);
 
     // トータルスコア
-    store->setTotalScore(store->getTotalScore() + score);
+    int totalScore = store->getTotalScore() + score;
+    if (totalScore > Constant::LIMIT_SCORE)
+    {
+        totalScore = Constant::LIMIT_SCORE;
+    }
+    store->setTotalScore(totalScore);
 };
 
 void ResultScene::saveGamers()

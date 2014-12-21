@@ -19,6 +19,7 @@ public:
     static const int HP_RANK_5_UP_INCREMENT = 50;
     static const int HP_RANK_5_UP_BOSS_INCREMENT = 50;
     static const int LIMIT_RANK = 999;
+    static const int LIMIT_SCORE = 2000000000;  // int型上限 2147483647（GAMERSはint型のみ）
 //    static const int LIMIT_DAMAGE = 999999;
     static const int MAX_PLAYER_BP = 500;
     static const int BP_INCREMENT = 10;
