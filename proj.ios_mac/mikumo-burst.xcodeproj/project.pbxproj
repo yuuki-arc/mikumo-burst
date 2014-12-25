@@ -129,6 +129,9 @@
 		A54AEAC019B23D6000AE6AE4 /* SelectScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB619B23D6000AE6AE4 /* SelectScene.ccbi */; };
 		A54AEAC319B23D6000AE6AE4 /* TitleScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A54AEAB919B23D6000AE6AE4 /* TitleScene.ccbi */; };
 		A54AEADE19B3781100AE6AE4 /* particle in Resources */ = {isa = PBXBuildFile; fileRef = A54AEADD19B3781100AE6AE4 /* particle */; };
+		A56550741A4BA477002424BA /* StoryScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A56550701A4BA477002424BA /* StoryScene.cpp */; };
+		A56550751A4BA477002424BA /* StorySceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A56550721A4BA477002424BA /* StorySceneLoader.cpp */; };
+		A565507A1A4BA493002424BA /* LabelAttributedBMFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A56550781A4BA493002424BA /* LabelAttributedBMFont.cpp */; };
 		A5777FD01A1A2040008211C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5777FCF1A1A2040008211C7 /* Images.xcassets */; };
 		A5A7F0E219BB394700A5BEDD /* sound in Resources */ = {isa = PBXBuildFile; fileRef = A5A7F0E119BB394700A5BEDD /* sound */; };
 		A5ADDC491A1AD42E00A492F3 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ADDC471A1AD42E00A492F3 /* libGoogleAnalyticsServices.a */; };
@@ -470,6 +473,12 @@
 		A54AEAB619B23D6000AE6AE4 /* SelectScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelectScene.ccbi; sourceTree = "<group>"; };
 		A54AEAB919B23D6000AE6AE4 /* TitleScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = TitleScene.ccbi; sourceTree = "<group>"; };
 		A54AEADD19B3781100AE6AE4 /* particle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = particle; sourceTree = "<group>"; };
+		A56550701A4BA477002424BA /* StoryScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StoryScene.cpp; sourceTree = "<group>"; };
+		A56550711A4BA477002424BA /* StoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryScene.h; sourceTree = "<group>"; };
+		A56550721A4BA477002424BA /* StorySceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StorySceneLoader.cpp; sourceTree = "<group>"; };
+		A56550731A4BA477002424BA /* StorySceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorySceneLoader.h; sourceTree = "<group>"; };
+		A56550781A4BA493002424BA /* LabelAttributedBMFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LabelAttributedBMFont.cpp; sourceTree = "<group>"; };
+		A56550791A4BA493002424BA /* LabelAttributedBMFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelAttributedBMFont.h; sourceTree = "<group>"; };
 		A5777FCF1A1A2040008211C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "mikumo-burst iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		A5948EB81A356545008F44CC /* DefineParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineParameters.h; sourceTree = "<group>"; };
 		A5A7F0E119BB394700A5BEDD /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
@@ -761,6 +770,10 @@
 		A5152C291A205B9E00C75DDE /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				A56550701A4BA477002424BA /* StoryScene.cpp */,
+				A56550711A4BA477002424BA /* StoryScene.h */,
+				A56550721A4BA477002424BA /* StorySceneLoader.cpp */,
+				A56550731A4BA477002424BA /* StorySceneLoader.h */,
 				A5152C2A1A205B9E00C75DDE /* BattleScene.cpp */,
 				A5152C2B1A205B9E00C75DDE /* BattleScene.h */,
 				A5152C2C1A205B9E00C75DDE /* BattleSceneLoader.cpp */,
@@ -819,6 +832,8 @@
 		A5152C5E1A206F4F00C75DDE /* core */ = {
 			isa = PBXGroup;
 			children = (
+				A56550781A4BA493002424BA /* LabelAttributedBMFont.cpp */,
+				A56550791A4BA493002424BA /* LabelAttributedBMFont.h */,
 				A5948EB81A356545008F44CC /* DefineParameters.h */,
 				A5152C5F1A206F4F00C75DDE /* Constant.h */,
 				A5152C601A206F4F00C75DDE /* GameManager.cpp */,
@@ -1292,6 +1307,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				A5152C471A205B9E00C75DDE /* SelectScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				A565507A1A4BA493002424BA /* LabelAttributedBMFont.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				A5152C851A2072AF00C75DDE /* TextCreator.cpp in Sources */,
 				A5152C5B1A206E3000C75DDE /* EnemyNormalCharacter.cpp in Sources */,
@@ -1299,10 +1315,12 @@
 				A50544241A207A2100BDD5C7 /* NativeLauncher.mm in Sources */,
 				A5152C761A20710900C75DDE /* UserDataStore.cpp in Sources */,
 				A5152C6B1A206F4F00C75DDE /* GameManager.cpp in Sources */,
+				A56550751A4BA477002424BA /* StorySceneLoader.cpp in Sources */,
 				A5152C401A205B9E00C75DDE /* BattleScene.cpp in Sources */,
 				A5152C461A205B9E00C75DDE /* MenuSceneLoader.cpp in Sources */,
 				A5152C411A205B9E00C75DDE /* BattleSceneLoader.cpp in Sources */,
 				A5152C431A205B9E00C75DDE /* ResultScene.cpp in Sources */,
+				A56550741A4BA477002424BA /* StoryScene.cpp in Sources */,
 				A5152C4A1A205B9E00C75DDE /* TitleSceneLoader.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				A5152C5A1A206E3000C75DDE /* EnemyCharacter.cpp in Sources */,
