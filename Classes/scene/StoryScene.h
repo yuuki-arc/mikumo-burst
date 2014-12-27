@@ -39,6 +39,7 @@ private:
     std::vector<std::string> bgImageList;
 
     void initBackground();
+    bool getScenario();
 //    void setCallbackChangedPage( const std::function<void( int )> &callback );
 };
 

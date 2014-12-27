@@ -6,6 +6,7 @@
 #include "factory/TextCreator.h"
 #include "tools/NativeLauncher.h"
 #include "core/LabelAttributedBMFont.h"
+#include "resources/SheetLoader.h"
 
 StoryScene::StoryScene()
 : bgImageList(Constant::BG_IMAGE_LIST())
@@ -86,9 +87,10 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     label->addKeyWord("すせー", Color3B::YELLOW);   // 強調キーワード, 強調色
     
     // コールバック設定するなら(全表示が終わったときにタップされると呼ばれる)
-    label->setCallback([](Ref *sender){
+    label->setCallback([this](Ref *sender){
         // 処理記述
         CCLOG("setCallback");
+        this->getScenario();
     });
     
     // コールバック設定その２(ページ送りするたびに呼ばれる)
@@ -123,6 +125,26 @@ void StoryScene::initBackground()
     background->setScale(background->getScale()*scale, background->getScale()*scale);
     
     this->addChild(background, ZOrder::Bg);
+}
+
+// on "init" you need to initialize your instance
+bool StoryScene::getScenario()
+{
+    const std::string filename = "scenario.csv";
+
+    picojson::value v = SheetLoader::getSheet(filename);
+    picojson::object& sheets = v.get<picojson::object>();
+    picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
+    for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
+    {
+        picojson::object& column = it->get<picojson::object>();
+        int x = (int)column["main_id"].get<double>();
+        int y = (int)column["sub_id"].get<double>();
+        std::string z = (std::string)column["chara_name"].get<std::string>();
+        CCLOG("x:%d, y:%d, z:%s", x, y, z.c_str());
+    }
+    
+    return true;
 }
 
 //void StoryScene::tappedBackButton(Ref* pTarget, Control::EventType pControlEventType)

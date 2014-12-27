@@ -148,6 +148,7 @@
 		A5CCD2C119BD661C002ED2FC /* font in Resources */ = {isa = PBXBuildFile; fileRef = A5CCD2C019BD661C002ED2FC /* font */; };
 		A5E279911A1A688E005D4D7F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E279901A1A688E005D4D7F /* CoreData.framework */; };
 		A5E279931A1A6898005D4D7F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E279921A1A6898005D4D7F /* SystemConfiguration.framework */; };
+		A5E63D311A4EC03B00D8C8F5 /* SheetLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5E63D2F1A4EC03B00D8C8F5 /* SheetLoader.cpp */; };
 		A5E7A4281A0FF2CA00408FC0 /* voice in Resources */ = {isa = PBXBuildFile; fileRef = A5E7A4271A0FF2CA00408FC0 /* voice */; };
 		A5F6046719F43C0100133718 /* SelectSubScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = A5F6046619F43C0100133718 /* SelectSubScene.ccbi */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -511,6 +512,8 @@
 		A5E279921A1A6898005D4D7F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		A5E279941A1A68B5005D4D7F /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ios/GoogleAnalyticsServicesiOS_3.08/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		A5E279961A1A6E87005D4D7F /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ios/GoogleAnalyticsServicesiOS/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		A5E63D2F1A4EC03B00D8C8F5 /* SheetLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SheetLoader.cpp; sourceTree = "<group>"; };
+		A5E63D301A4EC03B00D8C8F5 /* SheetLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SheetLoader.h; sourceTree = "<group>"; };
 		A5E7A4271A0FF2CA00408FC0 /* voice */ = {isa = PBXFileReference; lastKnownFileType = folder; path = voice; sourceTree = "<group>"; };
 		A5F6046619F43C0100133718 /* SelectSubScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelectSubScene.ccbi; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -824,6 +827,8 @@
 				A5152C561A206E3000C75DDE /* EffectManager.h */,
 				A5152C571A206E3000C75DDE /* SoundManager.cpp */,
 				A5152C581A206E3000C75DDE /* SoundManager.h */,
+				A5E63D2F1A4EC03B00D8C8F5 /* SheetLoader.cpp */,
+				A5E63D301A4EC03B00D8C8F5 /* SheetLoader.h */,
 			);
 			name = resources;
 			path = ../Classes/resources;
@@ -1317,6 +1322,7 @@
 				A5152C6B1A206F4F00C75DDE /* GameManager.cpp in Sources */,
 				A56550751A4BA477002424BA /* StorySceneLoader.cpp in Sources */,
 				A5152C401A205B9E00C75DDE /* BattleScene.cpp in Sources */,
+				A5E63D311A4EC03B00D8C8F5 /* SheetLoader.cpp in Sources */,
 				A5152C461A205B9E00C75DDE /* MenuSceneLoader.cpp in Sources */,
 				A5152C411A205B9E00C75DDE /* BattleSceneLoader.cpp in Sources */,
 				A5152C431A205B9E00C75DDE /* ResultScene.cpp in Sources */,
