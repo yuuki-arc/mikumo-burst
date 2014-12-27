@@ -1,3 +1,6 @@
+#ifndef __LabelAttributedBMFont__
+#define __LabelAttributedBMFont__
+
 /*
  * RPG風文字送り＆ページ送りをするラベル
  *
@@ -108,3 +111,4 @@ private:
     void initKeyWordsVisualInfo();
     
 };
+#endif /* defined(__LabelAttributedBMFont__) */

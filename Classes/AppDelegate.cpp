@@ -88,8 +88,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    director->setDisplayStats(true);
 
     // appC cloud 開始
-    AppCCloudPlugin::setOptions(API_GAMERS|API_DATA|API_PURCHASE|API_REWARD)
-        .setMK_iOS(Constant::APPC_MEDIA_KEY()).start();
+//    AppCCloudPlugin::setOptions(API_GAMERS|API_DATA|API_PURCHASE|API_REWARD)
+//        .setMK_iOS(Constant::APPC_MEDIA_KEY()).start();
     
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
@@ -103,11 +103,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     frameCache->addSpriteFramesWithFile("bg/bg.plist");
 
     // ゲームデータが存在するか判定し、存在しない場合は初期セットアップを行う
-    if (!UserDataStore::getInstance()->isDataStored())
-    {
-        CCLOG("appdelegate: datastore-NG");
-        UserDataStore::getInstance()->setupData();
-    }
+//    if (!UserDataStore::getInstance()->isDataStored())
+//    {
+//        CCLOG("appdelegate: datastore-NG");
+//        UserDataStore::getInstance()->setupData();
+//    }
 
 #ifdef __DEBUG_RANK_OFF
 #else

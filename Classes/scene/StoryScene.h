@@ -32,6 +32,7 @@ private:
     enum ZOrder
     {
         Bg = 0,
+        Menu,
         Status,
         Font,
     };

@@ -45,6 +45,10 @@ Control::Handler StoryScene::onResolveCCBCCControlSelector(Ref* pTarget, const c
 
 void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
+    SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
+    frameCache->addSpriteFramesWithFile("character/persona2/persona2.plist");
+    frameCache->addSpriteFramesWithFile("misc/misc.plist");
+
     // SE
     SoundManager* soundManager = new SoundManager();
     soundManager->preloadSE("se_select");
@@ -52,17 +56,28 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
+    // メニュー表示
+    float labelWidth = origin.x + visibleSize.width / 2;
+    float relativeLabelHeight = 40.0f;
+    Point point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 100);
+    Sprite* windowSprite = Sprite::createWithSpriteFrameName("menu_window.png");
+    windowSprite->setPosition(point);
+    windowSprite->setScale(windowSprite->getScale(),
+                           windowSprite->getScale() * 40 / 100);
+    addChild(windowSprite, ZOrder::Menu);
+    
     // 表示文字準備
-    std::vector< std::string > pages;
+    LabelAttributedBMFont* label;
+    Constant::StringVector pages;
     pages.push_back("あいうえおー\nかきくけこー");
     pages.push_back("さしすせそー");
     
-    auto label = LabelAttributedBMFont::createWithBMFont(Constant::NORMAL_FONT(), pages);
-    float labelWidth = origin.x + visibleSize.width * 1 / 10;
-    float relativeLabelHeight = 4.0f;
-    Point point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    label->setPosition(point);
-    this->addChild(label);
+    relativeLabelHeight = 4.0f;
+    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    label = TextCreator::create(pages, point);
+    label->setScale(BM_FONT_SIZE64(16));
+    this->addChild(label, ZOrder::Font);
+    
     
     
     // 強調キーワードを設定する場合
