@@ -31,10 +31,8 @@ void JsonLoader::downloadSheet(const std::string url, const std::string filename
     HttpRequest* request = new HttpRequest();
 
     request->setUrl(url.c_str());
-    CCLOG("downloadsheet1: %s", url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
     request->setResponseCallback([this, filename](HttpClient* client, HttpResponse* response) {
-        CCLOG("setResponseClick");
         if (!response) {
             this->status = DownloadStatus::ResponseError;
             return;
@@ -74,5 +72,4 @@ void JsonLoader::downloadSheet(const std::string url, const std::string filename
     HttpClient::getInstance()->send(request);
     request->release();
     this->status = DownloadStatus::SendRequest;
-    CCLOG("downloadsheet2");
 }

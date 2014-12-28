@@ -139,10 +139,8 @@ bool StoryScene::loadScenario()
 {
     const std::string filename = "scenario.csv";
     loader = new JsonLoader();
-    CCLOG("readFlg:%d", this->readFlg);
     
     this->readFlg = loader->readFile(filename);
-    CCLOG("readFlg:%d", this->readFlg);
     if (!this->readFlg)
     {
         if (!FileUtils::getInstance()->isFileExist(filename))
@@ -159,16 +157,11 @@ bool StoryScene::loadScenario()
     else
     {
         // ダウンロード終了時
-        CCLOG("loadSceneario");
         this->flg = true;
-        CCLOG("loadSceneario");
         picojson::object& sheets = loader->jsonResult.get<picojson::object>();
-        CCLOG("loadSceneario");
         picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
-        CCLOG("loadSceneario");
         for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
         {
-            CCLOG("loadSceneario-detail");
             picojson::object& column = it->get<picojson::object>();
             int x = (int)column["main_id"].get<double>();
             int y = (int)column["sub_id"].get<double>();
@@ -187,7 +180,6 @@ bool StoryScene::loadScenario()
  */
 void StoryScene::update(float frame)
 {
-    CCLOG("update: flg:%d / readFlg:%d / status:%d", this->flg, this->readFlg, loader->status);
     if (this->flg) return;
     
     if (!this->readFlg)
