@@ -10,6 +10,8 @@
 
 StoryScene::StoryScene()
 : bgImageList(Constant::BG_IMAGE_LIST())
+, readFlg(false)
+, flg(false)
 {
 }
 
@@ -54,6 +56,9 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     SoundManager* soundManager = new SoundManager();
     soundManager->preloadSE("se_select");
 
+    // シナリオデータ取得
+    this->loadScenario();
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
@@ -90,7 +95,6 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     label->setCallback([this](Ref *sender){
         // 処理記述
         CCLOG("setCallback");
-        this->getScenario();
     });
     
     // コールバック設定その２(ページ送りするたびに呼ばれる)
@@ -106,6 +110,10 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     
     // 文字送り開始(これやんないと何も始まらないYo)
     label->start();
+
+    // スケジュール更新
+    this->scheduleUpdate();
+    
 }
 
 /**
@@ -127,24 +135,90 @@ void StoryScene::initBackground()
     this->addChild(background, ZOrder::Bg);
 }
 
-// on "init" you need to initialize your instance
-bool StoryScene::getScenario()
+bool StoryScene::loadScenario()
 {
     const std::string filename = "scenario.csv";
-
-    picojson::value v = SheetLoader::getSheet(filename);
-    picojson::object& sheets = v.get<picojson::object>();
-    picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
-    for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
-    {
-        picojson::object& column = it->get<picojson::object>();
-        int x = (int)column["main_id"].get<double>();
-        int y = (int)column["sub_id"].get<double>();
-        std::string z = (std::string)column["chara_name"].get<std::string>();
-        CCLOG("x:%d, y:%d, z:%s", x, y, z.c_str());
-    }
+    loader = new SheetLoader();
+    CCLOG("readFlg:%d", this->readFlg);
     
+    this->readFlg = loader->readFile(filename);
+    CCLOG("readFlg:%d", this->readFlg);
+    if (!this->readFlg)
+    {
+        if (!FileUtils::getInstance()->isFileExist(filename))
+        {
+            // ファイルが存在しない場合はHttpRequest通信でダウンロード
+            loader->downloadSheet(__GOOGLE_SHEET_URL, filename);
+        }
+        else
+        {
+            CCLOG("file exists, but read error");
+            return false;
+        }
+    }
+    else
+    {
+        // ダウンロード終了時
+        CCLOG("loadSceneario");
+        this->flg = true;
+        CCLOG("loadSceneario");
+        picojson::object& sheets = loader->jsonResult.get<picojson::object>();
+        CCLOG("loadSceneario");
+        picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
+        CCLOG("loadSceneario");
+        for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
+        {
+            CCLOG("loadSceneario-detail");
+            picojson::object& column = it->get<picojson::object>();
+            int x = (int)column["main_id"].get<double>();
+            int y = (int)column["sub_id"].get<double>();
+            std::string z = (std::string)column["chara_name"].get<std::string>();
+            CCLOG("x:%d, y:%d, z:%s", x, y, z.c_str());
+        }
+        
+    }
     return true;
+}
+
+/**
+ *  定期更新（フレーム毎）
+ *
+ *  @param frame フレーム
+ */
+void StoryScene::update(float frame)
+{
+    CCLOG("update: flg:%d / readFlg:%d / status:%d", this->flg, this->readFlg, loader->status);
+    if (this->flg) return;
+    
+    if (!this->readFlg)
+    {
+        // ダウンロード終了待ち
+        if (loader->status == SheetLoader::DownloadStatus::DownloadSuccess)
+        {
+            const std::string filename = "scenario.csv";
+            this->readFlg = loader->readFile(filename);
+            if (!this->readFlg)
+            {
+                CCLOG("system error");
+                return;
+            }
+        }
+    }
+    else
+    {
+        // ダウンロード終了時
+        this->flg = true;
+        picojson::object& sheets = loader->jsonResult.get<picojson::object>();
+        picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
+        for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
+        {
+            picojson::object& column = it->get<picojson::object>();
+            int x = (int)column["main_id"].get<double>();
+            int y = (int)column["sub_id"].get<double>();
+            std::string z = (std::string)column["chara_name"].get<std::string>();
+            CCLOG("x:%d, y:%d, z:%s", x, y, z.c_str());
+        }
+    }
 }
 
 //void StoryScene::tappedBackButton(Ref* pTarget, Control::EventType pControlEventType)

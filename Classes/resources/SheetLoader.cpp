@@ -15,44 +15,28 @@ SheetLoader::~SheetLoader()
 {
 }
 
-picojson::value SheetLoader::getSheet(const std::string filename)
+bool SheetLoader::readFile(const std::string filename)
 {
-    picojson::value v;
-    std::string err;
-    
-    if (!FileUtils::getInstance()->isFileExist(filename))
-    {
-        // ファイルが存在しない場合はHttpRequest通信でダウンロード
-        const std::string url = __GOOGLE_SHEET_URL;
-        CCLOG("url = %s", url.c_str());
-        downloadSheet(url, filename);
-//        picojson::parse(v, response->getResponseData()->begin(), response->getResponseData()->end(), &err);
-        CCLOG("download");
-    }
-
-    // ファイルから取得
-    CCLOG("get file");
     std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(filePath);
-    CCLOG("fullpath = %s", fullPath.c_str());
-    Data data = FileUtils::getInstance()->getDataFromFile(filename);
     ifstream ifs(fullPath.c_str());
-    if (!ifs) return v;
-    picojson::parse(v, ifs);
-    
-    return v;
+    if (!ifs) return false;
+    picojson::parse(this->jsonResult, ifs);
+    return true;
 }
 
-bool SheetLoader::downloadSheet(const std::string url, const std::string filename)
+void SheetLoader::downloadSheet(const std::string url, const std::string filename)
 {
-    bool result = false;
-    
+    this->status = DownloadStatus::DownloadBefore;
     HttpRequest* request = new HttpRequest();
-    // Google SpreadSheetの公開URL
+
     request->setUrl(url.c_str());
+    CCLOG("downloadsheet1: %s", url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
-    request->setResponseCallback([filename, &result](HttpClient* client, HttpResponse* response) {
+    request->setResponseCallback([this, filename](HttpClient* client, HttpResponse* response) {
+        CCLOG("setResponseClick");
         if (!response) {
+            this->status = DownloadStatus::ResponseError;
             return;
         }
         
@@ -65,29 +49,30 @@ bool SheetLoader::downloadSheet(const std::string url, const std::string filenam
         CCLOG("response code: %ld", statusCode);
         
         if (!response->isSucceed()) {
+            this->status = DownloadStatus::ResponseFailed;
             CCLOG("response failed");
             CCLOG("error buffer: %s", response->getErrorBuffer());
             return;
         }
 
-        // ダウンロードしたデータを取り出す
+        // ダウンロードしたデータをファイルに書き込む
         std::vector<char> *buffer = response->getResponseData();
-        
-        // ファイルパス作る
         std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
+        CCLOG("filepath: %s", filePath.c_str());
         
-        // 書き込む
         std::ofstream ofs;
         ofs.open(filePath.c_str(), std::ios::out | std::ios::trunc);
         ofs.write(&(buffer->front()), buffer->size());
         ofs.flush();
         ofs.close();
-        
-        result = true;
+        CCLOG("filepath: %s", (*buffer).data());
+
+        this->status = DownloadStatus::DownloadSuccess;
     });
+    
     request->setTag("SheetLoader::downloadSheet");
     HttpClient::getInstance()->send(request);
     request->release();
-    
-    return result;
+    this->status = DownloadStatus::SendRequest;
+    CCLOG("downloadsheet2");
 }

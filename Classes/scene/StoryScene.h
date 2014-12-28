@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
+#include "resources/SheetLoader.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -26,6 +27,7 @@ public:
     
 //    void tappedBackButton(Ref* pTarget, Control::EventType pControlEventType);
     
+    void update(float frame);
     void pushBack(Ref* pSender);
     
 private:
@@ -39,8 +41,11 @@ private:
     std::vector<std::string> bgImageList;
 
     void initBackground();
-    bool getScenario();
+    bool loadScenario();
 //    void setCallbackChangedPage( const std::function<void( int )> &callback );
+    bool readFlg = false;
+    SheetLoader* loader;
+    bool flg = false;
 };
 
 #endif /* defined(__STORY_SCENE_H__) */

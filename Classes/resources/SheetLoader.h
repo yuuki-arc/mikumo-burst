@@ -3,12 +3,24 @@
 
 #include "core/picojson.h"
 
+
 class SheetLoader
 {
 public:
     SheetLoader();
     virtual ~SheetLoader();
-    static picojson::value getSheet(const std::string filename);
-    static bool downloadSheet(const std::string url, const std::string filename);
+    bool readFile(const std::string filename);
+    void downloadSheet(const std::string url, const std::string filename);
+
+    enum DownloadStatus
+    {
+        DownloadBefore = 0,
+        SendRequest,
+        ResponseError,
+        ResponseFailed,
+        DownloadSuccess,
+    };
+    DownloadStatus status = DownloadStatus::DownloadBefore;
+    picojson::value jsonResult;
 };
 #endif /* defined(__mikumo_burst__SheetLoader__) */
