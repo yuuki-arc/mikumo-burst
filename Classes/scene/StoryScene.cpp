@@ -6,7 +6,7 @@
 #include "factory/TextCreator.h"
 #include "tools/NativeLauncher.h"
 #include "core/LabelAttributedBMFont.h"
-#include "resources/SheetLoader.h"
+#include "resources/JsonLoader.h"
 
 StoryScene::StoryScene()
 : bgImageList(Constant::BG_IMAGE_LIST())
@@ -138,7 +138,7 @@ void StoryScene::initBackground()
 bool StoryScene::loadScenario()
 {
     const std::string filename = "scenario.csv";
-    loader = new SheetLoader();
+    loader = new JsonLoader();
     CCLOG("readFlg:%d", this->readFlg);
     
     this->readFlg = loader->readFile(filename);
@@ -193,7 +193,7 @@ void StoryScene::update(float frame)
     if (!this->readFlg)
     {
         // ダウンロード終了待ち
-        if (loader->status == SheetLoader::DownloadStatus::DownloadSuccess)
+        if (loader->status == JsonLoader::DownloadStatus::DownloadSuccess)
         {
             const std::string filename = "scenario.csv";
             this->readFlg = loader->readFile(filename);

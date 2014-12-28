@@ -1,4 +1,4 @@
-#include "resources/SheetLoader.h"
+#include "resources/JsonLoader.h"
 #include "core/Constant.h"
 #include "core/picojson.h"
 #include "network/HttpClient.h"
@@ -7,15 +7,15 @@
 USING_NS_CC;
 using namespace network;
 
-SheetLoader::SheetLoader()
+JsonLoader::JsonLoader()
 {
 }
 
-SheetLoader::~SheetLoader()
+JsonLoader::~JsonLoader()
 {
 }
 
-bool SheetLoader::readFile(const std::string filename)
+bool JsonLoader::readFile(const std::string filename)
 {
     std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(filePath);
@@ -25,7 +25,7 @@ bool SheetLoader::readFile(const std::string filename)
     return true;
 }
 
-void SheetLoader::downloadSheet(const std::string url, const std::string filename)
+void JsonLoader::downloadSheet(const std::string url, const std::string filename)
 {
     this->status = DownloadStatus::DownloadBefore;
     HttpRequest* request = new HttpRequest();
@@ -70,7 +70,7 @@ void SheetLoader::downloadSheet(const std::string url, const std::string filenam
         this->status = DownloadStatus::DownloadSuccess;
     });
     
-    request->setTag("SheetLoader::downloadSheet");
+    request->setTag("JsonLoader::downloadSheet");
     HttpClient::getInstance()->send(request);
     request->release();
     this->status = DownloadStatus::SendRequest;

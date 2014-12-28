@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
-#include "resources/SheetLoader.h"
+#include "resources/JsonLoader.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -44,7 +44,7 @@ private:
     bool loadScenario();
 //    void setCallbackChangedPage( const std::function<void( int )> &callback );
     bool readFlg = false;
-    SheetLoader* loader;
+    JsonLoader* loader;
     bool flg = false;
 };
 
