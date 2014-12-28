@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
+#include "core/Constant.h"
+#include "core/LabelAttributedBMFont.h"
 #include "resources/JsonLoader.h"
 
 USING_NS_CC;
@@ -42,10 +44,22 @@ private:
 
     void initBackground();
     bool loadScenario();
+    void initStoryMessages();
+    Constant::StringVector setStoryMessages();
 //    void setCallbackChangedPage( const std::function<void( int )> &callback );
-    bool readFlg = false;
+    
+    enum LoadStatus
+    {
+        BeforeLoad = 0,
+        DataDownload,
+        ReadError,
+        ReadSuccess,
+        LoadComplete,
+    };
+    LoadStatus loadStatus = LoadStatus::BeforeLoad;
+    
     JsonLoader* loader;
-    bool flg = false;
+    LabelAttributedBMFont* label;
 };
 
 #endif /* defined(__STORY_SCENE_H__) */

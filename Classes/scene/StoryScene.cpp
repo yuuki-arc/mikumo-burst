@@ -10,8 +10,7 @@
 
 StoryScene::StoryScene()
 : bgImageList(Constant::BG_IMAGE_LIST())
-, readFlg(false)
-, flg(false)
+, loadStatus(LoadStatus::BeforeLoad)
 {
 }
 
@@ -48,6 +47,10 @@ Control::Handler StoryScene::onResolveCCBCCControlSelector(Ref* pTarget, const c
 
 void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+
+    // スプライト読み込み
     SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("character/persona2/persona2.plist");
     frameCache->addSpriteFramesWithFile("misc/misc.plist");
@@ -59,9 +62,6 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // シナリオデータ取得
     this->loadScenario();
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
-    
     // メニュー表示
     float labelWidth = origin.x + visibleSize.width / 2;
     float relativeLabelHeight = 40.0f;
@@ -71,45 +71,6 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     windowSprite->setScale(windowSprite->getScale(),
                            windowSprite->getScale() * 40 / 100);
     addChild(windowSprite, ZOrder::Menu);
-    
-    // 表示文字準備
-    LabelAttributedBMFont* label;
-    Constant::StringVector pages;
-    pages.push_back("あいうえおー\nかきくけこー");
-    pages.push_back("さしすせそー");
-    
-    relativeLabelHeight = 4.0f;
-    point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    label = TextCreator::create(pages, point);
-    label->setScale(BM_FONT_SIZE64(16));
-    this->addChild(label, ZOrder::Font);
-    
-    
-    
-    // 強調キーワードを設定する場合
-    label->addKeyWord("おー", Color3B::RED);   // 強調キーワード, 強調色
-    // 複数あるならもう繰り返し
-    label->addKeyWord("すせー", Color3B::YELLOW);   // 強調キーワード, 強調色
-    
-    // コールバック設定するなら(全表示が終わったときにタップされると呼ばれる)
-    label->setCallback([this](Ref *sender){
-        // 処理記述
-        CCLOG("setCallback");
-    });
-    
-    // コールバック設定その２(ページ送りするたびに呼ばれる)
-    // もどってくる値はpagesのindex
-    label->setCallbackChangedPage([](int index) {
-        // indexから現在何が表示されているのか判定して何か処理
-        // ページ送りされたらなので、indexは1から(2ページ目からしかこない)
-        CCLOG("setCallbackChangedPage");
-    });
-    
-    // 文字送りしない場合(ページ送りとキーワード強調は有効にしたい場合)
-    // label->setDispSpeed(0);
-    
-    // 文字送り開始(これやんないと何も始まらないYo)
-    label->start();
 
     // スケジュール更新
     this->scheduleUpdate();
@@ -140,35 +101,25 @@ bool StoryScene::loadScenario()
     const std::string filename = "scenario.csv";
     loader = new JsonLoader();
     
-    this->readFlg = loader->readFile(filename);
-    if (!this->readFlg)
+    bool readFlg = loader->readFile(filename);
+    if (readFlg)
+    {
+        this->loadStatus = LoadStatus::ReadSuccess;
+    }
+    else
     {
         if (!FileUtils::getInstance()->isFileExist(filename))
         {
             // ファイルが存在しない場合はHttpRequest通信でダウンロード
+            this->loadStatus = LoadStatus::DataDownload;
             loader->downloadSheet(__GOOGLE_SHEET_URL, filename);
         }
         else
         {
+            this->loadStatus = LoadStatus::ReadError;
             CCLOG("file exists, but read error");
             return false;
         }
-    }
-    else
-    {
-        // ダウンロード終了時
-        this->flg = true;
-        picojson::object& sheets = loader->jsonResult.get<picojson::object>();
-        picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
-        for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
-        {
-            picojson::object& column = it->get<picojson::object>();
-            int x = (int)column["main_id"].get<double>();
-            int y = (int)column["sub_id"].get<double>();
-            std::string z = (std::string)column["chara_name"].get<std::string>();
-            CCLOG("x:%d, y:%d, z:%s", x, y, z.c_str());
-        }
-        
     }
     return true;
 }
@@ -180,37 +131,94 @@ bool StoryScene::loadScenario()
  */
 void StoryScene::update(float frame)
 {
-    if (this->flg) return;
-    
-    if (!this->readFlg)
-    {
-        // ダウンロード終了待ち
-        if (loader->status == JsonLoader::DownloadStatus::DownloadSuccess)
+    switch(this->loadStatus) {
+        case LoadStatus::DataDownload:
         {
-            const std::string filename = "scenario.csv";
-            this->readFlg = loader->readFile(filename);
-            if (!this->readFlg)
+            // ダウンロード終了待ち
+            if (loader->downloadStatus == JsonLoader::DownloadStatus::DownloadSuccess)
             {
-                CCLOG("system error");
-                return;
+                const std::string filename = "scenario.csv";
+                bool readFlg = loader->readFile(filename);
+                if (readFlg)
+                {
+                    this->loadStatus = LoadStatus::ReadSuccess;
+                }
+                else
+                {
+                    this->loadStatus = LoadStatus::ReadError;
+                    CCLOG("system error");
+                    return;
+                }
             }
+            break;
         }
-    }
-    else
-    {
-        // ダウンロード終了時
-        this->flg = true;
-        picojson::object& sheets = loader->jsonResult.get<picojson::object>();
-        picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
-        for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
+        case LoadStatus::ReadSuccess:
         {
-            picojson::object& column = it->get<picojson::object>();
-            int x = (int)column["main_id"].get<double>();
-            int y = (int)column["sub_id"].get<double>();
-            std::string z = (std::string)column["chara_name"].get<std::string>();
-            CCLOG("x:%d, y:%d, z:%s", x, y, z.c_str());
+            this->loadStatus = LoadStatus::LoadComplete;
+            // メッセージ表示準備
+            this->initStoryMessages();
+            break;
         }
+        default:
+            break;
     }
+}
+
+void StoryScene::initStoryMessages()
+{
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
+    
+    // 表示文字準備
+    this->setStoryMessages();
+    Constant::StringVector pages = this->setStoryMessages();
+    
+    float labelWidth = origin.x + visibleSize.width * 1 / 10;
+    float relativeLabelHeight = 4.0f;
+    Point point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+    label = TextCreator::create(pages, point);
+    label->setScale(BM_FONT_SIZE64(16));
+    this->addChild(label, ZOrder::Font);
+    
+    // コールバック設定するなら(全表示が終わったときにタップされると呼ばれる)
+    label->setCallback([this](Ref *sender){
+        // 処理記述
+        CCLOG("setCallback");
+    });
+    
+    // コールバック設定その２(ページ送りするたびに呼ばれる)
+    // もどってくる値はpagesのindex
+    label->setCallbackChangedPage([](int index) {
+        // indexから現在何が表示されているのか判定して何か処理
+        // ページ送りされたらなので、indexは1から(2ページ目からしかこない)
+        CCLOG("setCallbackChangedPage");
+    });
+    
+    // 文字送りしない場合(ページ送りとキーワード強調は有効にしたい場合)
+    // label->setDispSpeed(0);
+    
+    // 文字送り開始(これやんないと何も始まらないYo)
+    label->start();
+}
+
+Constant::StringVector StoryScene::setStoryMessages()
+{
+    Constant::StringVector pages;
+
+    picojson::object& sheets = loader->jsonResult.get<picojson::object>();
+    picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
+    for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
+    {
+        picojson::object& column = it->get<picojson::object>();
+        int main_id = (int)column["main_id"].get<double>();
+        int sub_id = (int)column["sub_id"].get<double>();
+        std::string chara_name = (std::string)column["chara_name"].get<std::string>();
+        std::string message = (std::string)column["message"].get<std::string>();
+        pages.push_back(message);
+        CCLOG("x:%d, y:%d, z:%s", main_id, sub_id, chara_name.c_str());
+    }
+    
+    return pages;
 }
 
 //void StoryScene::tappedBackButton(Ref* pTarget, Control::EventType pControlEventType)

@@ -27,14 +27,14 @@ bool JsonLoader::readFile(const std::string filename)
 
 void JsonLoader::downloadSheet(const std::string url, const std::string filename)
 {
-    this->status = DownloadStatus::DownloadBefore;
+    this->downloadStatus = DownloadStatus::BeforeDownload;
     HttpRequest* request = new HttpRequest();
 
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
     request->setResponseCallback([this, filename](HttpClient* client, HttpResponse* response) {
         if (!response) {
-            this->status = DownloadStatus::ResponseError;
+            this->downloadStatus = DownloadStatus::ResponseError;
             return;
         }
         
@@ -47,7 +47,7 @@ void JsonLoader::downloadSheet(const std::string url, const std::string filename
         CCLOG("response code: %ld", statusCode);
         
         if (!response->isSucceed()) {
-            this->status = DownloadStatus::ResponseFailed;
+            this->downloadStatus = DownloadStatus::ResponseFailed;
             CCLOG("response failed");
             CCLOG("error buffer: %s", response->getErrorBuffer());
             return;
@@ -65,11 +65,11 @@ void JsonLoader::downloadSheet(const std::string url, const std::string filename
         ofs.close();
         CCLOG("filepath: %s", (*buffer).data());
 
-        this->status = DownloadStatus::DownloadSuccess;
+        this->downloadStatus = DownloadStatus::DownloadSuccess;
     });
     
     request->setTag("JsonLoader::downloadSheet");
     HttpClient::getInstance()->send(request);
     request->release();
-    this->status = DownloadStatus::SendRequest;
+    this->downloadStatus = DownloadStatus::SendRequest;
 }

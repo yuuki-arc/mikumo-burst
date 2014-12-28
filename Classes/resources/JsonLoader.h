@@ -14,13 +14,13 @@ public:
 
     enum DownloadStatus
     {
-        DownloadBefore = 0,
+        BeforeDownload = 0,
         SendRequest,
         ResponseError,
         ResponseFailed,
         DownloadSuccess,
     };
-    DownloadStatus status = DownloadStatus::DownloadBefore;
+    DownloadStatus downloadStatus = DownloadStatus::BeforeDownload;
     picojson::value jsonResult;
 };
 #endif /* defined(__mikumo_burst__JsonLoader__) */
