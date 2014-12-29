@@ -20,7 +20,7 @@ public:
         ResponseFailed,
         DownloadSuccess,
     };
-    DownloadStatus downloadStatus = DownloadStatus::BeforeDownload;
+    DownloadStatus downloadStatus;
     picojson::value jsonResult;
 };
 #endif /* defined(__mikumo_burst__JsonLoader__) */

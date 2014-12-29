@@ -6,7 +6,7 @@
 #include "cocosbuilder/CocosBuilder.h"
 #include "core/Constant.h"
 #include "core/LabelAttributedBMFont.h"
-#include "resources/JsonLoader.h"
+#include "resources/FileCacheManager.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -31,6 +31,7 @@ public:
     
     void update(float frame);
     void pushBack(Ref* pSender);
+    void initStoryMessages();
     
 private:
     enum ZOrder
@@ -44,21 +45,10 @@ private:
 
     void initBackground();
     bool loadScenario();
-    void initStoryMessages();
     Constant::StringVector setStoryMessages();
 //    void setCallbackChangedPage( const std::function<void( int )> &callback );
-    
-    enum LoadStatus
-    {
-        BeforeLoad = 0,
-        DataDownload,
-        ReadError,
-        ReadSuccess,
-        LoadComplete,
-    };
-    LoadStatus loadStatus = LoadStatus::BeforeLoad;
-    
-    JsonLoader* loader;
+
+    FileCacheManager* scenarioCache;
     LabelAttributedBMFont* label;
 };
 

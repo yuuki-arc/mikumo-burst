@@ -8,6 +8,7 @@ USING_NS_CC;
 using namespace network;
 
 JsonLoader::JsonLoader()
+: downloadStatus(DownloadStatus::BeforeDownload)
 {
 }
 

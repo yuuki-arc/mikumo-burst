@@ -6,16 +6,17 @@
 #include "factory/TextCreator.h"
 #include "tools/NativeLauncher.h"
 #include "core/LabelAttributedBMFont.h"
-#include "resources/JsonLoader.h"
+#include "resources/FileCacheManager.h"
 
 StoryScene::StoryScene()
 : bgImageList(Constant::BG_IMAGE_LIST())
-, loadStatus(LoadStatus::BeforeLoad)
+, scenarioCache(nullptr)
 {
 }
 
 StoryScene::~StoryScene()
 {
+    CC_SAFE_RELEASE_NULL(scenarioCache);
 }
 
 bool StoryScene::init()
@@ -27,6 +28,12 @@ bool StoryScene::init()
     }
     
     initBackground();
+    
+    scenarioCache = FileCacheManager::create();
+    scenarioCache->retain();
+    scenarioCache->setUrl(__SCENARIO_SHEET_URL);
+    scenarioCache->setFileName(Constant::SCENARIO_FILE());
+    scenarioCache->setCallback([this](Ref *sender){initStoryMessages();});
     
     return true;
 }
@@ -98,30 +105,8 @@ void StoryScene::initBackground()
 
 bool StoryScene::loadScenario()
 {
-    const std::string filename = Constant::SCENARIO_FILE();
-    loader = new JsonLoader();
-    
-    bool readFlg = loader->readFile(filename);
-    if (readFlg)
-    {
-        this->loadStatus = LoadStatus::ReadSuccess;
-    }
-    else
-    {
-        if (!FileUtils::getInstance()->isFileExist(filename))
-        {
-            // ファイルが存在しない場合はHttpRequest通信でダウンロード
-            this->loadStatus = LoadStatus::DataDownload;
-            loader->downloadData(__GOOGLE_SHEET_URL, filename);
-        }
-        else
-        {
-            this->loadStatus = LoadStatus::ReadError;
-            CCLOG("file exists, but read error");
-            return false;
-        }
-    }
-    return true;
+    bool result = scenarioCache->loadData();
+    return result;
 }
 
 /**
@@ -131,36 +116,10 @@ bool StoryScene::loadScenario()
  */
 void StoryScene::update(float frame)
 {
-    switch(this->loadStatus) {
-        case LoadStatus::DataDownload:
-        {
-            // ダウンロード終了待ち
-            if (loader->downloadStatus == JsonLoader::DownloadStatus::DownloadSuccess)
-            {
-                const std::string filename = Constant::SCENARIO_FILE();
-                bool readFlg = loader->readFile(filename);
-                if (readFlg)
-                {
-                    this->loadStatus = LoadStatus::ReadSuccess;
-                }
-                else
-                {
-                    this->loadStatus = LoadStatus::ReadError;
-                    CCLOG("system error");
-                    return;
-                }
-            }
-            break;
-        }
-        case LoadStatus::ReadSuccess:
-        {
-            this->loadStatus = LoadStatus::LoadComplete;
-            // メッセージ表示準備
-            this->initStoryMessages();
-            break;
-        }
-        default:
-            break;
+    bool result = scenarioCache->readData();
+    if (!result)
+    {
+        CCLOG("StoryScene::read error");
     }
 }
 
@@ -205,7 +164,7 @@ Constant::StringVector StoryScene::setStoryMessages()
 {
     Constant::StringVector pages;
 
-    picojson::object& sheets = loader->jsonResult.get<picojson::object>();
+    picojson::object& sheets = scenarioCache->loader->jsonResult.get<picojson::object>();
     picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
     for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
     {

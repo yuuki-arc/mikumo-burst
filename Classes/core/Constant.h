@@ -186,7 +186,8 @@ public:
         return map[key];
     }
     
-    static const char* SCENARIO_FILE(){return "scenario.csv";}
+    static const char* INFORMATION_FILE(){return "00_information";}
+    static const char* SCENARIO_FILE(){return "10_scenario";}
 
 #ifdef __mikumoburst__DefineParameters__
     static const char* APPC_MEDIA_KEY(){return __APPC_MEDIA_KEY;}
