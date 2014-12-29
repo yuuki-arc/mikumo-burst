@@ -16,6 +16,12 @@ JsonLoader::~JsonLoader()
 {
 }
 
+/**
+ *  キャッシュファイルからデータを読み込む
+ *
+ *  @param filename ファイル名
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
 bool JsonLoader::readFile(const std::string filename)
 {
     std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
@@ -26,14 +32,21 @@ bool JsonLoader::readFile(const std::string filename)
     return true;
 }
 
-void JsonLoader::downloadData(const std::string url, const std::string filename)
+/**
+ *  指定したURLから非同期でダウンロード処理を行う
+ *  ダウンロードしたデータはメモリに保持する
+ *
+ *  @param url ダウンロード先URL
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+void JsonLoader::downloadResponseData(const std::string url)
 {
     this->downloadStatus = DownloadStatus::BeforeDownload;
     HttpRequest* request = new HttpRequest();
 
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
-    request->setResponseCallback([this, filename](HttpClient* client, HttpResponse* response) {
+    request->setResponseCallback([this](HttpClient* client, HttpResponse* response) {
         if (!response) {
             this->downloadStatus = DownloadStatus::ResponseError;
             return;
@@ -54,23 +67,38 @@ void JsonLoader::downloadData(const std::string url, const std::string filename)
             return;
         }
 
-        // ダウンロードしたデータをファイルに書き込む
-        std::vector<char> *buffer = response->getResponseData();
-        std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
-        CCLOG("filepath: %s", filePath.c_str());
-        
-        std::ofstream ofs;
-        ofs.open(filePath.c_str(), std::ios::out | std::ios::trunc);
-        ofs.write(&(buffer->front()), buffer->size());
-        ofs.flush();
-        ofs.close();
-        CCLOG("filepath: %s", (*buffer).data());
+        // レスポンスデータを保持する
+        std::vector<char>* buffer = response->getResponseData();
+        std::copy((*buffer).begin(), (*buffer).end(), back_inserter(responseData));
 
-        this->downloadStatus = DownloadStatus::DownloadSuccess;
+        this->downloadStatus = DownloadStatus::SaveResponseData;
     });
     
     request->setTag("JsonLoader::downloadData");
     HttpClient::getInstance()->send(request);
     request->release();
     this->downloadStatus = DownloadStatus::SendRequest;
+}
+
+/**
+ *  レスポンスデータをキャッシュファイルに書き込む
+ *  ファイルが存在する場合は上書きする
+ *
+ *  @param filename ファイル名
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+void JsonLoader::writeCacheData(const std::string filename)
+{
+    this->downloadStatus = DownloadStatus::WritingCacheData;
+    
+    std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
+    std::vector<char>* buffer = new std::vector<char>(responseData.begin(), responseData.end());
+    std::ofstream ofs;
+    ofs.open(filePath.c_str(), std::ios::out | std::ios::trunc);
+    ofs.write(&(buffer->front()), buffer->size());
+    ofs.flush();
+    ofs.close();
+    CCLOG("filepath: %s", (*buffer).data());
+    
+    this->downloadStatus = DownloadStatus::WritedCacheData;
 }

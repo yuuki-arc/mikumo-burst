@@ -134,6 +134,7 @@
 		A565507A1A4BA493002424BA /* LabelAttributedBMFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A56550781A4BA493002424BA /* LabelAttributedBMFont.cpp */; };
 		A5777FD01A1A2040008211C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5777FCF1A1A2040008211C7 /* Images.xcassets */; };
 		A58CE36E1A51035700002ED2 /* DownloadCacheManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A58CE36C1A51035700002ED2 /* DownloadCacheManager.cpp */; };
+		A5A2068D1A512D240068B349 /* AppsInformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A2068B1A512D240068B349 /* AppsInformation.cpp */; };
 		A5A7F0E219BB394700A5BEDD /* sound in Resources */ = {isa = PBXBuildFile; fileRef = A5A7F0E119BB394700A5BEDD /* sound */; };
 		A5ADDC491A1AD42E00A492F3 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ADDC471A1AD42E00A492F3 /* libGoogleAnalyticsServices.a */; };
 		A5B2714519AC6BD30028E9E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */; };
@@ -485,6 +486,8 @@
 		A58CE36C1A51035700002ED2 /* DownloadCacheManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DownloadCacheManager.cpp; sourceTree = "<group>"; };
 		A58CE36D1A51035700002ED2 /* DownloadCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadCacheManager.h; sourceTree = "<group>"; };
 		A5948EB81A356545008F44CC /* DefineParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineParameters.h; sourceTree = "<group>"; };
+		A5A2068B1A512D240068B349 /* AppsInformation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppsInformation.cpp; sourceTree = "<group>"; };
+		A5A2068C1A512D240068B349 /* AppsInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppsInformation.h; sourceTree = "<group>"; };
 		A5A7F0E119BB394700A5BEDD /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		A5ADDC3C1A1AD42E00A492F3 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		A5ADDC3D1A1AD42E00A492F3 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -824,6 +827,8 @@
 		A5152C541A206E3000C75DDE /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				A5A2068B1A512D240068B349 /* AppsInformation.cpp */,
+				A5A2068C1A512D240068B349 /* AppsInformation.h */,
 				A58CE36C1A51035700002ED2 /* DownloadCacheManager.cpp */,
 				A58CE36D1A51035700002ED2 /* DownloadCacheManager.h */,
 				A5152C741A20710900C75DDE /* UserDataStore.cpp */,
@@ -1329,6 +1334,7 @@
 				A56550751A4BA477002424BA /* StorySceneLoader.cpp in Sources */,
 				A5152C401A205B9E00C75DDE /* BattleScene.cpp in Sources */,
 				A5E63D311A4EC03B00D8C8F5 /* JsonLoader.cpp in Sources */,
+				A5A2068D1A512D240068B349 /* AppsInformation.cpp in Sources */,
 				A5152C461A205B9E00C75DDE /* MenuSceneLoader.cpp in Sources */,
 				A5152C411A205B9E00C75DDE /* BattleSceneLoader.cpp in Sources */,
 				A5152C431A205B9E00C75DDE /* ResultScene.cpp in Sources */,

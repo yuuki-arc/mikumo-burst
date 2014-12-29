@@ -19,16 +19,17 @@ public:
     CC_SYNTHESIZE(std::string, fileName, FileName);
     
     void setCallback(const std::function<void(Ref*)> &callback);
+    bool downloadResponseData();
     bool loadData();
-    bool readData();
+    bool execCallbackReferenceData();
 
     enum LoadStatus
     {
-        BeforeLoad = 0,
-        DataDownload,
-        ReadError,
-        ReadSuccess,
-        LoadComplete,
+        BeforeLoad = 0, // ロード処理前
+        DataDownload,   // データダウンロード中
+        ReadError,      // ファイル読み込みエラー（エラー）
+        ReadSuccess,    // ファイル読み込み成功
+        LoadComplete,   // ロード処理完了
     };
     LoadStatus loadStatus;
     JsonLoader* loader;

@@ -7,6 +7,7 @@
 #include "tools/NativeLauncher.h"
 #include "core/LabelAttributedBMFont.h"
 #include "resources/DownloadCacheManager.h"
+#include "resources/AppsInformation.h"
 
 StoryScene::StoryScene()
 : bgImageList(Constant::BG_IMAGE_LIST())
@@ -31,8 +32,8 @@ bool StoryScene::init()
     
     scenarioCache = DownloadCacheManager::create();
     scenarioCache->retain();
-    scenarioCache->setUrl(__SCENARIO_SHEET_URL);
-    scenarioCache->setFileName(Constant::SCENARIO_FILE());
+    scenarioCache->setUrl(__SHEET_URL_STORY);
+    scenarioCache->setFileName(Constant::CACHE_FILE_STORY());
     scenarioCache->setCallback([this](Ref *sender){initStoryMessages();});
     
     return true;
@@ -116,7 +117,7 @@ bool StoryScene::loadScenario()
  */
 void StoryScene::update(float frame)
 {
-    bool result = scenarioCache->readData();
+    bool result = scenarioCache->execCallbackReferenceData();
     if (!result)
     {
         CCLOG("StoryScene::read error");
@@ -143,6 +144,9 @@ void StoryScene::initStoryMessages()
     label->setCallback([this](Ref *sender){
         // 処理記述
         CCLOG("setCallback");
+        AppsInformation* appsInfo = AppsInformation::create();
+        appsInfo->retain();
+        appsInfo->downloadData();
     });
     
     // コールバック設定その２(ページ送りするたびに呼ばれる)

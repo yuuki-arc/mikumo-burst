@@ -186,8 +186,19 @@ public:
         return map[key];
     }
     
-    static const char* INFORMATION_FILE(){return "00_information";}
-    static const char* SCENARIO_FILE(){return "10_scenario";}
+    static const char* CACHE_FILE_APPS(){return "00_apps";}
+    static const char* CACHE_FILE_STORY(){return "10_scenario";}
+
+    static const char* SHEET_NAME_AP_APPS(){return "apps";}
+    static const char* SHEET_NAME_AP_SCENARIO(){return "scenario";}
+
+    static const char* SHEET_COLUMN_AP_APPS(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        return "ios";
+#else
+        return "android";
+#endif
+    }
 
 #ifdef __mikumoburst__DefineParameters__
     static const char* APPC_MEDIA_KEY(){return __APPC_MEDIA_KEY;}
