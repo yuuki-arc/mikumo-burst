@@ -98,7 +98,7 @@ void StoryScene::initBackground()
 
 bool StoryScene::loadScenario()
 {
-    const std::string filename = "scenario.csv";
+    const std::string filename = Constant::SCENARIO_FILE();
     loader = new JsonLoader();
     
     bool readFlg = loader->readFile(filename);
@@ -112,7 +112,7 @@ bool StoryScene::loadScenario()
         {
             // ファイルが存在しない場合はHttpRequest通信でダウンロード
             this->loadStatus = LoadStatus::DataDownload;
-            loader->downloadSheet(__GOOGLE_SHEET_URL, filename);
+            loader->downloadData(__GOOGLE_SHEET_URL, filename);
         }
         else
         {
@@ -137,7 +137,7 @@ void StoryScene::update(float frame)
             // ダウンロード終了待ち
             if (loader->downloadStatus == JsonLoader::DownloadStatus::DownloadSuccess)
             {
-                const std::string filename = "scenario.csv";
+                const std::string filename = Constant::SCENARIO_FILE();
                 bool readFlg = loader->readFile(filename);
                 if (readFlg)
                 {

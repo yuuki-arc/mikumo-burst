@@ -10,7 +10,7 @@ public:
     JsonLoader();
     virtual ~JsonLoader();
     bool readFile(const std::string filename);
-    void downloadSheet(const std::string url, const std::string filename);
+    void downloadData(const std::string url, const std::string filename);
 
     enum DownloadStatus
     {

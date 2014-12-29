@@ -25,7 +25,7 @@ bool JsonLoader::readFile(const std::string filename)
     return true;
 }
 
-void JsonLoader::downloadSheet(const std::string url, const std::string filename)
+void JsonLoader::downloadData(const std::string url, const std::string filename)
 {
     this->downloadStatus = DownloadStatus::BeforeDownload;
     HttpRequest* request = new HttpRequest();
@@ -68,7 +68,7 @@ void JsonLoader::downloadSheet(const std::string url, const std::string filename
         this->downloadStatus = DownloadStatus::DownloadSuccess;
     });
     
-    request->setTag("JsonLoader::downloadSheet");
+    request->setTag("JsonLoader::downloadData");
     HttpClient::getInstance()->send(request);
     request->release();
     this->downloadStatus = DownloadStatus::SendRequest;

@@ -185,6 +185,8 @@ public:
         std::map<Voice, StringVector> map = VOICE_LIST(charaSelect);
         return map[key];
     }
+    
+    static const char* SCENARIO_FILE(){return "scenario.csv";}
 
 #ifdef __mikumoburst__DefineParameters__
     static const char* APPC_MEDIA_KEY(){return __APPC_MEDIA_KEY;}
