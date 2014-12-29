@@ -1,4 +1,4 @@
-#include "resources/FileCacheManager.h"
+#include "resources/DownloadCacheManager.h"
 #include "core/Constant.h"
 #include "core/picojson.h"
 #include "network/HttpClient.h"
@@ -7,27 +7,27 @@
 USING_NS_CC;
 using namespace network;
 
-FileCacheManager::FileCacheManager()
+DownloadCacheManager::DownloadCacheManager()
 : loadStatus(LoadStatus::BeforeLoad)
 {
 }
 
-FileCacheManager::~FileCacheManager()
+DownloadCacheManager::~DownloadCacheManager()
 {
 }
 
-bool FileCacheManager::init()
+bool DownloadCacheManager::init()
 {
     loader = new JsonLoader();
     return true;
 }
 
-void FileCacheManager::setCallback(const std::function<void (Ref *)> &callback)
+void DownloadCacheManager::setCallback(const std::function<void (Ref *)> &callback)
 {
     this->callback = callback;
 }
 
-bool FileCacheManager::loadData()
+bool DownloadCacheManager::loadData()
 {
     bool readFlg = loader->readFile(getFileName());
     if (readFlg)
@@ -52,7 +52,7 @@ bool FileCacheManager::loadData()
     return true;
 }
 
-bool FileCacheManager::readData()
+bool DownloadCacheManager::readData()
 {
     if (loader == nullptr) return false;
     

@@ -6,7 +6,7 @@
 #include "factory/TextCreator.h"
 #include "tools/NativeLauncher.h"
 #include "core/LabelAttributedBMFont.h"
-#include "resources/FileCacheManager.h"
+#include "resources/DownloadCacheManager.h"
 
 StoryScene::StoryScene()
 : bgImageList(Constant::BG_IMAGE_LIST())
@@ -29,7 +29,7 @@ bool StoryScene::init()
     
     initBackground();
     
-    scenarioCache = FileCacheManager::create();
+    scenarioCache = DownloadCacheManager::create();
     scenarioCache->retain();
     scenarioCache->setUrl(__SCENARIO_SHEET_URL);
     scenarioCache->setFileName(Constant::SCENARIO_FILE());

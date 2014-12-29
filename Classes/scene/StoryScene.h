@@ -6,7 +6,7 @@
 #include "cocosbuilder/CocosBuilder.h"
 #include "core/Constant.h"
 #include "core/LabelAttributedBMFont.h"
-#include "resources/FileCacheManager.h"
+#include "resources/DownloadCacheManager.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -48,7 +48,7 @@ private:
     Constant::StringVector setStoryMessages();
 //    void setCallbackChangedPage( const std::function<void( int )> &callback );
 
-    FileCacheManager* scenarioCache;
+    DownloadCacheManager* scenarioCache;
     LabelAttributedBMFont* label;
 };
 
