@@ -69,18 +69,13 @@ void AppsInformation::setAppsInformation()
         std::string device = (std::string)column["device"].get<std::string>();
         if (device == Constant::SHEET_COLUMN_AP_APPS())
         {
-            CCLOG("test-OK %s", device.c_str());
-            CCLOG("test-OK %s", getDevice().c_str());
-            CCLOG("test-OK %s", this->device.c_str());
-            setDevice(device);
-            setVersion((std::string)column["version"].get<std::string>());
-            setUpdateVersionDate((std::string)column["updateVersionDate"].get<std::string>());
-            setUpdateSheetDate((std::string)column["updateSheetDate"].get<std::string>());
+            this->device = device;
+            this->version = (std::string)column["version"].get<std::string>();
+            this->updateVersionDate = (std::string)column["updateVersionDate"].get<std::string>();
+            this->updateSheetDate = (std::string)column["updateSheetDate"].get<std::string>();
         }
     }
-    CCLOG("apps: %s %s %s %s", getDevice().c_str(), getVersion().c_str(), getUpdateSheetDate().c_str(), getUpdateVersionDate().c_str());
-    CCLOG("device: %s", device.c_str());
-    CCLOG("constant: %s", Constant::SHEET_COLUMN_AP_APPS());
+    CCLOG("apps: %s %s %s %s", this->device.c_str(), this->version.c_str(), this->updateSheetDate.c_str(), this->updateVersionDate.c_str());
     // ストーリー情報
     scenarioList.clear();
     sheetColumns = sheets[Constant::SHEET_NAME_AP_SCENARIO()].get<picojson::array>();
@@ -88,11 +83,12 @@ void AppsInformation::setAppsInformation()
     {
         StringMap map;
         picojson::object& column = it->get<picojson::object>();
-        map["id"] = (std::string)column["id"].get<std::string>();
+        map["id"] = std::to_string((int)column["id"].get<double>());
         map["sheet_name"] = (std::string)column["sheet_name"].get<std::string>();
         map["title"] = (std::string)column["title"].get<std::string>();
         map["release_date"] = (std::string)column["release_date"].get<std::string>();
         scenarioList.push_back(map);
-        CCLOG("%s %s %s %s", map["id"].c_str(), map["sheet_name"].c_str(), map["title"].c_str(), map["release_date"].c_str());
+        CCLOG("%s %s %s", map["id"].c_str(), map["sheet_name"].c_str(), map["title"].c_str());
+        CCLOG("%s", map["release_date"].c_str());
     }
 }

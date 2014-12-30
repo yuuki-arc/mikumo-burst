@@ -4,6 +4,7 @@
 #include "core/GameManager.h"
 #include "tools/GoogleAnalyticsTracker.h"
 #include "resources/SoundManager.h"
+#include "resources/AppsInformation.h"
 
 TitleScene::TitleScene()
 {
@@ -51,7 +52,9 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     Size screenSize = director->getWinSize();
 
     // アプリ情報を取得
-    GameManager::getInstance()->setAppsInformation();
+    appsInfo = AppsInformation::create(DownloadCacheMode::CacheMemory);
+    appsInfo->retain();
+    appsInfo->downloadData();
     
     // BGM
     SoundManager* soundManager = new SoundManager();
@@ -91,8 +94,11 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
  */
 void TitleScene::update(float frame)
 {
-    bool result = GameManager::getInstance()->appsInfo->downloadCache->execCallback();
+//    CCLOG("appsInfo-cnt:%d", appsInfo->getReferenceCount());
+//    CCLOG("appsInfo-dev:%s", appsInfo->getDevice().c_str());
+//    if (appsInfo->downloadCache == nullptr) return;
     
+    bool result = appsInfo->downloadCache->execCallback();
     if (!result)
     {
         CCLOG("TitleScene::read error");

@@ -108,7 +108,7 @@ bool StoryScene::loadScenario()
 {
 //    AppsInformation* appsInfo = AppsInformation::create();
 //    appsInfo->downloadData();
-    CCLOG("updateShhetDate: %s", GameManager::getInstance()->appsInfo->getUpdateSheetDate().c_str());
+//    CCLOG("updateShhetDate: %s", GameManager::getInstance()->appsInfo->getUpdateSheetDate().c_str());
     
     bool result = scenarioCache->loadData();
     return result;

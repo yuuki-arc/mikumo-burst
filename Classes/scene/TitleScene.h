@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
+#include "resources/AppsInformation.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -26,6 +27,8 @@ public:
 
     void update(float frame);
     void tappedStartButton(Ref* pTarget, Control::EventType pControlEventType);
+    
+    AppsInformation* appsInfo;
 };
 
 #endif /* defined(__TITLE_SCENE_H__) */
