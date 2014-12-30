@@ -5,6 +5,7 @@
 #include "tools/GoogleAnalyticsTracker.h"
 #include "resources/SoundManager.h"
 #include "resources/AppsInformation.h"
+#include "resources/DownloadCacheManager.h"
 
 TitleScene::TitleScene()
 {
@@ -94,23 +95,28 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
  */
 void TitleScene::update(float frame)
 {
-//    CCLOG("appsInfo-cnt:%d", appsInfo->getReferenceCount());
-//    CCLOG("appsInfo-dev:%s", appsInfo->getDevice().c_str());
-//    if (appsInfo->downloadCache == nullptr) return;
-    
+    // アプリ情報の非同期読み込み処理
     bool result = appsInfo->downloadCache->execCallback();
     if (!result)
     {
         CCLOG("TitleScene::read error");
     }
+    
+    // ローディングが終了したら終了後処理を実行
+    if (this->loadingFlg)
+    {
+        if (appsInfo->downloadCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
+        {
+            endLoading();
+        }
+    }
 }
 
-void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEventType)
+/**
+ *  ローディング終了後処理
+ */
+void TitleScene::endLoading()
 {
-    CCLOG("tappedStartButton eventType = %d", pControlEventType);
-    SoundManager* soundManager = new SoundManager();
-    soundManager->playSE("se_select");
-
     // テクスチャアトラスを読み込む
     SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
     frameCache->addSpriteFramesWithFile("character/enemy2/enemy2.plist");
@@ -118,10 +124,18 @@ void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEven
     frameCache->addSpriteFramesWithFile("misc/misc.plist");
     frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
     
-
-//    Scene* scene = SelectSceneLoader::createScene();
+    //    Scene* scene = SelectSceneLoader::createScene();
     Scene* scene = StorySceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
+}
+
+void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedStartButton eventType = %d", pControlEventType);
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    
+    this->loadingFlg = true;
 }
 
