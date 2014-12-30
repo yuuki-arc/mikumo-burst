@@ -9,8 +9,9 @@ class JsonLoader
 public:
     JsonLoader();
     virtual ~JsonLoader();
-    bool readFile(const std::string filename);
-    void downloadResponseData(const std::string url);
+    bool parseByFile(const std::string filename);
+    bool parseByJsonString();
+    void downloadResponseData(const std::string url, const std::string fileName = "");
     void writeCacheData(const std::string filename);
 
     enum DownloadStatus

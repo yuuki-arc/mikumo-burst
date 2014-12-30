@@ -20,7 +20,9 @@ public:
     
     void setCallback(const std::function<void(Ref*)> &callback);
     bool downloadResponseData();
+    bool downloadAndWriteCacheData();
     bool loadData();
+    bool execCallback();
     bool execCallbackReferenceData();
 
     enum LoadStatus

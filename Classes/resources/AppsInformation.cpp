@@ -15,7 +15,13 @@ AppsInformation::~AppsInformation()
 {
 }
 
-bool AppsInformation::init()
+/**
+ *  初期化処理
+ *
+ *  @param mode キャッシュ場所をファイルかメモリかを指定する（デフォルトはファイル）
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+bool AppsInformation::init(DownloadCacheMode mode)
 {
     downloadCache = DownloadCacheManager::create();
     downloadCache->retain();
@@ -25,12 +31,31 @@ bool AppsInformation::init()
     return true;
 }
 
+/**
+ *  データを指定したURLから非同期でダウンロードしてメモリに保持する
+ *
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
 bool AppsInformation::downloadData()
 {
     downloadCache->downloadResponseData();
     return true;
 }
 
+/**
+ *  データを指定したURLから非同期でダウンロードしてキャッシュファイルに書き込む
+ *
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+bool AppsInformation::downloadAndWriteCacheData()
+{
+    downloadCache->downloadAndWriteCacheData();
+    return true;
+}
+
+/**
+ *  アプリ情報をjsonオブジェクトから取得してセットする
+ */
 void AppsInformation::setAppsInformation()
 {
     picojson::object& sheets = downloadCache->loader->jsonResult.get<picojson::object>();
@@ -39,10 +64,14 @@ void AppsInformation::setAppsInformation()
     picojson::array& sheetColumns = sheets[Constant::SHEET_NAME_AP_APPS()].get<picojson::array>();
     for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
     {
+        CCLOG("test");
         picojson::object& column = it->get<picojson::object>();
         std::string device = (std::string)column["device"].get<std::string>();
         if (device == Constant::SHEET_COLUMN_AP_APPS())
         {
+            CCLOG("test-OK %s", device.c_str());
+            CCLOG("test-OK %s", getDevice().c_str());
+            CCLOG("test-OK %s", this->device.c_str());
             setDevice(device);
             setVersion((std::string)column["version"].get<std::string>());
             setUpdateVersionDate((std::string)column["updateVersionDate"].get<std::string>());

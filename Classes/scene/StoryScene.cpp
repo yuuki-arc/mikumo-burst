@@ -2,6 +2,7 @@
 #include "scene/SelectSceneLoader.h"
 #include "tools/GoogleAnalyticsTracker.h"
 #include "core/Constant.h"
+#include "core/GameManager.h"
 #include "resources/SoundManager.h"
 #include "factory/TextCreator.h"
 #include "tools/NativeLauncher.h"
@@ -81,8 +82,7 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     addChild(windowSprite, ZOrder::Menu);
 
     // スケジュール更新
-    this->scheduleUpdate();
-    
+    this->scheduleUpdate();    
 }
 
 /**
@@ -106,6 +106,10 @@ void StoryScene::initBackground()
 
 bool StoryScene::loadScenario()
 {
+//    AppsInformation* appsInfo = AppsInformation::create();
+//    appsInfo->downloadData();
+    CCLOG("updateShhetDate: %s", GameManager::getInstance()->appsInfo->getUpdateSheetDate().c_str());
+    
     bool result = scenarioCache->loadData();
     return result;
 }

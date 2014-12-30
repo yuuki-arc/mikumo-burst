@@ -22,7 +22,7 @@ JsonLoader::~JsonLoader()
  *  @param filename ファイル名
  *  @return 正常終了はtrue、それ以外はfalse
  */
-bool JsonLoader::readFile(const std::string filename)
+bool JsonLoader::parseByFile(const std::string filename)
 {
     std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
     std::string fullPath = FileUtils::getInstance()->fullPathForFilename(filePath);
@@ -33,20 +33,35 @@ bool JsonLoader::readFile(const std::string filename)
 }
 
 /**
+ *  レスポンス文字列からデータを読み込む
+ *
+ *  @param filename ファイル名
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+bool JsonLoader::parseByJsonString()
+{
+    const char* jsonChar = responseData.c_str();
+    std::string err;
+    picojson::parse(this->jsonResult, jsonChar, jsonChar + strlen(jsonChar), &err);
+    return true;
+}
+
+/**
  *  指定したURLから非同期でダウンロード処理を行う
  *  ダウンロードしたデータはメモリに保持する
  *
  *  @param url ダウンロード先URL
+ *  @param fileName 空でない場合はキャッシュ書き込みまで行う（デフォルトは空）
  *  @return 正常終了はtrue、それ以外はfalse
  */
-void JsonLoader::downloadResponseData(const std::string url)
+void JsonLoader::downloadResponseData(const std::string url, const std::string fileName)
 {
     this->downloadStatus = DownloadStatus::BeforeDownload;
     HttpRequest* request = new HttpRequest();
 
     request->setUrl(url.c_str());
     request->setRequestType(HttpRequest::Type::GET);
-    request->setResponseCallback([this](HttpClient* client, HttpResponse* response) {
+    request->setResponseCallback([this, fileName](HttpClient* client, HttpResponse* response) {
         if (!response) {
             this->downloadStatus = DownloadStatus::ResponseError;
             return;
@@ -72,6 +87,12 @@ void JsonLoader::downloadResponseData(const std::string url)
         std::copy((*buffer).begin(), (*buffer).end(), back_inserter(responseData));
 
         this->downloadStatus = DownloadStatus::SaveResponseData;
+
+        // ファイル名が指定されている場合はキャッシュ書き込みまで行う
+        if (fileName != "")
+        {
+            writeCacheData(fileName);
+        }
     });
     
     request->setTag("JsonLoader::downloadData");

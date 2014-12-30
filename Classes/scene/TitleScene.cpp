@@ -1,5 +1,7 @@
 #include "scene/TitleScene.h"
-#include "scene/SelectSceneLoader.h"
+//#include "scene/SelectSceneLoader.h"
+#include "scene/StorySceneLoader.h"
+#include "core/GameManager.h"
 #include "tools/GoogleAnalyticsTracker.h"
 #include "resources/SoundManager.h"
 
@@ -14,7 +16,7 @@ TitleScene::~TitleScene()
 bool TitleScene::init()
 {    
     CCLOG("TitleScene::init");
-    GoogleAnalyticsTracker::sendScreen("TitleScene");
+//    GoogleAnalyticsTracker::sendScreen("TitleScene");
 	if(!Layer::init())
 	{
 		return false;
@@ -47,6 +49,9 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
         director->setOpenGLView(glview);
     }
     Size screenSize = director->getWinSize();
+
+    // アプリ情報を取得
+    GameManager::getInstance()->setAppsInformation();
     
     // BGM
     SoundManager* soundManager = new SoundManager();
@@ -74,6 +79,24 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     //        batch->addChild(particle2, 0);
     //
     //        pScene->addChild(batch);
+
+    // スケジュール更新
+    this->scheduleUpdate();
+}
+
+/**
+ *  定期更新（フレーム毎）
+ *
+ *  @param frame フレーム
+ */
+void TitleScene::update(float frame)
+{
+    bool result = GameManager::getInstance()->appsInfo->downloadCache->execCallback();
+    
+    if (!result)
+    {
+        CCLOG("TitleScene::read error");
+    }
 }
 
 void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEventType)
@@ -90,7 +113,8 @@ void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEven
     frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
     
 
-    Scene* scene = SelectSceneLoader::createScene();
+//    Scene* scene = SelectSceneLoader::createScene();
+    Scene* scene = StorySceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }

@@ -6,6 +6,23 @@
 #define BM_FONT_SIZE(__SIZE , __BASE) (CC_CONTENT_SCALE_FACTOR() * ((float)__SIZE / (float)__BASE))
 #define BM_FONT_SIZE64(__SIZE) (BM_FONT_SIZE(__SIZE , 64))
 
+#include<utility>
+
+template<class Derived>
+struct create_func {
+    template<class... Args>
+    static Derived* create(Args&&... args) {
+        auto p = new Derived();
+        if (p->init(std::forward<Args>(args)...)) {
+            p->autorelease();
+            return p;
+        } else {
+            delete p;
+            return nullptr;
+        }
+    }
+};
+
 class Constant
 {
 public:

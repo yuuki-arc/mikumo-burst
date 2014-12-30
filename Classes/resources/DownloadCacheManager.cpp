@@ -7,6 +7,7 @@ USING_NS_CC;
 
 DownloadCacheManager::DownloadCacheManager()
 : loadStatus(LoadStatus::BeforeLoad)
+, loader(nullptr)
 {
 }
 
@@ -20,6 +21,7 @@ DownloadCacheManager::~DownloadCacheManager()
 bool DownloadCacheManager::init()
 {
     loader = new JsonLoader();
+    CCLOG("writablePath: %s", FileUtils::getInstance()->getWritablePath().c_str());
     return true;
 }
 
@@ -46,6 +48,18 @@ bool DownloadCacheManager::downloadResponseData()
 }
 
 /**
+ *  データを指定したURLから非同期でダウンロードしてキャッシュファイルに書き込む
+ *
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+bool DownloadCacheManager::downloadAndWriteCacheData()
+{
+    this->loadStatus = LoadStatus::DataDownload;
+    loader->downloadResponseData(getUrl(), getFileName());
+    return true;
+}
+
+/**
  *  データをロードする
  *  ファイルキャッシュが存在する場合はキャッシュからファイル読み込みを行い、
  *  存在しない場合は指定したURLから非同期でダウンロードしてメモリに保持する
@@ -54,7 +68,7 @@ bool DownloadCacheManager::downloadResponseData()
  */
 bool DownloadCacheManager::loadData()
 {
-    bool readFlg = loader->readFile(getFileName());
+    bool readFlg = loader->parseByFile(getFileName());
     if (readFlg)
     {
         // ファイル読み込み成功時はフラグ更新
@@ -75,6 +89,56 @@ bool DownloadCacheManager::loadData()
             CCLOG("file exists, but read error");
             return false;
         }
+    }
+    return true;
+}
+
+/**
+ *  コールバック実行する
+ *  データダウンロード中の場合はダウンロード完了を考慮して実行する
+ *
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+bool DownloadCacheManager::execCallback()
+{
+    if (loader == nullptr) return false;
+    
+    switch(this->loadStatus) {
+        case LoadStatus::DataDownload:
+        {
+            // データダウンロード中時の処理
+            if (loader->downloadStatus == JsonLoader::DownloadStatus::SaveResponseData)
+            {
+                // データダウンロード完了後の場合、メモリ読み込みを行う
+                bool readFlg = loader->parseByJsonString();
+                if (readFlg)
+                {
+                    // 読み込み成功したらフラグ更新
+                    this->loadStatus = LoadStatus::ReadSuccess;
+                }
+                else
+                {
+                    // 読み込み失敗したらエラー処理
+                    this->loadStatus = LoadStatus::ReadError;
+                    CCLOG("system error");
+                    return false;
+                }
+            }
+            break;
+        }
+        case LoadStatus::ReadSuccess:
+        {
+            // 読み込み成功時の処理
+            this->loadStatus = LoadStatus::LoadComplete;
+            if (callback)
+            {
+                // コールバック関数がセットされていればコールバック実行する
+                callback(this);
+            }
+            break;
+        }
+        default:
+            break;
     }
     return true;
 }
@@ -101,7 +165,7 @@ bool DownloadCacheManager::execCallbackReferenceData()
             else if (loader->downloadStatus == JsonLoader::DownloadStatus::WritedCacheData)
             {
                 // キャッシュ書き込み成功後の場合、ファイル読み込みを行う
-                bool readFlg = loader->readFile(getFileName());
+                bool readFlg = loader->parseByFile(getFileName());
                 if (readFlg)
                 {
                     // 読み込み成功したらフラグ更新

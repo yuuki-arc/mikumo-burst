@@ -24,6 +24,7 @@ public:
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(TitleScene, create);
 
+    void update(float frame);
     void tappedStartButton(Ref* pTarget, Control::EventType pControlEventType);
 };
 

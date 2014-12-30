@@ -6,14 +6,19 @@
 
 USING_NS_CC;
 
-class AppsInformation : public cocos2d::Ref
+enum DownloadCacheMode {
+    CacheFile = 0,
+    CacheMemory,
+};
+
+class AppsInformation : public cocos2d::Ref, create_func<AppsInformation>
 {
 public:
     AppsInformation();
     virtual ~AppsInformation();
 
-    bool init();
-    CREATE_FUNC(AppsInformation);
+    bool init(DownloadCacheMode mode = DownloadCacheMode::CacheFile);
+    using create_func::create;
 
     CC_SYNTHESIZE(std::string, device, Device);
     CC_SYNTHESIZE(std::string, version, Version);
@@ -21,6 +26,7 @@ public:
     CC_SYNTHESIZE(std::string, updateSheetDate, UpdateSheetDate);
     
     bool downloadData();
+    bool downloadAndWriteCacheData();
     void setAppsInformation();
     
     DownloadCacheManager* downloadCache;

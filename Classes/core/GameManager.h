@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "core/Constant.h"
+#include "resources/AppsInformation.h"
 
 enum ScreenMode {
     ScreenModeSd,
@@ -27,10 +28,13 @@ public:
     static GameManager* getInstance();
     
     void initialize();
+    void setAppsInformation();
     
     ScreenMode screenMode;
     bool isScreenModeSd();
     bool isScreenModeHd();
+    
+    AppsInformation* appsInfo;
 
     void setCharaSelect(Constant::CharaSelect charaSelect);
     Constant::CharaSelect getCharaSelect();
