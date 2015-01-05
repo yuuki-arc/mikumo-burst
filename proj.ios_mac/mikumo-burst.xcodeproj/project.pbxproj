@@ -135,6 +135,28 @@
 		A5777FD01A1A2040008211C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5777FCF1A1A2040008211C7 /* Images.xcassets */; };
 		A58CE36E1A51035700002ED2 /* DownloadCacheManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A58CE36C1A51035700002ED2 /* DownloadCacheManager.cpp */; };
 		A5A2068D1A512D240068B349 /* AppsInformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A5A2068B1A512D240068B349 /* AppsInformation.cpp */; };
+		A5A206901A53EFC50068B349 /* libbox2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2713A19AC6B6B0028E9E0 /* libbox2d iOS.a */; };
+		A5A206911A53EFC50068B349 /* libchipmunk iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2713B19AC6B6B0028E9E0 /* libchipmunk iOS.a */; };
+		A5A206921A53EFC50068B349 /* libcocos2dx iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2713C19AC6B6B0028E9E0 /* libcocos2dx iOS.a */; };
+		A5A206931A53EFC50068B349 /* libcocos2dx-extensions iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2713D19AC6B6B0028E9E0 /* libcocos2dx-extensions iOS.a */; };
+		A5A206941A53EFC50068B349 /* libCocosDenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2713E19AC6B6B0028E9E0 /* libCocosDenshion iOS.a */; };
+		A5A206951A53F0880068B349 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E279901A1A688E005D4D7F /* CoreData.framework */; };
+		A5A206961A53F0880068B349 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E279921A1A6898005D4D7F /* SystemConfiguration.framework */; };
+		A5A206A31A53F0880068B349 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A206971A53F0880068B349 /* AudioToolbox.framework */; };
+		A5A206A41A53F0880068B349 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A206981A53F0880068B349 /* AVFoundation.framework */; };
+		A5A206A51A53F0880068B349 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A206991A53F0880068B349 /* CoreGraphics.framework */; };
+		A5A206A61A53F0880068B349 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A2069A1A53F0880068B349 /* CoreMotion.framework */; };
+		A5A206A71A53F0880068B349 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A2069B1A53F0880068B349 /* CoreTelephony.framework */; };
+		A5A206A81A53F0880068B349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A2069C1A53F0880068B349 /* Foundation.framework */; };
+		A5A206A91A53F0880068B349 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A2069D1A53F0880068B349 /* OpenAL.framework */; };
+		A5A206AA1A53F0880068B349 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A2069E1A53F0880068B349 /* OpenGLES.framework */; };
+		A5A206AB1A53F0880068B349 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A2069F1A53F0880068B349 /* QuartzCore.framework */; };
+		A5A206AC1A53F0880068B349 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A206A01A53F0880068B349 /* StoreKit.framework */; };
+		A5A206AD1A53F0880068B349 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A206A11A53F0880068B349 /* Twitter.framework */; };
+		A5A206AE1A53F0880068B349 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A206A21A53F0880068B349 /* UIKit.framework */; };
+		A5A206B01A53F0990068B349 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A206AF1A53F0990068B349 /* libz.dylib */; };
+		A5A206B11A53F0A60068B349 /* libappCCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A531192E1A17351400BFEB78 /* libappCCloud.a */; };
+		A5A206B21A53F0AE0068B349 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ADDC471A1AD42E00A492F3 /* libGoogleAnalyticsServices.a */; };
 		A5A7F0E219BB394700A5BEDD /* sound in Resources */ = {isa = PBXBuildFile; fileRef = A5A7F0E119BB394700A5BEDD /* sound */; };
 		A5ADDC491A1AD42E00A492F3 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ADDC471A1AD42E00A492F3 /* libGoogleAnalyticsServices.a */; };
 		A5B2714519AC6BD30028E9E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B2714419AC6BD30028E9E0 /* CoreMotion.framework */; };
@@ -488,6 +510,19 @@
 		A5948EB81A356545008F44CC /* DefineParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineParameters.h; sourceTree = "<group>"; };
 		A5A2068B1A512D240068B349 /* AppsInformation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppsInformation.cpp; sourceTree = "<group>"; };
 		A5A2068C1A512D240068B349 /* AppsInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppsInformation.h; sourceTree = "<group>"; };
+		A5A206971A53F0880068B349 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		A5A206981A53F0880068B349 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		A5A206991A53F0880068B349 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		A5A2069A1A53F0880068B349 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		A5A2069B1A53F0880068B349 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		A5A2069C1A53F0880068B349 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A5A2069D1A53F0880068B349 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/OpenAL.framework; sourceTree = DEVELOPER_DIR; };
+		A5A2069E1A53F0880068B349 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		A5A2069F1A53F0880068B349 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		A5A206A01A53F0880068B349 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		A5A206A11A53F0880068B349 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Twitter.framework; sourceTree = DEVELOPER_DIR; };
+		A5A206A21A53F0880068B349 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		A5A206AF1A53F0990068B349 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		A5A7F0E119BB394700A5BEDD /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		A5ADDC3C1A1AD42E00A492F3 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		A5ADDC3D1A1AD42E00A492F3 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -588,6 +623,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A206B21A53F0AE0068B349 /* libGoogleAnalyticsServices.a in Frameworks */,
+				A5A206B11A53F0A60068B349 /* libappCCloud.a in Frameworks */,
+				A5A206B01A53F0990068B349 /* libz.dylib in Frameworks */,
+				A5A206A31A53F0880068B349 /* AudioToolbox.framework in Frameworks */,
+				A5A206A41A53F0880068B349 /* AVFoundation.framework in Frameworks */,
+				A5A206A51A53F0880068B349 /* CoreGraphics.framework in Frameworks */,
+				A5A206A61A53F0880068B349 /* CoreMotion.framework in Frameworks */,
+				A5A206A71A53F0880068B349 /* CoreTelephony.framework in Frameworks */,
+				A5A206A81A53F0880068B349 /* Foundation.framework in Frameworks */,
+				A5A206A91A53F0880068B349 /* OpenAL.framework in Frameworks */,
+				A5A206AA1A53F0880068B349 /* OpenGLES.framework in Frameworks */,
+				A5A206AB1A53F0880068B349 /* QuartzCore.framework in Frameworks */,
+				A5A206AC1A53F0880068B349 /* StoreKit.framework in Frameworks */,
+				A5A206AD1A53F0880068B349 /* Twitter.framework in Frameworks */,
+				A5A206AE1A53F0880068B349 /* UIKit.framework in Frameworks */,
+				A5A206951A53F0880068B349 /* CoreData.framework in Frameworks */,
+				A5A206961A53F0880068B349 /* SystemConfiguration.framework in Frameworks */,
+				A5A206901A53EFC50068B349 /* libbox2d iOS.a in Frameworks */,
+				A5A206911A53EFC50068B349 /* libchipmunk iOS.a in Frameworks */,
+				A5A206921A53EFC50068B349 /* libcocos2dx iOS.a in Frameworks */,
+				A5A206931A53EFC50068B349 /* libcocos2dx-extensions iOS.a in Frameworks */,
+				A5A206941A53EFC50068B349 /* libCocosDenshion iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +730,19 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5A206AF1A53F0990068B349 /* libz.dylib */,
+				A5A206971A53F0880068B349 /* AudioToolbox.framework */,
+				A5A206981A53F0880068B349 /* AVFoundation.framework */,
+				A5A206991A53F0880068B349 /* CoreGraphics.framework */,
+				A5A2069A1A53F0880068B349 /* CoreMotion.framework */,
+				A5A2069B1A53F0880068B349 /* CoreTelephony.framework */,
+				A5A2069C1A53F0880068B349 /* Foundation.framework */,
+				A5A2069D1A53F0880068B349 /* OpenAL.framework */,
+				A5A2069E1A53F0880068B349 /* OpenGLES.framework */,
+				A5A2069F1A53F0880068B349 /* QuartzCore.framework */,
+				A5A206A01A53F0880068B349 /* StoreKit.framework */,
+				A5A206A11A53F0880068B349 /* Twitter.framework */,
+				A5A206A21A53F0880068B349 /* UIKit.framework */,
 				A5E279961A1A6E87005D4D7F /* libGoogleAnalyticsServices.a */,
 				A5E279941A1A68B5005D4D7F /* libGoogleAnalyticsServices.a */,
 				A5E279921A1A6898005D4D7F /* SystemConfiguration.framework */,
@@ -1476,7 +1546,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../lib\"",
+					"$(SRCROOT)/../lib",
 					"$(PROJECT_DIR)/appc_cloud_ios_xcode_6",
 					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
@@ -1518,7 +1588,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../lib\"",
+					"$(SRCROOT)/../lib",
 					"$(PROJECT_DIR)/appc_cloud_ios_xcode_6",
 					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
@@ -1597,6 +1667,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(SRCROOT)/../cocos2d",
 					"$(SRCROOT)/../cocos2d/cocos",
 					"$(SRCROOT)/../cocos2d/cocos/base",
@@ -1652,7 +1723,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../lib\"",
+					"$(SRCROOT)/../lib",
 					"$(PROJECT_DIR)/appc_cloud_ios_xcode_6",
 					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
@@ -1697,6 +1768,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1739,10 +1811,23 @@
 				INFOPLIST_FILE = XCTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../lib",
+					"$(PROJECT_DIR)/appc_cloud_ios_xcode_6",
+					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
+					"/Users/usr0600205/src/github.com/yuuki-arc/mikumo-burst/lib",
+				);
+				MACH_O_TYPE = mh_bundle;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mikumo-burst iOS.app/mikumo-burst iOS";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
@@ -1752,6 +1837,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1793,10 +1879,23 @@
 				INFOPLIST_FILE = XCTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../lib",
+					"$(PROJECT_DIR)/appc_cloud_ios_xcode_6",
+					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
+					"/Users/usr0600205/src/github.com/yuuki-arc/mikumo-burst/lib",
+				);
+				MACH_O_TYPE = mh_bundle;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mikumo-burst iOS.app/mikumo-burst iOS";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
@@ -1806,6 +1905,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1847,10 +1947,23 @@
 				INFOPLIST_FILE = XCTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../lib",
+					"$(PROJECT_DIR)/appc_cloud_ios_xcode_6",
+					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
+					"/Users/usr0600205/src/github.com/yuuki-arc/mikumo-burst/lib",
+				);
+				MACH_O_TYPE = mh_bundle;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mikumo-burst iOS.app/mikumo-burst iOS";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
@@ -1866,6 +1979,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(SRCROOT)/../cocos2d",
 					"$(SRCROOT)/../cocos2d/cocos",
 					"$(SRCROOT)/../cocos2d/cocos/base",
@@ -1898,6 +2012,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(SRCROOT)/../cocos2d",
 					"$(SRCROOT)/../cocos2d/cocos",
 					"$(SRCROOT)/../cocos2d/cocos/base",
