@@ -53,9 +53,7 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     Size screenSize = director->getWinSize();
 
     // アプリ情報を取得
-    appsInfo = AppsInformation::create(DownloadCacheMode::CacheMemory);
-    appsInfo->retain();
-    appsInfo->downloadData();
+    checkAppsUpdate();
     
     // BGM
     SoundManager* soundManager = new SoundManager();
@@ -72,18 +70,6 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     particle2->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
     this->addChild(particle2);
     
-    //        ParticleSystemQuad* particle1 = ParticleSystemQuad::create("particle/title_particle1.plist");
-    //        particle1->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
-    //        ParticleSystemQuad* particle2 = ParticleSystemQuad::create("particle/title_particle2.plist");
-    //        particle2->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
-    //
-    //        ParticleBatchNode *batch = ParticleBatchNode::createWithTexture(particle1->getTexture());
-    //
-    //        batch->addChild(particle1, 0);
-    //        batch->addChild(particle2, 0);
-    //
-    //        pScene->addChild(batch);
-
     // スケジュール更新
     this->scheduleUpdate();
 }
@@ -113,6 +99,31 @@ void TitleScene::update(float frame)
 }
 
 /**
+ *  Startボタンタップ時処理
+ *
+ *  @param pTarget           pTarget
+ *  @param pControlEventType pControlEventType
+ */
+void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedStartButton eventType = %d", pControlEventType);
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    
+    this->loadingFlg = true;
+}
+
+/**
+ *  アプリ更新情報チェック
+ */
+void TitleScene::checkAppsUpdate()
+{
+    appsInfo = AppsInformation::create(DownloadCacheMode::CacheMemory);
+    appsInfo->retain();
+    appsInfo->downloadData();
+}
+
+/**
  *  ローディング終了後処理
  */
 void TitleScene::endLoading()
@@ -128,14 +139,5 @@ void TitleScene::endLoading()
     Scene* scene = StorySceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
-}
-
-void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEventType)
-{
-    CCLOG("tappedStartButton eventType = %d", pControlEventType);
-    SoundManager* soundManager = new SoundManager();
-    soundManager->playSE("se_select");
-    
-    this->loadingFlg = true;
 }
 

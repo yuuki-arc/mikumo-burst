@@ -60,6 +60,17 @@ bool DownloadCacheManager::downloadAndWriteCacheData()
 }
 
 /**
+ *  キャッシュを読み込む
+ *
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+bool DownloadCacheManager::readCache()
+{
+    bool readFlg = loader->parseByFile(getFileName());
+    return readFlg;
+}
+
+/**
  *  データをロードする
  *  ファイルキャッシュが存在する場合はキャッシュからファイル読み込みを行い、
  *  存在しない場合は指定したURLから非同期でダウンロードしてメモリに保持する

@@ -21,6 +21,7 @@ public:
     void setCallback(const std::function<void(Ref*)> &callback);
     bool downloadResponseData();
     bool downloadAndWriteCacheData();
+    bool readCache();
     bool loadData();
     bool execCallback();
     bool execCallbackReferenceData();
