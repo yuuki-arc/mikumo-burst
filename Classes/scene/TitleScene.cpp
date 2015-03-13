@@ -93,6 +93,29 @@ void TitleScene::update(float frame)
     {
         if (appsInfo->downloadCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
         {
+            // ローカル内のファイルと比較して更新チェック
+            DownloadCacheManager* localFile = DownloadCacheManager::create();
+            localFile->retain();
+            localFile->setFileName(Constant::CACHE_FILE_APPS());
+            localFile->readCache();
+            
+            // ローカルファイルのアプリ情報を取得
+            picojson::object& sheets = localFile->loader->jsonResult.get<picojson::object>();
+            picojson::array& sheetColumns = sheets[Constant::SHEET_NAME_AP_APPS()].get<picojson::array>();
+            std::string localUpdateVersionDate = "";
+            std::string localUpdateSheetDate = "";
+            for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
+            {
+                CCLOG("test");
+                picojson::object& column = it->get<picojson::object>();
+                std::string device = (std::string)column["device"].get<std::string>();
+                if (device == Constant::SHEET_COLUMN_AP_APPS())
+                {
+                    localUpdateVersionDate = (std::string)column["updateVersionDate"].get<std::string>();
+                    localUpdateSheetDate = (std::string)column["updateSheetDate"].get<std::string>();
+                }
+            }
+            // 画面遷移
             endLoading();
         }
     }
