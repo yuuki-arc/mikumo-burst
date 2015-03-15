@@ -11,7 +11,6 @@ USING_NS_CC_EXT;
 using namespace cocosbuilder;
 
 class LoadingScene : public Layer
-, public CCBSelectorResolver
 , public NodeLoaderListener
 {
 public:
@@ -19,14 +18,11 @@ public:
     virtual ~LoadingScene();
     
     virtual bool init();
-    virtual SEL_MenuHandler onResolveCCBCCMenuItemSelector(Ref* pTarget, const char* pSelectorName);
-    virtual Control::Handler onResolveCCBCCControlSelector(Ref* pTarget, const char* pSelectorName);
 	virtual void onNodeLoaded(Node* pNode, NodeLoader* pNodeLoader);
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(LoadingScene, create);
 
     void update(float frame);
-    void tappedStartButton(Ref* pTarget, Control::EventType pControlEventType);
     
     AppsInformation* appsInfo;
 

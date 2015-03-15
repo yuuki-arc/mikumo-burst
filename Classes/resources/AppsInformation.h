@@ -24,7 +24,8 @@ public:
     CC_SYNTHESIZE(std::string, version, Version);
     CC_SYNTHESIZE(std::string, updateVersionDate, UpdateVersionDate);
     CC_SYNTHESIZE(std::string, updateSheetDate, UpdateSheetDate);
-    
+
+    bool isExistCacheFile();
     bool downloadData();
     bool downloadAndWriteCacheData();
     void setAppsInformation();

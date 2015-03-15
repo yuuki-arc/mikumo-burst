@@ -9,6 +9,7 @@ class JsonLoader
 public:
     JsonLoader();
     virtual ~JsonLoader();
+    std::string getCacheFilePath(const std::string filename);
     bool parseByFile(const std::string filename);
     bool parseByJsonString();
     void downloadResponseData(const std::string url, const std::string fileName = "");

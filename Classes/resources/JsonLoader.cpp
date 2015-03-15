@@ -17,6 +17,18 @@ JsonLoader::~JsonLoader()
 }
 
 /**
+ *  キャッシュファイルのフルパスを取得する
+ *
+ *  @param filename ファイル名
+ *  @return キャッシュファイルのフルパス
+ */
+std::string JsonLoader::getCacheFilePath(const std::string filename)
+{
+    std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
+    return FileUtils::getInstance()->fullPathForFilename(filePath);
+}
+
+/**
  *  キャッシュファイルからデータを読み込む
  *
  *  @param filename ファイル名
@@ -24,8 +36,7 @@ JsonLoader::~JsonLoader()
  */
 bool JsonLoader::parseByFile(const std::string filename)
 {
-    std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
-    std::string fullPath = FileUtils::getInstance()->fullPathForFilename(filePath);
+    std::string fullPath = getCacheFilePath(filename);
     ifstream ifs(fullPath.c_str());
     if (!ifs) return false;
     picojson::parse(this->jsonResult, ifs);
@@ -112,7 +123,7 @@ void JsonLoader::writeCacheData(const std::string filename)
 {
     this->downloadStatus = DownloadStatus::WritingCacheData;
     
-    std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
+    std::string filePath = getCacheFilePath(filename);
     std::vector<char>* buffer = new std::vector<char>(responseData.begin(), responseData.end());
     std::ofstream ofs;
     ofs.open(filePath.c_str(), std::ios::out | std::ios::trunc);

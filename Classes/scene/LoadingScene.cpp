@@ -28,20 +28,6 @@ bool LoadingScene::init()
 	return true;
 }
 
-SEL_MenuHandler LoadingScene::onResolveCCBCCMenuItemSelector(Ref *pTarget, const char *pSelectorName)
-{
-    CCLOG("name = %s", pSelectorName);
-    
-    return NULL;
-}
-
-Control::Handler LoadingScene::onResolveCCBCCControlSelector(Ref *pTarget, const char *pSelectorName)
-{
-    CCLOG("name = %s", pSelectorName);
-    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedStartButton", LoadingScene::tappedStartButton);
-    return NULL;
-}
-
 void LoadingScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -55,7 +41,7 @@ void LoadingScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 
     relativeLabelHeight = 6.5f;
     point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    resultLabel = TextCreator::create("通信中…", point);
+    resultLabel = TextCreator::create("ロード中…", point);
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel);
     
@@ -67,6 +53,27 @@ void LoadingScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
 }
 
 /**
+ *  アプリ更新情報チェック
+ */
+void LoadingScene::checkAppsUpdate()
+{
+    appsInfo = AppsInformation::create(DownloadCacheMode::CacheMemory);
+    appsInfo->retain();
+    if (appsInfo->isExistCacheFile())
+    {
+        // キャッシュが存在する場合はデータダウンロードのみ行う
+        appsInfo->downloadData();
+    }
+    else
+    {
+        // キャッシュが存在しない場合はデータダウンロードに加えてキャッシュ書き込みを行う
+        appsInfo->downloadAndWriteCacheData();
+    }
+    
+    this->loadingFlg = true;
+}
+
+/**
  *  定期更新（フレーム毎）
  *
  *  @param frame フレーム
@@ -75,6 +82,7 @@ void LoadingScene::update(float frame)
 {
     // アプリ情報の非同期読み込み処理
     bool result = appsInfo->downloadCache->execCallback();
+//    bool result = appsInfo->downloadCache->execCallbackReferenceData();
     if (!result)
     {
         CCLOG("LoadingScene::read error");
@@ -83,6 +91,7 @@ void LoadingScene::update(float frame)
     // ローディングが終了したら終了後処理を実行
     if (this->loadingFlg)
     {
+        CCLOG("loadingFlg true");
         if (appsInfo->downloadCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
         {
             // ローカル内のファイルと比較して更新チェック
@@ -90,9 +99,11 @@ void LoadingScene::update(float frame)
             localFile->retain();
             localFile->setFileName(Constant::CACHE_FILE_APPS());
             localFile->readCache();
+//            localFile->loadData();
             
             // ローカルファイルのアプリ情報を取得
             picojson::object& sheets = localFile->loader->jsonResult.get<picojson::object>();
+            CCLOG("download-cache true");
             picojson::array& sheetColumns = sheets[Constant::SHEET_NAME_AP_APPS()].get<picojson::array>();
             std::string localUpdateVersionDate = "";
             std::string localUpdateSheetDate = "";
@@ -111,31 +122,6 @@ void LoadingScene::update(float frame)
             endLoading();
         }
     }
-}
-
-/**
- *  Startボタンタップ時処理
- *
- *  @param pTarget           pTarget
- *  @param pControlEventType pControlEventType
- */
-void LoadingScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEventType)
-{
-    CCLOG("tappedStartButton eventType = %d", pControlEventType);
-    SoundManager* soundManager = new SoundManager();
-    soundManager->playSE("se_select");
-    
-    this->loadingFlg = true;
-}
-
-/**
- *  アプリ更新情報チェック
- */
-void LoadingScene::checkAppsUpdate()
-{
-    appsInfo = AppsInformation::create(DownloadCacheMode::CacheMemory);
-    appsInfo->retain();
-    appsInfo->downloadData();
 }
 
 /**

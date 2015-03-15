@@ -32,6 +32,16 @@ bool AppsInformation::init(DownloadCacheMode mode)
 }
 
 /**
+ *  アプリ情報がキャッシュファイルに存在するかチェックを行う
+ *
+ *  @return 存在する場合はtrue、存在しなければfalse
+ */
+bool AppsInformation::isExistCacheFile()
+{
+    return downloadCache->isExistCacheFile();
+}
+
+/**
  *  データを指定したURLから非同期でダウンロードしてメモリに保持する
  *
  *  @return 正常終了はtrue、それ以外はfalse

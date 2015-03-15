@@ -19,6 +19,7 @@ public:
     CC_SYNTHESIZE(std::string, fileName, FileName);
     
     void setCallback(const std::function<void(Ref*)> &callback);
+    bool isExistCacheFile();
     bool downloadResponseData();
     bool downloadAndWriteCacheData();
     bool readCache();
