@@ -1,14 +1,13 @@
 #include "scene/LoadingScene.h"
 //#include "scene/SelectSceneLoader.h"
 #include "scene/StorySceneLoader.h"
-#include "core/GameManager.h"
 #include "tools/GoogleAnalyticsTracker.h"
-#include "resources/SoundManager.h"
 #include "resources/AppsInformation.h"
 #include "resources/DownloadCacheManager.h"
 #include "factory/TextCreator.h"
 
 LoadingScene::LoadingScene()
+: appsInfoCacheStatus(AppsInfoCacheStatus::NoCache)
 {
 }
 

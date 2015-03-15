@@ -42,7 +42,8 @@ void DownloadCacheManager::setCallback(const std::function<void (Ref *)> &callba
  */
 bool DownloadCacheManager::isExistCacheFile()
 {
-    return FileUtils::getInstance()->isFileExist(getFileName());
+    std::string filePath = FileUtils::getInstance()->getWritablePath() + getFileName();
+    return FileUtils::getInstance()->isFileExist(filePath);
 }
 
 /**
