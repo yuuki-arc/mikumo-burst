@@ -154,6 +154,8 @@ bool LoadingScene::checkAppsUpdate()
     {
         // キャッシュデータ削除
         DownloadCacheManager::removeCacheData(Constant::CACHE_FILE_STORY());
+        // 最新データをキャッシュ書き込み
+        appsInfo->writeCache();
         
         Size visibleSize = Director::getInstance()->getVisibleSize();
         Point origin = Director::getInstance()->getVisibleOrigin();

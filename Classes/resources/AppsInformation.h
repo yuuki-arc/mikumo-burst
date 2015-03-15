@@ -23,6 +23,7 @@ public:
     bool isExistCacheFile();
     bool downloadData();
     bool downloadAndWriteCacheData();
+    bool writeCache();
     void setAppsInformation();
     
     DownloadCacheManager* downloadCache;

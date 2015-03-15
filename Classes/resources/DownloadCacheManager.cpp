@@ -70,6 +70,17 @@ bool DownloadCacheManager::downloadAndWriteCacheData()
 }
 
 /**
+ *  ダウンロード済みのデータをキャッシュファイルに書き込む
+ *
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+bool DownloadCacheManager::writeCache()
+{
+    loader->writeCacheData(getFileName());
+    return true;
+}
+
+/**
  *  キャッシュを読み込む
  *
  *  @return 正常終了はtrue、それ以外はfalse

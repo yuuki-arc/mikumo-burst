@@ -63,6 +63,17 @@ bool AppsInformation::downloadAndWriteCacheData()
 }
 
 /**
+ *  ダウンロード済みのデータをキャッシュファイルに書き込む
+ *
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+bool AppsInformation::writeCache()
+{
+    downloadCache->writeCache();
+    return true;
+}
+
+/**
  *  アプリ情報をjsonオブジェクトから取得してセットする
  */
 void AppsInformation::setAppsInformation()

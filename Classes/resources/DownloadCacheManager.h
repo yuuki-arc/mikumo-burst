@@ -22,6 +22,7 @@ public:
     bool isExistCacheFile();
     bool downloadResponseData();
     bool downloadAndWriteCacheData();
+    bool writeCache();
     bool readCache();
     bool loadData();
     bool execCallback();
