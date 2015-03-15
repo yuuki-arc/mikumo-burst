@@ -26,6 +26,7 @@ public:
     bool loadData();
     bool execCallback();
     bool execCallbackReferenceData();
+    static bool removeCacheData(std::string filename);
 
     enum LoadStatus
     {

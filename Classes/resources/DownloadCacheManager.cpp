@@ -21,7 +21,6 @@ DownloadCacheManager::~DownloadCacheManager()
 bool DownloadCacheManager::init()
 {
     loader = new JsonLoader();
-    CCLOG("writablePath: %s", FileUtils::getInstance()->getWritablePath().c_str());
     return true;
 }
 
@@ -218,4 +217,17 @@ bool DownloadCacheManager::execCallbackReferenceData()
             break;
     }
     return true;
+}
+
+/**
+ *  キャッシュファイルを削除する
+ *
+ *  @param filename ファイル名
+ *  @return 正常終了はtrue、それ以外はfalse
+ */
+bool DownloadCacheManager::removeCacheData(std::string filename)
+{
+    std::string filePath = FileUtils::getInstance()->getWritablePath() + filename;
+    int ret = remove(filePath.c_str());
+    return (ret == 0);
 }

@@ -33,10 +33,12 @@ public:
 
 private:
     CC_SYNTHESIZE(AppsInfoCacheStatus, appsInfoCacheStatus, AppsInfoCacheStatus);
-
-    void checkAppsUpdate();
-    void endLoading();
     bool loadingFlg = false;
+
+    void downloadAppsUpdate();
+    bool checkAppsUpdate();
+    void replaceTitleScene();
+    void replaceSelectScene();
 };
 
 #endif /* defined(__LOADING_SCENE_H__) */

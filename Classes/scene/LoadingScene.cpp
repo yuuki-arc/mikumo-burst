@@ -1,10 +1,12 @@
 #include "scene/LoadingScene.h"
+#include "scene/TitleSceneLoader.h"
 //#include "scene/SelectSceneLoader.h"
 #include "scene/StorySceneLoader.h"
 #include "tools/GoogleAnalyticsTracker.h"
 #include "resources/AppsInformation.h"
 #include "resources/DownloadCacheManager.h"
 #include "factory/TextCreator.h"
+#include <unistd.h>
 
 LoadingScene::LoadingScene()
 : appsInfoCacheStatus(AppsInfoCacheStatus::NoCache)
@@ -44,17 +46,19 @@ void LoadingScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     resultLabel->setScale(BM_FONT_SIZE64(20));
     this->addChild(resultLabel);
     
-    // アプリ情報を取得
-    checkAppsUpdate();
+    // アプリ情報をネットワークからダウンロード
+    downloadAppsUpdate();
     
     // スケジュール更新
     this->scheduleUpdate();
 }
 
 /**
- *  アプリ更新情報チェック
+ *  アプリ更新情報をダウンロードする
+ *  ※ローカルにアプリ情報のキャッシュを保持していない場合は、
+ *   ダウンロードデータをキャッシュへ書き込むところまで行う
  */
-void LoadingScene::checkAppsUpdate()
+void LoadingScene::downloadAppsUpdate()
 {
     appsInfo = AppsInformation::create();
     appsInfo->retain();
@@ -81,7 +85,7 @@ void LoadingScene::checkAppsUpdate()
  */
 void LoadingScene::update(float frame)
 {
-    // アプリ情報の非同期読み込み処理
+    // アプリ情報キャッシュの状態によりコールバック関数を切り替える（終了チェックの判定が異なるため）
     bool result = false;
     switch (getAppsInfoCacheStatus()) {
         case AppsInfoCacheStatus::ExistCache:
@@ -100,47 +104,90 @@ void LoadingScene::update(float frame)
     }
     
     // ローディングが終了したら終了後処理を実行
-    if (this->loadingFlg)
+    if (this->loadingFlg &&
+        appsInfo->downloadCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
     {
-        CCLOG("loadingFlg true: %d", appsInfo->downloadCache->loadStatus);
-        
-        // ローディングステータスの終了チェック
-        if (appsInfo->downloadCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
+        // アプリの最新バージョンチェック
+        bool check = checkAppsUpdate();
+
+        if (check) {
+            // 最新バージョンがなければゲーム画面に遷移する
+            replaceSelectScene();
+        }
+        else
         {
-            // ローカル内のファイルと比較して更新チェック
-            DownloadCacheManager* localFile = DownloadCacheManager::create();
-            localFile->retain();
-            localFile->setFileName(Constant::CACHE_FILE_APPS());
-            localFile->readCache();
-//            localFile->loadData();
-            
-            // ローカルファイルのアプリ情報を取得
-            picojson::object& sheets = localFile->loader->jsonResult.get<picojson::object>();
-            CCLOG("download-cache true");
-            picojson::array& sheetColumns = sheets[Constant::SHEET_NAME_AP_APPS()].get<picojson::array>();
-            std::string localUpdateVersionDate = "";
-            std::string localUpdateSheetDate = "";
-            for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
-            {
-                CCLOG("test");
-                picojson::object& column = it->get<picojson::object>();
-                std::string device = (std::string)column["device"].get<std::string>();
-                if (device == Constant::SHEET_COLUMN_AP_APPS())
-                {
-                    localUpdateVersionDate = (std::string)column["updateVersionDate"].get<std::string>();
-                    localUpdateSheetDate = (std::string)column["updateSheetDate"].get<std::string>();
-                }
-            }
-            // 画面遷移
-            endLoading();
+            // 何らかのチェックに引っかかった場合はタイトル画面に戻る
+            replaceTitleScene();
         }
     }
 }
 
 /**
- *  ローディング終了後処理
+ *  アプリの最新状態をチェックする
  */
-void LoadingScene::endLoading()
+bool LoadingScene::checkAppsUpdate()
+{
+    // ローカル内のファイルと比較して更新チェック
+    DownloadCacheManager* localFile = DownloadCacheManager::create();
+    localFile->retain();
+    localFile->setFileName(Constant::CACHE_FILE_APPS());
+    localFile->readCache();
+    
+    // ローカルファイルのアプリ情報を取得
+    picojson::object& sheets = localFile->loader->jsonResult.get<picojson::object>();
+    picojson::array& sheetColumns = sheets[Constant::SHEET_NAME_AP_APPS()].get<picojson::array>();
+    std::string localUpdateVersionDate = "";
+    std::string localUpdateSheetDate = "";
+    for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
+    {
+        picojson::object& column = it->get<picojson::object>();
+        std::string device = (std::string)column["device"].get<std::string>();
+        if (device == Constant::SHEET_COLUMN_AP_APPS())
+        {
+            localUpdateVersionDate = (std::string)column["updateVersionDate"].get<std::string>();
+            localUpdateSheetDate = (std::string)column["updateSheetDate"].get<std::string>();
+        }
+    }
+    
+    // シナリオデータの最新バージョンが存在する場合はキャッシュデータを削除
+    if (appsInfo->getUpdateSheetDate() != localUpdateSheetDate)
+    {
+        // キャッシュデータ削除
+        DownloadCacheManager::removeCacheData(Constant::CACHE_FILE_STORY());
+        
+        Size visibleSize = Director::getInstance()->getVisibleSize();
+        Point origin = Director::getInstance()->getVisibleOrigin();
+        
+        // メッセージ表示
+        float labelWidth = origin.x + visibleSize.width * 1 / 10;
+        float relativeLabelHeight;
+        Label* resultLabel;
+        Point point;
+        
+        relativeLabelHeight = 5.5f;
+        point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
+        resultLabel = TextCreator::create("シナリオキャッシュをクリア", point);
+        resultLabel->setScale(BM_FONT_SIZE64(20));
+        this->addChild(resultLabel);
+    }
+    
+    return true;
+}
+
+/**
+ *  画面遷移処理（タイトル画面）
+ */
+void LoadingScene::replaceTitleScene()
+{
+    Scene* scene = TitleSceneLoader::createScene();
+    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
+    Director::getInstance()->replaceScene(trans);
+}
+
+/**
+ *  画面遷移処理（キャラクターセレクト画面）
+ */
+void LoadingScene::replaceSelectScene()
 {
     // テクスチャアトラスを読み込む
     SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
