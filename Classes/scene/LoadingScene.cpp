@@ -57,16 +57,18 @@ void LoadingScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
  */
 void LoadingScene::checkAppsUpdate()
 {
-    appsInfo = AppsInformation::create(DownloadCacheMode::CacheMemory);
+    appsInfo = AppsInformation::create();
     appsInfo->retain();
     if (appsInfo->isExistCacheFile())
     {
         // キャッシュが存在する場合はデータダウンロードのみ行う
+        setAppsInfoCacheStatus(AppsInfoCacheStatus::ExistCache);
         appsInfo->downloadData();
     }
     else
     {
         // キャッシュが存在しない場合はデータダウンロードに加えてキャッシュ書き込みを行う
+        setAppsInfoCacheStatus(AppsInfoCacheStatus::NoCache);
         appsInfo->downloadAndWriteCacheData();
     }
     
@@ -81,8 +83,18 @@ void LoadingScene::checkAppsUpdate()
 void LoadingScene::update(float frame)
 {
     // アプリ情報の非同期読み込み処理
-    bool result = appsInfo->downloadCache->execCallback();
-//    bool result = appsInfo->downloadCache->execCallbackReferenceData();
+    bool result = false;
+    switch (getAppsInfoCacheStatus()) {
+        case AppsInfoCacheStatus::ExistCache:
+            result = appsInfo->downloadCache->execCallback();
+            break;
+        case AppsInfoCacheStatus::NoCache:
+            result = appsInfo->downloadCache->execCallbackReferenceData();
+            break;
+        default:
+            CCLOG("LoadingScene::cache status error");
+            break;
+    }
     if (!result)
     {
         CCLOG("LoadingScene::read error");
@@ -91,7 +103,9 @@ void LoadingScene::update(float frame)
     // ローディングが終了したら終了後処理を実行
     if (this->loadingFlg)
     {
-        CCLOG("loadingFlg true");
+        CCLOG("loadingFlg true: %d", appsInfo->downloadCache->loadStatus);
+        
+        // ローディングステータスの終了チェック
         if (appsInfo->downloadCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
         {
             // ローカル内のファイルと比較して更新チェック

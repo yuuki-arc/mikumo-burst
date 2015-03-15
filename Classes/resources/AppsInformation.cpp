@@ -18,10 +18,9 @@ AppsInformation::~AppsInformation()
 /**
  *  初期化処理
  *
- *  @param mode キャッシュ場所をファイルかメモリかを指定する（デフォルトはファイル）
  *  @return 正常終了はtrue、それ以外はfalse
  */
-bool AppsInformation::init(DownloadCacheMode mode)
+bool AppsInformation::init()
 {
     downloadCache = DownloadCacheManager::create();
     downloadCache->retain();

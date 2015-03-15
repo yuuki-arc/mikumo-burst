@@ -6,18 +6,13 @@
 
 USING_NS_CC;
 
-enum DownloadCacheMode {
-    CacheFile = 0,
-    CacheMemory,
-};
-
 class AppsInformation : public cocos2d::Ref, create_func<AppsInformation>
 {
 public:
     AppsInformation();
     virtual ~AppsInformation();
 
-    bool init(DownloadCacheMode mode = DownloadCacheMode::CacheFile);
+    bool init();
     using create_func::create;
 
     CC_SYNTHESIZE(std::string, device, Device);

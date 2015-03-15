@@ -10,6 +10,11 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace cocosbuilder;
 
+enum AppsInfoCacheStatus {
+    ExistCache = 0,
+    NoCache,
+};
+
 class LoadingScene : public Layer
 , public NodeLoaderListener
 {
@@ -27,6 +32,8 @@ public:
     AppsInformation* appsInfo;
 
 private:
+    CC_SYNTHESIZE(AppsInfoCacheStatus, appsInfoCacheStatus, AppsInfoCacheStatus);
+
     void checkAppsUpdate();
     void endLoading();
     bool loadingFlg = false;
