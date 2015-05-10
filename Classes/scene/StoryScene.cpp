@@ -4,6 +4,7 @@
 #include "core/Constant.h"
 #include "core/GameManager.h"
 #include "resources/SoundManager.h"
+#include "factory/CharacterCreator.h"
 #include "factory/TextCreator.h"
 #include "tools/NativeLauncher.h"
 #include "core/LabelAttributedBMFont.h"
@@ -81,6 +82,16 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
                            windowSprite->getScale() * 40 / 100);
     addChild(windowSprite, ZOrder::Menu);
 
+    // キャラクター表示
+    Point charaPos = Point(origin.x + visibleSize.width * 2 / 3,
+                           origin.y + visibleSize.height * 65 / 100);
+    CharacterCreator* creator = new CharacterCreator();
+    creator->init(CharacterScale::HARF);
+    Sprite* character = creator->create("persona_conoha.png", charaPos);
+    character->setTag(Tag::Character);
+//    character->setVisible(false);
+    this->addChild(character, ZOrder::Persona);
+    
     // スケジュール更新
     this->scheduleUpdate();    
 }
@@ -134,13 +145,12 @@ void StoryScene::initStoryMessages()
     Point origin = Director::getInstance()->getVisibleOrigin();
     
     // 表示文字準備
-    this->setStoryMessages();
-    Constant::StringVector pages = this->setStoryMessages();
+    this->setStoryData();
     
     float labelWidth = origin.x + visibleSize.width * 1 / 10;
     float relativeLabelHeight = 4.0f;
     Point point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    label = TextCreator::create(pages, point);
+    label = TextCreator::create(this->storyMessages, point);
     label->setScale(BM_FONT_SIZE64(16));
     this->addChild(label, ZOrder::Font);
     
@@ -154,11 +164,12 @@ void StoryScene::initStoryMessages()
     });
     
     // コールバック設定その２(ページ送りするたびに呼ばれる)
-    // もどってくる値はpagesのindex
-    label->setCallbackChangedPage([](int index) {
+    // もどってくる値はstoryMessagesのindex
+    label->setCallbackChangedPage([this](int index) {
         // indexから現在何が表示されているのか判定して何か処理
         // ページ送りされたらなので、indexは1から(2ページ目からしかこない)
         CCLOG("setCallbackChangedPage");
+        this->displayStoryCharacter(this->storyCharacters[index].c_str());
     });
     
     // 文字送りしない場合(ページ送りとキーワード強調は有効にしたい場合)
@@ -168,24 +179,36 @@ void StoryScene::initStoryMessages()
     label->start();
 }
 
-Constant::StringVector StoryScene::setStoryMessages()
+void StoryScene::setStoryData()
 {
-    Constant::StringVector pages;
-
     picojson::object& sheets = scenarioCache->loader->jsonResult.get<picojson::object>();
     picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
     for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
     {
         picojson::object& column = it->get<picojson::object>();
-        int main_id = (int)column["main_id"].get<double>();
-        int sub_id = (int)column["sub_id"].get<double>();
-        std::string chara_name = (std::string)column["chara_name"].get<std::string>();
+        int mainId = (int)column["main_id"].get<double>();
+        int subId = (int)column["sub_id"].get<double>();
+        std::string charaName = (std::string)column["chara_name"].get<std::string>();
         std::string message = (std::string)column["message"].get<std::string>();
-        pages.push_back(message);
-        CCLOG("x:%d, y:%d, z:%s", main_id, sub_id, chara_name.c_str());
+        
+        this->storyCharacters.push_back(charaName);
+        this->storyMessages.push_back(message);
+        CCLOG("x:%d, y:%d, z:%s", mainId, subId, charaName.c_str());
     }
-    
-    return pages;
+}
+
+void StoryScene::displayStoryCharacter(const std::string &charaName)
+{
+    Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
+    int num = charaName == "このは" ? 0 : (charaName == "あんず" ? 1 : 0);
+    CCLOG("name:%s, num:%d", charaName.c_str(), num);
+    std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
+    Sprite* character = (Sprite*)this->getChildByTag(Tag::Character);
+
+    CharacterCreator* creator = new CharacterCreator();
+    creator->init(CharacterScale::HARF);
+    creator->change(character, personaFileName);
+    character->setVisible(true);
 }
 
 //void StoryScene::tappedBackButton(Ref* pTarget, Control::EventType pControlEventType)

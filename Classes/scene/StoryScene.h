@@ -37,19 +37,30 @@ private:
     enum ZOrder
     {
         Bg = 0,
+        Persona,
         Menu,
         Status,
         Font,
     };
+
+    enum Tag
+    {
+        Character = 0,
+        RankStr,
+        Rank,
+    };
+    
     std::vector<std::string> bgImageList;
 
     void initBackground();
     bool loadScenario();
-    Constant::StringVector setStoryMessages();
-//    void setCallbackChangedPage( const std::function<void( int )> &callback );
+    void setStoryData();
+    void displayStoryCharacter(const std::string &charaName);
 
     DownloadCacheManager* scenarioCache;
     LabelAttributedBMFont* label;
+    Constant::StringVector storyMessages;
+    Constant::StringVector storyCharacters;
 };
 
 #endif /* defined(__STORY_SCENE_H__) */
