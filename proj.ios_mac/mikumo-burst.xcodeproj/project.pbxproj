@@ -144,6 +144,7 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		DD7EA9471B01337900C908D6 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
+		DD7EA9481B01379B00C908D6 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -438,6 +439,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD7EA9481B01379B00C908D6 /* libcocos2d iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1197,7 +1199,7 @@
 					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
 				PRODUCT_NAME = "mikumo-burst iOS";
-				PROVISIONING_PROFILE = "f49ea45d-031e-4ea3-9be0-aa3ff54c525b";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1239,7 +1241,7 @@
 					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
 				PRODUCT_NAME = "mikumo-burst iOS";
-				PROVISIONING_PROFILE = "ea750142-5e97-4913-b7af-cf9cda96a49c";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1373,7 +1375,7 @@
 					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
 				PRODUCT_NAME = "mikumo-burst iOS";
-				PROVISIONING_PROFILE = "5ad876ca-8f38-46f0-bca5-78f761f8e574";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
