@@ -43,7 +43,7 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("My Game");
+        glview = GLViewImpl::create("My Game");
         director->setOpenGLView(glview);
     }
     Size screenSize = director->getWinSize();
