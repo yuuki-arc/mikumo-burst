@@ -74,6 +74,7 @@ public:
         PersonaBattle1,     // 戦闘カットインver.1
         PersonaBattle2,     // 戦闘カットインver.2
         PersonaBattle3,     // 戦闘カットイン最終
+        PersonaStory,       // ストーリー用
     };
     static const std::map<ImagePersona, StringVector> PERSONA_IMAGE_LIST(){
         return {
@@ -82,6 +83,7 @@ public:
             {ImagePersona::PersonaBattle1, {"cutin_conoha1" , "cutin_anzu1" , "cutin_conoha1"}},
             {ImagePersona::PersonaBattle2, {"cutin_conoha2" , "cutin_anzu2" , "cutin_anzu2"}},
             {ImagePersona::PersonaBattle3, {"cutin_anco"    , "cutin_anco"  , "cutin_anco"}},
+            {ImagePersona::PersonaStory  , {"persona_conoha", "persona_anzu", "Hecatoncheir_3L"}},
         };
     };
     static const StringVector PERSONA_IMAGE_LIST(ImagePersona key){

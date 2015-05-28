@@ -74,7 +74,7 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     
     // メニュー表示
     float labelWidth = origin.x + visibleSize.width / 2;
-    float relativeLabelHeight = 40.0f;
+    float relativeLabelHeight = 25.0f;
     Point point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 100);
     Sprite* windowSprite = Sprite::createWithSpriteFrameName("menu_window.png");
     windowSprite->setPosition(point);
@@ -89,7 +89,7 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     creator->init(CharacterScale::HARF);
     Sprite* character = creator->create("persona_conoha.png", charaPos);
     character->setTag(Tag::Character);
-//    character->setVisible(false);
+    character->setVisible(false);
     this->addChild(character, ZOrder::Persona);
     
     // スケジュール更新
@@ -104,7 +104,8 @@ void StoryScene::initBackground()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
-    int num = arc4random() % bgImageList.size();
+//    int num = arc4random() % bgImageList.size();
+    int num = 1;
     Sprite* background = Sprite::createWithSpriteFrameName(StringUtils::format("%s.png", bgImageList.at(num).c_str()));
     background->setPosition(Point(origin.x + visibleSize.width / 2,
                                   origin.y + visibleSize.height / 2));
@@ -148,7 +149,7 @@ void StoryScene::initStoryMessages()
     this->setStoryData();
     
     float labelWidth = origin.x + visibleSize.width * 1 / 10;
-    float relativeLabelHeight = 4.0f;
+    float relativeLabelHeight = 2.5f;
     Point point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
     label = TextCreator::create(this->storyMessages, point);
     label->setScale(BM_FONT_SIZE64(16));
@@ -199,16 +200,23 @@ void StoryScene::setStoryData()
 
 void StoryScene::displayStoryCharacter(const std::string &charaName)
 {
-    Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
-    int num = charaName == "このは" ? 0 : (charaName == "あんず" ? 1 : 0);
+    Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaStory);
+    int num = charaName == "このは" ? 0 : (charaName == "あんず" ? 1 : 2);
     CCLOG("name:%s, num:%d", charaName.c_str(), num);
     std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
     Sprite* character = (Sprite*)this->getChildByTag(Tag::Character);
 
     CharacterCreator* creator = new CharacterCreator();
-    creator->init(CharacterScale::HARF);
-    creator->change(character, personaFileName);
-    character->setVisible(true);
+    if (num == 2)
+    {
+        character->setVisible(false);
+    }
+    else
+    {
+        creator->init(CharacterScale::HARF);
+        creator->change(character, personaFileName);
+        character->setVisible(true);
+    }
 }
 
 //void StoryScene::tappedBackButton(Ref* pTarget, Control::EventType pControlEventType)
