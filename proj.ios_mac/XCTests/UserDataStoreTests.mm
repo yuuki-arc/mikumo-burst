@@ -1,6 +1,6 @@
 //#import <XCTest/XCTest.h>
-//#include "UserDataStore.h"
-//#include "Constant.h"
+//#include "core/Constant.h"
+//#include "resources/UserDataStore.h"
 //
 //USING_NS_CC;
 //
@@ -14,6 +14,10 @@
 //{
 //    [super setUp];
 //    // Put setup code here. This method is called before the invocation of each test method in the class.
+//    if (!UserDataStore::getInstance()->isDataStored())
+//    {
+//        UserDataStore::getInstance()->setupData();
+//    }
 //}
 //
 //- (void)tearDown
@@ -22,49 +26,56 @@
 //    [super tearDown];
 //}
 //
-//- (std::vector<std::map<std::string, std::string>>)getScoreTable
+//- (void)testGetDefaultRankList
 //{
-//    std::vector<std::map<std::string, std::string>> list = {};
-//    
-//    std::map<std::string, std::string> map;
-//    map["chain"] = "200";
-//    map["score"] = "12300";
-//    list.push_back(map);
-//    map.clear();
-//    map["chain"] = "400";
-//    map["score"] = "25000";
-//    list.push_back(map);
-//    
-//    return list;
+//    StringMapVector list = UserDataStore::getInstance()->getDefaultRankList();
+//    XCTAssertEqual(list[0][Constant::charaKey(Constant::Conoha)], "1");
 //}
 //
-//- (StringMapVector)getRankList
-//{
-//    StringMapVector list = {};
-//    
-//    StringMap map;
-//    map["conoha"] = "100";
-//    map["anzu"] = "200";
-//    list.push_back(map);
-//    
-//    return list;
-//}
 //
-//- (void)testSetRankList
-//{
-//    StringMapVector sourceList = [self getRankList];
-//    UserDataStore::getInstance()->setRankList(sourceList);
-//    
-//    StringMapVector rankList = UserDataStore::getInstance()->getRankList();
-//    for (StringMapVector::iterator it = rankList.begin(); it != rankList.end(); it++)
-//    {
-//        StringMap map = (*it);
-//        CCLOG("conoha = %s", map["conoha"].c_str());
-//        CCLOG("anzu = %s", map["anzu"].c_str());
-//    }
-//    
-//}
-//
+////- (std::vector<std::map<std::string, std::string>>)getScoreTable
+////{
+////    std::vector<std::map<std::string, std::string>> list = {};
+////    
+////    std::map<std::string, std::string> map;
+////    map["chain"] = "200";
+////    map["score"] = "12300";
+////    list.push_back(map);
+////    map.clear();
+////    map["chain"] = "400";
+////    map["score"] = "25000";
+////    list.push_back(map);
+////    
+////    return list;
+////}
+////
+////- (StringMapVector)getRankList
+////{
+////    StringMapVector list = {};
+////    
+////    StringMap map;
+////    map["conoha"] = "100";
+////    map["anzu"] = "200";
+////    list.push_back(map);
+////    
+////    return list;
+////}
+////
+////- (void)testSetRankList
+////{
+////    StringMapVector sourceList = [self getRankList];
+////    UserDataStore::getInstance()->setRankList(sourceList);
+////    
+////    StringMapVector rankList = UserDataStore::getInstance()->getRankList();
+////    for (StringMapVector::iterator it = rankList.begin(); it != rankList.end(); it++)
+////    {
+////        StringMap map = (*it);
+////        CCLOG("conoha = %s", map["conoha"].c_str());
+////        CCLOG("anzu = %s", map["anzu"].c_str());
+////    }
+////    
+////}
+////
 ////- (void)testGetRankList
 ////{
 ////    //    std::vector<std::string> vector = {};

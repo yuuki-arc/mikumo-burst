@@ -31,6 +31,15 @@ void GameManager::initialize()
     burstCount = 0;
 }
 
+//void GameManager::setAppsInformation()
+//{
+//    if (GameManager::getInstance()->appsInfo == nullptr)
+//    {
+//        GameManager::getInstance()->appsInfo = AppsInformation::create(DownloadCacheMode::CacheMemory);
+//        GameManager::getInstance()->appsInfo->downloadData();
+//    }
+//}
+//
 bool GameManager::isScreenModeSd()
 {
     return getInstance()->screenMode == ScreenModeSd ? true : false;

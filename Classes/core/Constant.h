@@ -6,6 +6,23 @@
 #define BM_FONT_SIZE(__SIZE , __BASE) (CC_CONTENT_SCALE_FACTOR() * ((float)__SIZE / (float)__BASE))
 #define BM_FONT_SIZE64(__SIZE) (BM_FONT_SIZE(__SIZE , 64))
 
+#include<utility>
+
+template<class Derived>
+struct create_func {
+    template<class... Args>
+    static Derived* create(Args&&... args) {
+        auto p = new Derived();
+        if (p->init(std::forward<Args>(args)...)) {
+            p->autorelease();
+            return p;
+        } else {
+            delete p;
+            return nullptr;
+        }
+    }
+};
+
 class Constant
 {
 public:
@@ -57,6 +74,7 @@ public:
         PersonaBattle1,     // 戦闘カットインver.1
         PersonaBattle2,     // 戦闘カットインver.2
         PersonaBattle3,     // 戦闘カットイン最終
+        PersonaStory,       // ストーリー用
     };
     static const std::map<ImagePersona, StringVector> PERSONA_IMAGE_LIST(){
         return {
@@ -65,6 +83,7 @@ public:
             {ImagePersona::PersonaBattle1, {"cutin_conoha1" , "cutin_anzu1" , "cutin_conoha1"}},
             {ImagePersona::PersonaBattle2, {"cutin_conoha2" , "cutin_anzu2" , "cutin_anzu2"}},
             {ImagePersona::PersonaBattle3, {"cutin_anco"    , "cutin_anco"  , "cutin_anco"}},
+            {ImagePersona::PersonaStory  , {"persona_conoha", "persona_anzu", "Hecatoncheir_3L"}},
         };
     };
     static const StringVector PERSONA_IMAGE_LIST(ImagePersona key){
@@ -184,6 +203,20 @@ public:
     static const StringVector VOICE_LIST(CharaSelect charaSelect, Voice key){
         std::map<Voice, StringVector> map = VOICE_LIST(charaSelect);
         return map[key];
+    }
+    
+    static const char* CACHE_FILE_APPS(){return "00_apps";}
+    static const char* CACHE_FILE_STORY(){return "10_scenario";}
+
+    static const char* SHEET_NAME_AP_APPS(){return "apps";}
+    static const char* SHEET_NAME_AP_SCENARIO(){return "scenario";}
+
+    static const char* SHEET_COLUMN_AP_APPS(){
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        return "ios";
+#else
+        return "android";
+#endif
     }
 
 #ifdef __mikumoburst__DefineParameters__
