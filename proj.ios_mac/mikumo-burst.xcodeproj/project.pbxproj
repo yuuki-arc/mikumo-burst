@@ -1224,7 +1224,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Masaki Yamaoka (C6MB3P5J3Z)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Masaki Yamaoka (C6MB3P5J3Z)";
 				COMPRESS_PNG_FILES = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1251,7 +1251,7 @@
 					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
 				PRODUCT_NAME = "mikumo-burst iOS";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a5adee31-16c4-40b8-a763-e79453b9cae7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1293,7 +1293,7 @@
 					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
 				PRODUCT_NAME = "mikumo-burst iOS";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8b4fc3a9-0c70-47bc-a582-06df7ddf40a7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1427,7 +1427,7 @@
 					"$(PROJECT_DIR)/GoogleAnalyticsServicesiOS",
 				);
 				PRODUCT_NAME = "mikumo-burst iOS";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "2f794d5f-f8b8-4cc7-8629-b313c9f1a4c3";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
