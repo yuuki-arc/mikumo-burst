@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "core/Constant.h"
+#include "resources/AppsInformation.h"
 
 enum ScreenMode {
     ScreenModeSd,
@@ -31,7 +32,7 @@ public:
     ScreenMode screenMode;
     bool isScreenModeSd();
     bool isScreenModeHd();
-
+    
     void setCharaSelect(Constant::CharaSelect charaSelect);
     Constant::CharaSelect getCharaSelect();
     bool isCharaSelectConoha();

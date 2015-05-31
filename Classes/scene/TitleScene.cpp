@@ -1,5 +1,5 @@
 #include "scene/TitleScene.h"
-#include "scene/SelectSceneLoader.h"
+#include "scene/LoadingSceneLoader.h"
 #include "tools/GoogleAnalyticsTracker.h"
 #include "resources/SoundManager.h"
 
@@ -14,7 +14,7 @@ TitleScene::~TitleScene()
 bool TitleScene::init()
 {    
     CCLOG("TitleScene::init");
-    GoogleAnalyticsTracker::sendScreen("TitleScene");
+//    GoogleAnalyticsTracker::sendScreen("TitleScene");
 	if(!Layer::init())
 	{
 		return false;
@@ -47,7 +47,7 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
         director->setOpenGLView(glview);
     }
     Size screenSize = director->getWinSize();
-    
+
     // BGM
     SoundManager* soundManager = new SoundManager();
     soundManager->playBGM("bgm_title");
@@ -62,36 +62,29 @@ void TitleScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     ParticleSystemQuad* particle2 = ParticleSystemQuad::create("particle/title_particle2.plist");
     particle2->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
     this->addChild(particle2);
-    
-    //        ParticleSystemQuad* particle1 = ParticleSystemQuad::create("particle/title_particle1.plist");
-    //        particle1->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
-    //        ParticleSystemQuad* particle2 = ParticleSystemQuad::create("particle/title_particle2.plist");
-    //        particle2->setPosition(Vec2(screenSize.width / 2, screenSize.height / 2));
-    //
-    //        ParticleBatchNode *batch = ParticleBatchNode::createWithTexture(particle1->getTexture());
-    //
-    //        batch->addChild(particle1, 0);
-    //        batch->addChild(particle2, 0);
-    //
-    //        pScene->addChild(batch);
 }
 
+/**
+ *  Startボタンタップ時処理
+ *
+ *  @param pTarget           pTarget
+ *  @param pControlEventType pControlEventType
+ */
 void TitleScene::tappedStartButton(Ref *pTarget, Control::EventType pControlEventType)
 {
     CCLOG("tappedStartButton eventType = %d", pControlEventType);
     SoundManager* soundManager = new SoundManager();
     soundManager->playSE("se_select");
-
-    // テクスチャアトラスを読み込む
-    SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
-    frameCache->addSpriteFramesWithFile("character/enemy2/enemy2.plist");
-    frameCache->addSpriteFramesWithFile("character/persona2/persona2.plist");
-    frameCache->addSpriteFramesWithFile("misc/misc.plist");
-    frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
     
-
-    Scene* scene = SelectSceneLoader::createScene();
+    // テクスチャアトラスを読み込む
+//    SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
+//    frameCache->addSpriteFramesWithFile("character/enemy2/enemy2.plist");
+//    frameCache->addSpriteFramesWithFile("character/persona2/persona2.plist");
+//    frameCache->addSpriteFramesWithFile("misc/misc.plist");
+//    frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
+    
+    
+    Scene* scene = LoadingSceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }
-
