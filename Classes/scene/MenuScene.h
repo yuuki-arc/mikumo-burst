@@ -12,6 +12,7 @@ using namespace cocosbuilder;
 class MenuScene : public Layer
 , public CCBSelectorResolver
 , public NodeLoaderListener
+, public ScrollViewDelegate
 {
 public:
     MenuScene();
@@ -23,6 +24,8 @@ public:
     virtual void onNodeLoaded(Node* pNode, NodeLoader* pNodeLoader);
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(MenuScene, create);
+    
+    void scrollViewDidScroll(ScrollView *view);
     
     void tappedInformationButton(Ref* pTarget, Control::EventType pControlEventType);
     void tappedReviewButton(Ref* pTarget, Control::EventType pControlEventType);
