@@ -7,7 +7,8 @@
 USING_NS_CC;
 
 AppsInformation::AppsInformation()
-: downloadCache(nullptr)
+: appsInfoCache(nullptr)
+, scenarioCache(nullptr)
 {
 }
 
@@ -22,11 +23,18 @@ AppsInformation::~AppsInformation()
  */
 bool AppsInformation::init()
 {
-    downloadCache = DownloadCacheManager::create();
-    downloadCache->retain();
-    downloadCache->setUrl(__SHEET_URL_APPS);
-    downloadCache->setFileName(Constant::CACHE_FILE_APPS());
-    downloadCache->setCallback([this](Ref *sender){setAppsInformation();});
+    // アプリ情報キャッシュ設定
+    appsInfoCache = DownloadCacheManager::create();
+    appsInfoCache->retain();
+    appsInfoCache->setUrl(__SHEET_URL_APPS);
+    appsInfoCache->setFileName(Constant::CACHE_FILE_APPS());
+    appsInfoCache->setCallback([this](Ref *sender){setAppsInformation();});
+    // シナリオ情報キャッシュ設定
+    scenarioCache = DownloadCacheManager::create();
+    scenarioCache->retain();
+    scenarioCache->setUrl(__SHEET_URL_STORY);
+    scenarioCache->setFileName(Constant::CACHE_FILE_STORY());
+//    scenarioCache->setCallback([this](Ref *sender){replaceSelectScene();});
     return true;
 }
 
@@ -35,9 +43,17 @@ bool AppsInformation::init()
  *
  *  @return 存在する場合はtrue、存在しなければfalse
  */
-bool AppsInformation::isExistCacheFile()
+bool AppsInformation::isExistCacheFile(const std::string &cacheFile)
 {
-    return downloadCache->isExistCacheFile();
+    if (cacheFile == Constant::CACHE_FILE_APPS())
+    {
+        return appsInfoCache->isExistCacheFile();
+    }
+    else if (cacheFile == Constant::CACHE_FILE_APPS())
+    {
+        return scenarioCache->isExistCacheFile();
+    }
+    return false;
 }
 
 /**
@@ -45,10 +61,17 @@ bool AppsInformation::isExistCacheFile()
  *
  *  @return 正常終了はtrue、それ以外はfalse
  */
-bool AppsInformation::downloadData()
+bool AppsInformation::downloadData(const std::string &cacheFile)
 {
-    downloadCache->downloadResponseData();
-    return true;
+    if (cacheFile == Constant::CACHE_FILE_APPS())
+    {
+        return appsInfoCache->downloadResponseData();
+    }
+    else if (cacheFile == Constant::CACHE_FILE_APPS())
+    {
+        return scenarioCache->downloadResponseData();
+    }
+    return false;
 }
 
 /**
@@ -56,10 +79,17 @@ bool AppsInformation::downloadData()
  *
  *  @return 正常終了はtrue、それ以外はfalse
  */
-bool AppsInformation::downloadAndWriteCacheData()
+bool AppsInformation::downloadAndWriteCacheData(const std::string &cacheFile)
 {
-    downloadCache->downloadAndWriteCacheData();
-    return true;
+    if (cacheFile == Constant::CACHE_FILE_APPS())
+    {
+        return appsInfoCache->downloadAndWriteCacheData();
+    }
+    else if (cacheFile == Constant::CACHE_FILE_APPS())
+    {
+        return scenarioCache->downloadAndWriteCacheData();
+    }
+    return false;
 }
 
 /**
@@ -67,10 +97,17 @@ bool AppsInformation::downloadAndWriteCacheData()
  *
  *  @return 正常終了はtrue、それ以外はfalse
  */
-bool AppsInformation::writeCache()
+bool AppsInformation::writeCache(const std::string &cacheFile)
 {
-    downloadCache->writeCache();
-    return true;
+    if (cacheFile == Constant::CACHE_FILE_APPS())
+    {
+        return appsInfoCache->writeCache();
+    }
+    else if (cacheFile == Constant::CACHE_FILE_APPS())
+    {
+        return scenarioCache->writeCache();
+    }
+    return false;
 }
 
 /**
@@ -78,7 +115,7 @@ bool AppsInformation::writeCache()
  */
 void AppsInformation::setAppsInformation()
 {
-    picojson::object& sheets = downloadCache->loader->jsonResult.get<picojson::object>();
+    picojson::object& sheets = appsInfoCache->loader->jsonResult.get<picojson::object>();
     
     // アプリ情報
     picojson::array& sheetColumns = sheets[Constant::SHEET_NAME_AP_APPS()].get<picojson::array>();

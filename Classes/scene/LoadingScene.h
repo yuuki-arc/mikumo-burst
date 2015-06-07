@@ -47,8 +47,6 @@ private:
     bool loadScenario();
     void replaceTitleScene();
     void replaceSelectScene();
-
-    DownloadCacheManager* scenarioCache;
 };
 
 #endif /* defined(__LOADING_SCENE_H__) */

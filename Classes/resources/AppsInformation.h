@@ -20,13 +20,15 @@ public:
     CC_SYNTHESIZE(std::string, updateVersionDate, UpdateVersionDate);
     CC_SYNTHESIZE(std::string, updateSheetDate, UpdateSheetDate);
 
-    bool isExistCacheFile();
-    bool downloadData();
-    bool downloadAndWriteCacheData();
-    bool writeCache();
+    bool isExistCacheFile(const std::string &cacheFile);
+    bool downloadData(const std::string &cacheFile);
+    bool downloadAndWriteCacheData(const std::string &cacheFile);
+    bool writeCache(const std::string &cacheFile);
     void setAppsInformation();
     
-    DownloadCacheManager* downloadCache;
+    DownloadCacheManager* appsInfoCache;
     StringMapVector scenarioList;
+    
+    DownloadCacheManager* scenarioCache;
 };
 #endif /* defined(__mikumo_burst__AppsInformation__) */

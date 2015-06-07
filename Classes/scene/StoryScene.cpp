@@ -161,7 +161,7 @@ void StoryScene::initStoryMessages()
         CCLOG("setCallback");
         AppsInformation* appsInfo = AppsInformation::create();
         appsInfo->retain();
-        appsInfo->downloadData();
+        appsInfo->downloadData(Constant::CACHE_FILE_APPS());
     });
     
     // コールバック設定その２(ページ送りするたびに呼ばれる)

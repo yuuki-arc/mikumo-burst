@@ -64,17 +64,17 @@ void LoadingScene::downloadAppsUpdate()
 {
     appsInfo = AppsInformation::create();
     appsInfo->retain();
-    if (appsInfo->isExistCacheFile())
+    if (appsInfo->isExistCacheFile(Constant::CACHE_FILE_APPS()))
     {
         // キャッシュが存在する場合はデータダウンロードのみ行う
         setAppsInfoCacheStatus(AppsInfoCacheStatus::ExistCache);
-        appsInfo->downloadData();
+        appsInfo->downloadData(Constant::CACHE_FILE_APPS());
     }
     else
     {
         // キャッシュが存在しない場合はデータダウンロードに加えてキャッシュ書き込みを行う
         setAppsInfoCacheStatus(AppsInfoCacheStatus::NoCache);
-        appsInfo->downloadAndWriteCacheData();
+        appsInfo->downloadAndWriteCacheData(Constant::CACHE_FILE_APPS());
     }
 
     // ステータスをアプリ情報ローディングにする
@@ -94,10 +94,10 @@ void LoadingScene::update(float frame)
         bool result = false;
         switch (getAppsInfoCacheStatus()) {
             case AppsInfoCacheStatus::ExistCache:
-                result = appsInfo->downloadCache->execCallback();
+                result = appsInfo->appsInfoCache->execCallback();
                 break;
             case AppsInfoCacheStatus::NoCache:
-                result = appsInfo->downloadCache->execCallbackReferenceData();
+                result = appsInfo->appsInfoCache->execCallbackReferenceData();
                 break;
             default:
                 CCLOG("LoadingScene::cache status error");
@@ -110,7 +110,7 @@ void LoadingScene::update(float frame)
     }
     else if (this->loadingProgress == LoadingProgress::ScenarioLoading)
     {
-        bool result = scenarioCache->execCallbackReferenceData();
+        bool result = appsInfo->scenarioCache->execCallbackReferenceData();
         if (!result)
         {
             CCLOG("StoryScene::read error");
@@ -120,25 +120,19 @@ void LoadingScene::update(float frame)
 
     // アプリ情報ローディングが終了したらシナリオ取得処理を実行
     if (this->loadingProgress == LoadingProgress::AppsLoading &&
-        appsInfo->downloadCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
+        appsInfo->appsInfoCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
     {
         // アプリの最新バージョンチェック
         bool check = checkAppsUpdate();
 
         if (check) {
             // 最新バージョンチェック後はシナリオデータを取得
-            scenarioCache = DownloadCacheManager::create();
-            scenarioCache->retain();
-            scenarioCache->setUrl(__SHEET_URL_STORY);
-            scenarioCache->setFileName(Constant::CACHE_FILE_STORY());
-//            scenarioCache->setCallback([this](Ref *sender){replaceSelectScene();});
-            
             /**
              *  ストーリー情報をダウンロードする
              *  ※ローカルにアプリ情報のキャッシュを保持していない場合は、
              *   ダウンロードデータをキャッシュへ書き込むところまで行う
              */
-            bool result = scenarioCache->loadData();
+            bool result = appsInfo->scenarioCache->loadData();
             if (!result)
             {
                 CCLOG("StoryScene::read error");
@@ -153,7 +147,7 @@ void LoadingScene::update(float frame)
     }
     // シナリオ情報ローディングが終了したら終了後処理を実行
     else if (this->loadingProgress == LoadingProgress::ScenarioLoading &&
-             scenarioCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
+             appsInfo->scenarioCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
     {
 
         // シナリオ取得まで完了したらゲーム画面に遷移する
@@ -195,7 +189,7 @@ bool LoadingScene::checkAppsUpdate()
         // キャッシュデータ削除
         DownloadCacheManager::removeCacheData(Constant::CACHE_FILE_STORY());
         // 最新データをキャッシュ書き込み
-        appsInfo->writeCache();
+        appsInfo->writeCache(Constant::CACHE_FILE_APPS());
         
         Size visibleSize = Director::getInstance()->getVisibleSize();
         Point origin = Director::getInstance()->getVisibleOrigin();
