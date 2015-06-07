@@ -15,6 +15,13 @@ enum AppsInfoCacheStatus {
     NoCache,
 };
 
+enum LoadingProgress {
+    PreStart = 0,
+    AppsLoading,
+    ScenarioLoading,
+    Complete,
+};
+
 class LoadingScene : public Layer
 , public NodeLoaderListener
 {
@@ -33,12 +40,15 @@ public:
 
 private:
     CC_SYNTHESIZE(AppsInfoCacheStatus, appsInfoCacheStatus, AppsInfoCacheStatus);
-    bool loadingFlg = false;
+    LoadingProgress loadingProgress = LoadingProgress::PreStart;
 
     void downloadAppsUpdate();
     bool checkAppsUpdate();
+    bool loadScenario();
     void replaceTitleScene();
     void replaceSelectScene();
+
+    DownloadCacheManager* scenarioCache;
 };
 
 #endif /* defined(__LOADING_SCENE_H__) */

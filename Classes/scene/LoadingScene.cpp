@@ -1,7 +1,7 @@
 #include "scene/LoadingScene.h"
 #include "scene/TitleSceneLoader.h"
 #include "scene/SelectSceneLoader.h"
-//#include "scene/StorySceneLoader.h"
+#include "scene/StorySceneLoader.h"
 #include "scene/SelectStorySceneLoader.h"
 #include "tools/GoogleAnalyticsTracker.h"
 #include "resources/AppsInformation.h"
@@ -11,6 +11,7 @@
 
 LoadingScene::LoadingScene()
 : appsInfoCacheStatus(AppsInfoCacheStatus::NoCache)
+, loadingProgress(LoadingProgress::PreStart)
 {
 }
 
@@ -75,8 +76,9 @@ void LoadingScene::downloadAppsUpdate()
         setAppsInfoCacheStatus(AppsInfoCacheStatus::NoCache);
         appsInfo->downloadAndWriteCacheData();
     }
-    
-    this->loadingFlg = true;
+
+    // ステータスをアプリ情報ローディングにする
+    this->loadingProgress = LoadingProgress::AppsLoading;
 }
 
 /**
@@ -86,40 +88,77 @@ void LoadingScene::downloadAppsUpdate()
  */
 void LoadingScene::update(float frame)
 {
-    // アプリ情報キャッシュの状態によりコールバック関数を切り替える（終了チェックの判定が異なるため）
-    bool result = false;
-    switch (getAppsInfoCacheStatus()) {
-        case AppsInfoCacheStatus::ExistCache:
-            result = appsInfo->downloadCache->execCallback();
-            break;
-        case AppsInfoCacheStatus::NoCache:
-            result = appsInfo->downloadCache->execCallbackReferenceData();
-            break;
-        default:
-            CCLOG("LoadingScene::cache status error");
-            break;
-    }
-    if (!result)
+    if (this->loadingProgress == LoadingProgress::AppsLoading)
     {
-        CCLOG("LoadingScene::read error");
+        // アプリ情報キャッシュの状態によりコールバック関数を切り替える（終了チェックの判定が異なるため）
+        bool result = false;
+        switch (getAppsInfoCacheStatus()) {
+            case AppsInfoCacheStatus::ExistCache:
+                result = appsInfo->downloadCache->execCallback();
+                break;
+            case AppsInfoCacheStatus::NoCache:
+                result = appsInfo->downloadCache->execCallbackReferenceData();
+                break;
+            default:
+                CCLOG("LoadingScene::cache status error");
+                break;
+        }
+        if (!result)
+        {
+            CCLOG("LoadingScene::read error");
+        }
+    }
+    else if (this->loadingProgress == LoadingProgress::ScenarioLoading)
+    {
+        bool result = scenarioCache->execCallbackReferenceData();
+        if (!result)
+        {
+            CCLOG("StoryScene::read error");
+        }
     }
     
-    // ローディングが終了したら終了後処理を実行
-    if (this->loadingFlg &&
+
+    // アプリ情報ローディングが終了したらシナリオ取得処理を実行
+    if (this->loadingProgress == LoadingProgress::AppsLoading &&
         appsInfo->downloadCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
     {
         // アプリの最新バージョンチェック
         bool check = checkAppsUpdate();
 
         if (check) {
-            // 最新バージョンがなければゲーム画面に遷移する
-            replaceSelectScene();
+            // 最新バージョンチェック後はシナリオデータを取得
+            scenarioCache = DownloadCacheManager::create();
+            scenarioCache->retain();
+            scenarioCache->setUrl(__SHEET_URL_STORY);
+            scenarioCache->setFileName(Constant::CACHE_FILE_STORY());
+//            scenarioCache->setCallback([this](Ref *sender){replaceSelectScene();});
+            
+            /**
+             *  ストーリー情報をダウンロードする
+             *  ※ローカルにアプリ情報のキャッシュを保持していない場合は、
+             *   ダウンロードデータをキャッシュへ書き込むところまで行う
+             */
+            bool result = scenarioCache->loadData();
+            if (!result)
+            {
+                CCLOG("StoryScene::read error");
+            }
+            this->loadingProgress = LoadingProgress::ScenarioLoading;
         }
         else
         {
             // 何らかのチェックに引っかかった場合はタイトル画面に戻る
             replaceTitleScene();
         }
+    }
+    // シナリオ情報ローディングが終了したら終了後処理を実行
+    else if (this->loadingProgress == LoadingProgress::ScenarioLoading &&
+             scenarioCache->loadStatus == DownloadCacheManager::LoadStatus::LoadComplete)
+    {
+
+        // シナリオ取得まで完了したらゲーム画面に遷移する
+        this->loadingProgress = LoadingProgress::Complete;
+        replaceSelectScene();
     }
 }
 
@@ -200,8 +239,8 @@ void LoadingScene::replaceSelectScene()
     frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
     
 //    Scene* scene = SelectSceneLoader::createScene();
-//    Scene* scene = StorySceneLoader::createScene();
-    Scene* scene = SelectStorySceneLoader::createScene();
+    Scene* scene = StorySceneLoader::createScene();
+//    Scene* scene = SelectStorySceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }

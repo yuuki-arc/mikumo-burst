@@ -74,16 +74,14 @@ void SelectStoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     layer->addChild(character);
 
     // on layer
-    GameManager::getInstance()->appsInfo->;
-    AppsInformation::
-    auto *button = Sprite::create("syber2.png");
-    layer->addChild(button);
+//    auto *button = Sprite::create("syber2.png");
+//    layer->addChild(button);
     
     //画面サイズでスクロールビューを作る
     layer->setContentSize(visibleSize);
     scrollView = ScrollViewWrapper::create(visibleSize);
     scrollView->setDelegate(this);
-    scrollView->setContentSize(button->getContentSize());
+    scrollView->setContentSize(layer->getContentSize());
     scrollView->setContainer(layer);
 
     scrollView->setPosition(Point(origin.x + visibleSize.height * 10 / 100,
