@@ -1,4 +1,5 @@
 #include "scene/SelectScene.h"
+#include "scene/SelectStorySceneLoader.h"
 #include "scene/MenuSceneLoader.h"
 #include "scene/BattleSceneLoader.h"
 #include "tools/GoogleAnalyticsTracker.h"
@@ -42,6 +43,7 @@ Control::Handler SelectScene::onResolveCCBCCControlSelector(Ref* pTarget, const 
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedChangeButton", SelectScene::tappedChangeButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBattleButton", SelectScene::tappedBattleButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedBossButton", SelectScene::tappedBossButton);
+    CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedSelectStoryButton", SelectScene::tappedSelectStoryButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedRankingButton", SelectScene::tappedRankingButton);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "tappedMenuButton", SelectScene::tappedMenuButton);
     return NULL;
@@ -289,6 +291,18 @@ void SelectScene::tappedBossButton(Ref* pTarget, Control::EventType pControlEven
     soundManager->stopBGM();
     
     Scene* scene = BattleSceneLoader::createScene();
+    TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
+    Director::getInstance()->replaceScene(trans);
+}
+
+void SelectScene::tappedSelectStoryButton(Ref* pTarget, Control::EventType pControlEventType)
+{
+    CCLOG("tappedSelectStoryButton eventType = %d", pControlEventType);
+    
+    SoundManager* soundManager = new SoundManager();
+    soundManager->playSE("se_select");
+    
+    Scene* scene = SelectStorySceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }

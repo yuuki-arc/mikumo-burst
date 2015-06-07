@@ -4,8 +4,8 @@
 #include "tools/AppCCloudPlugin.h"
 #include "core/Constant.h"
 #include "core/GameManager.h"
-#include "scene/TitleScene.h"
-#include "scene/TitleSceneLoader.h"
+//#include "scene/TitleSceneLoader.h"
+#include "scene/LoadingSceneLoader.h"
 #include "SimpleAudioEngine.h"
 #include "resources/UserDataStore.h"
 
@@ -115,7 +115,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 #endif
     
     // CocosBuilderのファイルを読み込みゲーム画面を生成する
-    auto *pScene = TitleSceneLoader::createScene();
+//    auto *pScene = TitleSceneLoader::createScene();
+    auto *pScene = LoadingSceneLoader::createScene();
 
     // run
     director->runWithScene(pScene);

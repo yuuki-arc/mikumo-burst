@@ -7,7 +7,7 @@
             <key>ep.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{564,118},{420,56}}</string>
+                <string>{{564,2},{420,56}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>hp.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{564,2},{420,56}}</string>
+                <string>{{564,118},{420,56}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,6 +69,32 @@
                 <key>sourceSize</key>
                 <string>{560,840}</string>
             </dict>
+            <key>scrollbar_horizontal.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{986,2},{20,10}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,10}}</string>
+                <key>sourceSize</key>
+                <string>{20,10}</string>
+            </dict>
+            <key>scrollbar_vertical.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1008,2},{10,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{10,20}}</string>
+                <key>sourceSize</key>
+                <string>{10,20}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -79,7 +105,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:11c2439e452ee0b4675d9267b9ef6488:8815457e5c0227c0744926065eb012e8:c0c053a3aa7d34b5b1daf0abf4de0606$</string>
+            <string>$TexturePacker:SmartUpdate:8b9e8816da6dc47886086ea96a381d91:094b1b31f8721c1f2c8daf5339cc06b7:c0c053a3aa7d34b5b1daf0abf4de0606$</string>
             <key>textureFileName</key>
             <string>misc.png</string>
         </dict>

@@ -2,6 +2,7 @@
 #include "scene/TitleSceneLoader.h"
 #include "scene/SelectSceneLoader.h"
 //#include "scene/StorySceneLoader.h"
+#include "scene/SelectStorySceneLoader.h"
 #include "tools/GoogleAnalyticsTracker.h"
 #include "resources/AppsInformation.h"
 #include "resources/DownloadCacheManager.h"
@@ -198,8 +199,9 @@ void LoadingScene::replaceSelectScene()
     frameCache->addSpriteFramesWithFile("misc/misc.plist");
     frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
     
-    Scene* scene = SelectSceneLoader::createScene();
+//    Scene* scene = SelectSceneLoader::createScene();
 //    Scene* scene = StorySceneLoader::createScene();
+    Scene* scene = SelectStorySceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }

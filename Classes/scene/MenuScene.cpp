@@ -2,16 +2,9 @@
 #include "scene/SelectSceneLoader.h"
 #include "tools/GoogleAnalyticsTracker.h"
 #include "core/Constant.h"
-#include "core/GameManager.h"
-#include "factory/CharacterCreator.h"
 #include "resources/SoundManager.h"
 #include "factory/TextCreator.h"
 #include "tools/NativeLauncher.h"
-
-#include "extensions/cocos-ext.h"
-
-USING_NS_CC;
-USING_NS_CC_EXT;
 
 MenuScene::MenuScene()
 {
@@ -54,62 +47,6 @@ void MenuScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     // SE
     SoundManager* soundManager = new SoundManager();
     soundManager->preloadSE("se_select");
-
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
-
-    // レイヤー
-    Layer *layer = Layer::create();
-    layer->setAnchorPoint(Point::ZERO);
-    layer->setPosition(Point::ZERO);
-    
-    // on layer
-    Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaSelect);
-    int num = GameManager::getInstance()->getCharaSelect();
-    std::string personaFileName = StringUtils::format("%s.png", personaList[num].c_str());
-    Point charaPos = Point(origin.x + visibleSize.width * 2 / 3,
-                           origin.y + visibleSize.height * 65 / 100);
-    CharacterCreator* creator = new CharacterCreator();
-    creator->init(CharacterScale::HARF);
-    Sprite* character = creator->create(personaFileName, charaPos);
-    layer->addChild(character);
-    
-    // on layer
-    auto *button = Sprite::create("freebu32_4.png");
-    layer->addChild(button);
-    
-    //画面サイズでスクロールビューを作る
-    layer->setContentSize(visibleSize);
-    auto scrollView = ScrollView::create(visibleSize);
-    scrollView->setDelegate(this);
-    scrollView->setContentSize(button->getContentSize());
-    scrollView->setContainer(layer);
-    scrollView->setPosition(Point::ZERO);
-    scrollView->setContentOffset(Point::ZERO);
-    scrollView->setDirection(ScrollView::Direction::VERTICAL);
-    scrollView->setBounceable(true);
-    scrollView->setViewSize(Size(500, 500));
-
-    this->addChild(scrollView);
-    // 初期のズームサイズ
-//    scrollView->setZoomScale(1.0f);
-    
-    // ビュー初期位置（以下はレイヤー中心の例）
-//    Size visibleSize = Director::getInstance()->getVisibleSize();
-//    Point origin = Director::getInstance()->getVisibleOrigin();
-//    auto point = Point(origin.x + visibleSize.width / 2,
-//                       origin.y + visibleSize.height * 45 / 100);
-//    scrollView->setContentOffset(point);
-//
-//    scrollView->setMinScale(0.5f);
-//    scrollView->setMaxScale(2.0f);
-//
-}
-
-// スクロール
-void MenuScene::scrollViewDidScroll(ScrollView *view)
-{
-    log("スクロール！");
 }
 
 void MenuScene::tappedInformationButton(Ref* pTarget, Control::EventType pControlEventType)
