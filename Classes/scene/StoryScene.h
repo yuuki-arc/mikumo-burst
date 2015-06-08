@@ -6,7 +6,7 @@
 #include "cocosbuilder/CocosBuilder.h"
 #include "core/Constant.h"
 #include "core/LabelAttributedBMFont.h"
-#include "resources/DownloadCacheManager.h"
+#include "resources/AppsInformation.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -29,7 +29,6 @@ public:
     
 //    void tappedBackButton(Ref* pTarget, Control::EventType pControlEventType);
     
-    void update(float frame);
     void pushBack(Ref* pSender);
     void initStoryMessages();
     
@@ -57,7 +56,7 @@ private:
     void setStoryData();
     void displayStoryCharacter(const std::string &charaName);
 
-    DownloadCacheManager* scenarioCache;
+    AppsInformation* appsInfo;
     LabelAttributedBMFont* label;
     Constant::StringVector storyMessages;
     Constant::StringVector storyCharacters;

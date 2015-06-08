@@ -8,18 +8,17 @@
 #include "factory/TextCreator.h"
 #include "tools/NativeLauncher.h"
 #include "core/LabelAttributedBMFont.h"
-#include "resources/DownloadCacheManager.h"
 #include "resources/AppsInformation.h"
 
 StoryScene::StoryScene()
 : bgImageList(Constant::BG_IMAGE_LIST())
-, scenarioCache(nullptr)
+, appsInfo(nullptr)
 {
 }
 
 StoryScene::~StoryScene()
 {
-    CC_SAFE_RELEASE_NULL(scenarioCache);
+    CC_SAFE_RELEASE_NULL(appsInfo);
 }
 
 bool StoryScene::init()
@@ -31,12 +30,6 @@ bool StoryScene::init()
     }
     
     initBackground();
-    
-    scenarioCache = DownloadCacheManager::create();
-    scenarioCache->retain();
-    scenarioCache->setUrl(__SHEET_URL_STORY);
-    scenarioCache->setFileName(Constant::CACHE_FILE_STORY());
-    scenarioCache->setCallback([this](Ref *sender){initStoryMessages();});
     
     return true;
 }
@@ -69,9 +62,6 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     SoundManager* soundManager = new SoundManager();
     soundManager->preloadSE("se_select");
 
-    // シナリオデータ取得
-    this->loadScenario();
-    
     // メニュー表示
     float labelWidth = origin.x + visibleSize.width / 2;
     float relativeLabelHeight = 25.0f;
@@ -91,9 +81,12 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     character->setTag(Tag::Character);
     character->setVisible(false);
     this->addChild(character, ZOrder::Persona);
+
+    // シナリオデータ取得
+    this->loadScenario();
     
-    // スケジュール更新
-    this->scheduleUpdate();    
+    // シナリオ進行
+    initStoryMessages();
 }
 
 /**
@@ -118,26 +111,8 @@ void StoryScene::initBackground()
 
 bool StoryScene::loadScenario()
 {
-//    AppsInformation* appsInfo = AppsInformation::create();
-//    appsInfo->downloadData();
-//    CCLOG("updateShhetDate: %s", GameManager::getInstance()->appsInfo->getUpdateSheetDate().c_str());
-    
-    bool result = scenarioCache->loadData();
-    return result;
-}
-
-/**
- *  定期更新（フレーム毎）
- *
- *  @param frame フレーム
- */
-void StoryScene::update(float frame)
-{
-    bool result = scenarioCache->execCallbackReferenceData();
-    if (!result)
-    {
-        CCLOG("StoryScene::read error");
-    }
+    appsInfo = AppsInformation::create();
+    return appsInfo->scenarioCache->readCache();
 }
 
 void StoryScene::initStoryMessages()
@@ -182,7 +157,7 @@ void StoryScene::initStoryMessages()
 
 void StoryScene::setStoryData()
 {
-    picojson::object& sheets = scenarioCache->loader->jsonResult.get<picojson::object>();
+    picojson::object& sheets = appsInfo->scenarioCache->loader->jsonResult.get<picojson::object>();
     picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
     for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
     {
