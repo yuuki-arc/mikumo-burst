@@ -103,7 +103,7 @@ bool AppsInformation::writeCache(const std::string &cacheFile)
     {
         return appsInfoCache->writeCache();
     }
-    else if (cacheFile == Constant::CACHE_FILE_APPS())
+    else if (cacheFile == Constant::CACHE_FILE_STORY())
     {
         return scenarioCache->writeCache();
     }
