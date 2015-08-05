@@ -205,6 +205,11 @@ public:
         return map[key];
     }
     
+    static constexpr float WORLD_MAP_SCALE = 2.0f;
+    static constexpr float WORLD_MAP_SIZE_W = 1280;
+    static constexpr float WORLD_MAP_SIZE_H = 960;
+    static const Size WORLD_MAP_SIZE(){return Size(WORLD_MAP_SIZE_W, WORLD_MAP_SIZE_H);}
+
     static const char* CACHE_FILE_APPS(){return "00_apps";}
     static const char* CACHE_FILE_STORY(){return "10_scenario";}
 

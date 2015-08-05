@@ -5,6 +5,7 @@
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
 #include "core/ScrollViewWrapper.h"
+#include "resources/AppsInformation.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -27,8 +28,17 @@ public:
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(SelectStoryScene, create);
     
     void scrollViewDidScroll(ScrollView *view);
-    
+
     void tappedBackButton(Ref* pTarget, Control::EventType pControlEventType);
+    
+    virtual void touchOn();
+    virtual void touchOff();
+    
+    // シングルタッチイベント
+    bool onTouchBegan(Touch* touch, Event *event);
+    void onTouchMoved(Touch* touch, Event *event);
+    void onTouchEnded(Touch* touch, Event *event);
+    void onTouchCancelled(Touch* touch, Event *event);
     
     void pushBack(Ref* pSender);
     
@@ -40,6 +50,15 @@ private:
         Font,
     };
 
+    //    EventListenerTouchAllAtOnce* listener;
+    EventListenerTouchOneByOne* listener;
+    void initTouchEvent();
+    int difference(int,int);
+    Sprite* map;
+
+    Point currentpos,prevpos,velocity; //座標保存クラスと速度ベクトル管理クラス
+
+    AppsInformation* appsInfo;
     ScrollViewWrapper* scrollView;
 };
 

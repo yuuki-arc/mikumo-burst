@@ -233,8 +233,8 @@ void LoadingScene::replaceSelectScene()
     frameCache->addSpriteFramesWithFile("effect/battleEffectB0.plist");
     
 //    Scene* scene = SelectSceneLoader::createScene();
-    Scene* scene = StorySceneLoader::createScene();
-//    Scene* scene = SelectStorySceneLoader::createScene();
+//    Scene* scene = StorySceneLoader::createScene();
+    Scene* scene = SelectStorySceneLoader::createScene();
     TransitionCrossFade* trans = TransitionCrossFade::create(0.5, scene);
     Director::getInstance()->replaceScene(trans);
 }

@@ -404,7 +404,6 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DD0DB3101B24346000F8052C /* ScrollViewWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollViewWrapper.cpp; sourceTree = "<group>"; };
 		DD0DB3111B24346000F8052C /* ScrollViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewWrapper.h; sourceTree = "<group>"; };
-		DD0DB3131B2434A700F8052C /* SelectStoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectStoryScene.h; sourceTree = "<group>"; };
 		DD0DB3141B2434A700F8052C /* SelectStoryScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectStoryScene.cpp; sourceTree = "<group>"; };
 		DD0DB3151B2434A700F8052C /* SelectStorySceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectStorySceneLoader.cpp; sourceTree = "<group>"; };
 		DD0DB3161B2434A700F8052C /* SelectStorySceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectStorySceneLoader.h; sourceTree = "<group>"; };
@@ -431,6 +430,7 @@
 		DD8A6EA31B21140500FE097E /* ScrollBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollBarView.h; sourceTree = "<group>"; };
 		DD8A6EA51B232BC400FE097E /* Scale9SpriteWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scale9SpriteWrapper.cpp; sourceTree = "<group>"; };
 		DD8A6EA61B232BC400FE097E /* Scale9SpriteWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scale9SpriteWrapper.h; sourceTree = "<group>"; };
+		DDB8294B1B34FA9500318CC4 /* SelectStoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectStoryScene.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -685,7 +685,7 @@
 				A5152C361A205B9E00C75DDE /* MenuSceneLoader.cpp */,
 				A5152C371A205B9E00C75DDE /* MenuSceneLoader.h */,
 				DD0DB3141B2434A700F8052C /* SelectStoryScene.cpp */,
-				DD0DB3131B2434A700F8052C /* SelectStoryScene.h */,
+				DDB8294B1B34FA9500318CC4 /* SelectStoryScene.h */,
 				DD0DB3151B2434A700F8052C /* SelectStorySceneLoader.cpp */,
 				DD0DB3161B2434A700F8052C /* SelectStorySceneLoader.h */,
 				A5152C381A205B9E00C75DDE /* SelectScene.cpp */,
