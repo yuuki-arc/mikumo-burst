@@ -21,7 +21,7 @@ SelectStoryScene::SelectStoryScene()
 
 SelectStoryScene::~SelectStoryScene()
 {
-    CC_SAFE_RELEASE_NULL(appsInfo);
+//    CC_SAFE_RELEASE_NULL(appsInfo);
 }
 
 bool SelectStoryScene::init()
@@ -55,45 +55,70 @@ void SelectStoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     SoundManager* soundManager = new SoundManager();
     soundManager->preloadSE("se_select");
 
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
-
     // ストーリー情報取得
     appsInfo = AppsInformation::create();
     appsInfo->scenarioCache->readCache();
 
-    // マップ画像を定義
-    // テクスチャアトラスを読み込む
-    SpriteFrameCache* frameCache = SpriteFrameCache::getInstance();
-    frameCache->addSpriteFramesWithFile("map/map.plist");
-    Sprite* map = Sprite::createWithSpriteFrameName("25120762_p0.jpg");
+    // メニューボタン描画
+    this->initMenu();
 
-    float mapContentSizeW = map->getContentSize().width * Constant::WORLD_MAP_SCALE;
-    float mapContentSizeH = map->getContentSize().height * Constant::WORLD_MAP_SCALE;
+    // ゲーム開始前設定
+    setupGame();
+}
+
+/**
+ メニューボタン描画
+ */
+void SelectStoryScene::initMenu()
+{
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Point origin = Director::getInstance()->getVisibleOrigin();
     
-    map->setScale(Constant::WORLD_MAP_SCALE);
-    map->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    map->setPosition(Point(mapContentSizeW * 1 / 2,
-                           mapContentSizeH * 1 / 2));
-
-    // マップオブジェクト定義
-    Sprite* mapObj = Sprite::createWithSpriteFrameName("pipo-map001.png");
-    mapObj->setScale(Constant::WORLD_MAP_SCALE);
-    mapObj->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    mapObj->setPosition(Point(mapContentSizeW * 1 / 2,
-                              mapContentSizeH * 1 / 2));
+    //    float mapContentSizeW = visibleSize.width * Constant::WORLD_MAP_SCALE;
+    //    float mapContentSizeH = visibleSize.height * Constant::WORLD_MAP_SCALE;
+    float mapContentSizeW = visibleSize.width;
+    float mapContentSizeH = visibleSize.height * 4.0f;
     
-
-    // マップ画像を包括するレイヤーを定義
+    // メニュー画像を包括するレイヤーを定義
     Layer *layer = LayerColor::create();
-//    layer->setAnchorPoint(Point::ANCHOR_MIDDLE);
-//    layer->setPosition(Point::ZERO);
-    layer->setColor(Color3B::BLUE);
-    layer->setOpacity(128);
+    //    layer->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    //    layer->setPosition(Point::ZERO);
+    //    layer->setColor(Color3B::BLUE);
+    //    layer->setOpacity(128);
     layer->setContentSize(Size(mapContentSizeW,
                                mapContentSizeH));
-    layer->addChild(map);
-    layer->addChild(mapObj);
+    
+    // SpriteBatchNodeを読み込む
+    std::vector<std::string> imageName = {"syber1.png", "syber2.png", "avg1.png", "avg2.png", "tegami1.png", "tegami2.png", "hakkou1.png"};
+    float ofs = 2.5f;
+    for (long i1 = imageName.size()-1; i1 >= 0; i1--) {
+        auto map = SpriteBatchNode::create(imageName[i1].c_str());
+        map->setAnchorPoint(Point::ANCHOR_MIDDLE);
+        for (int i= 0; i < 3; i++) {
+            auto mapSpriteDefault = Sprite::createWithTexture(map->getTexture());
+            auto mapSpriteSelected = Sprite::createWithTexture(map->getTexture());
+            mapSpriteSelected->setColor(Color3B::BLACK);
+            
+            //メニューアイテムの作成
+            auto pBtnItem = MenuItemSprite::create(mapSpriteDefault,
+                                                   mapSpriteSelected,
+                                                   [this](Ref *pSender){
+                                                       log("タップされました。");
+                                                   });
+//            auto pBtnItem = MenuItemSprite::create(mapSpriteDefault,
+//                                                   mapSpriteSelected,
+//                                                   CC_CALLBACK_1(SelectStoryScene::myCallback, this));
+
+            //メニューの作成　pMenuの中にpBtnItemを入れる
+            auto pMenu = Menu::create(pBtnItem, NULL);
+
+            //pMenuを画面中央に配置
+            pMenu->setPosition(Point(mapContentSizeW * 1 / 2,
+                                                (float((i1*3+3-i)+ofs)*15/100*visibleSize.height)));
+            layer->addChild(pMenu);
+        }
+        ofs -= 0.4f;
+    }
     
     
     // レイヤーを包括するスクロールビューを定義（画面サイズで生成）
@@ -101,9 +126,9 @@ void SelectStoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     scrollView->setDelegate(this);
     scrollView->setContentSize(Size(mapContentSizeW,
                                     mapContentSizeH));
-//    scrollView->setInnerContainerSize(Size(map->getContentSize().width, map->getContentSize().height));
+    //    scrollView->setInnerContainerSize(Size(map->getContentSize().width, map->getContentSize().height));
     scrollView->setContainer(layer);
-//    scrollView->setAnchorPoint(Point::ZERO);
+    //    scrollView->setAnchorPoint(Point::ZERO);
     scrollView->setPosition(Point(visibleSize.width * 3 / 100,
                                   visibleSize.height * 0 / 100));
     scrollView->setContentOffset(Point::ZERO);
@@ -112,7 +137,13 @@ void SelectStoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     scrollView->setViewSize(Size(visibleSize.width,
                                  visibleSize.height));
     this->addChild(scrollView);
-    
+}
+
+/**
+ ゲーム開始前設定
+ */
+void SelectStoryScene::setupGame()
+{
     initTouchEvent();
 }
 

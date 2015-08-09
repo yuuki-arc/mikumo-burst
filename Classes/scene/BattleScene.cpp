@@ -119,6 +119,9 @@ bool BattleScene::init()
     return true;
 }
 
+/**
+ ゲーム開始前設定
+ */
 void BattleScene::setupGame()
 {
     this->effectManager = new EffectManager();

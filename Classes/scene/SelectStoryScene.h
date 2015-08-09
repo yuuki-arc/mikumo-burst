@@ -60,6 +60,9 @@ private:
 
     AppsInformation* appsInfo;
     ScrollViewWrapper* scrollView;
+    
+    void initMenu();
+    void setupGame();
 };
 
 #endif /* defined(__SELECT_STORY_SCENE_H__) */
