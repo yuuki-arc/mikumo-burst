@@ -6,7 +6,8 @@
 #include "factory/CharacterCreator.h"
 #include "resources/SoundManager.h"
 #include "factory/TextCreator.h"
-#include "core/ScrollViewWrapper.h"
+#include "core/ScrollMenu.h"
+#include "core/ScrollMenuView.h"
 #include "resources/AppsInformation.h"
 
 #include "extensions/cocos-ext.h"
@@ -87,6 +88,9 @@ void SelectStoryScene::initMenu()
     //    layer->setOpacity(128);
     layer->setContentSize(Size(mapContentSizeW,
                                mapContentSizeH));
+
+    // メニュー作成
+    Vector<MenuItem*> menuItems;
     
     // SpriteBatchNodeを読み込む
     std::vector<std::string> imageName = {"syber1.png", "syber2.png", "avg1.png", "avg2.png", "tegami1.png", "tegami2.png", "hakkou1.png"};
@@ -100,39 +104,49 @@ void SelectStoryScene::initMenu()
             mapSpriteSelected->setColor(Color3B::BLACK);
             
             //メニューアイテムの作成
-            auto pBtnItem = MenuItemSprite::create(mapSpriteDefault,
+            auto menuSprite = MenuItemSprite::create(mapSpriteDefault,
                                                    mapSpriteSelected,
                                                    [this](Ref *pSender){
                                                        log("タップされました。");
                                                    });
-//            auto pBtnItem = MenuItemSprite::create(mapSpriteDefault,
+//            auto menuSprite = MenuItemSprite::create(mapSpriteDefault,
 //                                                   mapSpriteSelected,
 //                                                   CC_CALLBACK_1(SelectStoryScene::myCallback, this));
 
-            //メニューの作成　pMenuの中にpBtnItemを入れる
-            auto pMenu = Menu::create(pBtnItem, NULL);
-
-            //pMenuを画面中央に配置
-            pMenu->setPosition(Point(mapContentSizeW * 1 / 2,
-                                                (float((i1*3+3-i)+ofs)*15/100*visibleSize.height)));
-            layer->addChild(pMenu);
+            menuSprite->setPosition(Point(mapContentSizeW * 1 / 2,
+                                       (float((i1*3+3-i)+ofs)*15/100*visibleSize.height)));
+            menuItems.pushBack(menuSprite);
+//            //メニューの作成　pMenuの中にpBtnItemを入れる
+//            auto pMenu = ScrollMenu::create(menuSprite, NULL);
+//
+//            //pMenuを画面中央に配置
+//            pMenu->setPosition(Point(mapContentSizeW * 1 / 2,
+//                                                (float((i1*3+3-i)+ofs)*15/100*visibleSize.height)));
+//            layer->addChild(pMenu);
         }
         ofs -= 0.4f;
     }
     
+    // ScrollMenuを作成
+    auto menu = ScrollMenu::createWithArray(menuItems);
+    menu->setContentSize(Size(mapContentSizeW,
+                              mapContentSizeH));
+    menu->setAnchorPoint(Vec2(0, 0));
+    menu->setPosition(Vec2(0, 0));
     
     // レイヤーを包括するスクロールビューを定義（画面サイズで生成）
-    scrollView = ScrollViewWrapper::create(visibleSize);
+//    scrollView = ScrollMenuView::create(visibleSize);
+    scrollView = ScrollMenuView::create(menu);
     scrollView->setDelegate(this);
     scrollView->setContentSize(Size(mapContentSizeW,
                                     mapContentSizeH));
-    //    scrollView->setInnerContainerSize(Size(map->getContentSize().width, map->getContentSize().height));
-    scrollView->setContainer(layer);
-    //    scrollView->setAnchorPoint(Point::ZERO);
+//        scrollView->setInnerContainerSize(Size(map->getContentSize().width, map->getContentSize().height));
+//    scrollView->setContainer(menu);
+    scrollView->setAnchorPoint(Point::ZERO);
     scrollView->setPosition(Point(visibleSize.width * 3 / 100,
                                   visibleSize.height * 0 / 100));
     scrollView->setContentOffset(Point::ZERO);
-    scrollView->setDirection(ScrollView::Direction::BOTH);
+    scrollView->setDirection(ScrollMenuView::Direction::BOTH);
     scrollView->setBounceable(false);
     scrollView->setViewSize(Size(visibleSize.width,
                                  visibleSize.height));
@@ -255,7 +269,7 @@ int SelectStoryScene::difference(int x,int y){ //差分計算
 }
 
 //// スクロール
-void SelectStoryScene::scrollViewDidScroll(ScrollView *view)
+void SelectStoryScene::scrollViewDidScroll(ScrollMenuView *view)
 {
     log("スクロール！");
 }

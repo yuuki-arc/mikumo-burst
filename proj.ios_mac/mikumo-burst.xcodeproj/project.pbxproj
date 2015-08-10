@@ -149,6 +149,8 @@
 		DD0DB32A1B244ABD00F8052C /* SelectStoryScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = DD0DB3291B244ABD00F8052C /* SelectStoryScene.ccbi */; };
 		DD7EA9471B01337900C908D6 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		DD7EA9481B01379B00C908D6 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
+		DD80974E1B77935500A12315 /* ScrollMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD80974C1B77935500A12315 /* ScrollMenu.cpp */; };
+		DD8097511B77957200A12315 /* ScrollMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD80974F1B77957200A12315 /* ScrollMenuView.cpp */; };
 		DD8A6E7B1B1B7CAE00FE097E /* LabelAttributedBMFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD8A6E791B1B7CAE00FE097E /* LabelAttributedBMFont.cpp */; };
 		DD8A6E821B1B7CEA00FE097E /* AppsInformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD8A6E7C1B1B7CEA00FE097E /* AppsInformation.cpp */; };
 		DD8A6E831B1B7CEA00FE097E /* DownloadCacheManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD8A6E7E1B1B7CEA00FE097E /* DownloadCacheManager.cpp */; };
@@ -409,6 +411,10 @@
 		DD0DB3161B2434A700F8052C /* SelectStorySceneLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectStorySceneLoader.h; sourceTree = "<group>"; };
 		DD0DB3291B244ABD00F8052C /* SelectStoryScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = SelectStoryScene.ccbi; sourceTree = "<group>"; };
 		DD7EA9451B01325400C908D6 /* libcocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d iOS.a"; path = "../lib/libcocos2d iOS.a"; sourceTree = "<group>"; };
+		DD80974C1B77935500A12315 /* ScrollMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollMenu.cpp; sourceTree = "<group>"; };
+		DD80974D1B77935500A12315 /* ScrollMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollMenu.h; sourceTree = "<group>"; };
+		DD80974F1B77957200A12315 /* ScrollMenuView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollMenuView.cpp; sourceTree = "<group>"; };
+		DD8097501B77957200A12315 /* ScrollMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollMenuView.h; sourceTree = "<group>"; };
 		DD8A6E791B1B7CAE00FE097E /* LabelAttributedBMFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LabelAttributedBMFont.cpp; path = ../../classes/core/LabelAttributedBMFont.cpp; sourceTree = "<group>"; };
 		DD8A6E7A1B1B7CAE00FE097E /* LabelAttributedBMFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabelAttributedBMFont.h; path = ../../classes/core/LabelAttributedBMFont.h; sourceTree = "<group>"; };
 		DD8A6E7C1B1B7CEA00FE097E /* AppsInformation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppsInformation.cpp; path = ../../classes/resources/AppsInformation.cpp; sourceTree = "<group>"; };
@@ -740,6 +746,10 @@
 		A5152C5E1A206F4F00C75DDE /* core */ = {
 			isa = PBXGroup;
 			children = (
+				DD80974C1B77935500A12315 /* ScrollMenu.cpp */,
+				DD80974D1B77935500A12315 /* ScrollMenu.h */,
+				DD80974F1B77957200A12315 /* ScrollMenuView.cpp */,
+				DD8097501B77957200A12315 /* ScrollMenuView.h */,
 				DD0DB3101B24346000F8052C /* ScrollViewWrapper.cpp */,
 				DD0DB3111B24346000F8052C /* ScrollViewWrapper.h */,
 				DD8A6EA21B21140500FE097E /* ScrollBarView.cpp */,
@@ -1154,6 +1164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50544211A207A2100BDD5C7 /* GoogleAnalyticsTracker.mm in Sources */,
+				DD80974E1B77935500A12315 /* ScrollMenu.cpp in Sources */,
 				A5152C841A2072AF00C75DDE /* CharacterCreator.cpp in Sources */,
 				A505441F1A207A2100BDD5C7 /* AppCCloudPlugin.mm in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -1163,6 +1174,7 @@
 				DD8A6E8E1B1B7D2700FE097E /* LoadingSceneLoader.cpp in Sources */,
 				DD8A6E901B1B7D2700FE097E /* StorySceneLoader.cpp in Sources */,
 				DD8A6E8D1B1B7D2700FE097E /* LoadingScene.cpp in Sources */,
+				DD8097511B77957200A12315 /* ScrollMenuView.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				DD8A6E8F1B1B7D2700FE097E /* StoryScene.cpp in Sources */,
 				DD0DB3121B24346000F8052C /* ScrollViewWrapper.cpp in Sources */,

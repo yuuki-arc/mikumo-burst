@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
-#include "core/ScrollViewWrapper.h"
+#include "core/ScrollMenuView.h"
 #include "resources/AppsInformation.h"
 
 USING_NS_CC;
@@ -27,7 +27,7 @@ public:
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(SelectStoryScene, create);
     
-    void scrollViewDidScroll(ScrollView *view);
+    void scrollViewDidScroll(ScrollMenuView *view);
 
     void tappedBackButton(Ref* pTarget, Control::EventType pControlEventType);
     
@@ -59,7 +59,7 @@ private:
     Point currentpos,prevpos,velocity; //座標保存クラスと速度ベクトル管理クラス
 
     AppsInformation* appsInfo;
-    ScrollViewWrapper* scrollView;
+    ScrollMenuView* scrollView;
     
     void initMenu();
     void setupGame();
