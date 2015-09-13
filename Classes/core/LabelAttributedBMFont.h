@@ -29,11 +29,8 @@ class LabelAttributedBMFont : public cocos2d::Label
 {
     
 public:
-    LabelAttributedBMFont(cocos2d::FontAtlas *atlas = nullptr,
-                          cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
-                          cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP,
-                          bool useDistanceField = false,
-                          bool useA8Shader = false);
+    LabelAttributedBMFont(cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
+                          cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
     
     virtual ~LabelAttributedBMFont();
     
@@ -93,7 +90,7 @@ protected:
     std::vector< std::string > m_pages;
     std::vector< std::string >::iterator m_iterator;
     std::function<void(Ref*)>  m_callback;
-    std::function<void(int)>  m_callbackChangedPage;
+    std::function<void(long)>  m_callbackChangedPage;
     std::map< int, cocos2d::Color3B > m_colorsMatchingWord;
     
 private:
