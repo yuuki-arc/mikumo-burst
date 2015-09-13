@@ -151,6 +151,7 @@
 		DD7EA9481B01379B00C908D6 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		DD80974E1B77935500A12315 /* ScrollMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD80974C1B77935500A12315 /* ScrollMenu.cpp */; };
 		DD8097511B77957200A12315 /* ScrollMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD80974F1B77957200A12315 /* ScrollMenuView.cpp */; };
+		DD85849F1BA5BFBE000FACD2 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD85849E1BA5BFBE000FACD2 /* libiconv.dylib */; };
 		DD8A6E7B1B1B7CAE00FE097E /* LabelAttributedBMFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD8A6E791B1B7CAE00FE097E /* LabelAttributedBMFont.cpp */; };
 		DD8A6E821B1B7CEA00FE097E /* AppsInformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD8A6E7C1B1B7CEA00FE097E /* AppsInformation.cpp */; };
 		DD8A6E831B1B7CEA00FE097E /* DownloadCacheManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD8A6E7E1B1B7CEA00FE097E /* DownloadCacheManager.cpp */; };
@@ -415,6 +416,7 @@
 		DD80974D1B77935500A12315 /* ScrollMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollMenu.h; sourceTree = "<group>"; };
 		DD80974F1B77957200A12315 /* ScrollMenuView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScrollMenuView.cpp; sourceTree = "<group>"; };
 		DD8097501B77957200A12315 /* ScrollMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollMenuView.h; sourceTree = "<group>"; };
+		DD85849E1BA5BFBE000FACD2 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		DD8A6E791B1B7CAE00FE097E /* LabelAttributedBMFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LabelAttributedBMFont.cpp; path = ../../classes/core/LabelAttributedBMFont.cpp; sourceTree = "<group>"; };
 		DD8A6E7A1B1B7CAE00FE097E /* LabelAttributedBMFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabelAttributedBMFont.h; path = ../../classes/core/LabelAttributedBMFont.h; sourceTree = "<group>"; };
 		DD8A6E7C1B1B7CEA00FE097E /* AppsInformation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppsInformation.cpp; path = ../../classes/resources/AppsInformation.cpp; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD85849F1BA5BFBE000FACD2 /* libiconv.dylib in Frameworks */,
 				DD8A6E931B1B816C00FE097E /* Security.framework in Frameworks */,
 				DD7EA9471B01337900C908D6 /* libcocos2d iOS.a in Frameworks */,
 				A5ADDC491A1AD42E00A492F3 /* libGoogleAnalyticsServices.a in Frameworks */,
@@ -567,6 +570,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD85849E1BA5BFBE000FACD2 /* libiconv.dylib */,
 				DD8A6E921B1B816C00FE097E /* Security.framework */,
 				DD7EA9451B01325400C908D6 /* libcocos2d iOS.a */,
 				A5E279961A1A6E87005D4D7F /* libGoogleAnalyticsServices.a */,
