@@ -9,7 +9,12 @@
 
 using namespace cocos2d;
 
-void cocos_android_app_init (JNIEnv* env, jobject thiz) {
+#if COCOS2D_VERSION <= 0x00030600
+void cocos_android_app_init(JNIEnv* env, jobject thiz)
+#else
+void cocos_android_app_init(JNIEnv* env)
+#endif
+{
     LOGD("cocos_android_app_init");
     AppDelegate *pAppDelegate = new AppDelegate();
 }
