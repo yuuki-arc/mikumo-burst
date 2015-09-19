@@ -95,7 +95,7 @@ bool BattleScene::init()
     Label* label = TextCreator::create("BATTLE START!", Point(0,0));
     label->setAnchorPoint(Point(0.5, 0.5));
     label->setScale(BM_FONT_SIZE64(32));
-    label->getTexture()->setAliasTexParameters();
+    label->getFontAtlas()->setAliasTexParameters();
     this->addChild(label, ZOrder::Font);
     
     // ゲーム開始アニメーション
@@ -213,7 +213,7 @@ void BattleScene::initStatusLayer()
     gameTimeLabel = TextCreator::create(StringUtils::toString(gameTime), point);
     gameTimeLabel->setAnchorPoint(Point(0.5, 0.5));
     gameTimeLabel->setScale(BM_FONT_SIZE64(32));
-    gameTimeLabel->getTexture()->setAliasTexParameters();
+    gameTimeLabel->getFontAtlas()->setAliasTexParameters();
     this->addChild(gameTimeLabel, ZOrder::Font);
     
     // HP

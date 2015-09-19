@@ -9,12 +9,9 @@ using namespace std;
 #define NULL_CHAR       ""
 
 
-LabelAttributedBMFont::LabelAttributedBMFont(cocos2d::FontAtlas *atlas,
-                                             cocos2d::TextHAlignment hAlignment,
-                                             cocos2d::TextVAlignment vAlignment,
-                                             bool useDistanceField,
-                                             bool useA8Shader)
-:Label::Label(atlas, hAlignment, vAlignment, useDistanceField, useA8Shader)
+LabelAttributedBMFont::LabelAttributedBMFont(cocos2d::TextHAlignment hAlignment,
+                                             cocos2d::TextVAlignment vAlignment)
+:Label::Label(hAlignment, vAlignment)
 {
     
 }
@@ -38,7 +35,7 @@ LabelAttributedBMFont* LabelAttributedBMFont::createWithBMFont(const std::string
                                                                const cocos2d::TextHAlignment& alignment, int lineWidth,
                                                                const cocos2d::Point& imageOffset)
 {
-    LabelAttributedBMFont *ret = new LabelAttributedBMFont(nullptr, alignment);
+    LabelAttributedBMFont *ret = new LabelAttributedBMFont(alignment);
     
     if (!ret)
         return nullptr;
@@ -158,10 +155,10 @@ void LabelAttributedBMFont::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *
 
 void LabelAttributedBMFont::updateColor()
 {
-    if (nullptr == _textureAtlas)
-    {
-        return;
-    }
+//    if (nullptr == _textureAtlas)
+//    {
+//        return;
+//    }
     
     Color4B color4( _displayedColor.r, _displayedColor.g, _displayedColor.b, _displayedOpacity );
     
@@ -315,12 +312,12 @@ void LabelAttributedBMFont::searchKeywordsIndex(std::string targetString)
         auto key = dataset.word;
         u16string u16key;
         StringUtils::UTF8ToUTF16(key.c_str(), u16key);
-        unsigned int keyLengthMultiByte = u16key.length();     // キーワードの長さ(マルチバイト)
+        unsigned long keyLengthMultiByte = u16key.length();     // キーワードの長さ(マルチバイト)
 		unsigned long searchIndex = 0;                                                   // 現在の検出走査位置
 		unsigned long keyFindIndex = targetString.find(key, searchIndex);                // キーワードが検出された位置
         
 		while (keyFindIndex != string::npos) {
-			unsigned int keyFindIndexMultiByte = 0;                         // キーワードが検出された位置(マルチバイト)
+			unsigned long keyFindIndexMultiByte = 0;                         // キーワードが検出された位置(マルチバイト)
 			// キーワードが検出された位置(マルチバイト)を検出
 			string clipStr = targetString.substr(0, keyFindIndex);
             u16string u16ClipStr;
@@ -328,8 +325,8 @@ void LabelAttributedBMFont::searchKeywordsIndex(std::string targetString)
             keyFindIndexMultiByte = u16ClipStr.length();
             
             for (unsigned int i = 0; i < keyLengthMultiByte; i++) {
-                int index = keyFindIndexMultiByte + i;
-                m_colorsMatchingWord[index] = dataset.strongColor;
+                long index = keyFindIndexMultiByte + i;
+                m_colorsMatchingWord[(int)index] = dataset.strongColor;
             }
             
 			// 現在の検出走査位置をキーワード終了位置へ
@@ -360,7 +357,7 @@ void LabelAttributedBMFont::update(float dt)
     auto line = m_pages.at(m_iterator - m_pages.begin());
     u16string u16Line;
     StringUtils::UTF8ToUTF16(line.c_str(), u16Line);
-    int len = u16Line.length();
+    long len = u16Line.length();
     int currentLen = getStringLength();
     
     if (currentLen >= len) {

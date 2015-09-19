@@ -29,7 +29,7 @@ Label* TextCreator::create(const std::string text, Point point, const std::strin
     label->setAnchorPoint(Point(0, 0.5));
     label->setScale(BM_FONT_SIZE64(16));
     label->setPosition(point);
-    label->getTexture()->setAliasTexParameters();
+    label->getFontAtlas()->setAliasTexParameters();
     
     return label;
 }
@@ -47,7 +47,7 @@ LabelAttributedBMFont* TextCreator::create( std::vector<std::string> textList, P
     label->setAnchorPoint(Point(0, 0.5));
     label->setScale(BM_FONT_SIZE64(16));
     label->setPosition(point);
-    label->getTexture()->setAliasTexParameters();
+    label->getFontAtlas()->setAliasTexParameters();
     
     return label;
 }
