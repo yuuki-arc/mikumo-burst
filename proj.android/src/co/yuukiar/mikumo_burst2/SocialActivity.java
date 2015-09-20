@@ -3,6 +3,7 @@ package co.yuukiar.mikumo_burst2;
 import net.app_c.cloud.plugin.c2dx.AppCCloudActivity;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
+import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,8 +22,14 @@ public class SocialActivity extends AppCCloudActivity {
         instance = this;
     }
 
-    
-    public static void tweet(String msg){
+	@Override
+	public Cocos2dxGLSurfaceView onCreateView() {
+		Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
+	    glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
+	    return glSurfaceView;
+	}
+
+	public static void tweet(String msg){
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("text/plain");
