@@ -3,6 +3,10 @@
 
 #include "core/DefineParameters.h"
 
+// フォント設定
+#define LBL_NM_FONT "font/rounded-mgenplus-2cp-bold.ttf"
+#define LBL_LG_FONT "font/rounded-mgenplus-2cp-black.ttf"
+
 #define BM_FONT_SIZE(__SIZE , __BASE) (CC_CONTENT_SCALE_FACTOR() * ((float)__SIZE / (float)__BASE))
 #define BM_FONT_SIZE64(__SIZE) (BM_FONT_SIZE(__SIZE , 64))
 
@@ -215,6 +219,8 @@ public:
 
     static const char* SHEET_NAME_AP_APPS(){return "apps";}
     static const char* SHEET_NAME_AP_SCENARIO(){return "scenario";}
+
+    static const char* SHEET_NAME_STORY_MENU(){return "menu";}
 
     static const char* SHEET_COLUMN_AP_APPS(){
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)

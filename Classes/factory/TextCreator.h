@@ -17,6 +17,8 @@ public:
     static Label* create(const std::string text, Point point, const std::string fontName);
     static LabelAttributedBMFont* create(const std::vector<std::string> textList, Point point);
     static LabelAttributedBMFont* create(const std::vector<std::string> textList, Point point, const std::string fontName);
+    static Label* createLabel(const std::string text, Point point);
+    static Label* createLabel(const std::string text, Point point, const std::string fontName);
 };
 
 #endif /* defined(__mikumoburst__TextCreator__) */

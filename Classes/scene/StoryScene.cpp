@@ -86,7 +86,7 @@ void StoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     this->loadScenario();
     
     // シナリオ進行
-    initStoryMessages();
+    initScenarioMessages();
 }
 
 /**
@@ -115,18 +115,18 @@ bool StoryScene::loadScenario()
     return appsInfo->scenarioCache->readCache();
 }
 
-void StoryScene::initStoryMessages()
+void StoryScene::initScenarioMessages()
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
     // 表示文字準備
-    this->setStoryData();
+    this->setScenarioData();
     
     float labelWidth = origin.x + visibleSize.width * 1 / 10;
     float relativeLabelHeight = 2.5f;
     Point point = Point(labelWidth, origin.y + visibleSize.height * relativeLabelHeight / 10);
-    label = TextCreator::create(this->storyMessages, point);
+    label = TextCreator::create(this->scenarioMessages, point);
     label->setScale(BM_FONT_SIZE64(16));
     this->addChild(label, ZOrder::Font);
     
@@ -140,12 +140,12 @@ void StoryScene::initStoryMessages()
     });
     
     // コールバック設定その２(ページ送りするたびに呼ばれる)
-    // もどってくる値はstoryMessagesのindex
+    // もどってくる値はScenarioMessagesのindex
     label->setCallbackChangedPage([this](int index) {
         // indexから現在何が表示されているのか判定して何か処理
         // ページ送りされたらなので、indexは1から(2ページ目からしかこない)
         CCLOG("setCallbackChangedPage");
-        this->displayStoryCharacter(this->storyCharacters[index].c_str());
+        this->displayScenarioCharacter(this->scenarioCharacters[index].c_str());
     });
     
     // 文字送りしない場合(ページ送りとキーワード強調は有効にしたい場合)
@@ -155,7 +155,7 @@ void StoryScene::initStoryMessages()
     label->start();
 }
 
-void StoryScene::setStoryData()
+void StoryScene::setScenarioData()
 {
     picojson::object& sheets = appsInfo->scenarioCache->loader->jsonResult.get<picojson::object>();
     picojson::array& sheetColumns = sheets["sc0"].get<picojson::array>();
@@ -167,13 +167,13 @@ void StoryScene::setStoryData()
         std::string charaName = (std::string)column["chara_name"].get<std::string>();
         std::string message = (std::string)column["message"].get<std::string>();
         
-        this->storyCharacters.push_back(charaName);
-        this->storyMessages.push_back(message);
+        this->scenarioCharacters.push_back(charaName);
+        this->scenarioMessages.push_back(message);
         CCLOG("x:%d, y:%d, z:%s", mainId, subId, charaName.c_str());
     }
 }
 
-void StoryScene::displayStoryCharacter(const std::string &charaName)
+void StoryScene::displayScenarioCharacter(const std::string &charaName)
 {
     Constant::StringVector personaList = Constant::PERSONA_IMAGE_LIST(Constant::ImagePersona::PersonaStory);
     int num = charaName == "このは" ? 0 : (charaName == "あんず" ? 1 : 2);

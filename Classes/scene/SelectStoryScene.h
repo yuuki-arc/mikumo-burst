@@ -2,9 +2,9 @@
 #define __SELECT_STORY_SCENE_H__
 
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 #include "extensions/cocos-ext.h"
 #include "cocosbuilder/CocosBuilder.h"
-#include "core/ScrollMenuView.h"
 #include "resources/AppsInformation.h"
 
 USING_NS_CC;
@@ -27,7 +27,8 @@ public:
     
     CCB_STATIC_NEW_AUTORELEASE_OBJECT_WITH_INIT_METHOD(SelectStoryScene, create);
     
-    void scrollViewDidScroll(ScrollMenuView *view);
+    void tapMenuItem(Ref* sender);
+    void scrollViewDidScroll(ui::ScrollView *view);
 
     void tappedBackButton(Ref* pTarget, Control::EventType pControlEventType);
     
@@ -59,8 +60,10 @@ private:
     Point currentpos,prevpos,velocity; //座標保存クラスと速度ベクトル管理クラス
 
     AppsInformation* appsInfo;
-    ScrollMenuView* scrollView;
+    StringMapVector menuList;
+    ui::ScrollView* scrollView;
     
+    void setStoryList();
     void initMenu();
     void setupGame();
 };

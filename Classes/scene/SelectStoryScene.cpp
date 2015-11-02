@@ -7,7 +7,6 @@
 #include "resources/SoundManager.h"
 #include "factory/TextCreator.h"
 #include "core/ScrollMenu.h"
-#include "core/ScrollMenuView.h"
 #include "resources/AppsInformation.h"
 
 #include "extensions/cocos-ext.h"
@@ -60,6 +59,9 @@ void SelectStoryScene::onNodeLoaded(Node *pNode, NodeLoader *pNodeLoader)
     appsInfo = AppsInformation::create();
     appsInfo->scenarioCache->readCache();
 
+    // ストーリー一覧
+    this->setStoryList();
+    
     // メニューボタン描画
     this->initMenu();
 
@@ -75,47 +77,66 @@ void SelectStoryScene::initMenu()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
-    //    float mapContentSizeW = visibleSize.width * Constant::WORLD_MAP_SCALE;
-    //    float mapContentSizeH = visibleSize.height * Constant::WORLD_MAP_SCALE;
     float mapContentSizeW = visibleSize.width;
     float mapContentSizeH = visibleSize.height * 4.0f;
     
     // メニュー画像を包括するレイヤーを定義
     Layer *layer = LayerColor::create();
-    //    layer->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    //    layer->setPosition(Point::ZERO);
-    //    layer->setColor(Color3B::BLUE);
-    //    layer->setOpacity(128);
     layer->setContentSize(Size(mapContentSizeW,
                                mapContentSizeH));
 
     // メニュー作成
     Vector<MenuItem*> menuItems;
     
-    // SpriteBatchNodeを読み込む
-    std::vector<std::string> imageName = {"syber1.png", "syber2.png", "avg1.png", "avg2.png", "tegami1.png", "tegami2.png", "hakkou1.png"};
-    float ofs = 2.5f;
-    for (long i1 = imageName.size()-1; i1 >= 0; i1--) {
-        auto map = SpriteBatchNode::create(imageName[i1].c_str());
-        map->setAnchorPoint(Point::ANCHOR_MIDDLE);
-        for (int i= 0; i < 3; i++) {
-            auto mapSpriteDefault = Sprite::createWithTexture(map->getTexture());
-            auto mapSpriteSelected = Sprite::createWithTexture(map->getTexture());
-            mapSpriteSelected->setColor(Color3B::BLACK);
-            
-            //メニューアイテムの作成
-            auto menuSprite = MenuItemSprite::create(mapSpriteDefault,
-                                                   mapSpriteSelected,
-                                                   [this](Ref *pSender){
-                                                       log("タップされました。");
-                                                   });
-//            auto menuSprite = MenuItemSprite::create(mapSpriteDefault,
-//                                                   mapSpriteSelected,
-//                                                   CC_CALLBACK_1(SelectStoryScene::myCallback, this));
+    // craete itemのラムダ関数作成
+    function<MenuItemSprite* (std::string title, std::string subTitle, std::string description)> createMenuItemSprite =
+    [this](std::string title, std::string subTitle, std::string description) {
+        // メニュー項目背景を読み込む
+        auto menuBgImage = SpriteBatchNode::create("avg2.png");
+        // メニュー項目用スプライトを生成
+        auto menuBgImageSpriteDefault = Sprite::createWithTexture(menuBgImage->getTexture());
+        auto menuBgImageSpriteSelected = Sprite::createWithTexture(menuBgImage->getTexture());
+        menuBgImageSpriteSelected->setColor(Color3B::BLACK);
+        auto menuSprite = MenuItemSprite::create(menuBgImageSpriteDefault,
+                                                 menuBgImageSpriteSelected,
+                                                 CC_CALLBACK_1(SelectStoryScene::tapMenuItem, this));
+        menuSprite->setAnchorPoint(Point::ANCHOR_MIDDLE_TOP);
+        // メニュー項目用文字列を生成
+        Label* label;
+        label = TextCreator::createLabel(title,
+                                         Point(menuSprite->getContentSize().width * 4 / 100,
+                                               menuSprite->getContentSize().height * 9 / 10));
+        menuSprite->addChild(label);
 
-            menuSprite->setPosition(Point(mapContentSizeW * 1 / 2,
-                                       (float((i1*3+3-i)+ofs)*15/100*visibleSize.height)));
-            menuItems.pushBack(menuSprite);
+        label = TextCreator::createLabel(subTitle,
+                                         Point(menuSprite->getContentSize().width * 4 / 100,
+                                               menuSprite->getContentSize().height * 6 / 10));
+        menuSprite->addChild(label);
+
+        label = TextCreator::createLabel(description,
+                                         Point(menuSprite->getContentSize().width * 4 / 100,
+                                               menuSprite->getContentSize().height * 4 / 10));
+        menuSprite->addChild(label);
+
+        return menuSprite;
+    };
+    
+    int idx = 0;
+    for (auto it = menuList.begin(); it != menuList.end(); it++)
+    {
+        StringMap column = (*it);
+        
+        //メニューアイテムの作成
+        auto menuSprite = createMenuItemSprite(
+                           column["menu_title"] + " " + column["menu_id"] + "-" + column["sub_id"],
+                           column["sub_title"],
+                           column["description"]);
+//        auto menuItem2 = createMenuItemSprite("item 2");
+
+        menuSprite->setPosition(Point(mapContentSizeW * 1 / 2,
+                                      mapContentSizeH * (100 - 5 * idx) / 100));
+        menuItems.pushBack(menuSprite);
+        idx++;
 //            //メニューの作成　pMenuの中にpBtnItemを入れる
 //            auto pMenu = ScrollMenu::create(menuSprite, NULL);
 //
@@ -123,8 +144,6 @@ void SelectStoryScene::initMenu()
 //            pMenu->setPosition(Point(mapContentSizeW * 1 / 2,
 //                                                (float((i1*3+3-i)+ofs)*15/100*visibleSize.height)));
 //            layer->addChild(pMenu);
-        }
-        ofs -= 0.4f;
     }
     
     // ScrollMenuを作成
@@ -135,22 +154,54 @@ void SelectStoryScene::initMenu()
     menu->setPosition(Vec2(0, 0));
     
     // レイヤーを包括するスクロールビューを定義（画面サイズで生成）
-//    scrollView = ScrollMenuView::create(visibleSize);
-    scrollView = ScrollMenuView::create(menu);
-    scrollView->setDelegate(this);
-    scrollView->setContentSize(Size(mapContentSizeW,
-                                    mapContentSizeH));
-//        scrollView->setInnerContainerSize(Size(map->getContentSize().width, map->getContentSize().height));
-//    scrollView->setContainer(menu);
+    ui::ScrollView* scrollView = ui::ScrollView::create();
+    scrollView->setInnerContainerSize(Size(mapContentSizeW,
+                                           mapContentSizeH));
     scrollView->setAnchorPoint(Point::ZERO);
     scrollView->setPosition(Point(visibleSize.width * 3 / 100,
                                   visibleSize.height * 0 / 100));
-    scrollView->setContentOffset(Point::ZERO);
-    scrollView->setDirection(ScrollMenuView::Direction::BOTH);
-    scrollView->setBounceable(false);
-    scrollView->setViewSize(Size(visibleSize.width,
+    scrollView->setContentSize(Size(visibleSize.width,
                                  visibleSize.height));
+    scrollView->setScrollBarWidth(4);
+    scrollView->setScrollBarPositionFromCorner(Vec2(2, 2));
+    scrollView->setScrollBarColor(Color3B::WHITE);
+    scrollView->addChild(menu);
+    scrollView->setBounceEnabled(true);
+    scrollView->setSwallowTouches(false);
+
     this->addChild(scrollView);
+}
+
+/**
+ ストーリーリスト設定
+ */
+void SelectStoryScene::tapMenuItem(Ref* sender)
+{
+    CCLOG("タップしたあと");
+    MenuItemSprite* menuSprite = static_cast<MenuItemSprite*>(sender);
+    menuSprite->setColor(Color3B::BLUE);
+}
+
+/**
+ ストーリーリスト設定
+ */
+void SelectStoryScene::setStoryList()
+{
+    menuList.clear();
+
+    picojson::object& sheets = appsInfo->scenarioCache->loader->jsonResult.get<picojson::object>();
+    picojson::array& sheetColumns = sheets[Constant::SHEET_NAME_STORY_MENU()].get<picojson::array>();
+    for (picojson::array::iterator it = sheetColumns.begin(); it != sheetColumns.end(); it++)
+    {
+        StringMap menu;
+        picojson::object& column = it->get<picojson::object>();
+        menu["menu_id"] = std::to_string((int)column["menu_id"].get<double>());
+        menu["menu_title"] = (std::string)column["menu_title"].get<std::string>();
+        menu["sub_id"] = std::to_string((int)column["sub_id"].get<double>());
+        menu["sub_title"] = (std::string)column["sub_title"].get<std::string>();
+        menu["description"] = (std::string)column["description"].get<std::string>();
+        menuList.push_back(menu);
+    }
 }
 
 /**
@@ -269,7 +320,7 @@ int SelectStoryScene::difference(int x,int y){ //差分計算
 }
 
 //// スクロール
-void SelectStoryScene::scrollViewDidScroll(ScrollMenuView *view)
+void SelectStoryScene::scrollViewDidScroll(ui::ScrollView *view)
 {
     log("スクロール！");
 }

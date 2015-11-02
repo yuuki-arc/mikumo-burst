@@ -30,7 +30,7 @@ public:
 //    void tappedBackButton(Ref* pTarget, Control::EventType pControlEventType);
     
     void pushBack(Ref* pSender);
-    void initStoryMessages();
+    void initScenarioMessages();
     
 private:
     enum ZOrder
@@ -53,13 +53,13 @@ private:
 
     void initBackground();
     bool loadScenario();
-    void setStoryData();
-    void displayStoryCharacter(const std::string &charaName);
+    void setScenarioData();
+    void displayScenarioCharacter(const std::string &charaName);
 
     AppsInformation* appsInfo;
     LabelAttributedBMFont* label;
-    Constant::StringVector storyMessages;
-    Constant::StringVector storyCharacters;
+    Constant::StringVector scenarioMessages;
+    Constant::StringVector scenarioCharacters;
 };
 
 #endif /* defined(__STORY_SCENE_H__) */

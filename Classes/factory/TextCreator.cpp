@@ -16,6 +16,9 @@ TextCreator::~TextCreator()
     
 }
 
+/**
+ テキスト生成（ビットマップフォント）
+ */
 Label* TextCreator::create(const std::string text, Point point)
 {
     auto label = TextCreator::create(text, point, Constant::NORMAL_FONT());
@@ -23,6 +26,9 @@ Label* TextCreator::create(const std::string text, Point point)
     return label;
 }
 
+/**
+ テキスト生成（ビットマップフォント）
+ */
 Label* TextCreator::create(const std::string text, Point point, const std::string fontName)
 {
     auto label = Label::createWithBMFont(fontName, text);
@@ -34,6 +40,9 @@ Label* TextCreator::create(const std::string text, Point point, const std::strin
     return label;
 }
 
+/**
+ 文字送り用テキスト生成（ビットマップフォント）
+ */
 LabelAttributedBMFont* TextCreator::create(const std::vector<std::string> textList, Point point)
 {
     auto label = TextCreator::create(textList, point, Constant::NORMAL_FONT());
@@ -41,6 +50,9 @@ LabelAttributedBMFont* TextCreator::create(const std::vector<std::string> textLi
     return label;
 }
 
+/**
+ 文字送り用テキスト生成（ビットマップフォント）
+ */
 LabelAttributedBMFont* TextCreator::create( std::vector<std::string> textList, Point point, const std::string fontName)
 {
     auto label = LabelAttributedBMFont::createWithBMFont(fontName, textList);
@@ -51,3 +63,28 @@ LabelAttributedBMFont* TextCreator::create( std::vector<std::string> textList, P
     
     return label;
 }
+
+/**
+ テキスト生成（ラベル）
+ */
+Label* TextCreator::createLabel(const std::string text, Point point)
+{
+    auto label = TextCreator::createLabel(text, point, Constant::NORMAL_FONT());
+    
+    return label;
+}
+
+/**
+ テキスト生成（ラベル）
+ */
+Label* TextCreator::createLabel(const std::string text, Point point, const std::string fontName)
+{
+    TTFConfig ttfConfig(LBL_NM_FONT, 16, GlyphCollection::DYNAMIC);
+    Label* label;
+    label = Label::createWithTTF(ttfConfig, text);
+    label->setPosition(point);
+    label->setAnchorPoint(Point::ANCHOR_TOP_LEFT);
+    
+    return label;
+}
+
